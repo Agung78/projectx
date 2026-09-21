@@ -87,6 +87,7 @@
     --duration-hover: 180ms;
     --duration-popover: 200ms;
     --duration-panel: 260ms;
+    --duration-page: 320ms;
   }
 
   body {
@@ -128,6 +129,54 @@
       animation-iteration-count: 1 !important;
       transition-property: opacity, color, background-color, border-color, outline-color !important;
       scroll-behavior: auto !important;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-name: page-fade !important;
+      animation-duration: 120ms !important;
+    }
+  }
+
+  /*
+   * Page transition crossfade, driven by the astro:transitions ClientRouter.
+   * Old page eases out and lifts slightly; new page fades in from below —
+   * same direction on both sides so it reads as one continuous motion.
+   */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: var(--duration-page);
+    animation-timing-function: var(--ease-out);
+  }
+
+  ::view-transition-old(root) {
+    animation-name: page-fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: page-fade-in;
+  }
+
+  @keyframes page-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes page-fade-out {
+    to {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes page-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
     }
   }
 }

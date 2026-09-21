@@ -203,11 +203,9 @@ function init() {
   initCapabilityCurve();
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
-} else {
-  init();
-}
+// astro:page-load fires once on the initial load and again after every
+// ClientRouter swap, so this is the only entry point init() needs.
+document.addEventListener("astro:page-load", init);
 
 reduceMotionQuery.addEventListener("change", () => {
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

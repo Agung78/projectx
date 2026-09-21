@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SplitHeading from "../components/SplitHeading.astro";
+import Button from "../components/Button.astro";
 ---
 
 <Layout
@@ -16,7 +17,7 @@ import SplitHeading from "../components/SplitHeading.astro";
         </SplitHeading>
         <p class="mt-6 measure text-body-lg text-graphite">
           Tell us where things stand. We review every request against our fit criteria and follow up with next
-          steps&mdash;there's no obligation and no credentials or production access requested here.
+          steps, there's no obligation and no credentials or production access requested here.
         </p>
       </div>
 
@@ -121,13 +122,9 @@ import SplitHeading from "../components/SplitHeading.astro";
             </div>
           </details>
 
-          <button
-            type="submit"
-            data-submit-button
-            class="mt-2 inline-flex w-fit items-center justify-center gap-2 rounded-sm bg-signal px-[18px] py-3 text-body font-medium text-surface transition-colors hover:bg-signal-dark disabled:opacity-60"
-          >
-            <span data-button-label>Send</span>
-          </button>
+          <Button type="submit" variant="primary" class="mt-2 w-fit justify-center" data-submit-button>
+            <span data-button-label>Send my situation</span>
+          </Button>
 
           <p data-form-status class="hidden text-body" role="status"></p>
         </form>
@@ -215,8 +212,11 @@ import SplitHeading from "../components/SplitHeading.astro";
         form.hidden = true;
         status.classList.remove("hidden");
         status.innerHTML =
-          "Thanks&mdash;we've received your message. We review every request against our fit criteria and will follow up by email. Scheduling will open here once that workflow is ready.";
+          "Thanks, we've received your message. We review every request against our fit criteria and will follow up by email. Scheduling will open here once that workflow is ready.";
         status.classList.add("text-success", "text-body-lg", "font-medium");
+        requestAnimationFrame(() => {
+          status.dataset.visible = "true";
+        });
       }
     });
 

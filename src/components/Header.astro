@@ -12,11 +12,11 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
-  class="sticky top-0 z-50 bg-canvas/95 backdrop-blur-[2px] data-[stuck=true]:border-b data-[stuck=true]:border-line"
+  class="sticky top-0 z-50 bg-canvas/95 backdrop-blur-[2px] transition-[background-color,border-color] duration-200 data-[stuck=true]:border-b data-[stuck=true]:border-line"
   data-site-header
 >
   <div class="mx-auto flex max-w-content items-center justify-between px-[clamp(20px,5vw,80px)] py-4">
-    <a href="/" class="text-h3 font-semibold tracking-tight text-ink" aria-label="NewCo — home">
+    <a href="/" class="text-h3 font-semibold tracking-tight text-ink" aria-label="NewCo, home">
       NewCo
     </a>
 
@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname;
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-body text-graphite transition-colors hover:text-ink aria-[current=page]:text-ink aria-[current=page]:font-medium"
+            class="nav-link relative text-body text-graphite transition-colors hover:text-ink aria-[current=page]:text-ink aria-[current=page]:font-medium"
             aria-current={currentPath === link.href ? "page" : undefined}
           >
             {link.label}
@@ -40,7 +40,7 @@ const currentPath = Astro.url.pathname;
 
     <button
       type="button"
-      class="flex items-center justify-center rounded-sm border border-line p-2 md:hidden"
+      class="pressable flex items-center justify-center rounded-sm border border-line p-2 md:hidden"
       data-menu-toggle
       aria-expanded="false"
       aria-controls="mobile-nav"
@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname;
     </button>
   </div>
 
-  <div id="mobile-nav" class="hidden border-t border-line bg-canvas md:hidden" data-mobile-nav>
+  <div id="mobile-nav" hidden class="border-t border-line bg-canvas md:hidden" data-mobile-nav data-open="false">
     <nav class="flex flex-col gap-1 px-[clamp(20px,5vw,80px)] py-4" aria-label="Primary">
       {
         navLinks.map((link) => (
@@ -65,9 +65,9 @@ const currentPath = Astro.url.pathname;
           </a>
         ))
       }
-      <a href="/contact" class="mt-2 rounded-sm bg-signal px-[18px] py-3 text-center text-body font-medium text-surface">
+      <Button href="/contact" variant="primary" class="mt-2 w-full justify-center">
         Discuss your situation
-      </a>
+      </Button>
     </nav>
   </div>
 </header>
@@ -79,12 +79,16 @@ const currentPath = Astro.url.pathname;
 
   if (toggle && nav) {
     const closeMenu = () => {
-      nav.classList.add("hidden");
+      nav.dataset.open = "false";
       toggle.setAttribute("aria-expanded", "false");
+      nav.addEventListener("transitionend", () => { nav.hidden = true; }, { once: true });
     };
 
     const openMenu = () => {
-      nav.classList.remove("hidden");
+      nav.hidden = false;
+      requestAnimationFrame(() => {
+        nav.dataset.open = "true";
+      });
       toggle.setAttribute("aria-expanded", "true");
       nav.querySelector<HTMLElement>("a")?.focus();
     };
@@ -105,10 +109,17 @@ const currentPath = Astro.url.pathname;
   }
 
   if (header) {
-    const setStuck = () => {
-      header.dataset.stuck = String(window.scrollY > 4);
-    };
-    setStuck();
-    window.addEventListener("scroll", setStuck, { passive: true });
+    // IntersectionObserver over a zero-height sentinel: no per-frame scroll work.
+    const sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = "position:absolute;top:0;left:0;height:4px;width:1px;pointer-events:none;";
+    document.body.prepend(sentinel);
+
+    new IntersectionObserver(
+      ([entry]) => {
+        header.dataset.stuck = String(!entry.isIntersecting);
+      },
+      { threshold: 0 },
+    ).observe(sentinel);
   }
 </script>

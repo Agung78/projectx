@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger, CustomEase);
  */
 CustomEase.create("site-out", "0.23, 1, 0.32, 1");
 CustomEase.create("site-in-out", "0.77, 0, 0.175, 1");
+CustomEase.create("reel-out", "0.16, 1, 0.3, 1");
 
 const EASE_OUT = "site-out";
 
@@ -24,6 +25,16 @@ const STAGGER = {
   word: 0.045,
   item: 0.08,
 } as const;
+
+const REEL = {
+  duration: 1.4,
+  stagger: 0.09,
+  cell: 30,
+  spinBlur: 3,
+  ease: "reel-out",
+} as const;
+
+let reelFilterId = 0;
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -157,19 +168,122 @@ function initScrollReveals() {
   });
 }
 
-/** The capability-transfer line draws as the curve enters view, then settles. */
+interface ReelColumn {
+  strip: HTMLElement;
+  blur: SVGFEGaussianBlurElement;
+  landingCell: number;
+  delay: number;
+}
+
+function buildSpinningCounters(curve: HTMLElement) {
+  const columns: ReelColumn[] = [];
+  const filterDefs = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  filterDefs.setAttribute("data-reel-filters", "");
+  filterDefs.setAttribute("aria-hidden", "true");
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  filterDefs.appendChild(defs);
+
+  curve.querySelectorAll<HTMLElement>("[data-reel-value]").forEach((counter) => {
+    const value = counter.dataset.reelValue;
+    if (!value || counter.dataset.reelReady === "true") return;
+
+    counter.textContent = "";
+    counter.classList.add("t-reel");
+    counter.dataset.reelReady = "true";
+
+    Array.from(value).forEach((digit, columnIndex) => {
+      const numericDigit = Number(digit);
+      const landingCell = (2 + columnIndex) * 10 + numericDigit;
+      const column = document.createElement("span");
+      column.className = "t-reel-col";
+      const strip = document.createElement("span");
+      strip.className = "t-reel-strip";
+
+      for (let cell = 0; cell <= landingCell; cell += 1) {
+        const digitCell = document.createElement("span");
+        digitCell.className = "t-reel-digit";
+        digitCell.textContent = String(cell % 10);
+        strip.appendChild(digitCell);
+      }
+
+      const filterId = `reel-blur-${reelFilterId++}`;
+      const filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+      filter.setAttribute("id", filterId);
+      filter.setAttribute("x", "-20%");
+      filter.setAttribute("y", "-50%");
+      filter.setAttribute("width", "140%");
+      filter.setAttribute("height", "200%");
+      const blur = document.createElementNS("http://www.w3.org/2000/svg", "feGaussianBlur");
+      blur.setAttribute("in", "SourceGraphic");
+      blur.setAttribute("stdDeviation", "0 0");
+      filter.appendChild(blur);
+      defs.appendChild(filter);
+
+      strip.style.filter = `url(#${filterId})`;
+      column.appendChild(strip);
+      counter.appendChild(column);
+      columns.push({ strip, blur, landingCell, delay: columnIndex * REEL.stagger });
+    });
+
+    const suffix = document.createElement("span");
+    suffix.textContent = "%";
+    counter.appendChild(suffix);
+  });
+
+  if (columns.length > 0) curve.appendChild(filterDefs);
+  return columns;
+}
+
+function restoreStaticCounters(curve: HTMLElement) {
+  curve.querySelector("[data-reel-filters]")?.remove();
+  curve.querySelectorAll<HTMLElement>("[data-reel-value]").forEach((counter) => {
+    counter.textContent = `${counter.dataset.reelValue}%`;
+    counter.classList.remove("t-reel");
+    delete counter.dataset.reelReady;
+  });
+}
+
+function spinCounters(columns: ReelColumn[]) {
+  columns.forEach(({ strip, blur, landingCell, delay }) => {
+    blur.setAttribute("stdDeviation", `0 ${REEL.spinBlur}`);
+    gsap.to(strip, {
+      transform: `translateY(${-landingCell * REEL.cell}px)`,
+      duration: REEL.duration,
+      delay,
+      ease: REEL.ease,
+      onComplete: () => {
+        strip.style.willChange = "auto";
+      },
+    });
+    gsap.to(blur, {
+      attr: { stdDeviation: "0 0" },
+      duration: REEL.duration,
+      delay,
+      ease: REEL.ease,
+    });
+  });
+}
+
+/** The capability transfer explains itself as it enters view: desktop lines
+ * draw across the phases, while narrow-layout ownership bars fill left to right.
+ */
 function initCapabilityCurve() {
   // A page may render more than one curve (hero and section), so every
   // instance is wired, not just the first match.
   document.querySelectorAll<HTMLElement>("[data-capability-curve]").forEach((curve) => {
     const paths = curve.querySelectorAll<SVGPathElement>("path[data-curve-line]");
-    if (paths.length === 0) return;
+    const bars = curve.querySelectorAll<HTMLElement>("[data-ownership-bar]");
+    const reelColumns = prefersReducedMotion() ? [] : buildSpinningCounters(curve);
 
     if (prefersReducedMotion()) {
       paths.forEach((path) => {
         path.style.removeProperty("stroke-dasharray");
         path.style.removeProperty("stroke-dashoffset");
       });
+      restoreStaticCounters(curve);
+      if (bars.length > 0) {
+        gsap.from(bars, { opacity: 0, duration: DURATION.reducedFade, ease: EASE_OUT, stagger: 0.04 });
+      }
       return;
     }
 
@@ -193,6 +307,26 @@ function initCapabilityCurve() {
         },
       });
     });
+
+    if (bars.length > 0) {
+      gsap.from(bars, {
+        scaleX: 0,
+        duration: DURATION.reveal,
+        ease: EASE_OUT,
+        stagger: STAGGER.item,
+        transformOrigin: "left center",
+        scrollTrigger: { trigger: curve, start: "top 80%", once: true },
+      });
+    }
+
+    if (reelColumns.length > 0) {
+      ScrollTrigger.create({
+        trigger: curve,
+        start: "top 80%",
+        once: true,
+        onEnter: () => spinCounters(reelColumns),
+      });
+    }
   });
 }
 
@@ -209,7 +343,10 @@ document.addEventListener("astro:page-load", init);
 
 reduceMotionQuery.addEventListener("change", () => {
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  gsap.set("[data-reveal], [data-hero-item]", { clearProps: "opacity,transform,willChange" });
+  gsap.set("[data-reveal], [data-hero-item], [data-ownership-bar]", {
+    clearProps: "opacity,transform,transformOrigin,willChange",
+  });
+  document.querySelectorAll<HTMLElement>("[data-capability-curve]").forEach(restoreStaticCounters);
   init();
 });
 

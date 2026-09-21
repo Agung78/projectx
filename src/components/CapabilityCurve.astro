@@ -130,17 +130,33 @@ const descText =
               <div class:list={["flex flex-col gap-1.5", compact ? "mt-2" : "mt-3"]}>
                 <div class="flex items-center gap-3">
                   <span class="h-[3px] flex-1 bg-line" aria-hidden="true">
-                    <span class="block h-full bg-graphite" style={`width:${phase.newco}%`} />
+                    <span
+                      class="block h-full origin-left bg-graphite"
+                      style={`width:${phase.newco}%`}
+                      data-ownership-bar
+                    />
                   </span>
-                  <span class="w-10 shrink-0 text-right text-body tabular-nums text-graphite">
+                  <span
+                    class="w-10 shrink-0 text-right text-body tabular-nums text-graphite"
+                    data-reel-value={phase.newco}
+                    aria-hidden="true"
+                  >
                     {phase.newco}%
                   </span>
                 </div>
                 <div class="flex items-center gap-3">
                   <span class="h-[3px] flex-1 bg-line" aria-hidden="true">
-                    <span class="block h-full bg-signal" style={`width:${phase.client}%`} />
+                    <span
+                      class="block h-full origin-left bg-signal"
+                      style={`width:${phase.client}%`}
+                      data-ownership-bar
+                    />
                   </span>
-                  <span class="w-10 shrink-0 text-right text-body tabular-nums text-signal">
+                  <span
+                    class="w-10 shrink-0 text-right text-body tabular-nums text-signal"
+                    data-reel-value={phase.client}
+                    aria-hidden="true"
+                  >
                     {phase.client}%
                   </span>
                 </div>

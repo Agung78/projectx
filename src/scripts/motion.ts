@@ -159,31 +159,39 @@ function initScrollReveals() {
 
 /** The capability-transfer line draws as the curve enters view, then settles. */
 function initCapabilityCurve() {
-  const curve = document.querySelector<HTMLElement>("[data-capability-curve]");
-  if (!curve) return;
+  // A page may render more than one curve (hero and section), so every
+  // instance is wired, not just the first match.
+  document.querySelectorAll<HTMLElement>("[data-capability-curve]").forEach((curve) => {
+    const paths = curve.querySelectorAll<SVGPathElement>("path[data-curve-line]");
+    if (paths.length === 0) return;
 
-  const paths = curve.querySelectorAll<SVGPathElement>("path[data-curve-line]");
-  if (paths.length === 0) return;
+    if (prefersReducedMotion()) {
+      paths.forEach((path) => {
+        path.style.removeProperty("stroke-dasharray");
+        path.style.removeProperty("stroke-dashoffset");
+      });
+      return;
+    }
 
-  if (prefersReducedMotion()) {
-    paths.forEach((path) => path.style.removeProperty("stroke-dashoffset"));
-    return;
-  }
+    paths.forEach((path) => {
+      // The SVG is display:none below md, where getTotalLength is unreliable
+      // and the drawn line is never seen; leave it as authored.
+      if (path.getBoundingClientRect().width === 0) return;
 
-  paths.forEach((path) => {
-    const length = path.getTotalLength();
-    path.style.strokeDasharray = `${length}`;
-    path.style.strokeDashoffset = `${length}`;
+      const length = path.getTotalLength();
+      path.style.strokeDasharray = `${length}`;
+      path.style.strokeDashoffset = `${length}`;
 
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: "none", // scrubbed motion follows the scroll position, not a curve
-      scrollTrigger: {
-        trigger: curve,
-        start: "top 75%",
-        end: "bottom 60%",
-        scrub: 0.6,
-      },
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: "none", // scrubbed motion follows the scroll position, not a curve
+        scrollTrigger: {
+          trigger: curve,
+          start: "top 75%",
+          end: "bottom 60%",
+          scrub: 0.6,
+        },
+      });
     });
   });
 }

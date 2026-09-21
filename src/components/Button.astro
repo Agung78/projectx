@@ -9,7 +9,20 @@ type Props =
   | (BaseProps & { href: string; type?: never })
   | (BaseProps & { href?: never; type: "submit" | "button"; disabled?: boolean });
 
-const { variant = "primary", class: className = "", href, type, disabled, ...rest } = Astro.props;
+// The index signature in BaseProps widens the union's own keys to `unknown`
+// on read, so the element-facing attributes are re-narrowed here.
+const {
+  variant = "primary",
+  class: className = "",
+  href,
+  type,
+  disabled,
+  ...rest
+} = Astro.props as BaseProps & {
+  href?: string;
+  type?: "submit" | "button";
+  disabled?: boolean;
+};
 
 const base =
   "inline-flex items-center gap-2 rounded-sm px-[18px] py-3 text-body font-medium transition-[color,background-color,transform] duration-[var(--duration-press)] ease-[var(--ease-out)] active:scale-[0.97] disabled:opacity-60 disabled:active:scale-100";

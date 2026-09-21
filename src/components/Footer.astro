@@ -1,0 +1,37 @@
+---
+const links = [
+  { href: "/approach", label: "Approach" },
+  { href: "/diagnostic", label: "Technical Diagnostic" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<footer class="border-t border-line bg-canvas">
+  <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16">
+    <div class="grid gap-12 md:grid-cols-[1.2fr_1fr]">
+      <div class="max-w-measure">
+        <p class="text-h3 font-semibold text-ink">NewCo</p>
+        <p class="mt-4 text-body text-graphite">
+          Engineering capability you keep. We build with your team, operate the system with you, and measure
+          progress toward your independence.
+        </p>
+      </div>
+
+      <nav aria-label="Footer" class="flex flex-col gap-3">
+        {
+          links.map((link) => (
+            <a href={link.href} class="text-body text-graphite hover:text-ink">
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-2 border-t border-line pt-6 text-body text-graphite md:flex-row md:items-center md:justify-between">
+      <p>&copy; {new Date().getFullYear()} NewCo. All rights reserved.</p>
+      <p>Privacy notice available on request.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,128 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SplitHeading from "../components/SplitHeading.astro";
+import CapabilityCurve from "../components/CapabilityCurve.astro";
+
+const scorecard = [
+  { name: "Delivery", body: "Your team ships to production independently, with review from us tapering to none." },
+  { name: "Operations", body: "Your team carries on-call and resolves incidents without escalating to us first." },
+  { name: "Architecture", body: "Your team makes and records architecture decisions without our sign-off." },
+  { name: "Data", body: "Your team owns data quality and pipeline changes end to end." },
+];
+
+const handoverEvidence = [
+  "Two consecutive quarters of independent on-call coverage",
+  "Architecture decisions recorded and reviewed by your team without us",
+  "Onboarding-to-first-PR time inside your team's own target",
+  "No open severity-1 risks attributable to undocumented system knowledge",
+];
+
+const responsibilities = [
+  { area: "Roadmap prioritisation", who: "Shared, client holds final call" },
+  { area: "Architecture decisions", who: "NewCo proposes, client approves" },
+  { area: "Production deploys", who: "Client-led from Run With onward" },
+  { area: "Incident response", who: "Joint during Build With, client-led from Run With" },
+  { area: "Hiring and team structure", who: "Client decision, NewCo advises if asked" },
+];
+---
+
+<Layout
+  title="Approach"
+  description="How NewCo moves work from Diagnose to Advise: the capability curve, the scorecard we use to judge readiness, and how decision rights shift toward your team."
+>
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] pt-16 pb-16 md:pt-24">
+    <p class="label text-signal">Approach</p>
+    <SplitHeading as="h1" class="mt-4 text-h1 font-semibold text-ink">
+      Handover is planned from the beginning.
+    </SplitHeading>
+    <p class="mt-6 measure text-body-lg text-graphite">
+      Every engagement moves along the same curve, judged against the same scorecard, with decision rights that
+      shift on a schedule&mdash;not a hope.
+    </p>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">The capability curve.</SplitHeading>
+      <div class="mt-10">
+        <CapabilityCurve />
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">The capability scorecard.</SplitHeading>
+    <p class="mt-4 measure text-body-lg text-graphite">
+      We track readiness across four dimensions before recommending a move to the next phase.
+    </p>
+    <div class="mt-10 grid gap-8 md:grid-cols-2">
+      {
+        scorecard.map((item) => (
+          <div data-reveal class="border-t border-line pt-6">
+            <p class="text-h3 font-semibold text-ink">{item.name}</p>
+            <p class="mt-3 text-body text-graphite">{item.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Evidence required for handover.</SplitHeading>
+      <ul class="mt-10 flex flex-col gap-4">
+        {
+          handoverEvidence.map((item) => (
+            <li data-reveal class="flex items-start gap-3 rounded-sm border border-line bg-canvas p-4 text-body text-ink">
+              <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-signal" aria-hidden="true" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Shared responsibilities and decision rights.</SplitHeading>
+    <div class="mt-10 overflow-x-auto">
+      <table class="w-full min-w-[560px] border-collapse text-left">
+        <thead>
+          <tr class="border-b border-line">
+            <th scope="col" class="label pb-3 pr-4 text-graphite">Area</th>
+            <th scope="col" class="label pb-3 text-graphite">Decision rights</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            responsibilities.map((row) => (
+              <tr class="border-b border-line">
+                <td class="py-4 pr-4 text-body-lg font-medium text-ink">{row.area}</td>
+                <td class="py-4 text-body text-graphite">{row.who}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">ADRs and deviations.</SplitHeading>
+      <p class="mt-4 measure text-body-lg text-graphite">
+        Every material architecture decision is written down as an ADR at the time it's made, including the
+        alternatives considered. When we deviate from an agreed plan, the deviation and its reasoning are recorded
+        in the same place&mdash;not explained after the fact.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Handover, planned from the beginning.</SplitHeading>
+    <p class="mt-4 measure text-body-lg text-graphite">
+      The transfer plan is drafted during the Technical Diagnostic, not invented at the end of the engagement. Every
+      phase after that narrows the gap between the plan and reality.
+    </p>
+  </section>
+</Layout>

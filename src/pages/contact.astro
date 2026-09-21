@@ -1,0 +1,227 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SplitHeading from "../components/SplitHeading.astro";
+---
+
+<Layout
+  title="Contact"
+  description="Tell us about your situation. We review every request against our fit criteria before scheduling a conversation."
+>
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <div class="grid gap-12 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <p class="label text-signal">Contact</p>
+        <SplitHeading as="h1" class="mt-4 text-h1 font-semibold text-ink">
+          Discuss your situation.
+        </SplitHeading>
+        <p class="mt-6 measure text-body-lg text-graphite">
+          Tell us where things stand. We review every request against our fit criteria and follow up with next
+          steps&mdash;there's no obligation and no credentials or production access requested here.
+        </p>
+      </div>
+
+      <div class="md:col-span-7">
+        <form
+          id="contact-form"
+          novalidate
+          class="flex flex-col gap-6"
+          data-contact-form
+        >
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="flex flex-col gap-2">
+              <label for="name" class="label text-graphite">Name<span aria-hidden="true"> *</span></label>
+              <input id="name" name="name" type="text" required autocomplete="name"
+                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                aria-describedby="name-error" />
+              <p id="name-error" class="hidden text-body text-error" role="alert"></p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="company" class="label text-graphite">Company<span aria-hidden="true"> *</span></label>
+              <input id="company" name="company" type="text" required autocomplete="organization"
+                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                aria-describedby="company-error" />
+              <p id="company-error" class="hidden text-body text-error" role="alert"></p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="role" class="label text-graphite">Role<span aria-hidden="true"> *</span></label>
+              <input id="role" name="role" type="text" required autocomplete="organization-title"
+                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                aria-describedby="role-error" />
+              <p id="role-error" class="hidden text-body text-error" role="alert"></p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="email" class="label text-graphite">Email<span aria-hidden="true"> *</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email"
+                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                aria-describedby="email-error" />
+              <p id="email-error" class="hidden text-body text-error" role="alert"></p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="region" class="label text-graphite">Country / operating region<span aria-hidden="true"> *</span></label>
+              <input id="region" name="region" type="text" required autocomplete="country-name"
+                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                aria-describedby="region-error" />
+              <p id="region-error" class="hidden text-body text-error" role="alert"></p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="locations" class="label text-graphite">Approximate locations or operating units<span aria-hidden="true"> *</span></label>
+              <input id="locations" name="locations" type="text" required
+                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                aria-describedby="locations-error" />
+              <p id="locations-error" class="hidden text-body text-error" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="constraint" class="label text-graphite">Current constraint<span aria-hidden="true"> *</span></label>
+            <textarea id="constraint" name="constraint" required rows="4"
+              class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+              aria-describedby="constraint-error"></textarea>
+            <p id="constraint-error" class="hidden text-body text-error" role="alert"></p>
+          </div>
+
+          <fieldset class="flex flex-col gap-2">
+            <legend class="label text-graphite">Preferred way to continue<span aria-hidden="true"> *</span></legend>
+            <div class="flex flex-col gap-2 md:flex-row md:gap-6">
+              {
+                ["Email", "Call", "Video call"].map((option) => (
+                  <label class="flex items-center gap-2 text-body text-ink">
+                    <input type="radio" name="preferred_contact" value={option} required class="accent-signal" />
+                    {option}
+                  </label>
+                ))
+              }
+            </div>
+            <p id="preferred_contact-error" class="hidden text-body text-error" role="alert"></p>
+          </fieldset>
+
+          <details class="rounded-sm border border-line bg-surface p-4">
+            <summary class="cursor-pointer text-body font-medium text-ink">Optional qualification details</summary>
+            <div class="mt-4 grid gap-6 md:grid-cols-2">
+              <div class="flex flex-col gap-2">
+                <label for="technical_counterpart" class="label text-graphite">Technical counterpart</label>
+                <input id="technical_counterpart" name="technical_counterpart" type="text"
+                  class="rounded-sm border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal" />
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="executive_sponsor" class="label text-graphite">Executive sponsor</label>
+                <input id="executive_sponsor" name="executive_sponsor" type="text"
+                  class="rounded-sm border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal" />
+              </div>
+              <div class="flex flex-col gap-2 md:col-span-2">
+                <label for="primary_situation" class="label text-graphite">Primary situation</label>
+                <textarea id="primary_situation" name="primary_situation" rows="3"
+                  class="rounded-sm border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal"></textarea>
+              </div>
+            </div>
+          </details>
+
+          <button
+            type="submit"
+            data-submit-button
+            class="mt-2 inline-flex w-fit items-center justify-center gap-2 rounded-sm bg-signal px-[18px] py-3 text-body font-medium text-surface transition-colors hover:bg-signal-dark disabled:opacity-60"
+          >
+            <span data-button-label>Send</span>
+          </button>
+
+          <p data-form-status class="hidden text-body" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
+  if (form) {
+    const submitButton = form.querySelector<HTMLButtonElement>("[data-submit-button]");
+    const buttonLabel = form.querySelector<HTMLElement>("[data-button-label]");
+    const status = form.querySelector<HTMLElement>("[data-form-status]");
+
+    const requiredFields = Array.from(
+      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]")
+    );
+
+    function showError(field: HTMLInputElement | HTMLTextAreaElement, message: string) {
+      const errorId = field.getAttribute("aria-describedby");
+      if (!errorId) return;
+      const errorEl = document.getElementById(errorId);
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.classList.remove("hidden");
+      }
+      field.setAttribute("aria-invalid", "true");
+    }
+
+    function clearError(field: HTMLInputElement | HTMLTextAreaElement) {
+      const errorId = field.getAttribute("aria-describedby");
+      if (!errorId) return;
+      const errorEl = document.getElementById(errorId);
+      if (errorEl) {
+        errorEl.textContent = "";
+        errorEl.classList.add("hidden");
+      }
+      field.removeAttribute("aria-invalid");
+    }
+
+    function validateRadioGroup(): boolean {
+      const checked = form?.querySelector<HTMLInputElement>('input[name="preferred_contact"]:checked');
+      const errorEl = document.getElementById("preferred_contact-error");
+      if (!checked && errorEl) {
+        errorEl.textContent = "Choose a preferred way to continue.";
+        errorEl.classList.remove("hidden");
+        return false;
+      }
+      errorEl?.classList.add("hidden");
+      return true;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      let valid = true;
+
+      requiredFields.forEach((field) => {
+        if (field.type === "radio") return;
+        if (!field.value.trim()) {
+          showError(field, "This field is required.");
+          valid = false;
+        } else if (field.type === "email" && !/^\S+@\S+\.\S+$/.test(field.value)) {
+          showError(field, "Enter a valid email address.");
+          valid = false;
+        } else {
+          clearError(field);
+        }
+      });
+
+      if (!validateRadioGroup()) valid = false;
+
+      if (!valid) {
+        form.querySelector<HTMLElement>('[aria-invalid="true"], input:invalid')?.focus();
+        return;
+      }
+
+      if (submitButton && buttonLabel && status) {
+        submitButton.disabled = true;
+        buttonLabel.textContent = "Sending…";
+        status.classList.add("hidden");
+
+        await new Promise((resolve) => setTimeout(resolve, 600));
+
+        form.hidden = true;
+        status.classList.remove("hidden");
+        status.innerHTML =
+          "Thanks&mdash;we've received your message. We review every request against our fit criteria and will follow up by email. Scheduling will open here once that workflow is ready.";
+        status.classList.add("text-success", "text-body-lg", "font-medium");
+      }
+    });
+
+    requiredFields.forEach((field) => {
+      field.addEventListener("input", () => clearError(field));
+    });
+  }
+</script>

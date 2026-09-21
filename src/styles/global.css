@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  /* Colour system — Section 4 */
+  --color-canvas: #f3f0e9;
+  --color-surface: #faf9f5;
+  --color-ink: #171918;
+  --color-graphite: #4e5550;
+  --color-line: #d7d4cc;
+  --color-signal: #b14d32;
+  --color-signal-dark: #843a28;
+  --color-success: #42664c;
+  --color-error: #a33f36;
+
+  /* Typography — Section 5 */
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: clamp(3.5rem, 8vw, 7.5rem);
+  --text-display--line-height: 1.02;
+  --text-display--font-weight: 600;
+
+  --text-h1: clamp(2.75rem, 5vw, 5.25rem);
+  --text-h1--line-height: 1.05;
+  --text-h1--font-weight: 600;
+
+  --text-h2: clamp(2rem, 3.5vw, 3.5rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--font-weight: 600;
+
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--font-weight: 600;
+
+  --text-body-lg: 1.25rem;
+  --text-body-lg--line-height: 1.5;
+  --text-body-lg--font-weight: 450;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.55;
+  --text-body--font-weight: 400;
+
+  --text-label: 0.72rem;
+  --text-label--line-height: 1.4;
+  --text-label--font-weight: 650;
+  --text-label--letter-spacing: 0.08em;
+
+  --text-metric: clamp(2.5rem, 5vw, 5rem);
+  --text-metric--line-height: 1.05;
+  --text-metric--font-weight: 600;
+
+  /* Spacing scale — Section 3 */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+
+  /* Grid + measure — Section 3 */
+  --container-content: 1200px;
+  --container-measure: 62ch;
+
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: auto;
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-surface);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: absolute;
+    left: var(--spacing-4);
+    top: -60px;
+    z-index: 100;
+    background-color: var(--color-ink);
+    color: var(--color-canvas);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: 4px;
+    transition: top 0.15s ease;
+  }
+
+  .skip-link:focus {
+    top: var(--spacing-4);
+  }
+
+  .label {
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    font-weight: var(--text-label--font-weight);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+  }
+
+  .measure {
+    max-width: var(--container-measure);
+  }
+
+  .js-split-word {
+    display: inline-block;
+    will-change: transform, opacity;
+  }
+}

@@ -1,0 +1,141 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import SplitHeading from "../components/SplitHeading.astro";
+
+const outputs = [
+  "Evidence map of the current system",
+  "Risk register with prioritised findings",
+  "Capability baseline for your team",
+  "12-month roadmap",
+  "Recommended operating model",
+  "Transfer plan for eventual handover",
+  "Architecture decision log",
+  "Data and integration inventory",
+  "Delivery and reliability metrics baseline",
+  "Executive summary for stakeholders",
+];
+
+const examine = [
+  "System architecture and technical debt",
+  "Delivery pipeline and release process",
+  "Data flows, integrations, and dependencies",
+  "Team structure, decision rights, and operating rhythms",
+  "Reliability, incident history, and recovery posture",
+];
+
+const steps = [
+  { title: "Kickoff and access", body: "We agree scope, get read access, and meet the people who run the system today." },
+  { title: "Evidence gathering", body: "Architecture review, code and pipeline inspection, and structured conversations with your team." },
+  { title: "Synthesis", body: "Findings are consolidated into the risk register, capability baseline, and roadmap." },
+  { title: "Walkthrough", body: "We present the diagnostic to your team and stakeholders and take questions." },
+  { title: "Handoff", body: "You receive every output. What happens next is your call." },
+];
+---
+
+<Layout
+  title="Technical Diagnostic"
+  description="A 15-business-day, fixed-fee diagnostic that gives you an evidence map, risk register, capability baseline, roadmap, operating model, and transfer plan — yours to keep."
+>
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] pt-16 pb-16 md:pt-24">
+    <p class="label text-signal">Technical Diagnostic</p>
+    <SplitHeading as="h1" class="mt-4 text-h1 font-semibold text-ink">
+      Know what you're operating before you commit to building more of it.
+    </SplitHeading>
+    <p class="mt-6 measure text-body-lg text-graphite">
+      A fixed-fee, standalone engagement that gives you an honest, evidence-led view of your system and your
+      operating model&mdash;in 15 business days.
+    </p>
+    <div class="mt-8">
+      <Button href="/contact" variant="primary">Explore the Technical Diagnostic</Button>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Who it's for.</SplitHeading>
+      <p class="mt-4 measure text-body-lg text-graphite">
+        Teams about to commit significant budget to a rebuild, a platform migration, or a new capability, who want
+        an independent, evidence-based view before they do.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">What we examine.</SplitHeading>
+    <ul class="mt-10 grid gap-6 md:grid-cols-2">
+      {
+        examine.map((item) => (
+          <li data-reveal class="border-t border-line pt-4 text-body-lg text-ink">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Ten outputs, yours to keep.</SplitHeading>
+      <ol class="mt-10 grid gap-4 md:grid-cols-2">
+        {
+          outputs.map((output, i) => (
+            <li data-reveal class="flex items-start gap-3 rounded-sm border border-line bg-canvas p-4">
+              <span class="label text-signal">{String(i + 1).padStart(2, "0")}</span>
+              <span class="text-body text-ink">{output}</span>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-10 text-body-lg font-medium text-ink">
+        You own the diagnostic outputs and can take them to any vendor.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">How the work runs.</SplitHeading>
+    <div class="mt-10 flex flex-col divide-y divide-line">
+      {
+        steps.map((step, i) => (
+          <div data-reveal class="flex flex-col gap-2 py-6 md:flex-row md:items-baseline md:gap-8">
+            <span class="label w-12 shrink-0 text-signal">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <p class="text-h3 font-semibold text-ink">{step.title}</p>
+              <p class="mt-2 measure text-body text-graphite">{step.body}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Your choices afterward.</SplitHeading>
+      <p class="mt-4 measure text-body-lg text-graphite">
+        Take the roadmap to your own team, put it out to tender, or continue with NewCo through Build With. There is
+        no obligation to continue with us after the diagnostic.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">The commercial principle.</SplitHeading>
+    <p class="mt-4 measure text-body-lg text-graphite">
+      Fixed fee, standalone product. Pricing is confirmed once scope is agreed; there is no speculative estimate and
+      no bundling with a larger sale.
+    </p>
+  </section>
+
+  <section class="border-t border-line bg-ink">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 text-center md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-canvas">
+        Start with a clear, evidence-led view.
+      </SplitHeading>
+      <div class="mt-8 flex justify-center">
+        <Button href="/contact" variant="primary">Start a conversation</Button>
+      </div>
+    </div>
+  </section>
+</Layout>

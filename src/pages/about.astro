@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SplitHeading from "../components/SplitHeading.astro";
+
+const founderRoles = [
+  {
+    role: "Engineering",
+    body: "Owns technical direction, architecture review, and the quality of what ships.",
+  },
+  {
+    role: "Delivery and operating model",
+    body: "Owns the engagement rhythm, the transfer plan, and the client relationship.",
+  },
+];
+
+const sharedApprovals = [
+  "Any architecture decision that changes a client's data model or security posture",
+  "Scope or fee changes on an active engagement",
+  "Publishing any client-facing evidence, metric, or case study",
+  "Hiring decisions that affect an active engagement team",
+];
+---
+
+<Layout
+  title="About"
+  description="What NewCo believes about engineering partnership, how the founders split responsibility, and how decisions and ownership are documented rather than assumed."
+>
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] pt-16 pb-16 md:pt-24">
+    <p class="label text-signal">About</p>
+    <SplitHeading as="h1" class="mt-4 text-h1 font-semibold text-ink">
+      We believe engineering capability should be kept, not rented.
+    </SplitHeading>
+    <p class="mt-6 measure text-body-lg text-graphite">
+      Most technology partners are optimised to stay indispensable. We're optimised for the opposite: a client who
+      no longer needs us for day-to-day operation, because they were building that capability the entire time.
+    </p>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Founder roles.</SplitHeading>
+      <p class="mt-4 measure text-body-lg text-graphite">
+        NewCo is run by two founders with a deliberate split of responsibility. Portraits and biographies are added
+        once approved.
+      </p>
+      <div class="mt-10 grid gap-8 md:grid-cols-2">
+        {
+          founderRoles.map((founder) => (
+            <div data-reveal class="border-t border-line pt-6">
+              <p class="text-h3 font-semibold text-ink">{founder.role}</p>
+              <p class="mt-3 text-body text-graphite">{founder.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">The operating rule.</SplitHeading>
+    <p class="mt-4 measure text-body-lg text-graphite">
+      Whoever owns an area decides day to day. Disagreements between founders escalate to a short, scheduled
+      conversation&mdash;never a silent override, and never into a client engagement.
+    </p>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Shared approval areas.</SplitHeading>
+      <ul class="mt-10 flex flex-col gap-4">
+        {
+          sharedApprovals.map((item) => (
+            <li data-reveal class="flex items-start gap-3 rounded-sm border border-line bg-canvas p-4 text-body text-ink">
+              <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-signal" aria-hidden="true" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
+      Documented decisions, explicit ownership.
+    </SplitHeading>
+    <p class="mt-4 measure text-body-lg text-graphite">
+      The same discipline we bring to client engagements applies internally: decisions are written down at the time
+      they're made, and ownership of every area is explicit rather than assumed.
+    </p>
+  </section>
+</Layout>

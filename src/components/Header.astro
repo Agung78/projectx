@@ -1,0 +1,114 @@
+---
+import Button from "./Button.astro";
+
+const navLinks = [
+  { href: "/approach", label: "Approach" },
+  { href: "/diagnostic", label: "Technical Diagnostic" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  class="sticky top-0 z-50 bg-canvas/95 backdrop-blur-[2px] data-[stuck=true]:border-b data-[stuck=true]:border-line"
+  data-site-header
+>
+  <div class="mx-auto flex max-w-content items-center justify-between px-[clamp(20px,5vw,80px)] py-4">
+    <a href="/" class="text-h3 font-semibold tracking-tight text-ink" aria-label="NewCo — home">
+      NewCo
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-body text-graphite transition-colors hover:text-ink aria-[current=page]:text-ink aria-[current=page]:font-medium"
+            aria-current={currentPath === link.href ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden md:block">
+      <Button href="/contact" variant="primary">Discuss your situation</Button>
+    </div>
+
+    <button
+      type="button"
+      class="flex items-center justify-center rounded-sm border border-line p-2 md:hidden"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span class="sr-only">Open menu</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-nav" class="hidden border-t border-line bg-canvas md:hidden" data-mobile-nav>
+    <nav class="flex flex-col gap-1 px-[clamp(20px,5vw,80px)] py-4" aria-label="Primary">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-sm px-2 py-3 text-body-lg text-ink"
+            aria-current={currentPath === link.href ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="/contact" class="mt-2 rounded-sm bg-signal px-[18px] py-3 text-center text-body font-medium text-surface">
+        Discuss your situation
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const nav = document.querySelector<HTMLElement>("[data-mobile-nav]");
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
+
+  if (toggle && nav) {
+    const closeMenu = () => {
+      nav.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+    };
+
+    const openMenu = () => {
+      nav.classList.remove("hidden");
+      toggle.setAttribute("aria-expanded", "true");
+      nav.querySelector<HTMLElement>("a")?.focus();
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    nav.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+
+    nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  }
+
+  if (header) {
+    const setStuck = () => {
+      header.dataset.stuck = String(window.scrollY > 4);
+    };
+    setStuck();
+    window.addEventListener("scroll", setStuck, { passive: true });
+  }
+</script>

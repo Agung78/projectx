@@ -1,0 +1,321 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import SplitHeading from "../components/SplitHeading.astro";
+import CapabilityCurve from "../components/CapabilityCurve.astro";
+import { Icon } from "astro-icon/components";
+
+const outcomes = [
+  {
+    name: "Capacity",
+    body: "Your team ships and operates more of the roadmap without waiting on us.",
+    evidence: "Measured in onboarding-to-first-PR and platform reuse.",
+  },
+  {
+    name: "Longevity",
+    body: "Systems are documented, owned, and understandable after we leave.",
+    evidence: "Evidenced by ADRs, runbooks, and a capability scorecard.",
+  },
+  {
+    name: "Leverage",
+    body: "Decisions get faster because the operating model, not just the code, is sound.",
+    evidence: "Tracked through lead time and deployment frequency.",
+  },
+];
+
+const principles = [
+  {
+    title: "Diagnose before we build",
+    body: "We baseline the system and the operating model before committing to a roadmap.",
+  },
+  {
+    title: "Build with your team, not around it",
+    body: "Your engineers are in the room and in the codebase from day one.",
+  },
+  {
+    title: "Decisions are recorded, not tribal",
+    body: "Architecture decisions and deviations are written down as we make them.",
+  },
+  {
+    title: "Handover is planned, not improvised",
+    body: "The transfer plan exists before the first line of code is written.",
+  },
+  {
+    title: "We measure toward our own exit",
+    body: "Progress is judged by how little you need us, not how much.",
+  },
+];
+
+const maturityLadder = [
+  "Data foundation",
+  "Decision support",
+  "Assistive AI",
+  "Embedded intelligence",
+  "Controlled automation",
+];
+
+const evidenceCategories = [
+  "Lead time",
+  "Deployment frequency",
+  "Change-failure rate",
+  "Recovery time",
+  "Rework",
+  "Onboarding-to-first-PR",
+  "Platform reuse",
+  "Capability scorecard progress",
+];
+
+const goodFit = [
+  "You want your team to be able to run the system without us eventually.",
+  "You're willing to have engineers embedded alongside ours.",
+  "You need a diagnostic before committing to a large build.",
+];
+
+const notFit = [
+  "You want a fixed-scope project delivered with no ongoing collaboration.",
+  "You're looking for staff augmentation to backfill a headcount gap.",
+  "You need an AI feature shipped without addressing the underlying data or operating model.",
+];
+---
+
+<Layout
+  title="Build the technology your business can own"
+  description="NewCo is an embedded engineering capability partner. We build with your team, operate the system with you, and measure progress toward your independence."
+>
+  <!-- 7.1 Hero -->
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] pt-16 pb-24 md:pt-24">
+    <div class="grid items-center gap-12 md:grid-cols-12">
+      <div class="md:col-span-7" data-hero-intro>
+        <p data-hero-item class="label text-signal">
+          Embedded engineering capability partner
+        </p>
+        <SplitHeading as="h1" class="mt-4 text-h1 leading-[1.05] font-semibold text-ink">
+          Build the technology your business can own.
+        </SplitHeading>
+        <p data-hero-item class="mt-6 measure text-body-lg text-graphite">
+          We build with your team, operate the system with you, and measure progress toward your independence.
+        </p>
+        <div data-hero-item class="mt-8 flex flex-wrap gap-4">
+          <Button href="/contact" variant="primary">Discuss your situation</Button>
+          <Button href="#capability-curve" variant="secondary">See how the capability transfer works</Button>
+        </div>
+        <p data-hero-item class="mt-10 label text-graphite">
+          Build with your team &middot; Operate the system together &middot; Measure the path to independence
+        </p>
+      </div>
+
+      <div class="md:col-span-5">
+        <CapabilityCurve compact />
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.2 Problem -->
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
+        Most technology problems are operating-model problems.
+      </SplitHeading>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        <div data-reveal class="rounded-sm border border-line bg-canvas p-6">
+          <p class="label text-graphite">The default</p>
+          <p class="mt-3 text-h3">A vendor ships code and moves on.</p>
+          <p class="mt-3 text-body text-graphite">
+            The system works until it doesn't, and nobody on your team knows why it was built that way.
+          </p>
+        </div>
+        <div data-reveal class="rounded-sm border border-signal bg-canvas p-6">
+          <p class="label text-signal">The alternative</p>
+          <p class="mt-3 text-h3">A partner builds toward your ownership.</p>
+          <p class="mt-3 text-body text-graphite">
+            Decisions, operating rhythms, and the roadmap transfer to your team on a measured schedule.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.3 Outcomes -->
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
+      What you get: capacity, longevity, leverage.
+    </SplitHeading>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      {
+        outcomes.map((outcome) => (
+          <div data-reveal class="border-t border-line pt-6">
+            <p class="text-h3 font-semibold text-ink">{outcome.name}</p>
+            <p class="mt-3 text-body text-graphite">{outcome.body}</p>
+            <p class="mt-4 label text-signal">{outcome.evidence}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 7.4 Capability curve -->
+  <section id="capability-curve" class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
+        A route from external support to internal ownership.
+      </SplitHeading>
+      <p class="mt-4 measure text-body-lg text-graphite">
+        Five phases, one connected path: Diagnose, Build With, Run With, Hand Over, Advise.
+      </p>
+
+      <div class="mt-12">
+        <CapabilityCurve />
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.5 Technical Diagnostic -->
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <div class="rounded-sm border border-line bg-ink px-8 py-12 text-canvas md:px-12 md:py-16">
+      <p class="label text-canvas/70">Start here</p>
+      <SplitHeading as="h2" class="mt-4 text-h2 font-semibold text-canvas">
+        The Technical Diagnostic
+      </SplitHeading>
+
+      <div class="mt-8 grid gap-8 md:grid-cols-[1fr_1fr]">
+        <ul class="flex flex-col gap-3 text-body-lg text-canvas/90">
+          <li>15 business days</li>
+          <li>Fixed-fee, standalone product</li>
+          <li>Evidence map, risk register, capability baseline, roadmap, operating model, and transfer plan</li>
+        </ul>
+        <div class="flex flex-col justify-between gap-6">
+          <p class="text-body-lg text-canvas/90">
+            <strong class="font-semibold text-canvas">You own the output</strong> and can take it to any vendor.
+          </p>
+          <Button href="/diagnostic" variant="primary" class="w-fit">
+            Explore the Technical Diagnostic
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.6 Principles -->
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
+        How we work.
+      </SplitHeading>
+
+      <div class="mt-10 flex flex-col divide-y divide-line">
+        {
+          principles.map((principle, i) => (
+            <div data-reveal class="flex flex-col gap-2 py-6 md:flex-row md:items-baseline md:gap-8">
+              <span class="label w-12 shrink-0 text-signal">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <p class="text-h3 font-semibold text-ink">{principle.title}</p>
+                <p class="mt-2 measure text-body text-graphite">{principle.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <a href="/approach" class="mt-8 inline-flex items-center gap-1 text-body font-medium text-signal hover:text-signal-dark">
+        See the full approach
+        <Icon name="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" />
+      </a>
+    </div>
+  </section>
+
+  <!-- 7.7 AI — disciplined, not performative -->
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
+      AI, disciplined&mdash;not performative.
+    </SplitHeading>
+    <p class="mt-4 measure text-body-lg text-graphite">
+      Not every engagement needs AI. Where it earns its place, we require data, a decision it improves, an
+      evaluation method, a named owner, a cost model, a failure-handling plan, and a safe disable path.
+    </p>
+
+    <ol class="mt-10 grid gap-3 md:grid-cols-5">
+      {
+        maturityLadder.map((stage, i) => (
+          <li data-reveal class="rounded-sm border border-line bg-surface p-4">
+            <p class="label text-graphite">Stage {i + 1}</p>
+            <p class="mt-2 text-body font-medium text-ink">{stage}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- 7.8 Qualification -->
+  <section class="border-t border-line bg-surface">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
+        Who this is for.
+      </SplitHeading>
+
+      <div class="mt-10 grid gap-8 md:grid-cols-2">
+        <div data-reveal>
+          <p class="label text-success">Good fit</p>
+          <ul class="mt-4 flex flex-col gap-3">
+            {
+              goodFit.map((item) => (
+                <li class="flex items-start gap-3 text-body text-ink">
+                  <Icon name="solar:check-circle-linear" class="mt-0.5 h-5 w-5 shrink-0 text-success" aria-hidden="true" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div data-reveal>
+          <p class="label text-graphite">Probably not a fit</p>
+          <ul class="mt-4 flex flex-col gap-3">
+            {
+              notFit.map((item) => (
+                <li class="flex items-start gap-3 text-body text-graphite">
+                  <Icon name="solar:close-circle-linear" class="mt-0.5 h-5 w-5 shrink-0 text-graphite" aria-hidden="true" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.9 Evidence framework -->
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
+    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
+      How we measure progress.
+    </SplitHeading>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      {
+        evidenceCategories.map((category) => (
+          <span class="label rounded-full border border-line bg-surface px-4 py-2 text-graphite">{category}</span>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 measure text-body-lg text-graphite">
+      We publish measured outcomes when the work gives us evidence to publish.
+    </p>
+  </section>
+
+  <!-- 7.10 Final CTA -->
+  <section class="border-t border-line bg-ink">
+    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 text-center md:py-24">
+      <SplitHeading as="h2" class="text-h2 font-semibold text-canvas">
+        Own the next stage of your technology.
+      </SplitHeading>
+      <div class="mt-8 flex justify-center">
+        <Button href="/contact" variant="primary">Start a conversation</Button>
+      </div>
+      <p class="mt-6 text-body text-canvas/70">
+        No speculative estimate. No obligation to continue with NewCo after the diagnostic.
+      </p>
+    </div>
+  </section>
+</Layout>

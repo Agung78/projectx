@@ -78,8 +78,15 @@
   html {
     scroll-behavior: auto;
     color-scheme: light;
+    /* Motion tokens — single source of truth, mirrored in src/scripts/motion.ts */
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+    --duration-press: 140ms;
+    --duration-hover: 180ms;
+    --duration-popover: 200ms;
+    --duration-panel: 260ms;
   }
 
   body {
@@ -106,17 +113,20 @@
     color: inherit;
   }
 
+  /*
+   * Reduced motion means fewer and gentler, not zero: colour and opacity
+   * transitions still carry meaning, so only movement is removed.
+   */
   @media (prefers-reduced-motion: reduce) {
     html {
-      scroll-behavior: auto;
+      scroll-behavior: auto !important;
     }
 
     *,
     *::before,
     *::after {
-      animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+      transition-property: opacity, color, background-color, border-color, outline-color !important;
       scroll-behavior: auto !important;
     }
   }
@@ -153,11 +163,10 @@
 
   .js-split-word {
     display: inline-block;
-    will-change: transform, opacity;
   }
 
   .pressable {
-    transition: transform 150ms var(--ease-out);
+    transition: transform var(--duration-press) var(--ease-out);
   }
 
   .pressable:active {
@@ -174,12 +183,18 @@
     background-color: currentColor;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 200ms var(--ease-out);
+    transition: transform var(--duration-hover) var(--ease-out);
   }
 
-  .nav-link:hover::after,
   .nav-link[aria-current="page"]::after {
     transform: scaleX(1);
+  }
+
+  /* Touch fires a false hover on tap, so the underline slide is pointer-gated. */
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
   }
 
   details > summary {
@@ -199,29 +214,41 @@
     border-right: 1.5px solid currentColor;
     border-bottom: 1.5px solid currentColor;
     transform: translateY(-2px) rotate(45deg);
-    transition: transform 200ms var(--ease-out);
+    transition: transform var(--duration-popover) var(--ease-out);
   }
 
   details[open] > summary::before {
     transform: translateY(1px) rotate(-135deg);
   }
 
+  /*
+   * The panel slides out from under the header rather than scaling: scaleY
+   * distorts the link text mid-transition. clip-path keeps the reveal bounded
+   * to the panel box without animating height.
+   */
   [data-mobile-nav] {
     transform-origin: top;
     opacity: 0;
-    transform: scaleY(0.96) translateY(-4px);
-    transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+    transform: translateY(-8px);
+    clip-path: inset(0 0 100% 0);
+    transition:
+      opacity var(--duration-popover) var(--ease-out),
+      transform var(--duration-panel) var(--ease-drawer),
+      clip-path var(--duration-panel) var(--ease-drawer);
   }
 
   [data-mobile-nav][data-open="true"] {
     opacity: 1;
-    transform: scaleY(1) translateY(0);
+    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
   }
 
   [data-form-status] {
     opacity: 0;
     transform: translateY(4px);
-    transition: opacity 250ms var(--ease-out), transform 250ms var(--ease-out);
+    transition:
+      opacity var(--duration-panel) var(--ease-out),
+      transform var(--duration-panel) var(--ease-out);
   }
 
   [data-form-status][data-visible="true"] {

@@ -78,13 +78,21 @@ const currentPath = Astro.url.pathname;
   const header = document.querySelector<HTMLElement>("[data-site-header]");
 
   if (toggle && nav) {
+    let hideTimer: number | undefined;
+
     const closeMenu = () => {
       nav.dataset.open = "false";
       toggle.setAttribute("aria-expanded", "false");
-      nav.addEventListener("transitionend", () => { nav.hidden = true; }, { once: true });
+      // Timer rather than transitionend: several properties fire, and under
+      // reduced motion the transform/clip-path ones never fire at all.
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(() => {
+        if (nav.dataset.open === "false") nav.hidden = true;
+      }, 300);
     };
 
     const openMenu = () => {
+      window.clearTimeout(hideTimer);
       nav.hidden = false;
       requestAnimationFrame(() => {
         nav.dataset.open = "true";

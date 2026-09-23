@@ -1,139 +1,148 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
-import SplitHeading from "../components/SplitHeading.astro";
 
-const outputs = [
-  "Evidence map of the current system",
-  "Risk register with prioritised findings",
-  "Capability baseline for your team",
-  "12-month roadmap",
-  "Recommended operating model",
-  "Transfer plan for eventual handover",
-  "Architecture decision log",
-  "Data and integration inventory",
-  "Delivery and reliability metrics baseline",
-  "Executive summary for stakeholders",
+// §6 Phase 0 outputs, grouped by the question each one answers.
+const outputGroups = [
+  {
+    title: "Where you are",
+    items: [
+      "Current-state architecture and dependency map",
+      "Data-flow and data-readiness assessment",
+      "Delivery and capability baseline",
+    ],
+  },
+  {
+    title: "What could go wrong",
+    items: ["Security and operational risk register", "AI-readiness scorecard", "Build-versus-buy recommendations"],
+  },
+  {
+    title: "What to do next",
+    items: [
+      "Prioritised 90-day backlog",
+      "Twelve-month investment roadmap and three-year direction",
+      "Target operating model, estimated run cost, and delivery options",
+      "Capability-transfer plan and a recommendation for the next phase",
+    ],
+  },
 ];
 
-const examine = [
-  "System architecture and technical debt",
-  "Delivery pipeline and release process",
-  "Data flows, integrations, and dependencies",
-  "Team structure, decision rights, and operating rhythms",
-  "Reliability, incident history, and recovery posture",
+const inputs = [
+  "Read access to repositories and architecture documentation",
+  "Infrastructure and data inventories",
+  "Interviews with the people who run the system today",
+  "Your security questionnaires and policies",
+  "Recent delivery and incident history",
 ];
 
+// A real sequence, so the steps are numbered.
 const steps = [
-  { title: "Kickoff and access", body: "We agree scope, get read access, and meet the people who run the system today." },
-  { title: "Evidence gathering", body: "Architecture review, code and pipeline inspection, and structured conversations with your team." },
-  { title: "Synthesis", body: "Findings are consolidated into the risk register, capability baseline, and roadmap." },
-  { title: "Walkthrough", body: "We present the diagnostic to your team and stakeholders and take questions." },
-  { title: "Handoff", body: "You receive every output. What happens next is your call." },
+  { title: "Kickoff and access", body: "We agree scope, receive access, and meet the people who run the system today." },
+  { title: "Evidence gathering", body: "Architecture review, code and pipeline inspection, and structured interviews." },
+  { title: "Synthesis", body: "Findings become the risk register, capability baseline, backlog, and roadmap." },
+  { title: "Walkthrough", body: "We present the results to your team and stakeholders and answer questions." },
+  { title: "Your decision", body: "You receive every output. Keep it in-house, take it to tender, or continue with us." },
 ];
+
+const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 ---
 
 <Layout
   title="Technical Diagnostic"
-  description="A 15-business-day, fixed-fee diagnostic that gives you an evidence map, risk register, capability baseline, roadmap, operating model, and transfer plan that is yours to keep."
+  description="A 15-business-day, fixed-fee diagnostic: architecture, data, risk, capability baseline, roadmap, and transfer plan. You own every output."
 >
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] pt-16 pb-16 md:pt-12 md:pb-12">
-    <p class="label text-signal">Technical Diagnostic</p>
-    <SplitHeading as="h1" class="mt-4 text-h1 font-semibold text-ink">
-      Know what you're operating before you commit to building more of it.
-    </SplitHeading>
-    <p class="mt-6 measure text-body-lg text-graphite">
-      A fixed-fee, standalone engagement that gives you an honest, evidence-led view of your system and your
-      operating model, in 15 business days.
+  <section class:list={[shell, "pt-16 pb-16 md:pt-20 md:pb-24"]}>
+    <h1 class="max-w-[20ch] text-h1 text-ink text-balance">
+      Know what you are operating before you build more of it.
+    </h1>
+    <p class="mt-8 measure text-body-lg text-graphite">
+      A fixed-fee, standalone engagement that gives you an evidence-led view of your systems, data, risks, and team in
+      15 business days. You own the output and can take it to any vendor.
     </p>
-    <div class="mt-8">
-      <Button href="/contact" variant="primary">Discuss the diagnostic</Button>
+    <div class="mt-10">
+      <Button href="/contact" variant="primary">Discuss your situation</Button>
     </div>
   </section>
 
   <section class="border-t border-line bg-surface">
-    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Who it's for.</SplitHeading>
-      <p class="mt-4 measure text-body-lg text-graphite">
-        Teams about to commit significant budget to a rebuild, a platform migration, or a new capability, who want
-        an independent, evidence-based view before they do.
-      </p>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">What we examine.</SplitHeading>
-    <ul class="mt-10 grid gap-6 md:grid-cols-2">
-      {
-        examine.map((item) => (
-          <li data-reveal class="border-t border-line pt-4 text-body-lg text-ink">
-            {item}
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
-  <section class="border-t border-line bg-surface">
-    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Ten outputs, yours to keep.</SplitHeading>
-      <ol class="mt-10 grid gap-4 md:grid-cols-2">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
+        <h2 class="text-h2 text-ink text-balance md:col-span-7">Ten outputs, yours to keep.</h2>
+        <p class="measure text-body-lg text-graphite md:col-span-5">
+          The diagnostic is a product in its own right, not a discounted estimate for later work.
+        </p>
+      </div>
+      <div class="mt-16 grid gap-12 md:grid-cols-3 md:gap-8">
         {
-          outputs.map((output, i) => (
-            <li data-reveal class="flex items-start gap-3 rounded-sm border border-line bg-canvas p-4">
-              <span class="label text-signal">{String(i + 1).padStart(2, "0")}</span>
-              <span class="text-body text-ink">{output}</span>
+          outputGroups.map((group) => (
+            <div>
+              <h3 class="border-b border-line pb-4 text-h3 text-ink">{group.title}</h3>
+              <ul class="mt-4 flex flex-col gap-3">
+                {group.items.map((item) => (
+                  <li class="text-body-lg text-graphite">{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class:list={[shell, "py-16 md:py-24"]}>
+    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
+      <div class="md:col-span-5">
+        <h2 class="text-h2 text-ink text-balance">What we need from you.</h2>
+        <p class="mt-6 text-body-lg text-graphite">
+          Honest findings need real access. Nothing is sent to an AI provider without your approval of how it is used,
+          stored, and where.
+        </p>
+      </div>
+      <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
+        {inputs.map((item) => <li class="py-4 text-body-lg text-ink">{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <h2 class="text-h2 text-ink text-balance">How the 15 days run.</h2>
+      <ol class="mt-16 flex flex-col divide-y divide-line border-y border-line">
+        {
+          steps.map((step, i) => (
+            <li class="grid gap-x-6 gap-y-2 py-6 md:grid-cols-12">
+              <span class="text-h3 tabular-nums text-signal md:col-span-1">{i + 1}</span>
+              <h3 class="text-h3 text-ink md:col-span-4">{step.title}</h3>
+              <p class="text-body-lg text-graphite md:col-span-7">{step.body}</p>
             </li>
           ))
         }
       </ol>
-      <p class="mt-10 text-body-lg font-medium text-ink">
-        You own the diagnostic outputs and can take them to any vendor.
-      </p>
     </div>
   </section>
 
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">How the work runs.</SplitHeading>
-    <div class="mt-10 flex flex-col divide-y divide-line">
-      {
-        steps.map((step, i) => (
-          <div data-reveal class="flex flex-col gap-2 py-6 md:flex-row md:items-baseline md:gap-8">
-            <span class="label w-12 shrink-0 text-signal">{String(i + 1).padStart(2, "0")}</span>
-            <div>
-              <p class="text-h3 font-semibold text-ink">{step.title}</p>
-              <p class="mt-2 measure text-body text-graphite">{step.body}</p>
-            </div>
-          </div>
-        ))
-      }
+  <section class:list={[shell, "py-16 md:py-24"]}>
+    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
+      <h2 class="text-h2 text-ink text-balance md:col-span-7">Who it is for.</h2>
+      <div class="flex flex-col gap-6 md:col-span-5">
+        <p class="text-body-lg text-graphite">
+          Operators about to commit real budget to a rebuild, a migration, or an AI initiative, who want an independent
+          view first.
+        </p>
+        <p class="text-body-lg text-graphite">
+          It is also how every engagement with us starts. We do not take over a codebase we have not diagnosed.
+        </p>
+      </div>
     </div>
-  </section>
-
-  <section class="border-t border-line bg-surface">
-    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Your choices afterward.</SplitHeading>
-      <p class="mt-4 measure text-body-lg text-graphite">
-        Take the roadmap to your own team, put it out to tender, or continue with NewCo through Build With. The diagnostic stands on its own; continuing with us is always your choice.
-      </p>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">The commercial principle.</SplitHeading>
-    <p class="mt-4 measure text-body-lg text-graphite">
-      Fixed fee, standalone product. Pricing is confirmed once scope is agreed; there is no speculative estimate and
-      no bundling with a larger sale.
-    </p>
   </section>
 
   <section class="border-t border-line bg-ink">
-    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 text-center md:py-24">
-      <SplitHeading as="h2" class="text-h2 font-semibold text-canvas">
-        Start with a clear, evidence-led view.
-      </SplitHeading>
-      <div class="mt-8 flex justify-center">
-        <Button href="/contact" variant="primary">Start a conversation</Button>
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <h2 class="max-w-[22ch] text-h2 text-canvas text-balance">
+        Pricing is confirmed once scope is agreed. No speculative estimate, no bundled sale.
+      </h2>
+      <div class="mt-10">
+        <Button href="/contact" variant="primary">Discuss your situation</Button>
       </div>
     </div>
   </section>

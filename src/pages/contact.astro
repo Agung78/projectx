@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SplitHeading from "../components/SplitHeading.astro";
 import Button from "../components/Button.astro";
 ---
 
@@ -8,16 +7,16 @@ import Button from "../components/Button.astro";
   title="Contact"
   description="Tell us about your situation. We review every request against our fit criteria before scheduling a conversation."
 >
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:pt-12 md:pb-12">
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:pt-20 md:pb-24">
     <div class="grid gap-12 md:grid-cols-12">
       <div class="md:col-span-5">
-        <p class="label text-signal">Contact</p>
-        <SplitHeading as="h1" class="mt-4 text-h1 font-semibold text-ink">
-          Discuss your situation.
-        </SplitHeading>
-        <p class="mt-6 measure text-body-lg text-graphite">
-          Tell us where things stand. We review every request against our fit criteria and follow up with next
-          steps, there's no obligation and no credentials or production access requested here.
+        <h1 class="text-h1 text-ink text-balance">Discuss your situation.</h1>
+        <p class="mt-8 measure text-body-lg text-graphite">
+          Tell us where things stand. We review every request against our fit criteria and reply with a recommended
+          next step, which may be that we are not the right partner.
+        </p>
+        <p class="mt-4 measure text-body text-graphite">
+          There is no obligation, and we never ask for credentials or production access here.
         </p>
       </div>
 
@@ -212,7 +211,7 @@ import Button from "../components/Button.astro";
         form.hidden = true;
         status.classList.remove("hidden");
         status.innerHTML =
-          "Thanks, we've received your message. We review every request against our fit criteria and will follow up by email. Scheduling will open here once that workflow is ready.";
+          "Sent. We review every request against our fit criteria and will reply by email with a recommended next step.";
         status.classList.add("text-success", "text-body-lg", "font-medium");
         requestAnimationFrame(() => {
           status.dataset.visible = "true";

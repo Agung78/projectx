@@ -14,6 +14,8 @@ const phases = [
 ];
 
 const captionText = "Handover is a success metric, not a hidden failure condition.";
+// Shape only: real levels come from each client's capability scorecard baseline.
+const illustrativeNote = "Illustrative shape. Actual levels are baselined per engagement.";
 
 /*
  * Two renderings of one idea, chosen by available width rather than by
@@ -50,7 +52,7 @@ const descText =
   "A line chart across five phases (Diagnose, Build With, Run With, Hand Over, Advise) showing NewCo's day-to-day ownership decreasing from high to low while the client's ownership increases from low to high.";
 ---
 
-<div data-capability-curve>
+<div data-capability-curve class:list={[compact && "flex h-full flex-col"]}>
   {
     !compact && (
       <div class="hidden md:block">
@@ -103,7 +105,7 @@ const descText =
     )
   }
 
-  <div class:list={[compact ? "" : "md:hidden"]}>
+  <div class:list={[compact ? "flex flex-1 flex-col" : "md:hidden"]}>
     <p class="label flex flex-wrap items-center gap-x-6 gap-y-2 text-graphite">
       <span class="flex items-center gap-2">
         <span class="h-2 w-2 rounded-full bg-graphite" aria-hidden="true"></span>
@@ -113,13 +115,13 @@ const descText =
         <span class="h-2 w-2 rounded-full bg-signal" aria-hidden="true"></span>
         Client
       </span>
-      <span class="ml-auto normal-case tracking-normal">Day-to-day ownership</span>
+      <span class="ml-auto">Day-to-day ownership</span>
     </p>
 
-    <ol class:list={["flex flex-col divide-y divide-line border-y border-line", compact ? "mt-3" : "mt-4"]}>
+    <ol class:list={["flex flex-col divide-y divide-line border-y border-line", compact ? "mt-3 flex-1" : "mt-4"]}>
       {
         phases.map((phase, i) => (
-          <li class:list={["grid grid-cols-[2ch_1fr] items-baseline gap-x-4 gap-y-2", compact ? "py-2.5" : "py-4"]}>
+          <li class:list={["grid grid-cols-[2ch_1fr] items-baseline gap-x-4 gap-y-2", compact ? "flex-1 content-center py-2.5" : "py-4"]}>
             <span class="label text-graphite/70">{String(i + 1).padStart(2, "0")}</span>
             <div>
               <p class="text-body font-semibold text-ink">{phase.label}</p>
@@ -136,13 +138,6 @@ const descText =
                       data-ownership-bar
                     />
                   </span>
-                  <span
-                    class="w-10 shrink-0 text-right text-body tabular-nums text-graphite"
-                    data-reel-value={phase.newco}
-                    aria-hidden="true"
-                  >
-                    {phase.newco}%
-                  </span>
                 </div>
                 <div class="flex items-center gap-3">
                   <span class="h-[3px] flex-1 bg-line" aria-hidden="true">
@@ -152,17 +147,10 @@ const descText =
                       data-ownership-bar
                     />
                   </span>
-                  <span
-                    class="w-10 shrink-0 text-right text-body tabular-nums text-signal"
-                    data-reel-value={phase.client}
-                    aria-hidden="true"
-                  >
-                    {phase.client}%
-                  </span>
                 </div>
               </div>
               <span class="sr-only">
-                NewCo ownership {phase.newco} percent, client ownership {phase.client} percent.
+                Illustrative: NewCo ownership about {phase.newco} percent, client ownership about {phase.client} percent.
               </span>
             </div>
           </li>
@@ -174,4 +162,5 @@ const descText =
   <p class:list={["font-medium text-ink", compact ? "mt-4 text-body" : "mt-6 text-body-lg"]}>
     {captionText}
   </p>
+  <p class="mt-2 text-label font-normal text-graphite">{illustrativeNote}</p>
 </div>

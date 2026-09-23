@@ -1,28 +1,33 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
+@import "@fontsource-variable/schibsted-grotesk";
 
 @theme {
   /* Colour system — Section 4 */
-  --color-canvas: #f3f0e9;
-  --color-surface: #faf9f5;
-  --color-ink: #171918;
-  --color-graphite: #4e5550;
-  --color-line: #d7d4cc;
-  --color-signal: #b14d32;
-  --color-signal-dark: #843a28;
-  --color-success: #42664c;
-  --color-error: #a33f36;
+  /*
+   * Operations-log palette: cool paper, slate ink, one cobalt signal that
+   * always means "client ownership". Warm cream + terracotta was dropped as
+   * a templated default (frontend-design review, 2026-09).
+   */
+  --color-canvas: #eef1f0;
+  --color-surface: #f8faf9;
+  --color-ink: #13212c;
+  --color-graphite: #4a5864;
+  --color-line: #cfd8dc;
+  --color-signal: #2446c8;
+  --color-signal-dark: #18319a;
+  --color-success: #2f6b4f;
+  --color-error: #b0372e;
 
   /* Typography — Section 5 */
-  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Schibsted Grotesk Variable", "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
 
   --text-display: clamp(3.5rem, 8vw, 7.5rem);
   --text-display--line-height: 1.02;
-  --text-display--font-weight: 600;
+  --text-display--font-weight: 800;
 
   --text-h1: clamp(2.75rem, 5vw, 5.25rem);
   --text-h1--line-height: 1.05;
-  --text-h1--font-weight: 600;
+  --text-h1--font-weight: 700;
 
   --text-h2: clamp(2rem, 3.5vw, 3.5rem);
   --text-h2--line-height: 1.1;
@@ -40,10 +45,10 @@
   --text-body--line-height: 1.55;
   --text-body--font-weight: 400;
 
-  --text-label: 0.72rem;
+  --text-label: 0.875rem;
   --text-label--line-height: 1.4;
-  --text-label--font-weight: 650;
-  --text-label--letter-spacing: 0.08em;
+  --text-label--font-weight: 600;
+  --text-label--letter-spacing: 0;
 
   --text-metric: clamp(2.5rem, 5vw, 5rem);
   --text-metric--line-height: 1.05;
@@ -203,15 +208,10 @@
     line-height: var(--text-label--line-height);
     font-weight: var(--text-label--font-weight);
     letter-spacing: var(--text-label--letter-spacing);
-    text-transform: uppercase;
   }
 
   .measure {
     max-width: var(--container-measure);
-  }
-
-  .js-split-word {
-    display: inline-block;
   }
 
   .pressable {
@@ -305,47 +305,4 @@
     transform: translateY(0);
   }
 
-  .t-reel {
-    --reel-cell: 30px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: var(--reel-cell);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .t-reel-col {
-    position: relative;
-    height: var(--reel-cell);
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
-  }
-
-  .t-reel-strip {
-    display: flex;
-    flex-direction: column;
-    will-change: transform, filter;
-  }
-
-  .t-reel-digit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--reel-cell);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .t-reel-strip {
-      filter: none !important;
-      transition: none !important;
-    }
-  }
-
-[data-reel-filters] {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
 }

@@ -1,92 +1,109 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SplitHeading from "../components/SplitHeading.astro";
 
+// §2 Founding Structure
 const founderRoles = [
   {
-    role: "Engineering",
-    body: "Owns technical direction, architecture review, and the quality of what ships.",
+    role: "Chief Executive",
+    promise: "Who we work with and what we promise.",
+    owns: "Client relationships, commercial terms, account governance, and client-facing delivery accountability.",
   },
   {
-    role: "Delivery and operating model",
-    body: "Owns the engagement rhythm, the transfer plan, and the client relationship.",
+    role: "Chief Technology Officer",
+    promise: "How it is built and whether we can promise it.",
+    owns: "Technical strategy, architecture, delivery engineering, hiring and mentoring, platform IP, and security and technical risk.",
   },
 ];
 
 const sharedApprovals = [
-  "Any architecture decision that changes a client's data model or security posture",
-  "Scope or fee changes on an active engagement",
-  "Publishing any client-facing evidence, metric, or case study",
-  "Hiring decisions that affect an active engagement team",
+  "Entering a new market",
+  "Material pricing exceptions",
+  "Debt or financing",
+  "Senior hires",
+  "Changes to the house stack",
+  "Client work with unusual legal or security exposure",
+  "Any assignment of company IP",
 ];
+
+// §11 What We Say No To (public subset)
+const declines = [
+  "Staff augmentation with no architectural responsibility or path to transfer capability",
+  "Fixed-scope waterfall on ambiguous requirements",
+  "Taking over a codebase without a paid diagnostic",
+  "Unpaid speculative estimates on systems we have not seen",
+  "Engagements without a named counterpart and an executive sponsor",
+  "Production responsibility without defined access, authority, and service levels",
+  "Putting client data into AI tools without approved governance",
+];
+
+const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 ---
 
 <Layout
   title="About"
-  description="What NewCo believes about engineering partnership, how the founders split responsibility, and how decisions and ownership are documented rather than assumed."
+  description="Why NewCo exists, how the two founders split responsibility, and the work we turn down."
 >
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] pt-16 pb-16 md:pt-12 md:pb-12">
-    <p class="label text-signal">About</p>
-    <SplitHeading as="h1" class="mt-4 text-h1 font-semibold text-ink">
-      We believe engineering capability should be kept, not rented.
-    </SplitHeading>
-    <p class="mt-6 measure text-body-lg text-graphite">
-      Most technology partners are optimised to stay indispensable. We're optimised for the opposite: a client who
-      no longer needs us for day-to-day operation, because they were building that capability the entire time.
+  <section class:list={[shell, "pt-16 pb-16 md:pt-20 md:pb-24"]}>
+    <h1 class="max-w-[20ch] text-h1 text-ink text-balance">
+      Engineering capability should be kept, not rented.
+    </h1>
+    <p class="mt-8 measure text-body-lg text-graphite">
+      Most technology partners are built to stay indispensable. We are built for the opposite: a client who no longer
+      needs us day to day, because their team was building that capability the whole time.
     </p>
   </section>
 
   <section class="border-t border-line bg-surface">
-    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Founder roles.</SplitHeading>
-      <p class="mt-4 measure text-body-lg text-graphite">
-        NewCo is run by two founders with a deliberate split of responsibility. Portraits and biographies are added
-        once approved.
-      </p>
-      <div class="mt-10 grid gap-8 md:grid-cols-2">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
+        <h2 class="text-h2 text-ink text-balance md:col-span-7">Two founders, one clear split.</h2>
+        <p class="measure text-body-lg text-graphite md:col-span-5">
+          No proposal leaves without technical sign-off, and no architecture or support commitment is made without
+          commercial sign-off. Each founder holds one documented veto inside their own area.
+        </p>
+      </div>
+      <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-8">
         {
           founderRoles.map((founder) => (
-            <div data-reveal class="border-t border-line pt-6">
-              <p class="text-h3 font-semibold text-ink">{founder.role}</p>
-              <p class="mt-3 text-body text-graphite">{founder.body}</p>
+            <div class="border-t-2 border-ink pt-6">
+              <h3 class="text-h3 text-ink">{founder.role}</h3>
+              <p class="mt-3 text-body-lg font-medium text-ink">{founder.promise}</p>
+              <p class="mt-3 text-body text-graphite">{founder.owns}</p>
             </div>
           ))
         }
       </div>
+      <p class="mt-10 measure text-body text-graphite">Portraits and biographies are added once approved.</p>
     </div>
   </section>
 
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">The operating rule.</SplitHeading>
-    <p class="mt-4 measure text-body-lg text-graphite">
-      Whoever owns an area decides day to day. Disagreements between founders escalate to a short, scheduled
-      conversation, never a silent override, and never into a client engagement.
-    </p>
-  </section>
-
-  <section class="border-t border-line bg-surface">
-    <div class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-      <SplitHeading as="h2" class="text-h2 font-semibold text-ink">Shared approval areas.</SplitHeading>
-      <ul class="mt-10 flex flex-col gap-4">
-        {
-          sharedApprovals.map((item) => (
-            <li data-reveal class="flex items-start gap-3 rounded-sm border border-line bg-canvas p-4 text-body text-ink">
-              <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-signal" aria-hidden="true" />
-              {item}
-            </li>
-          ))
-        }
+  <section class:list={[shell, "py-16 md:py-24"]}>
+    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
+      <div class="md:col-span-5">
+        <h2 class="text-h2 text-ink text-balance">Decided together.</h2>
+        <p class="mt-6 text-body-lg text-graphite">
+          Every decision is logged with its owner, rationale, assumptions, and a review date.
+        </p>
+      </div>
+      <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
+        {sharedApprovals.map((item) => <li class="py-4 text-body-lg text-ink">{item}</li>)}
       </ul>
     </div>
   </section>
 
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:py-24">
-    <SplitHeading as="h2" class="text-h2 font-semibold text-ink">
-      Documented decisions, explicit ownership.
-    </SplitHeading>
-    <p class="mt-4 measure text-body-lg text-graphite">
-      The same discipline we bring to client engagements applies internally: decisions are written down at the time
-      they're made, and ownership of every area is explicit rather than assumed.
-    </p>
+  <section class="border-t border-line bg-surface">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
+        <div class="md:col-span-5">
+          <h2 class="text-h2 text-ink text-balance">Work we turn down.</h2>
+          <p class="mt-6 text-body-lg text-graphite">
+            Saying no early is cheaper for both sides than a delivery model that quietly bends.
+          </p>
+        </div>
+        <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
+          {declines.map((item) => <li class="py-4 text-body-lg text-graphite">{item}</li>)}
+        </ul>
+      </div>
+    </div>
   </section>
 </Layout>

@@ -10,7 +10,8 @@ import Button from "../components/Button.astro";
   <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:pt-20 md:pb-24">
     <div class="grid gap-12 md:grid-cols-12">
       <div class="md:col-span-5">
-        <h1 class="text-h1 text-ink text-balance">Discuss your situation.</h1>
+        <p class="mono text-signal">[ QUALIFICATION &amp; CONTACT ]</p>
+        <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight">Discuss your situation.</h1>
         <p class="mt-8 measure text-body-lg text-graphite">
           Tell us where things stand. We review every request against our fit criteria and reply with a recommended
           next step, which may be that we are not the right partner.
@@ -24,69 +25,69 @@ import Button from "../components/Button.astro";
         <form
           id="contact-form"
           novalidate
-          class="flex flex-col gap-6"
+          class="flex flex-col gap-6 border border-ink bg-surface p-5 md:p-8"
           data-contact-form
         >
           <div class="grid gap-6 md:grid-cols-2">
             <div class="flex flex-col gap-2">
-              <label for="name" class="label text-graphite">Name<span aria-hidden="true"> *</span></label>
+              <label for="name" class="mono text-graphite">Name<span aria-hidden="true"> *</span></label>
               <input id="name" name="name" type="text" required autocomplete="name"
-                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                 aria-describedby="name-error" />
               <p id="name-error" class="hidden text-body text-error" role="alert"></p>
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="company" class="label text-graphite">Company<span aria-hidden="true"> *</span></label>
+              <label for="company" class="mono text-graphite">Company<span aria-hidden="true"> *</span></label>
               <input id="company" name="company" type="text" required autocomplete="organization"
-                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                 aria-describedby="company-error" />
               <p id="company-error" class="hidden text-body text-error" role="alert"></p>
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="role" class="label text-graphite">Role<span aria-hidden="true"> *</span></label>
+              <label for="role" class="mono text-graphite">Role<span aria-hidden="true"> *</span></label>
               <input id="role" name="role" type="text" required autocomplete="organization-title"
-                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                 aria-describedby="role-error" />
               <p id="role-error" class="hidden text-body text-error" role="alert"></p>
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="email" class="label text-graphite">Email<span aria-hidden="true"> *</span></label>
+              <label for="email" class="mono text-graphite">Email<span aria-hidden="true"> *</span></label>
               <input id="email" name="email" type="email" required autocomplete="email"
-                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                 aria-describedby="email-error" />
               <p id="email-error" class="hidden text-body text-error" role="alert"></p>
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="region" class="label text-graphite">Country / operating region<span aria-hidden="true"> *</span></label>
+              <label for="region" class="mono text-graphite">Country / operating region<span aria-hidden="true"> *</span></label>
               <input id="region" name="region" type="text" required autocomplete="country-name"
-                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                 aria-describedby="region-error" />
               <p id="region-error" class="hidden text-body text-error" role="alert"></p>
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="locations" class="label text-graphite">Approximate locations or operating units<span aria-hidden="true"> *</span></label>
+              <label for="locations" class="mono text-graphite">Approximate locations or operating units<span aria-hidden="true"> *</span></label>
               <input id="locations" name="locations" type="text" required
-                class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                 aria-describedby="locations-error" />
               <p id="locations-error" class="hidden text-body text-error" role="alert"></p>
             </div>
           </div>
 
           <div class="flex flex-col gap-2">
-            <label for="constraint" class="label text-graphite">Current constraint<span aria-hidden="true"> *</span></label>
+            <label for="constraint" class="mono text-graphite">Current constraint<span aria-hidden="true"> *</span></label>
             <textarea id="constraint" name="constraint" required rows="4"
-              class="rounded-sm border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal"
+              class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
               aria-describedby="constraint-error"></textarea>
             <p id="constraint-error" class="hidden text-body text-error" role="alert"></p>
           </div>
 
           <fieldset class="flex flex-col gap-2">
-            <legend class="label text-graphite">Preferred way to continue<span aria-hidden="true"> *</span></legend>
+            <legend class="mono text-graphite">Preferred way to continue<span aria-hidden="true"> *</span></legend>
             <div class="flex flex-col gap-2 md:flex-row md:gap-6">
               {
                 ["Email", "Call", "Video call"].map((option) => (
@@ -100,28 +101,28 @@ import Button from "../components/Button.astro";
             <p id="preferred_contact-error" class="hidden text-body text-error" role="alert"></p>
           </fieldset>
 
-          <details class="rounded-sm border border-line bg-surface p-4">
-            <summary class="cursor-pointer text-body font-medium text-ink">Optional qualification details</summary>
+          <details class="border border-line bg-surface p-4">
+            <summary class="mono cursor-pointer text-ink">[ Optional qualification details ]</summary>
             <div class="mt-4 grid gap-6 md:grid-cols-2">
               <div class="flex flex-col gap-2">
-                <label for="technical_counterpart" class="label text-graphite">Technical counterpart</label>
+                <label for="technical_counterpart" class="mono text-graphite">Technical counterpart</label>
                 <input id="technical_counterpart" name="technical_counterpart" type="text"
-                  class="rounded-sm border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal" />
+                  class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal" />
               </div>
               <div class="flex flex-col gap-2">
-                <label for="executive_sponsor" class="label text-graphite">Executive sponsor</label>
+                <label for="executive_sponsor" class="mono text-graphite">Executive sponsor</label>
                 <input id="executive_sponsor" name="executive_sponsor" type="text"
-                  class="rounded-sm border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal" />
+                  class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal" />
               </div>
               <div class="flex flex-col gap-2 md:col-span-2">
-                <label for="primary_situation" class="label text-graphite">Primary situation</label>
+                <label for="primary_situation" class="mono text-graphite">Primary situation</label>
                 <textarea id="primary_situation" name="primary_situation" rows="3"
-                  class="rounded-sm border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal"></textarea>
+                  class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"></textarea>
               </div>
             </div>
           </details>
 
-          <Button type="submit" variant="primary" class="mt-2 w-fit justify-center" data-submit-button>
+          <Button type="submit" variant="primary" class="mt-2 w-fit justify-center md:whitespace-nowrap" data-submit-button>
             <span data-button-label>Send my situation</span>
           </Button>
 

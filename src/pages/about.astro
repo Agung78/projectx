@@ -1,15 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
 
 // §2 Founding Structure
 const founderRoles = [
   {
     role: "Chief Executive",
+    badge: "[ CHIEF EXECUTIVE ]",
     promise: "Who we work with and what we promise.",
     owns: "Client relationships, commercial terms, account governance, and client-facing delivery accountability.",
   },
   {
     role: "Chief Technology Officer",
+    badge: "[ CHIEF TECHNOLOGY OFFICER ]",
     promise: "How it is built and whether we can promise it.",
     owns: "Technical strategy, architecture, delivery engineering, hiring and mentoring, platform IP, and security and technical risk.",
   },
@@ -36,6 +39,7 @@ const declines = [
   "Putting client data into AI tools without approved governance",
 ];
 
+const pad = (i: number) => String(i + 1).padStart(2, "0");
 const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 ---
 
@@ -44,10 +48,11 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
   description="Why NewCo exists, how the two founders split responsibility, and the work we turn down."
 >
   <section class:list={[shell, "pt-16 pb-16 md:pt-20 md:pb-24"]}>
-    <h1 class="max-w-[20ch] text-h1 text-ink text-balance">
+    <p class="mono text-signal">[ FOUNDING &amp; OPERATING BELIEF ]</p>
+    <h1 class="mt-6 max-w-[20ch] text-h1 text-ink text-balance tracking-tight">
       Engineering capability should be kept, not rented.
     </h1>
-    <p class="mt-8 measure text-body-lg text-graphite">
+    <p class="mt-8 measure text-body-lg text-graphite text-pretty">
       Most technology partners are built to stay indispensable. We are built for the opposite: a client who no longer
       needs us day to day, because their team was building that capability the whole time.
     </p>
@@ -56,37 +61,53 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
   <section class="border-t border-line bg-surface">
     <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <h2 class="text-h2 text-ink text-balance md:col-span-7">Two founders, one clear split.</h2>
-        <p class="measure text-body-lg text-graphite md:col-span-5">
+        <div class="md:col-span-7">
+          <p class="mono text-signal">[ LEADERSHIP GOVERNANCE ]</p>
+          <h2 class="mt-3 text-h2 text-ink text-balance">Two founders, one clear split.</h2>
+        </div>
+        <p class="measure self-end text-body-lg text-graphite md:col-span-5">
           No proposal leaves without technical sign-off, and no architecture or support commitment is made without
           commercial sign-off. Each founder holds one documented veto inside their own area.
         </p>
       </div>
-      <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-8">
+      <div class="mt-16 grid gap-6 md:grid-cols-2">
         {
           founderRoles.map((founder) => (
-            <div class="border-t-2 border-ink pt-6">
-              <h3 class="text-h3 text-ink">{founder.role}</h3>
-              <p class="mt-3 text-body-lg font-medium text-ink">{founder.promise}</p>
-              <p class="mt-3 text-body text-graphite">{founder.owns}</p>
+            <div class="border border-ink bg-canvas">
+              <div class="mono border-b border-line px-5 py-3 text-signal">{founder.badge}</div>
+              <div class="p-5 md:p-6">
+                <h3 class="text-h3 text-ink">{founder.role}</h3>
+                <p class="mono mt-5 text-graphite">[ PROMISE ]</p>
+                <p class="mt-1 text-body-lg font-medium text-ink">{founder.promise}</p>
+                <p class="mono mt-5 text-graphite">[ OWNS ]</p>
+                <p class="mt-1 text-body text-graphite">{founder.owns}</p>
+              </div>
             </div>
           ))
         }
       </div>
-      <p class="mt-10 measure text-body text-graphite">Portraits and biographies are added once approved.</p>
+      <p class="mono mt-10 text-graphite">[ Portraits and biographies are added once approved ]</p>
     </div>
   </section>
 
   <section class:list={[shell, "py-16 md:py-24"]}>
     <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
       <div class="md:col-span-5">
-        <h2 class="text-h2 text-ink text-balance">Decided together.</h2>
+        <p class="mono text-signal">[ SHARED APPROVAL AREAS ]</p>
+        <h2 class="mt-3 text-h2 text-ink text-balance">Decided together.</h2>
         <p class="mt-6 text-body-lg text-graphite">
           Every decision is logged with its owner, rationale, assumptions, and a review date.
         </p>
       </div>
       <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
-        {sharedApprovals.map((item) => <li class="py-4 text-body-lg text-ink">{item}</li>)}
+        {
+          sharedApprovals.map((item, i) => (
+            <li class="grid grid-cols-[4rem_1fr] gap-x-4 py-4">
+              <span class="mono text-signal">[ {pad(i)} ]</span>
+              <span class="text-body-lg text-ink">{item}</span>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>
@@ -95,14 +116,37 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
     <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-5">
-          <h2 class="text-h2 text-ink text-balance">Work we turn down.</h2>
+          <p class="mono text-signal">[ QUALIFICATION DISCIPLINE ]</p>
+          <h2 class="mt-3 text-h2 text-ink text-balance">Work we turn down.</h2>
           <p class="mt-6 text-body-lg text-graphite">
             Saying no early is cheaper for both sides than a delivery model that quietly bends.
           </p>
         </div>
         <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
-          {declines.map((item) => <li class="py-4 text-body-lg text-graphite">{item}</li>)}
+          {
+            declines.map((item, i) => (
+              <li class="grid grid-cols-[4rem_1fr] gap-x-4 py-4">
+                <span class="mono text-graphite">[ {pad(i)} ]</span>
+                <span class="text-body-lg text-graphite">{item}</span>
+              </li>
+            ))
+          }
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-surface">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <p class="mono text-signal">[ NEXT STEP ]</p>
+      <h2 class="mt-3 max-w-[22ch] text-h2 text-ink text-balance">
+        If this is how you want to work, tell us where things stand.
+      </h2>
+      <p class="mt-6 measure text-body-lg text-graphite">
+        No obligation. We reply with a recommended next step, which may be that we are not the right partner.
+      </p>
+      <div class="mt-10">
+        <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Discuss your situation</Button>
       </div>
     </div>
   </section>

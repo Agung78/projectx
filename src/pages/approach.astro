@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import CapabilityCurve from "../components/CapabilityCurve.astro";
 import CapabilityScorecard from "../components/CapabilityScorecard.astro";
+import Button from "../components/Button.astro";
 
 // §6 Engagement Model. A real sequence, so the phases are numbered.
 const phases = [
@@ -12,7 +13,7 @@ const phases = [
   },
   {
     name: "Build With",
-    term: "3–9 months, retainer plus capability milestones",
+    term: "3-9 months, retainer plus capability milestones",
     body: "Your named counterpart works in the same planning, review, repository, and release process as our engineers.",
   },
   {
@@ -32,6 +33,7 @@ const phases = [
   },
 ];
 
+const tags = ["ROADMAP", "ARCHITECTURE", "DEPLOYS", "INCIDENTS", "HIRING"];
 const responsibilities = [
   { area: "Roadmap prioritisation", who: "Shared; your executive sponsor holds the final call" },
   { area: "Architecture decisions", who: "We propose, you approve; your team authors ADRs by handover" },
@@ -49,6 +51,7 @@ const houseStack = [
   { layer: "AI", choice: "Provider-neutral; chosen by quality, privacy, latency, and cost" },
 ];
 
+const pad = (i: number) => String(i + 1).padStart(2, "0");
 const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 ---
 
@@ -57,8 +60,9 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
   description="How NewCo moves an engagement from diagnostic to advisory: the phases, the scorecard that proves handover, who decides what, and the house stack."
 >
   <section class:list={[shell, "pt-16 pb-16 md:pt-20 md:pb-24"]}>
-    <h1 class="max-w-[20ch] text-h1 text-ink text-balance">Handover is planned from the first week.</h1>
-    <p class="mt-8 measure text-body-lg text-graphite">
+    <p class="mono text-signal">[ CAPABILITY TRANSFER ARCHITECTURE ]</p>
+    <h1 class="mt-6 max-w-[20ch] text-h1 text-ink text-balance tracking-tight">Handover is planned from the first week.</h1>
+    <p class="mt-8 measure text-body-lg text-graphite text-pretty">
       Every engagement is a capability-transfer contract, not an open-ended project. The phases, the evidence, and
       the shift in decision rights are agreed up front.
     </p>
@@ -66,22 +70,23 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 
   <section class="border-t border-line bg-surface">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 class="text-h2 text-ink text-balance">Five phases, one direction.</h2>
+      <p class="mono text-signal">[ 5 PHASES ]</p>
+      <h2 class="mt-3 text-h2 text-ink text-balance">Five phases, one direction.</h2>
       <ol class="mt-16 flex flex-col divide-y divide-line border-y border-line">
         {
           phases.map((phase, i) => (
-            <li class="grid gap-x-6 gap-y-2 py-8 md:grid-cols-12">
-              <span class="text-h3 tabular-nums text-signal md:col-span-1">{i + 1}</span>
+            <li class="grid gap-x-6 gap-y-3 py-8 md:grid-cols-12">
+              <span class="mono text-signal md:col-span-1">[ {pad(i)} ]</span>
               <div class="md:col-span-4">
                 <h3 class="text-h3 text-ink">{phase.name}</h3>
-                <p class="mt-1 text-body text-graphite">{phase.term}</p>
+                <p class="mono mt-3 inline-block border border-line px-2 py-0.5 text-graphite">{phase.term}</p>
               </div>
               <p class="text-body-lg text-graphite md:col-span-7">{phase.body}</p>
             </li>
           ))
         }
       </ol>
-      <div class="mt-16">
+      <div class="mt-16 border border-ink bg-canvas p-4 md:p-6">
         <CapabilityCurve />
       </div>
     </div>
@@ -89,8 +94,11 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 
   <section class:list={[shell, "py-16 md:py-24"]}>
     <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-      <h2 class="text-h2 text-ink text-balance md:col-span-7">The scorecard that decides handover.</h2>
-      <p class="measure text-body-lg text-graphite md:col-span-5">
+      <div class="md:col-span-7">
+        <p class="mono text-signal">[ EVIDENCE FRAMEWORK ]</p>
+        <h2 class="mt-3 text-h2 text-ink text-balance">The scorecard that decides handover.</h2>
+      </div>
+      <p class="measure self-end text-body-lg text-graphite md:col-span-5">
         Your counterpart is assessed at four checkpoints. Thresholds and the observation period are written into the
         contract. Certification rests on evidence; attending training does not count.
       </p>
@@ -102,12 +110,16 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 
   <section class="border-t border-line bg-surface">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 class="max-w-[24ch] text-h2 text-ink text-balance">Who decides what, and when it changes.</h2>
+      <p class="mono text-signal">[ OPERATING MODEL &amp; GOVERNANCE ]</p>
+      <h2 class="mt-3 max-w-[24ch] text-h2 text-ink text-balance">Who decides what, and when it changes.</h2>
       <dl class="mt-16 flex flex-col divide-y divide-line border-y border-line">
         {
-          responsibilities.map((row) => (
-            <div class="grid gap-x-6 gap-y-1 py-5 md:grid-cols-12">
-              <dt class="text-body-lg font-semibold text-ink md:col-span-5">{row.area}</dt>
+          responsibilities.map((row, i) => (
+            <div class="grid gap-x-6 gap-y-2 py-5 md:grid-cols-12">
+              <dt class="md:col-span-5">
+                <span class="mono block text-graphite">[ {tags[i]} ]</span>
+                <span class="mt-1 block text-body-lg font-semibold text-ink">{row.area}</span>
+              </dt>
               <dd class="text-body-lg text-graphite md:col-span-7">{row.who}</dd>
             </div>
           ))
@@ -119,22 +131,41 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
   <section class:list={[shell, "py-16 md:py-24"]}>
     <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
       <div class="md:col-span-5">
-        <h2 class="text-h2 text-ink text-balance">Opinionated, not mercenary.</h2>
+        <p class="mono text-signal">[ HOUSE STACK ]</p>
+        <h2 class="mt-3 text-h2 text-ink text-balance">Opinionated, not mercenary.</h2>
         <p class="mt-6 text-body-lg text-graphite">
           Every project starts from one house stack, so your team inherits something others can operate too. Any
           deviation needs a written ADR covering the reason, lifecycle cost, owner, exit path, and your approval.
         </p>
       </div>
-      <dl class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
+      <dl class="flex flex-col divide-y divide-line border border-ink bg-surface md:col-span-6 md:col-start-7">
         {
-          houseStack.map((row) => (
-            <div class="grid grid-cols-[9rem_1fr] gap-x-4 py-4">
-              <dt class="text-body font-semibold text-ink">{row.layer}</dt>
+          houseStack.map((row, i) => (
+            <div class="grid grid-cols-[9rem_1fr] gap-x-4 px-4 py-4">
+              <dt>
+                <span class="mono block text-signal">[ L{pad(i)} ]</span>
+                <span class="mono block text-ink">{row.layer}</span>
+              </dt>
               <dd class="text-body text-graphite">{row.choice}</dd>
             </div>
           ))
         }
       </dl>
+    </div>
+  </section>
+
+  <section class="border-t border-line">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <div class="border border-ink bg-surface p-8 md:p-12">
+        <p class="mono text-signal">[ NEXT STEP ]</p>
+        <p class="mt-4 max-w-[24ch] text-h2 font-semibold text-ink text-balance">Start with the diagnostic.</p>
+        <p class="mt-4 measure text-body-lg text-graphite">
+          Tell us where things stand. We reply with a recommended next step, which may be that we are not the right partner.
+        </p>
+        <div class="mt-8">
+          <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Discuss your situation</Button>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

@@ -4,8 +4,8 @@ import Button from "../components/Button.astro";
 ---
 
 <Layout
-  title="Contact"
-  description="Tell us about your situation. We review every request against our fit criteria before scheduling a conversation."
+  title="Contact Us & Project Qualification"
+  description="Discuss your technical constraints and engineering goals with NewCo. We review every engagement against our qualification criteria."
 >
   <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:pt-20 md:pb-24">
     <div class="grid gap-12 md:grid-cols-12">
@@ -24,6 +24,7 @@ import Button from "../components/Button.astro";
       <div class="md:col-span-7">
         <form
           id="contact-form"
+          method="post"
           novalidate
           class="flex flex-col gap-6 border border-ink bg-surface p-5 md:p-8"
           data-contact-form
@@ -128,6 +129,63 @@ import Button from "../components/Button.astro";
 
           <p data-form-status class="hidden text-body" role="status"></p>
         </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] pb-24">
+    <div class="grid gap-12 border-t border-line pt-16 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <p class="mono text-signal">[ WHAT TO EXPECT ]</p>
+        <h2 class="mt-6 text-h2 text-ink text-balance tracking-tight">What happens after you write to us.</h2>
+      </div>
+      <div class="flex flex-col gap-12 md:col-span-7">
+        <div>
+          <h3 class="text-h3 text-ink">What to expect</h3>
+          <p class="mt-4 measure text-body text-graphite">
+            A founder reads every request personally. We compare what you describe against the situations we know
+            how to help with, and we reply by email with a recommended next step. That step might be a conversation,
+            a scoped diagnostic, a pointer to a better-suited partner, or a plain statement that we are not the right
+            fit. You will never be passed to a sales queue or asked to sit through a generic presentation.
+          </p>
+          <p class="mt-4 measure text-body text-graphite">
+            The more specific you are about the constraint you are facing, the more useful our reply will be. Tell us
+            what is slowing your engineering team down, what has already been tried, and what a good outcome looks
+            like twelve months from now.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-h3 text-ink">Fit criteria</h3>
+          <p class="mt-4 measure text-body text-graphite">
+            We work best with organisations that want to own their engineering capability rather than rent it
+            indefinitely. In practice, that means a few things:
+          </p>
+          <ul class="mt-4 measure list-disc pl-5 text-body text-graphite">
+            <li>You have a technical counterpart who can work alongside us day to day.</li>
+            <li>An executive sponsor is willing to make decisions about priorities and trade-offs.</li>
+            <li>The constraint is real and specific, such as architecture, delivery speed, reliability or hiring.</li>
+            <li>You are prepared to measure progress against a scorecard and to take over the work by the end.</li>
+          </ul>
+          <p class="mt-4 measure text-body text-graphite">
+            We decline work where the goal is permanent outsourcing, where there is no sponsor with authority, or
+            where the request is for staff augmentation under another name. Saying no early saves everyone time.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-h3 text-ink">Consultation timeline</h3>
+          <p class="mt-4 measure text-body text-graphite">
+            Within two business days you will receive a reply confirming whether your request matches our criteria.
+            If it does, we schedule an introductory conversation of around forty-five minutes, usually within the
+            following week, to understand your systems, your team and your goals in more detail.
+          </p>
+          <p class="mt-4 measure text-body text-graphite">
+            After that conversation we send a short written recommendation. If a technical diagnostic is the right
+            starting point, the recommendation includes scope, fixed fee and dates. There is no obligation at any
+            stage, and we never ask for credentials or production access through this form.
+          </p>
+        </div>
       </div>
     </div>
   </section>

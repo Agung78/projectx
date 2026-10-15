@@ -44,10 +44,6 @@ function pathFor(key: "newco" | "client") {
 const newcoPath = pathFor("newco");
 const clientPath = pathFor("client");
 
-// Both variants can render on one page, so the SVG's labelling ids must be unique.
-const uid = compact ? "compact" : "full";
-const titleId = `capability-curve-title-${uid}`;
-const descId = `capability-curve-desc-${uid}`;
 const descText =
   "A line chart across five phases (Diagnose, Build With, Run With, Hand Over, Advise) showing NewCo's day to day ownership decreasing from high to low while the client's ownership increases from low to high.";
 ---
@@ -56,9 +52,7 @@ const descText =
   {
     !compact && (
       <div class="hidden md:block">
-        <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-labelledby={`${titleId} ${descId}`} class="w-full">
-          <title id={titleId}>Capability transfer curve</title>
-          <desc id={descId}>{descText}</desc>
+        <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={descText} class="w-full">
 
           {phases.map((_phase, i) => (
             <line

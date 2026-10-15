@@ -30,13 +30,13 @@ const sharedApprovals = [
 
 // §11 What We Say No To (public subset)
 const declines = [
-  "Staff augmentation with no architectural responsibility or path to transfer capability",
-  "Fixed-scope waterfall on ambiguous requirements",
-  "Taking over a codebase without a paid diagnostic",
-  "Unpaid speculative estimates on systems we have not seen",
-  "Engagements without a named counterpart and an executive sponsor",
-  "Production responsibility without defined access, authority, and service levels",
-  "Putting client data into AI tools without approved governance",
+  "Staff augmentation lacking architectural governance or a structured path to client independence",
+  "Fixed-scope waterfall contracts built on ambiguous or unverified requirements",
+  "Inheriting legacy codebases without an upfront Technical Diagnostic",
+  "Unpaid speculative estimates on architectures we have not directly inspected",
+  "Engagements lacking a dedicated client counterpart and an executive decision-maker",
+  "Production responsibility without defined access, system authority, and agreed service level agreements",
+  "Processing client code or proprietary data through third-party AI models without written governance approval",
 ];
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
@@ -44,17 +44,18 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 ---
 
 <Layout
-  title="About Our Engineering Capability Transfer"
-  description="Learn why NewCo exists, how our engineering leadership partners with your team, and the principled client criteria we use to ensure lasting impact."
+  title="About Our Capability Transfer Model | NewCo"
+  description="Why NewCo exists: partnering with multi-location businesses to build permanent internal engineering capability, backed by balanced leadership governance."
 >
   <section class:list={[shell, "pt-16 pb-16 md:pt-20 md:pb-24"]}>
     <p class="mono text-signal">[ FOUNDING &amp; OPERATING BELIEF ]</p>
     <h1 class="mt-6 max-w-[20ch] text-h1 text-ink text-balance tracking-tight">
-      Engineering capability should be kept, not rented.
+      Build engineering capability your business permanently owns.
     </h1>
     <p class="mt-8 measure text-body-lg text-graphite text-pretty">
-      Most technology partners are built to stay indispensable. We are built for the opposite: a client who no longer
-      needs us day to day, because their team was building that capability the whole time.
+      Traditional agencies maximize billable dependency by withholding operational know-how. NewCo measures success by
+      your independence: our engineers build production systems alongside your team and transfer operational ownership
+      milestone by milestone.
     </p>
   </section>
 
@@ -66,8 +67,8 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
           <h2 class="mt-3 text-h2 text-ink text-balance">Two founders, one clear split.</h2>
         </div>
         <p class="measure self-end text-body-lg text-graphite md:col-span-5">
-          No proposal leaves without technical sign-off, and no architecture or support commitment is made without
-          commercial sign-off. Each founder holds one documented veto inside their own area.
+          Every proposal requires technical feasibility sign-off from the CTO, and every architecture commitment
+          requires commercial sign-off from the CEO. Each founder holds an explicit veto within their domain.
         </p>
       </div>
       <div class="mt-16 grid gap-6 md:grid-cols-2">
@@ -86,7 +87,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
           ))
         }
       </div>
-      <p class="mono mt-10 text-graphite">[ Portraits and biographies are added once approved ]</p>
+      <p class="mono mt-10 text-graphite">[ LEADERSHIP ACCOUNTABILITY: FOUNDER-DIRECT ENGAGEMENT ON EVERY DIAGNOSTIC ]</p>
     </div>
   </section>
 
@@ -117,9 +118,9 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-5">
           <p class="mono text-signal">[ QUALIFICATION DISCIPLINE ]</p>
-          <h2 class="mt-3 text-h2 text-ink text-balance">Work we turn down.</h2>
+          <h2 class="mt-3 text-h2 text-ink text-balance">Engagements we decline.</h2>
           <p class="mt-6 text-body-lg text-graphite">
-            Saying no early is cheaper for both sides than a delivery model that quietly bends.
+            Clear qualification standards protect delivery quality and ensure mutual alignment before any contract is signed.
           </p>
         </div>
         <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
@@ -143,7 +144,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
         If this is how you want to work, tell us where things stand.
       </h2>
       <p class="mt-6 measure text-body-lg text-graphite">
-        No obligation. We reply with a recommended next step, which may be that we are not the right partner.
+        We evaluate your systems, operational constraints, and team goals, then provide an objective recommendation on whether the 15-day Technical Diagnostic is the right path.
       </p>
       <div class="mt-10">
         <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Discuss your situation</Button>

@@ -10,38 +10,38 @@ const proofLine = ["Build with your team", "Operate the system together", "Measu
 // sentence stays in the DOM as ordinary inline text for assistive technology.
 const taglineLines = [
   "Engineering capability you keep.",
-  "We build with your team, operate the system with you, and measure the path to independence.",
+  "We build with your team, operate the system with you, and measure progress toward your independence.",
 ].map((line) => line.split(" "));
 
 const dependencyCosts = [
-  { name: "Project shop", default: "Build, invoice, disappear", remains: "A system nobody internally can operate" },
-  { name: "Body shopping", default: "Add people by the day", remains: "Temporary capacity without retained capability" },
+  { name: "Project shop", default: "Build, invoice, disappear", remains: "A proprietary system with no accountable in-house operator" },
+  { name: "Body shopping", default: "Add people by the day", remains: "Temporary feature delivery without retained team capability" },
   {
     name: "AI wrapper without foundations",
     default: "Add AI to weak foundations",
-    remains: "A demo without trustworthy data, evaluation, or owner",
+    remains: "Brittle AI prototypes with no data lineage, evaluation, or production owner",
   },
   {
     name: "Handover as a ZIP file",
     default: "Sign off, archive repository, exit",
-    remains: "Vendor dependency disguised as delivery",
+    remains: "Permanent vendor dependency disguised as completed delivery",
   },
 ];
 
 const outcomes = [
   {
     name: "Capacity",
-    body: "Your team ships and operates more of the roadmap without waiting on us.",
+    body: "Your internal team independently ships production updates and manages releases without external agency bottlenecks.",
     cue: "Lead time, deployment frequency, onboarding to first PR",
   },
   {
     name: "Longevity",
-    body: "The system stays understandable as people, priorities, and vendors change.",
+    body: "Your systems remain operational and maintainable across staff transitions, tech migrations, and peak volume spikes.",
     cue: "Capability scorecard progress, recovery time, runbook execution",
   },
   {
     name: "Leverage",
-    body: "Sound data, a repeatable delivery path, and measured automation compound over time.",
+    body: "Shared data pipelines, documented service patterns, and tested automation compound technical speed over time.",
     cue: "Rework rate, change failure rate, platform reuse",
   },
 ];
@@ -75,21 +75,21 @@ const diagnosticGroups = [
 const principles = [
   {
     name: "Smallest appropriate architecture",
-    body: "Split services only when a measured boundary justifies the operational cost.",
+    body: "Split services only when measured throughput or organizational boundaries justify operational overhead.",
   },
   {
     name: "Operations are part of engineering",
-    body: "Reliability, cost, security, backups, and recovery belong in the product.",
+    body: "Reliability, cloud infrastructure spend, security patching, and recovery runbooks are core product deliverables.",
   },
   {
     name: "AI earns its place",
-    body: "Use it where it improves quality or speed; build it into products only when evidence and controls exist.",
+    body: "Deploy AI features only when data foundations, accuracy benchmarks, unit economics, and fallback controls are proven.",
   },
   {
     name: "Replaceable by design",
-    body: "Exportable data, documented interfaces, reproducible environments, and transferable operations.",
+    body: "Clean data schemas, portable container workloads, documented APIs, and reproducible infrastructure prevent vendor lock-in.",
   },
-  { name: "Measure claims", body: "Publish evidence, not activity or aspiration." },
+  { name: "Measure claims", body: "Track verified production metrics rather than activity logs or speculative estimates." },
 ];
 
 const maturityLadder = [
@@ -112,15 +112,15 @@ const metrics = [
 ];
 
 const goodFit = [
-  "Multi-location operations wanting owned tech.",
-  "A named client counterpart and an executive decision-maker.",
-  "An evidence-first approach before large builds.",
+  "Multi-location operators managing distributed POS, inventory, and order systems.",
+  "Companies with an executive sponsor and a designated technical counterpart.",
+  "Teams requiring a verified diagnostic and data baseline before large capital builds.",
 ];
 
 const notFit = [
-  "A single build with no shared operating responsibility.",
-  "A day rate comparison before requirements.",
-  "AI shipped before data and safeguards.",
+  "One-off project builds seeking handoff without operational capability transfer.",
+  "Procurement races comparing daily contractor rates before scoping requirements.",
+  "Rushed AI feature requests lacking clean data sources or operational safeguards.",
 ];
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
@@ -131,7 +131,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 ---
 
 <Layout
-  title="Engineering capacity you keep"
+  title="Engineering capability you keep"
   description="NewCo builds with your team, operates systems together, and systematically measures progress toward your complete engineering independence."
 >
   <!-- 1. Hero -->
@@ -141,9 +141,9 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         <p class="mono text-signal" data-hero-item>[ EMBEDDED ENGINEERING CAPABILITY PARTNER ]</p>
         <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight" data-hero-item>Build the technology your business can own.</h1>
         <p class="mt-8 measure text-body-lg text-graphite text-pretty" data-hero-item>
-          For executives running operations across many locations, where technology has outgrown the
-          people who can run it. We start with a paid Technical Diagnostic, then build with your team
-          and hand over what we build.
+          For executives running multi-location operations where fragmented systems outpace internal
+          engineering. We begin with a 15-day paid Technical Diagnostic, build the production platform
+          alongside your engineers, and transfer day-to-day operations to your team.
         </p>
         <div class="mt-10 flex flex-wrap gap-4" data-hero-item>
           <Button href="/contact" variant="primary" class={btn}>Discuss your situation</Button>
@@ -175,7 +175,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <!-- 2. Core thesis -->
   <section class="border-t border-line" aria-label="Tagline">
     <div class:list={[shell, "py-24 md:py-32"]}>
-      <p class="mono mb-8 text-graphite">[ CORE THESIS ]</p>
+      <p class="mono mb-8 text-graphite">[ OPERATING THESIS ]</p>
       <p class="max-w-[24ch] text-4xl font-semibold text-ink text-balance md:text-5xl lg:max-w-[680px] lg:text-6xl" data-tagline-reveal>
         {
           taglineLines.map((words, lineIndex) => (
@@ -200,9 +200,9 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         Most technology problems are operating-model problems.
       </h2>
       <p class="mt-6 measure text-body-lg text-graphite text-pretty">
-        Shipping software is not the same as retaining operational capability. You can hold working
-        software and still have no one who can defend its architecture, run its recovery, or extend it
-        without the vendor who wrote it.
+        Working software is not internal engineering capability. When an outside agency delivers a
+        release and departs, your business is left with code no internal engineer can explain,
+        maintain, or recover during an outage.
       </p>
 
       <div class="mt-12 hidden gap-x-6 border-b border-ink pb-4 md:grid md:grid-cols-12">
@@ -228,7 +228,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
   <!-- 4. Outcomes -->
   <section class:list={[shell, "py-24 md:py-32"]}>
-    <h2 class="max-w-[22ch] text-h2 text-ink text-balance">The deliverable is more than software.</h2>
+    <h2 class="max-w-[22ch] text-h2 text-ink text-balance">Three permanent engineering assets you keep.</h2>
     <div class="mt-12 grid gap-12 md:grid-cols-3 md:gap-8" data-reveal-group>
       {
         outcomes.map((outcome, i) => (
@@ -254,10 +254,11 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         </div>
         <div class="md:col-span-5">
           <p class="text-body-lg text-graphite text-pretty">
-            We diagnose, build with your team, then run the system together. Your team shadows the
-            pager, then shares it. Advisory support remains after the transfer.
+            We diagnose your current baseline, build the platform alongside your engineers, and share
+            production pager duty. Your team takes the primary operational lead before handover, backed
+            by ongoing advisory governance.
           </p>
-          <a href="/approach" class:list={["mt-4 inline-block", link]}>Read the full approach</a>
+          <a href="/approach" class:list={["mt-4 inline-block", link]}>See the 5-phase delivery model</a>
         </div>
       </div>
 
@@ -283,7 +284,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       <div class="grid gap-12 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-5">
           <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">[ TECHNICAL DIAGNOSTIC ]</p>
-          <h2 class="mt-5 text-h2 text-ink text-balance">Start with evidence, not a speculative estimate.</h2>
+          <h2 class="mt-5 text-h2 text-ink text-balance">Base your engineering roadmap on verified production evidence.</h2>
           <dl class="mt-8 grid grid-cols-1 divide-y divide-line border-y border-line">
             <div class="py-4">
               <dt class="mono text-graphite">Duration</dt>
@@ -295,7 +296,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
             </div>
           </dl>
           <p class="mt-8 border border-signal p-4 text-body-lg font-medium text-ink">
-            You own the diagnostic outputs and can take them to any vendor.
+            You own every diagnostic deliverable and can execute it in-house or take it to any vendor.
           </p>
         </div>
 
@@ -317,7 +318,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
           </div>
           <div class="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
             <Button href="/contact" variant="primary" class={btn}>Discuss your situation</Button>
-            <a href="/diagnostic" class={link}>Explore the Technical Diagnostic</a>
+            <a href="/diagnostic" class={link}>Explore the 15-day Technical Diagnostic</a>
           </div>
         </div>
       </div>
@@ -328,7 +329,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <section class="border-t border-line">
     <div class:list={[shell, "py-24 md:py-32"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <h2 class="text-h2 text-ink text-balance md:col-span-7">Opinionated about ownership. Pragmatic about technology.</h2>
+        <h2 class="text-h2 text-ink text-balance md:col-span-7">Opinionated engineering. Accountable operational ownership.</h2>
         <div class="md:col-span-5 md:self-end">
           <a href="/approach" class={link}>See the architecture in the approach</a>
         </div>
@@ -354,12 +355,13 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-7">
           <p class="mono text-signal">[ AI MATURITY ]</p>
-          <h2 class="mt-3 text-h2 text-ink text-balance">AI has to earn its place.</h2>
+          <h2 class="mt-3 text-h2 text-ink text-balance">A disciplined path to AI adoption.</h2>
         </div>
         <p class="measure text-body-lg text-graphite text-pretty md:col-span-5">
-          Not every engagement needs AI. Each rung has prerequisites: data, evaluation, an owner,
-          economics, failure handling, and a safe disable path. The diagnostic picks the lowest level
-          that creates measurable value and names what the next one requires.
+          AI creates value only on sound data foundations. Each maturity stage requires verified data
+          quality, defined operational decisions, regression evaluations, and fallback procedures
+          before deployment. The diagnostic identifies the lowest stage that drives measurable
+          business ROI.
         </p>
       </div>
 
@@ -380,10 +382,10 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <!-- 9. Operational evidence -->
   <section class:list={[shell, "py-24 md:py-32"]}>
     <p class="mono text-signal">[ OPERATIONAL EVIDENCE ]</p>
-    <h2 class="mt-3 max-w-[22ch] text-h2 text-ink text-balance">Evidence will replace promises.</h2>
+    <h2 class="mt-3 max-w-[22ch] text-h2 text-ink text-balance">Eight operational metrics we measure on every engagement.</h2>
     <p class="mt-6 measure text-body-lg text-graphite text-pretty">
-      We publish measured outcomes when the work gives us evidence to publish. These are the eight
-      operational metrics we baseline and track across engagements:
+      We verify engineering progress with quantitative operational data rather than subjective
+      status reports. These eight benchmarks define team capability from baseline to handover:
     </p>
 
     <ul class="mt-12 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
@@ -404,7 +406,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <!-- 10. Qualification -->
   <section class="border-t border-line">
     <div class:list={[shell, "py-24 md:py-32"]}>
-      <h2 class="max-w-[24ch] text-h2 text-ink text-balance">We work best when ownership is part of the brief.</h2>
+      <h2 class="max-w-[24ch] text-h2 text-ink text-balance">We partner with businesses committed to internal technology ownership.</h2>
 
       <div class="mt-12 grid gap-12 md:grid-cols-2 md:gap-8">
         <div>
@@ -440,11 +442,11 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <!-- 11. Final CTA -->
   <section class="border-t border-line bg-surface">
     <div class:list={[shell, "py-24 md:py-32"]}>
-      <h2 class="max-w-[18ch] text-h1 text-ink text-balance">Own the next stage of your technology.</h2>
+      <h2 class="max-w-[18ch] text-h1 text-ink text-balance">Own the technology your business runs on.</h2>
       <p class="mt-8 measure text-body-lg text-graphite text-pretty">
-        Tell us where your systems, data, delivery, or internal capability are holding the business
-        back. NewCo will tell you honestly whether a diagnostic is the right next step. No speculative
-        estimate, and no obligation to continue afterward.
+        Tell us where fragmented systems, vendor dependencies, or operational data silos are limiting
+        growth. We will evaluate your architecture and recommend whether a 15-day diagnostic is the
+        right investment.
       </p>
       <div class="mt-10">
         <Button href="/contact" variant="primary" class={btn}>Discuss your situation</Button>

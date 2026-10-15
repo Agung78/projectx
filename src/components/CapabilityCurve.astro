@@ -76,8 +76,8 @@ const descText =
 
           {phases.map((phase, i) => (
             <>
-              <circle cx={padX + stepX * i} cy={toY(phase.newco)} r="4" fill="var(--color-graphite)" />
-              <circle cx={padX + stepX * i} cy={toY(phase.client)} r="4" fill="var(--color-signal)" />
+              <circle cx={padX + stepX * i} cy={toY(phase.newco)} r="4" fill="var(--color-graphite)" data-curve-node />
+              <circle cx={padX + stepX * i} cy={toY(phase.client)} r="4" fill="var(--color-signal)" data-curve-node />
               <text
                 x={padX + stepX * i}
                 y={height - 20}

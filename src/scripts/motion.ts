@@ -8,8 +8,8 @@ gsap.registerPlugin(ScrollTrigger, CustomEase);
  * Curves are the CSS motion tokens, not GSAP's power* approximations, so JS
  * and CSS motion share one feel. Keep in sync with src/styles/global.css.
  *
- * The capability curve is the site's single orchestrated motion moment;
- * headings and sections render as authored, with no entrance effects.
+ * Motion follows WEBSITE-DESIGN-STANDARD §9.2: hero entrance, capability
+ * curve draw, evidence reveal, tagline reveal. Everything else renders as authored.
  */
 CustomEase.create("site-out", "0.23, 1, 0.32, 1");
 
@@ -17,13 +17,15 @@ const EASE_OUT = "site-out";
 
 const DURATION = {
   reveal: 0.6,
-  reducedFade: 0.25,
 } as const;
 
 const STAGGER = {
+  hero: 0.06,
   item: 0.08,
   word: 0.05,
 } as const;
+
+const REVEAL_OFFSET = 16;
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -31,47 +33,60 @@ function prefersReducedMotion() {
   return reduceMotionQuery.matches;
 }
 
-/** The capability transfer explains itself as it enters view: desktop lines
- * draw across the phases, while narrow-layout ownership bars fill left to right.
+/** Every GSAP tween and ScrollTrigger lives in this context, so one revert()
+ * kills them and restores inline styles before a swap or a motion-preference change.
+ */
+let ctx: gsap.Context | undefined;
+
+/** Step 1: hero items enter in reading order. The static HTML is already
+ * legible; gsap.from only sets the start state once JS runs.
+ */
+function initHeroEntrance() {
+  const items = gsap.utils.toArray<HTMLElement>("[data-hero-item]");
+  if (items.length === 0) return;
+  gsap.from(items, {
+    y: REVEAL_OFFSET,
+    autoAlpha: 0,
+    duration: DURATION.reveal,
+    ease: EASE_OUT,
+    stagger: STAGGER.hero,
+    clearProps: "transform,opacity,visibility",
+  });
+}
+
+/** Step 2: the capability transfer explains itself as it enters view: desktop
+ * lines draw across the phases and their nodes settle, while narrow-layout
+ * ownership bars fill left to right.
  */
 function initCapabilityCurve() {
   // A page may render more than one curve (hero and section), so every
   // instance is wired, not just the first match.
-  document.querySelectorAll<HTMLElement>("[data-capability-curve]").forEach((curve) => {
-    const paths = curve.querySelectorAll<SVGPathElement>("path[data-curve-line]");
-    const bars = curve.querySelectorAll<HTMLElement>("[data-ownership-bar]");
+  gsap.utils.toArray<HTMLElement>("[data-capability-curve]").forEach((curve) => {
+    const paths = gsap.utils.toArray<SVGPathElement>("path[data-curve-line]", curve);
+    const nodes = gsap.utils.toArray<SVGCircleElement>("[data-curve-node]", curve);
+    const bars = gsap.utils.toArray<HTMLElement>("[data-ownership-bar]", curve);
 
-    if (prefersReducedMotion()) {
-      paths.forEach((path) => {
-        path.style.removeProperty("stroke-dasharray");
-        path.style.removeProperty("stroke-dashoffset");
+    // The SVG is display:none below md, where getTotalLength is unreliable
+    // and the drawn line is never seen; leave it as authored.
+    const drawable = paths.filter((path) => path.getBoundingClientRect().width > 0);
+    if (drawable.length > 0) {
+      const tl = gsap.timeline({
+        defaults: { ease: "none" }, // scrubbed motion follows the scroll position, not a curve
+        scrollTrigger: { trigger: curve, start: "top 75%", end: "bottom 60%", scrub: 0.6 },
       });
-      if (bars.length > 0) {
-        gsap.from(bars, { opacity: 0, duration: DURATION.reducedFade, ease: EASE_OUT, stagger: 0.04 });
+      drawable.forEach((path) => {
+        const length = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: length });
+        tl.fromTo(path, { strokeDashoffset: length }, { strokeDashoffset: 0, duration: 1 }, 0);
+      });
+      if (nodes.length > 0) {
+        tl.from(
+          nodes,
+          { scale: 0, autoAlpha: 0, transformOrigin: "50% 50%", duration: 0.2, stagger: { amount: 0.6 } },
+          0.2,
+        );
       }
-      return;
     }
-
-    paths.forEach((path) => {
-      // The SVG is display:none below md, where getTotalLength is unreliable
-      // and the drawn line is never seen; leave it as authored.
-      if (path.getBoundingClientRect().width === 0) return;
-
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = `${length}`;
-      path.style.strokeDashoffset = `${length}`;
-
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        ease: "none", // scrubbed motion follows the scroll position, not a curve
-        scrollTrigger: {
-          trigger: curve,
-          start: "top 75%",
-          end: "bottom 60%",
-          scrub: 0.6,
-        },
-      });
-    });
 
     if (bars.length > 0) {
       gsap.from(bars, {
@@ -83,6 +98,21 @@ function initCapabilityCurve() {
         scrollTrigger: { trigger: curve, start: "top 80%", once: true },
       });
     }
+  });
+}
+
+/** Step 3: evidence rows reveal once, in DOM (reading) order. */
+function initEvidenceReveal() {
+  const items = gsap.utils.toArray<HTMLElement>("[data-evidence-item]");
+  if (items.length === 0) return;
+  gsap.from(items, {
+    y: REVEAL_OFFSET,
+    autoAlpha: 0,
+    duration: DURATION.reveal,
+    ease: EASE_OUT,
+    stagger: STAGGER.item,
+    clearProps: "transform,opacity,visibility",
+    scrollTrigger: { trigger: items[0].parentElement, start: "top 85%", once: true },
   });
 }
 
@@ -122,8 +152,22 @@ function initTaglineReveal() {
   words.forEach((word) => taglineObserver?.observe(word));
 }
 
+function teardown() {
+  taglineObserver?.disconnect();
+  ctx?.revert();
+  ctx = undefined;
+}
+
 function init() {
-  initCapabilityCurve();
+  teardown();
+  // Reduced motion: no tweens are created, so the authored final state stays.
+  if (!prefersReducedMotion()) {
+    ctx = gsap.context(() => {
+      initHeroEntrance();
+      initCapabilityCurve();
+      initEvidenceReveal();
+    });
+  }
   initTaglineReveal();
 }
 
@@ -131,13 +175,6 @@ function init() {
 // ClientRouter swap, so this is the only entry point init() needs.
 document.addEventListener("astro:page-load", init);
 
-reduceMotionQuery.addEventListener("change", () => {
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  gsap.set("[data-ownership-bar]", { clearProps: "opacity,transform,transformOrigin" });
-  init();
-});
+reduceMotionQuery.addEventListener("change", init);
 
-document.addEventListener("astro:before-swap", () => {
-  taglineObserver?.disconnect();
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-});
+document.addEventListener("astro:before-swap", teardown);

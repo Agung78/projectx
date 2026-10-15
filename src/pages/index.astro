@@ -138,14 +138,14 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <section class:list={[shell, "pt-16 pb-24 md:pt-20"]}>
     <div class="grid gap-12 md:grid-cols-12 md:gap-x-6">
       <div class="md:col-span-7">
-        <p class="mono text-signal">[ EMBEDDED ENGINEERING CAPABILITY PARTNER ]</p>
-        <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight">Build the technology your business can own.</h1>
-        <p class="mt-8 measure text-body-lg text-graphite text-pretty">
+        <p class="mono text-signal" data-hero-item>[ EMBEDDED ENGINEERING CAPABILITY PARTNER ]</p>
+        <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight" data-hero-item>Build the technology your business can own.</h1>
+        <p class="mt-8 measure text-body-lg text-graphite text-pretty" data-hero-item>
           For executives running operations across many locations, where technology has outgrown the
           people who can run it. We start with a paid Technical Diagnostic, then build with your team
           and hand over what we build.
         </p>
-        <div class="mt-10 flex flex-wrap gap-4">
+        <div class="mt-10 flex flex-wrap gap-4" data-hero-item>
           <Button href="/contact" variant="primary" class={btn}>Discuss your situation</Button>
           <Button href="#capability-curve" variant="secondary" class={btn}>See the capability transfer</Button>
         </div>
@@ -154,7 +154,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         </ul>
       </div>
 
-      <div class="md:col-span-5 md:col-start-8">
+      <div class="md:col-span-5 md:col-start-8" data-hero-item>
         <div class="border border-ink bg-surface">
           <div class="mono flex items-center justify-between border-b border-line px-4 py-3 text-graphite">
             <span>[ PHASE TELEMETRY ]</span>
@@ -389,7 +389,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     <ul class="mt-12 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
       {
         metrics.map((metric, i) => (
-          <li class="flex min-h-36 flex-col justify-between gap-6 bg-surface p-5">
+          <li class="flex min-h-36 flex-col justify-between gap-6 bg-surface p-5" data-evidence-item>
             <div class="flex items-center justify-between">
               <span class="mono text-graphite">M-{pad(i)}</span>
               <span class="mono text-signal">[ {metric.category} ]</span>

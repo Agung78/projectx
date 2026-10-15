@@ -12,6 +12,28 @@ interface Props {
 const { title, description } = Astro.props;
 const pageTitle = `${title} | NewCo`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL("/og-image.png", Astro.site);
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": new URL("/#organization", Astro.site).href,
+      name: "NewCo",
+      url: new URL("/", Astro.site).href,
+      logo: new URL("/favicon.svg", Astro.site).href,
+      description:
+        "NewCo builds with your team, operates systems together, and measures progress toward your engineering independence.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": new URL("/#website", Astro.site).href,
+      url: new URL("/", Astro.site).href,
+      name: "NewCo",
+      publisher: { "@id": new URL("/#organization", Astro.site).href },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -28,10 +50,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <script>
       import "../scripts/motion.ts";

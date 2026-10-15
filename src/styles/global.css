@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource-variable/schibsted-grotesk";
+@import "lenis/dist/lenis.css";
 
 @theme {
   /* Colour system — Section 4 */
@@ -208,6 +209,16 @@
     line-height: var(--text-label--line-height);
     font-weight: var(--text-label--font-weight);
     letter-spacing: var(--text-label--letter-spacing);
+  }
+
+  /* Mono utility marker: bracketed metadata, indices, and frame headers. */
+  .mono {
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .measure {

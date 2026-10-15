@@ -12,6 +12,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
+  transition:persist
   class="sticky top-0 z-50 bg-canvas/95 backdrop-blur-[2px] transition-[background-color,border-color] duration-200 data-[stuck=true]:border-b data-[stuck=true]:border-line"
   data-site-header
 >
@@ -73,68 +74,98 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  // ClientRouter swaps the header DOM on every navigation, while this module
-  // runs once. Re-bind on astro:page-load (fires on initial load + each swap).
+  // The header persists across ClientRouter navigations (transition:persist),
+  // so listeners bind once; only route-dependent state refreshes on each
+  // astro:page-load (fires on initial load + after each swap).
+  const normalize = (path: string) => (path.length > 1 ? path.replace(/\/+$/, "") : path);
+
+  let observer: IntersectionObserver | undefined;
+
+  function syncActiveLinks(header: HTMLElement) {
+    const current = normalize(window.location.pathname);
+    header.querySelectorAll<HTMLAnchorElement>("nav a[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href && normalize(href) === current) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+  }
+
+  function bindHeader(header: HTMLElement) {
+    const toggle = header.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+    const nav = header.querySelector<HTMLElement>("[data-mobile-nav]");
+    if (!toggle || !nav) return;
+
+    let hideTimer: number | undefined;
+
+    const closeMenu = () => {
+      nav.dataset.open = "false";
+      toggle.setAttribute("aria-expanded", "false");
+      // Timer rather than transitionend: several properties fire, and under
+      // reduced motion the transform/clip-path ones never fire at all.
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(() => {
+        if (nav.dataset.open === "false") nav.hidden = true;
+      }, 300);
+    };
+
+    const openMenu = () => {
+      window.clearTimeout(hideTimer);
+      nav.hidden = false;
+      // Force a style flush so the closed state is committed before the
+      // open state lands; otherwise the enter transition can be skipped.
+      void nav.offsetHeight;
+      nav.dataset.open = "true";
+      toggle.setAttribute("aria-expanded", "true");
+      nav.querySelector<HTMLElement>("a")?.focus();
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    nav.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+
+    nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+
+    // Navigation completed: make sure the persisted menu is collapsed.
+    document.addEventListener("astro:before-swap", () => {
+      if (toggle.getAttribute("aria-expanded") === "true") closeMenu();
+    });
+  }
+
   function initHeader() {
-    const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
-    const nav = document.querySelector<HTMLElement>("[data-mobile-nav]");
     const header = document.querySelector<HTMLElement>("[data-site-header]");
+    if (!header) return;
 
-    if (toggle && nav) {
-      let hideTimer: number | undefined;
-
-      const closeMenu = () => {
-        nav.dataset.open = "false";
-        toggle.setAttribute("aria-expanded", "false");
-        // Timer rather than transitionend: several properties fire, and under
-        // reduced motion the transform/clip-path ones never fire at all.
-        window.clearTimeout(hideTimer);
-        hideTimer = window.setTimeout(() => {
-          if (nav.dataset.open === "false") nav.hidden = true;
-        }, 300);
-      };
-
-      const openMenu = () => {
-        window.clearTimeout(hideTimer);
-        nav.hidden = false;
-        // Force a style flush so the closed state is committed before the
-        // open state lands; otherwise the enter transition can be skipped.
-        void nav.offsetHeight;
-        nav.dataset.open = "true";
-        toggle.setAttribute("aria-expanded", "true");
-        nav.querySelector<HTMLElement>("a")?.focus();
-      };
-
-      toggle.addEventListener("click", () => {
-        const isOpen = toggle.getAttribute("aria-expanded") === "true";
-        isOpen ? closeMenu() : openMenu();
-      });
-
-      nav.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeMenu();
-          toggle.focus();
-        }
-      });
-
-      nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    if (header.dataset.bound !== "true") {
+      header.dataset.bound = "true";
+      bindHeader(header);
     }
 
-    if (header) {
-      // IntersectionObserver over a zero-height sentinel: no per-frame scroll work.
-      // The sentinel lives in <body>, which is replaced on each swap.
-      const sentinel = document.createElement("div");
-      sentinel.setAttribute("aria-hidden", "true");
-      sentinel.style.cssText = "position:absolute;top:0;left:0;height:4px;width:1px;pointer-events:none;";
-      document.body.prepend(sentinel);
+    syncActiveLinks(header);
 
-      new IntersectionObserver(
-        ([entry]) => {
-          header.dataset.stuck = String(!entry.isIntersecting);
-        },
-        { threshold: 0 },
-      ).observe(sentinel);
-    }
+    // IntersectionObserver over a zero-height sentinel: no per-frame scroll work.
+    // The sentinel lives in <body>, which is replaced on each swap, so the
+    // observer is re-created against the fresh sentinel.
+    observer?.disconnect();
+    const sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = "position:absolute;top:0;left:0;height:4px;width:1px;pointer-events:none;";
+    document.body.prepend(sentinel);
+
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        header.dataset.stuck = String(!entry.isIntersecting);
+      },
+      { threshold: 0 },
+    );
+    observer.observe(sentinel);
   }
 
   document.addEventListener("astro:page-load", initHeader);

@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomEase } from "gsap/CustomEase";
+import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
@@ -151,18 +152,164 @@ function initTaglineReveal() {
   });
 }
 
+interface PhaseTelemetry {
+  label: string;
+  client: number;
+  pager: number;
+  milestone: string;
+}
+
+/** Step 5: the capability curve becomes a readout. Hovering, focusing or
+ * clicking a phase tweens the telemetry meters and numbers to that phase;
+ * leaving returns to the clicked phase. The static markup has the panel
+ * hidden and the triggers disabled, so this only enhances. Returns cleanup.
+ */
+function initPhaseTelemetry(): () => void {
+  const cleanups: Array<() => void> = [];
+
+  gsap.utils.toArray<HTMLElement>("[data-capability-curve]").forEach((curve) => {
+    const panel = curve.querySelector<HTMLElement>("[data-telemetry]");
+    const liveRegion = curve.querySelector<HTMLElement>("[data-telemetry-live]");
+    if (!panel || !liveRegion || !curve.dataset.phases) return;
+    const live = liveRegion;
+
+    const phases: PhaseTelemetry[] = JSON.parse(curve.dataset.phases);
+    const targets = gsap.utils.toArray<HTMLElement | SVGElement>("[data-phase-index]", curve);
+    const triggers = gsap.utils.toArray<HTMLButtonElement>("[data-phase-trigger]", curve);
+    const markers = gsap.utils.toArray<SVGGElement>("[data-phase-marker]", curve);
+    const readout = (name: string) => panel.querySelector<HTMLElement>(`[data-readout="${name}"]`)!;
+    const meter = (name: string) => panel.querySelector<HTMLElement>(`[data-meter="${name}"]`)!;
+    const indexOf = (el: Element) => Number(el.closest("[data-phase-index]")?.getAttribute("data-phase-index"));
+
+    const values = { client: 0, pager: 0 };
+    const abort = new AbortController();
+    const { signal } = abort;
+    let selected = 0;
+    let shown = -1;
+
+    function show(i: number) {
+      if (i === shown || !phases[i]) return;
+      const first = shown < 0;
+      shown = i;
+      const phase = phases[i];
+      const duration = first ? 0 : 0.45;
+
+      readout("index").textContent = String(i + 1).padStart(2, "0");
+      readout("label").textContent = phase.label;
+      readout("milestone").textContent = phase.milestone;
+
+      gsap.to(values, {
+        client: phase.client,
+        pager: phase.pager,
+        duration,
+        ease: EASE_OUT,
+        overwrite: true,
+        onUpdate: () => {
+          readout("client").textContent = `${Math.round(values.client)}%`;
+          readout("pager").textContent = `${Math.round(values.pager)}%`;
+        },
+      });
+      gsap.to(meter("client"), { scaleX: phase.client / 100, duration, ease: EASE_OUT, overwrite: true });
+      gsap.to(meter("pager"), { scaleX: phase.pager / 100, duration, ease: EASE_OUT, overwrite: true });
+      gsap.to(markers, {
+        opacity: (idx: number) => (idx === i ? 1 : 0),
+        duration: first ? 0 : 0.2,
+        ease: EASE_OUT,
+        overwrite: true,
+      });
+
+      targets.forEach((el) => {
+        el.setAttribute("data-active", String(indexOf(el) === i));
+      });
+    }
+
+    function select(i: number) {
+      selected = i;
+      triggers.forEach((button) => button.setAttribute("aria-pressed", String(indexOf(button) === i)));
+      show(i);
+      const phase = phases[i];
+      live.textContent = `${phase.label}: client ownership ${phase.client} percent, NewCo pager share ${phase.pager} percent. ${phase.milestone}.`;
+    }
+
+    targets.forEach((el) => {
+      const i = indexOf(el);
+      el.addEventListener("pointerenter", () => show(i), { signal });
+      el.addEventListener("focusin", () => show(i), { signal });
+      el.addEventListener("click", () => select(i), { signal });
+    });
+    curve.addEventListener("pointerleave", () => show(selected), { signal });
+    curve.addEventListener(
+      "focusout",
+      (event) => {
+        if (!curve.contains(event.relatedTarget as Node | null)) show(selected);
+      },
+      { signal },
+    );
+
+    curve.dataset.interactive = "true";
+    panel.hidden = false;
+    triggers.forEach((button) => {
+      button.disabled = false;
+    });
+    select(0);
+    live.textContent = "";
+
+    cleanups.push(() => {
+      abort.abort();
+      delete curve.dataset.interactive;
+      panel.hidden = true;
+      live.textContent = "";
+      targets.forEach((el) => el.removeAttribute("data-active"));
+      triggers.forEach((button) => {
+        button.disabled = true;
+        button.setAttribute("aria-pressed", "false");
+      });
+    });
+  });
+
+  return () => cleanups.forEach((fn) => fn());
+}
+
+let lenis: Lenis | undefined;
+let lenisTick: ((time: number) => void) | undefined;
+let cleanupTelemetry: (() => void) | undefined;
+
+/** Lenis owns the scroll position, so ScrollTrigger is told about every
+ * scroll event and Lenis is advanced from GSAP's ticker (one RAF loop).
+ */
+function initLenis() {
+  lenis = new Lenis();
+  lenis.on("scroll", ScrollTrigger.update);
+  lenisTick = (time) => lenis?.raf(time * 1000);
+  gsap.ticker.add(lenisTick);
+  gsap.ticker.lagSmoothing(0);
+}
+
+function destroyLenis() {
+  if (lenisTick) gsap.ticker.remove(lenisTick);
+  lenisTick = undefined;
+  lenis?.destroy();
+  lenis = undefined;
+  gsap.ticker.lagSmoothing(500, 33); // GSAP defaults
+}
+
 function teardown() {
+  cleanupTelemetry?.();
+  cleanupTelemetry = undefined;
   ctx?.revert();
   ctx = undefined;
+  destroyLenis();
 }
 
 function init() {
   teardown();
-  // Reduced motion: no tweens are created, so the authored final state stays.
+  // Reduced motion: no smooth scroll and no tweens, so the authored final state stays.
   if (!prefersReducedMotion()) {
+    initLenis();
     ctx = gsap.context(() => {
       initHeroEntrance();
       initCapabilityCurve();
+      cleanupTelemetry = initPhaseTelemetry();
       initRevealGroups();
       initTaglineReveal();
     });

@@ -22,6 +22,7 @@ const DURATION = {
 
 const STAGGER = {
   item: 0.08,
+  word: 0.05,
 } as const;
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -85,8 +86,45 @@ function initCapabilityCurve() {
   });
 }
 
+let taglineObserver: IntersectionObserver | undefined;
+
+/**
+ * Tagline words move from muted to full ink one at a time as they cross a
+ * trigger line near the lower third of the viewport. IntersectionObserver
+ * keeps this off the scroll event; reduced motion and no-JS leave the
+ * authored final state untouched.
+ */
+function initTaglineReveal() {
+  taglineObserver?.disconnect();
+  const block = document.querySelector<HTMLElement>("[data-tagline-reveal]");
+  if (!block || prefersReducedMotion()) {
+    block?.removeAttribute("data-reveal-ready");
+    return;
+  }
+
+  const words = Array.from(block.querySelectorAll<HTMLElement>("[data-tagline-word]"));
+  block.setAttribute("data-reveal-ready", "true");
+
+  taglineObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => words.indexOf(a.target as HTMLElement) - words.indexOf(b.target as HTMLElement))
+        .forEach((entry, i) => {
+          const word = entry.target as HTMLElement;
+          word.style.transitionDelay = `${i * STAGGER.word}s`;
+          word.setAttribute("data-active", "true");
+          observer.unobserve(word);
+        });
+    },
+    { rootMargin: "0px 0px -35% 0px" },
+  );
+  words.forEach((word) => taglineObserver?.observe(word));
+}
+
 function init() {
   initCapabilityCurve();
+  initTaglineReveal();
 }
 
 // astro:page-load fires once on the initial load and again after every
@@ -100,5 +138,6 @@ reduceMotionQuery.addEventListener("change", () => {
 });
 
 document.addEventListener("astro:before-swap", () => {
+  taglineObserver?.disconnect();
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 });

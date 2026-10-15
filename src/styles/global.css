@@ -292,6 +292,16 @@
     clip-path: inset(0 0 0 0);
   }
 
+  /* Muted only once the script has armed the block, so no-JS keeps full ink. */
+  [data-reveal-ready="true"] [data-tagline-word] {
+    opacity: 0.3;
+    transition: opacity var(--duration-page) var(--ease-out);
+  }
+
+  [data-reveal-ready="true"] [data-tagline-word][data-active="true"] {
+    opacity: 1;
+  }
+
   [data-form-status] {
     opacity: 0;
     transform: translateY(4px);

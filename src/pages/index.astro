@@ -2,8 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import CapabilityCurve from "../components/CapabilityCurve.astro";
-import CapabilityScorecard from "../components/CapabilityScorecard.astro";
 import { Icon } from "astro-icon/components";
+
+const proofLine = ["Build with your team", "Operate the system together", "Measure the path to independence"];
+
+// Two lines, split into words so each can reveal in reading order. The full
+// sentence stays in the DOM as ordinary inline text for assistive technology.
+const taglineLines = [
+  "Engineering capability you keep.",
+  "We build with your team, operate the system with you, and measure the path to independence.",
+].map((line) => line.split(" "));
 
 const dependencyCosts = [
   {
@@ -28,14 +36,17 @@ const outcomes = [
   {
     name: "Capacity",
     body: "Your team ships and operates more of the roadmap without waiting on us.",
+    cue: "Lead time, deployment frequency, and onboarding to first pull request",
   },
   {
     name: "Longevity",
     body: "The system stays understandable as people, priorities, and vendors change.",
+    cue: "Capability scorecard progress and recovery time",
   },
   {
     name: "Leverage",
     body: "Sound data, a repeatable delivery path, and measured automation compound over time.",
+    cue: "Rework, change failure rate, and platform reuse",
   },
 ];
 
@@ -44,20 +55,20 @@ const diagnosticGroups = [
     title: "Where you are",
     items: [
       "Architecture and dependency map",
-      "Data-flow and data-readiness assessment",
+      "Data flow and data readiness assessment",
       "Delivery and capability baseline",
     ],
   },
   {
     title: "What could go wrong",
-    items: ["Security and operational risk register", "AI-readiness scorecard", "Build-versus-buy recommendations"],
+    items: ["Security and operational risk register", "AI readiness scorecard", "Build or buy recommendations"],
   },
   {
     title: "What to do next",
     items: [
-      "Prioritised 90-day backlog",
-      "Twelve-month roadmap and run-cost estimate",
-      "Capability-transfer plan",
+      "Prioritised backlog for the first 90 days",
+      "Twelve month roadmap and run cost estimate",
+      "Capability transfer plan",
     ],
   },
 ];
@@ -71,13 +82,13 @@ const maturityLadder = [
 ];
 
 const goodFit = [
-  "You run a complex, multi-location operation and want technology you own.",
+  "You run an operation across many locations and want technology you own.",
   "You can name a person to work alongside our engineers and an executive who can decide.",
   "You want evidence before committing to a major build, migration, or AI initiative.",
 ];
 
 const notFit = [
-  "You want a one-off build with no shared operating responsibility.",
+  "You want a single build with no shared operating responsibility.",
   "You are comparing day rates before deciding what the system needs.",
   "You want AI shipped before the data, ownership, and safeguards it depends on.",
 ];
@@ -90,23 +101,47 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
   description="NewCo builds with your team, operates the system with you, and measures progress toward your independence."
 >
   <!-- Hero -->
-  <section class:list={[shell, "pt-16 pb-24 md:pt-20 md:pb-24"]}>
+  <section class:list={[shell, "pt-16 pb-24 md:pt-20"]}>
     <div class="grid gap-12 md:grid-cols-12 md:gap-x-6">
       <div class="md:col-span-7">
-        <h1 class="text-[clamp(2.75rem,9vw,6.5rem)] leading-[1.02] font-extrabold text-ink text-balance tracking-[-0.03em]">Engineering capacity you keep.</h1>
-        <p class="mt-8 measure text-body-lg text-graphite">
-          We build with your team, operate the system with you, and measure progress toward your
-          independence. Built for operators whose technology has outgrown the people who can run it.
+        <p class="label tracking-widest text-signal">EMBEDDED ENGINEERING CAPABILITY PARTNER</p>
+        <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight">Build the technology your business can own.</h1>
+        <p class="mt-8 measure text-body-lg text-graphite text-pretty">
+          For executives running operations across many locations, where technology has outgrown the
+          people who can run it. We start with a paid Technical Diagnostic, then build with your team
+          and hand over what we build.
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
           <Button href="/contact" variant="primary">Discuss your situation</Button>
-          <Button href="#capability-curve" variant="secondary">See the engagement model</Button>
+          <Button href="#capability-curve" variant="secondary">See how the capability transfer works</Button>
         </div>
       </div>
 
       <div class="md:col-span-5 md:col-start-8">
+        <ul class="label mb-6 flex flex-col gap-2 border-b border-line pb-4 text-ink" aria-label="How we work">
+          {proofLine.map((item) => <li>{item}</li>)}
+        </ul>
         <CapabilityCurve compact />
       </div>
+    </div>
+  </section>
+
+  <!-- Tagline reveal -->
+  <section class="border-t border-line" aria-label="Tagline">
+    <div class:list={[shell, "py-24 md:py-32"]}>
+      <p class="max-w-[24ch] text-4xl font-semibold text-ink text-balance md:text-5xl lg:max-w-[680px] lg:text-6xl" data-tagline-reveal>
+        {
+          taglineLines.map((words, lineIndex) => (
+            <span class:list={["block", lineIndex > 0 && "mt-8 text-2xl font-medium text-graphite md:text-3xl"]}>
+              {words.map((word) => (
+                <>
+                  <span data-tagline-word>{word}</span>{" "}
+                </>
+              ))}
+            </span>
+          ))
+        }
+      </p>
     </div>
   </section>
 
@@ -114,20 +149,20 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
   <section class="border-t border-line bg-surface">
     <div class:list={[shell, "py-16 md:py-24"]}>
       <h2 class="max-w-[24ch] text-h2 text-ink text-balance">
-        Most technology problems are operating-model problems.
+        Most technology problems are operating model problems.
       </h2>
-      <p class="mt-6 measure text-body-lg text-graphite">
+      <p class="mt-6 measure text-body-lg text-graphite text-pretty">
         A release is not the same as capability. You can hold working software and still have no one
         who can defend its architecture, run its recovery, or extend it without the vendor who wrote
         it.
       </p>
 
-      <div class="mt-16 hidden gap-x-6 border-b border-line pb-4 md:grid md:grid-cols-12">
+      <div class="mt-12 hidden gap-x-6 border-b border-line pb-4 md:grid md:grid-cols-12">
         <p class="label text-graphite md:col-span-6">The usual arrangement</p>
         <p class="label text-signal md:col-span-6">What you are left with</p>
       </div>
 
-      <dl class="flex flex-col divide-y divide-line border-y border-line md:border-t-0 max-md:mt-16">
+      <dl class="flex flex-col divide-y divide-line border-y border-line md:border-t-0 max-md:mt-12">
         {
           dependencyCosts.map((row) => (
             <div class="grid gap-x-6 gap-y-2 py-6 md:grid-cols-12">
@@ -140,132 +175,133 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
     </div>
   </section>
 
-  <!-- Engagement model -->
-  <section id="capability-curve" class:list={[shell, "scroll-mt-24 py-24 md:py-32"]}>
-    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-      <h2 class="text-h2 text-ink text-balance md:col-span-7">
-        A route from external support to internal ownership.
-      </h2>
-      <div class="md:col-span-5">
-        <p class="text-body-lg text-graphite">
-          We diagnose, build with your team, then run the system together. Your team shadows the
-          pager, then shares it. Advisory support remains after the transfer.
-        </p>
-        <a href="/approach" class="mt-4 inline-block text-body font-medium text-signal underline underline-offset-4 hover:text-signal-dark">
-          Read the full approach
-        </a>
-      </div>
-    </div>
-
-    <div class="mt-16">
-      <CapabilityCurve />
-    </div>
-  </section>
-
-  <!-- Capability-transfer scorecard: the signature element -->
-  <section class="border-t border-line bg-ink text-canvas">
-    <div class:list={[shell, "py-24 md:py-32"]}>
-      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <h2 class="text-h1 text-canvas text-balance md:col-span-7">Handover is proven, not declared.</h2>
-        <p class="measure text-body-lg text-canvas/80 md:col-span-5 md:self-end">
-          Your named counterpart is assessed against the same eight capabilities at four checkpoints.
-          Handover is complete when they perform each one independently, not when a training session
-          ends.
-        </p>
-      </div>
-
-      <div class="mt-16">
-        <CapabilityScorecard tone="dark" />
-      </div>
-
-      <p class="mt-10 measure text-body text-canvas/70">
-        We have no client case studies to publish yet. Alongside the scorecard we baseline lead time,
-        deployment frequency, change-failure rate, recovery time, rework, and onboarding-to-first-PR,
-        and report against them as the work runs.
-      </p>
-    </div>
-  </section>
-
   <!-- Outcomes -->
   <section class:list={[shell, "py-24 md:py-32"]}>
     <h2 class="max-w-[22ch] text-h2 text-ink text-balance">The deliverable is more than software.</h2>
-    <div class="mt-16 grid gap-12 md:grid-cols-3 md:gap-8">
+    <div class="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">
       {
         outcomes.map((outcome) => (
           <div class="border-t-2 border-ink pt-6">
             <h3 class="text-h3 text-ink">{outcome.name}</h3>
-            <p class="mt-3 text-body-lg text-graphite">{outcome.body}</p>
+            <p class="mt-3 text-body-lg text-graphite text-pretty">{outcome.body}</p>
+            <p class="mt-6 label text-graphite">Evidence we baseline</p>
+            <p class="mt-1 text-body text-ink">{outcome.cue}</p>
           </div>
         ))
       }
     </div>
+    <p class="mt-12 measure text-body text-graphite text-pretty">
+      We have no client case studies to publish yet. We publish measured outcomes when the work gives
+      us evidence to publish.
+    </p>
   </section>
 
-  <!-- Technical Diagnostic -->
-  <section class="border-t border-line bg-surface">
+  <!-- Engagement model: signature visual -->
+  <section id="capability-curve" class="scroll-mt-24 border-t border-line bg-surface">
     <div class:list={[shell, "py-24 md:py-32"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <h2 class="text-h2 text-ink text-balance md:col-span-7">
-          Start with evidence, not a speculative estimate.
+          A route from external support to internal ownership.
         </h2>
-        <p class="measure text-body-lg text-graphite md:col-span-5">
-          A fixed-fee Technical Diagnostic in 15 business days. You own the output and can take it to
-          any vendor.
-        </p>
-      </div>
-
-      <div class="mt-16 grid gap-12 md:grid-cols-3 md:gap-8">
-        {
-          diagnosticGroups.map((group) => (
-            <div>
-              <h3 class="border-b border-line pb-4 text-h3 text-ink">{group.title}</h3>
-              <ul class="mt-4 flex flex-col gap-3">
-                {group.items.map((item) => (
-                  <li class="text-body-lg text-graphite">{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+        <div class="md:col-span-5">
+          <p class="text-body-lg text-graphite text-pretty">
+            We diagnose, build with your team, then run the system together. Your team shadows the
+            pager, then shares it. Advisory support remains after the transfer.
+          </p>
+          <a href="/approach" class="mt-4 inline-block text-body font-medium text-signal underline underline-offset-4 hover:text-signal-dark">
+            Read the full approach
+          </a>
+        </div>
       </div>
 
       <div class="mt-12">
-        <Button href="/diagnostic" variant="secondary">What the diagnostic covers</Button>
+        <CapabilityCurve />
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Diagnostic -->
+  <section id="diagnostic" class:list={[shell, "scroll-mt-24 py-24 md:py-32"]}>
+    <div class="border border-ink bg-surface p-6 md:p-12">
+      <div class="grid gap-12 md:grid-cols-12 md:gap-x-6">
+        <div class="md:col-span-5">
+          <p class="label text-signal">Technical Diagnostic</p>
+          <h2 class="mt-3 text-h2 text-ink text-balance">Start with evidence, not a speculative estimate.</h2>
+          <dl class="mt-8 flex flex-col gap-6">
+            <div>
+              <dt class="label text-graphite">Duration</dt>
+              <dd class="text-metric text-ink">15 business days</dd>
+            </div>
+            <div>
+              <dt class="label text-graphite">Commercial form</dt>
+              <dd class="text-h3 text-ink">Fixed fee, standalone product</dd>
+            </div>
+          </dl>
+          <p class="mt-8 border border-signal p-4 text-body-lg font-medium text-ink">
+            You own the output and can take it to any vendor.
+          </p>
+        </div>
+
+        <div class="md:col-span-7">
+          <div class="grid gap-8 md:grid-cols-3 md:gap-6">
+            {
+              diagnosticGroups.map((group) => (
+                <div>
+                  <h3 class="border-b border-line pb-3 text-body-lg font-semibold text-ink">{group.title}</h3>
+                  <ul class="mt-4 flex flex-col gap-3">
+                    {group.items.map((item) => (
+                      <li class="text-body text-graphite">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+          <div class="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <Button href="/contact" variant="primary">Discuss your situation</Button>
+            <a href="/diagnostic" class="text-body font-medium text-signal underline underline-offset-4 hover:text-signal-dark">
+              See what the diagnostic covers
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- AI -->
-  <section class:list={[shell, "py-24 md:py-32"]}>
-    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-      <h2 class="text-h2 text-ink text-balance md:col-span-7">AI has to earn its place.</h2>
-      <p class="measure text-body-lg text-graphite md:col-span-5">
-        Not every engagement needs AI. The diagnostic picks the lowest level that creates measurable
-        value and names what the next one requires. Every AI feature ships with an owner, an evaluation
-        suite, a cost budget, and a safe way to switch it off.
-      </p>
-    </div>
+  <section class="border-t border-line bg-surface">
+    <div class:list={[shell, "py-24 md:py-32"]}>
+      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
+        <h2 class="text-h2 text-ink text-balance md:col-span-7">AI has to earn its place.</h2>
+        <p class="measure text-body-lg text-graphite text-pretty md:col-span-5">
+          Not every engagement needs AI. The diagnostic picks the lowest level that creates measurable
+          value and names what the next one requires. Every AI feature ships with an owner, an
+          evaluation suite, a cost budget, and a safe way to switch it off.
+        </p>
+      </div>
 
-    <dl class="mt-16 grid border-t border-line md:grid-cols-5">
-      {
-        maturityLadder.map((rung) => (
-          <div class="flex flex-col gap-2 border-b border-line py-6 md:border-b-0 md:border-l md:px-5 md:first:border-l-0 md:first:pl-0">
-            <dt class="text-body-lg font-semibold text-ink">{rung.stage}</dt>
-            <dd class="text-body text-graphite">{rung.needs}</dd>
-          </div>
-        ))
-      }
-    </dl>
+      <ol class="mt-12 grid border-t border-line md:grid-cols-5">
+        {
+          maturityLadder.map((rung, i) => (
+            <li class="flex flex-col gap-2 border-b border-line py-6 md:border-b-0 md:border-l md:px-5 md:first:border-l-0 md:first:pl-0">
+              <span class="label text-graphite">{String(i + 1).padStart(2, "0")}</span>
+              <p class="text-body-lg font-semibold text-ink">{rung.stage}</p>
+              <p class="text-body text-graphite">{rung.needs}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
   </section>
 
   <!-- Fit -->
-  <section class="border-t border-line bg-surface">
+  <section>
     <div class:list={[shell, "py-24 md:py-32"]}>
       <h2 class="max-w-[24ch] text-h2 text-ink text-balance">
         We work best when ownership is part of the brief.
       </h2>
 
-      <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-8">
+      <div class="mt-12 grid gap-12 md:grid-cols-2 md:gap-8">
         <div>
           <h3 class="border-b border-line pb-4 text-h3 text-success">Good fit</h3>
           <ul class="mt-6 flex flex-col gap-4">
@@ -297,10 +333,10 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
   </section>
 
   <!-- Final CTA -->
-  <section class="border-t border-line">
+  <section class="border-t border-line bg-surface">
     <div class:list={[shell, "py-24 md:py-32"]}>
       <h2 class="max-w-[18ch] text-h1 text-ink text-balance">Own the next stage of your technology.</h2>
-      <p class="mt-8 measure text-body-lg text-graphite">
+      <p class="mt-8 measure text-body-lg text-graphite text-pretty">
         Tell us where your systems, data, delivery, or internal capability are holding the business
         back. We will tell you honestly whether a diagnostic is the right next step. No speculative
         estimate, and no obligation to continue afterwards.

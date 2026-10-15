@@ -15,6 +15,7 @@ const founderRoles = [
     badge: "[ CHIEF TECHNOLOGY OFFICER ]",
     promise: "How it is built and whether we can promise it.",
     owns: "Technical strategy, architecture, delivery engineering, hiring and mentoring, platform IP, and security and technical risk.",
+    image: "/images/cto.webp",
   },
 ];
 
@@ -74,9 +75,20 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
       <div class="mt-16 grid gap-6 md:grid-cols-2">
         {
           founderRoles.map((founder) => (
-            <div class="border border-ink bg-canvas">
+            <div class="flex h-full flex-col border border-ink bg-canvas">
               <div class="mono border-b border-line px-5 py-3 text-signal">{founder.badge}</div>
-              <div class="p-5 md:p-6">
+              {founder.image && (
+                <img
+                  src={founder.image}
+                  alt={founder.role}
+                  width="1200"
+                  height="1799"
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-[4/5] w-full border-b border-line object-cover object-top"
+                />
+              )}
+              <div class="flex-1 p-5 md:p-6">
                 <h3 class="text-h3 text-ink">{founder.role}</h3>
                 <p class="mono mt-5 text-graphite">[ PROMISE ]</p>
                 <p class="mt-1 text-body-lg font-medium text-ink">{founder.promise}</p>

@@ -21,11 +21,12 @@ const DURATION = {
 
 const STAGGER = {
   hero: 0.06,
-  item: 0.08,
+  item: 0.07,
   word: 0.05,
 } as const;
 
 const REVEAL_OFFSET = 16;
+const TAGLINE_OFFSET = 8;
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -101,59 +102,56 @@ function initCapabilityCurve() {
   });
 }
 
-/** Step 3: evidence rows reveal once, in DOM (reading) order. */
-function initEvidenceReveal() {
-  const items = gsap.utils.toArray<HTMLElement>("[data-evidence-item]");
-  if (items.length === 0) return;
-  gsap.from(items, {
-    y: REVEAL_OFFSET,
-    autoAlpha: 0,
-    duration: DURATION.reveal,
-    ease: EASE_OUT,
-    stagger: STAGGER.item,
-    clearProps: "transform,opacity,visibility",
-    scrollTrigger: { trigger: items[0].parentElement, start: "top 85%", once: true },
+/** Step 3: grouped items reveal once, in DOM (reading) order. Each
+ * [data-reveal-group] staggers its [data-reveal-item] children; ungrouped
+ * [data-evidence-item] rows are grouped by their parent.
+ */
+function initRevealGroups() {
+  const groups = new Map<Element, HTMLElement[]>();
+  gsap.utils.toArray<HTMLElement>("[data-reveal-group]").forEach((group) => {
+    groups.set(group, gsap.utils.toArray<HTMLElement>("[data-reveal-item]", group));
+  });
+  gsap.utils.toArray<HTMLElement>("[data-evidence-item]").forEach((item) => {
+    const parent = item.parentElement;
+    if (!parent || parent.closest("[data-reveal-group]")) return;
+    groups.set(parent, [...(groups.get(parent) ?? []), item]);
+  });
+
+  groups.forEach((items, group) => {
+    if (items.length === 0) return;
+    gsap.from(items, {
+      y: REVEAL_OFFSET,
+      autoAlpha: 0,
+      duration: DURATION.reveal,
+      ease: EASE_OUT,
+      stagger: STAGGER.item,
+      clearProps: "transform,opacity,visibility",
+      scrollTrigger: { trigger: group, start: "top 85%", once: true },
+    });
   });
 }
 
-let taglineObserver: IntersectionObserver | undefined;
-
-/**
- * Tagline words move from muted to full ink one at a time as they cross a
- * trigger line near the lower third of the viewport. IntersectionObserver
- * keeps this off the scroll event; reduced motion and no-JS leave the
- * authored final state untouched.
+/** Step 4: tagline words settle from muted to full ink as the block crosses
+ * the viewport. The authored HTML is full ink, so reduced motion and no-JS
+ * need nothing.
  */
 function initTaglineReveal() {
-  taglineObserver?.disconnect();
   const block = document.querySelector<HTMLElement>("[data-tagline-reveal]");
-  if (!block || prefersReducedMotion()) {
-    block?.removeAttribute("data-reveal-ready");
-    return;
-  }
-
-  const words = Array.from(block.querySelectorAll<HTMLElement>("[data-tagline-word]"));
-  block.setAttribute("data-reveal-ready", "true");
-
-  taglineObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => words.indexOf(a.target as HTMLElement) - words.indexOf(b.target as HTMLElement))
-        .forEach((entry, i) => {
-          const word = entry.target as HTMLElement;
-          word.style.transitionDelay = `${i * STAGGER.word}s`;
-          word.setAttribute("data-active", "true");
-          observer.unobserve(word);
-        });
-    },
-    { rootMargin: "0px 0px -35% 0px" },
-  );
-  words.forEach((word) => taglineObserver?.observe(word));
+  if (!block) return;
+  const words = gsap.utils.toArray<HTMLElement>("[data-tagline-word]", block);
+  if (words.length === 0) return;
+  gsap.from(words, {
+    opacity: 0.3,
+    y: TAGLINE_OFFSET,
+    duration: DURATION.reveal,
+    ease: EASE_OUT,
+    stagger: STAGGER.word,
+    clearProps: "transform,opacity",
+    scrollTrigger: { trigger: block, start: "top 75%", once: true },
+  });
 }
 
 function teardown() {
-  taglineObserver?.disconnect();
   ctx?.revert();
   ctx = undefined;
 }
@@ -165,10 +163,10 @@ function init() {
     ctx = gsap.context(() => {
       initHeroEntrance();
       initCapabilityCurve();
-      initEvidenceReveal();
+      initRevealGroups();
+      initTaglineReveal();
     });
   }
-  initTaglineReveal();
 }
 
 // astro:page-load fires once on the initial load and again after every

@@ -410,7 +410,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
                             type="button"
                             class="pressable hidden w-full cursor-pointer text-left text-graphite hover:text-ink aria-pressed:font-medium aria-pressed:text-signal"
                             data-spec-btn={item.id}
-                            aria-pressed="false"
+                            aria-pressed={item.id === "01" ? "true" : "false"}
                             aria-controls={`specimen-${item.id}`}
                           >
                             <span class="mono mr-2 text-graphite">{item.id}</span>{item.title}
@@ -434,7 +434,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
                         id={`specimen-${item.id}`}
                         data-spec-panel={item.id}
                         aria-labelledby={`specimen-${item.id}-title`}
-                        class:list={["p-5 md:p-6", i > 0 && "border-t border-line"]}
+                        class:list={["p-5 md:p-6", i > 0 && "hidden"]}
                       >
                         <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">
                           [ SPECIMEN ARTIFACT: {item.id} ]
@@ -621,13 +621,14 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
       root.querySelectorAll<HTMLElement>("[data-spec-static]").forEach((el) => el.classList.add("hidden"));
       buttons.forEach((b) => b.classList.remove("hidden"));
-      panels.forEach((p) => p.classList.remove("border-t"));
 
       const select = (id: string, announce: boolean) => {
         buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.specBtn === id)));
         panels.forEach((p) => p.classList.toggle("hidden", p.dataset.specPanel !== id));
         // Polite announcements only after a user action, never on initial load.
         if (announce) live.setAttribute("aria-live", "polite");
+        // Panel heights differ, so ScrollTrigger must re-measure everything below.
+        window.dispatchEvent(new Event("resize"));
       };
 
       buttons.forEach((b, i) => {
@@ -640,7 +641,6 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         });
       });
 
-      select("01", false);
     });
   }
 

@@ -127,7 +127,7 @@ function initRevealGroups() {
       ease: EASE_OUT,
       stagger: STAGGER.item,
       clearProps: "transform,opacity,visibility",
-      scrollTrigger: { trigger: group, start: "top 85%", once: true },
+      scrollTrigger: { trigger: group, start: "top 85%", once: true, invalidateOnRefresh: true, fastScrollEnd: true },
     });
   });
 }
@@ -283,9 +283,23 @@ function initLenis() {
   lenisTick = (time) => lenis?.raf(time * 1000);
   gsap.ticker.add(lenisTick);
   gsap.ticker.lagSmoothing(0);
+  window.addEventListener("resize", onLayoutChange);
+}
+
+let refreshFrame = 0;
+/** Layout changes (resize, inspector panel swaps) shift trigger positions;
+ * coalesce them into one refresh per frame and let Lenis re-measure. */
+function onLayoutChange() {
+  cancelAnimationFrame(refreshFrame);
+  refreshFrame = requestAnimationFrame(() => {
+    lenis?.resize();
+    ScrollTrigger.refresh();
+  });
 }
 
 function destroyLenis() {
+  window.removeEventListener("resize", onLayoutChange);
+  cancelAnimationFrame(refreshFrame);
   if (lenisTick) gsap.ticker.remove(lenisTick);
   lenisTick = undefined;
   lenis?.destroy();
@@ -313,6 +327,10 @@ function init() {
       initRevealGroups();
       initTaglineReveal();
     });
+    ScrollTrigger.refresh();
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+    document.fonts?.ready.then(() => ScrollTrigger.refresh());
+    window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
   }
 }
 

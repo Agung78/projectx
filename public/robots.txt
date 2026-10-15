@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://newco.example/sitemap-index.xml
+Sitemap: https://projectx-gold.vercel.app/sitemap-index.xml

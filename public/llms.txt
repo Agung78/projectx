@@ -4,8 +4,8 @@
 
 ## Key pages
 
-- [Home](https://newco.example/): Overview of the capability-transfer model and what we do.
-- [Approach](https://newco.example/approach): The five-phase engagement model (Diagnose, Build With, Run With, Hand Over, Advise) and the scorecard that proves handover.
-- [Technical Diagnostic](https://newco.example/diagnostic): A 15-day fixed-fee diagnostic covering architecture, risk, capability baseline and roadmap.
-- [About](https://newco.example/about): Why NewCo exists, how the founders split responsibility, and the work we turn down.
-- [Contact](https://newco.example/contact): Share your situation; every request is reviewed against our fit criteria.
+- [Home](https://projectx-gold.vercel.app/): Overview of the capability-transfer model and what we do.
+- [Approach](https://projectx-gold.vercel.app/approach): The five-phase engagement model (Diagnose, Build With, Run With, Hand Over, Advise) and the scorecard that proves handover.
+- [Technical Diagnostic](https://projectx-gold.vercel.app/diagnostic): A 15-day fixed-fee diagnostic covering architecture, risk, capability baseline and roadmap.
+- [About](https://projectx-gold.vercel.app/about): Why NewCo exists, how the founders split responsibility, and the work we turn down.
+- [Contact](https://projectx-gold.vercel.app/contact): Share your situation; every request is reviewed against our fit criteria.

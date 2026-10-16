@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f3f0e9;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #f3f0e9;
+        color: #171918;
+        font-family: sans-serif;
+        overflow: hidden;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        padding: 120px 160px;
+      }
+      .scene-inner {
+        position: absolute;
+        inset: 120px 160px;
+        display: flex;
+        flex-direction: column;
+      }
+      .rule {
+        width: 100%;
+        height: 2px;
+        background: #d7d4cc;
+      }
+      .folio {
+        position: absolute;
+        left: 160px;
+        right: 160px;
+        top: 64px;
+        height: 28px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #4e5550;
+        font-weight: 600;
+      }
+      .folio b {
+        color: #b14d32;
+        font-weight: 600;
+      }
+      .eyebrow {
+        font-size: 24px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #b14d32;
+        font-weight: 600;
+      }
+      h1,
+      h2 {
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.02;
+        color: #171918;
+      }
+
+      /* Scene 1 */
+      #s1 h2 {
+        font-size: 104px;
+        width: 1500px;
+        margin-top: 56px;
+      }
+      #s1 .traps {
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+      }
+      .trap {
+        position: relative;
+        display: flex;
+        align-items: baseline;
+        gap: 36px;
+        padding: 28px 0;
+        border-top: 2px solid #d7d4cc;
+      }
+      .trap .n {
+        width: 60px;
+        font-size: 24px;
+        letter-spacing: 0.12em;
+        color: #b14d32;
+        font-weight: 600;
+      }
+      .trap .t {
+        position: relative;
+        font-size: 44px;
+        letter-spacing: -0.02em;
+        font-weight: 500;
+        color: #171918;
+      }
+      .trap .t .txt {
+        display: block;
+      }
+      .trap .strike {
+        position: absolute;
+        left: -8px;
+        top: 50%;
+        width: calc(100% + 16px);
+        height: 4px;
+        margin-top: -2px;
+        background: #b14d32;
+        transform-origin: left center;
+      }
+
+      /* Scene 2 */
+      #s2 h1 {
+        font-size: 148px;
+        margin-top: 40px;
+        width: 1500px;
+      }
+      #s2 .sub {
+        margin-top: 40px;
+        width: 1200px;
+        font-size: 36px;
+        line-height: 1.4;
+        color: #4e5550;
+      }
+      #s2 .pillars {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        gap: 32px;
+      }
+      .card {
+        flex: 1;
+        background: #faf9f5;
+        border: 2px solid #d7d4cc;
+        padding: 36px 40px;
+        height: 200px;
+      }
+      .card .k {
+        font-size: 20px;
+        letter-spacing: 0.18em;
+        color: #b14d32;
+        font-weight: 600;
+      }
+      .card .v {
+        margin-top: 20px;
+        font-size: 56px;
+        letter-spacing: -0.03em;
+        font-weight: 600;
+      }
+
+      /* Scene 3 */
+      #s3 h2 {
+        font-size: 64px;
+        width: 1500px;
+        margin-top: 28px;
+      }
+      #s3 .legend {
+        position: absolute;
+        left: 0;
+        top: 250px;
+        display: flex;
+        gap: 56px;
+        font-size: 24px;
+        color: #4e5550;
+        font-weight: 500;
+      }
+      .legend .it {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .legend .sw {
+        width: 40px;
+        height: 6px;
+      }
+      #s3 .chart {
+        position: absolute;
+        left: 0;
+        top: 310px;
+        width: 1600px;
+        height: 380px;
+      }
+      #s3 svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1600px;
+        height: 380px;
+        overflow: visible;
+      }
+      #s3 .phases {
+        position: absolute;
+        left: 0;
+        top: 710px;
+        width: 1600px;
+        height: 70px;
+      }
+      .phase {
+        position: absolute;
+        top: 0;
+        width: 320px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .phase small {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+        letter-spacing: 0.18em;
+        color: #b14d32;
+      }
+      #s3 .caption {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        font-size: 34px;
+        letter-spacing: -0.01em;
+        font-weight: 500;
+        color: #171918;
+        padding-left: 24px;
+        border-left: 6px solid #b14d32;
+      }
+
+      /* Scene 4 */
+      #s4 h1 {
+        font-size: 88px;
+        line-height: 1.1;
+        max-width: 960px;
+        width: 960px;
+        margin-top: 40px;
+      }
+      #s4 .diag {
+        position: absolute;
+        right: 0;
+        top: 60px;
+        width: 560px;
+        background: #faf9f5;
+        border: 2px solid #d7d4cc;
+        padding: 44px 44px 48px;
+      }
+      #s4 .diag .name {
+        margin-top: 20px;
+        font-size: 56px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+      #s4 .diag .meta {
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 2px solid #d7d4cc;
+        font-size: 28px;
+        line-height: 1.45;
+        color: #4e5550;
+      }
+      #s4 .cta-row {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 48px;
+      }
+      #s4 .btn {
+        background: #b14d32;
+        color: #faf9f5;
+        font-size: 36px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        padding: 32px 56px;
+      }
+      #s4 .fine {
+        font-size: 30px;
+        color: #4e5550;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="45"
+      data-width="1920"
+      data-height="1080"
+    >
+      <audio id="voiceover" src="assets/voice.mp3" data-start="0.5" data-duration="43.73"></audio>
+
+      <!-- Scene 1 -->
+      <section id="s1" class="scene clip" data-start="0" data-duration="11" data-track-index="0">
+        <div class="folio"><span>NewCo</span><b>01 / The default</b></div>
+        <div class="scene-inner">
+          <div class="eyebrow" id="s1-eb">The market defaults</div>
+          <h2 id="s1-h">Most technology problems are operating-model problems.</h2>
+          <div class="traps">
+            <div class="trap" id="s1-t1">
+              <div class="n">A</div>
+              <div class="t"><span class="txt">Project shop: build, invoice, disappear</span><span class="strike"></span></div>
+            </div>
+            <div class="trap" id="s1-t2">
+              <div class="n">B</div>
+              <div class="t"><span class="txt">Body shopping: temporary hands, zero retained capability</span><span class="strike"></span></div>
+            </div>
+            <div class="trap" id="s1-t3">
+              <div class="n">C</div>
+              <div class="t"><span class="txt">Handover as a ZIP file: vendor lock-in disguised as delivery</span><span class="strike"></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 2 -->
+      <section id="s2" class="scene clip" data-start="11" data-duration="11" data-track-index="0">
+        <div class="folio"><span>NewCo</span><b>02 / The thesis</b></div>
+        <div class="scene-inner">
+          <div class="eyebrow" id="s2-eb">Embedded Engineering Capability Partner</div>
+          <h1 id="s2-h">Engineering capability you keep.</h1>
+          <p class="sub" id="s2-sub">We build with your team, operate the system with you, and measure progress toward your independence.</p>
+          <div class="pillars">
+            <div class="card" id="s2-c1"><div class="k">01</div><div class="v">Capacity</div></div>
+            <div class="card" id="s2-c2"><div class="k">02</div><div class="v">Longevity</div></div>
+            <div class="card" id="s2-c3"><div class="k">03</div><div class="v">Leverage</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 3 -->
+      <section id="s3" class="scene clip" data-start="22" data-duration="12" data-track-index="0">
+        <div class="folio"><span>NewCo</span><b>03 / The capability curve</b></div>
+        <div class="scene-inner">
+          <div class="eyebrow" id="s3-eb">The capability curve</div>
+          <h2 id="s3-h">A route from external support to internal ownership.</h2>
+          <div class="legend" id="s3-lg">
+            <div class="it"><span class="sw" style="background:#b14d32"></span>NewCo Partner Involvement</div>
+            <div class="it"><span class="sw" style="background:#171918"></span>Client Internal Capability</div>
+          </div>
+          <div class="chart">
+            <svg viewBox="0 0 1600 380" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#d7d4cc" stroke-width="2">
+                <line x1="0" y1="20" x2="1600" y2="20" />
+                <line x1="0" y1="190" x2="1600" y2="190" />
+                <line x1="0" y1="360" x2="1600" y2="360" />
+              </g>
+              <g id="s3-ticks" stroke="#d7d4cc" stroke-width="2">
+                <line x1="160" y1="20" x2="160" y2="360" />
+                <line x1="480" y1="20" x2="480" y2="360" />
+                <line x1="800" y1="20" x2="800" y2="360" />
+                <line x1="1120" y1="20" x2="1120" y2="360" />
+                <line x1="1440" y1="20" x2="1440" y2="360" />
+              </g>
+              <path id="s3-p1" d="M 160 50 C 300 55, 360 90, 480 110 C 600 130, 680 175, 800 195 C 920 215, 1000 270, 1120 290 C 1240 310, 1320 325, 1440 325" fill="none" stroke="#b14d32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="s3-p2" d="M 160 330 C 300 325, 360 290, 480 270 C 600 250, 680 205, 800 185 C 920 165, 1000 110, 1120 90 C 1240 70, 1320 55, 1440 55" fill="none" stroke="#171918" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <g id="s3-dots1" fill="#f3f0e9" stroke="#b14d32" stroke-width="5">
+                <circle class="d1" cx="160" cy="50" r="11" />
+                <circle class="d1" cx="480" cy="110" r="11" />
+                <circle class="d1" cx="800" cy="195" r="11" />
+                <circle class="d1" cx="1120" cy="290" r="11" />
+                <circle class="d1" cx="1440" cy="325" r="11" />
+              </g>
+              <g id="s3-dots2" fill="#f3f0e9" stroke="#171918" stroke-width="5">
+                <circle class="d2" cx="160" cy="330" r="11" />
+                <circle class="d2" cx="480" cy="270" r="11" />
+                <circle class="d2" cx="800" cy="185" r="11" />
+                <circle class="d2" cx="1120" cy="90" r="11" />
+                <circle class="d2" cx="1440" cy="55" r="11" />
+              </g>
+            </svg>
+          </div>
+          <div class="phases" id="s3-ph">
+            <div class="phase" style="left: 0"><small>01</small>Diagnose</div>
+            <div class="phase" style="left: 320px"><small>02</small>Build With</div>
+            <div class="phase" style="left: 640px"><small>03</small>Run With</div>
+            <div class="phase" style="left: 960px"><small>04</small>Hand Over</div>
+            <div class="phase" style="left: 1280px"><small>05</small>Advise</div>
+          </div>
+          <div class="caption" id="s3-cap">Handover is a success metric — not a hidden failure condition.</div>
+        </div>
+      </section>
+
+      <!-- Scene 4 -->
+      <section id="s4" class="scene clip" data-start="34" data-duration="11" data-track-index="0">
+        <div class="folio"><span>NewCo</span><b>04 / The entry point</b></div>
+        <div class="scene-inner">
+          <div class="eyebrow" id="s4-eb">The entry point</div>
+          <h1 id="s4-h">Own the next stage<br />of your technology.</h1>
+          <div class="diag" id="s4-card">
+            <div class="eyebrow">Start here</div>
+            <div class="name">Technical Diagnostic</div>
+            <div class="meta">15 business days · Fixed fee · Client-owned architecture, risk register, &amp; roadmap</div>
+          </div>
+          <div class="cta-row">
+            <div class="btn" id="s4-btn">Discuss your situation</div>
+            <div class="fine" id="s4-fine">No speculative estimate. No vendor lock-in.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const IN = { duration: 0.8, ease: "power3.out" };
+      const rise = (sel, t, y = 36, d = 0.8) =>
+        tl.fromTo(sel, { opacity: 0, y }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+      const out = (sel, t) =>
+        tl.to(sel, { opacity: 0, y: -20, duration: 0.5, ease: "power2.in" }, t);
+
+      // Scene 1 (0 – 11)
+      rise("#s1 .folio", 0.2, 0);
+      rise("#s1-eb", 0.4, 20);
+      rise("#s1-h", 0.7, 40, 1);
+      [2.2, 4.8, 7.4].forEach((t, i) => {
+        const n = i + 1;
+        rise("#s1-t" + n, t, 24);
+        tl.fromTo("#s1-t" + n + " .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power2.out" }, t + 1.0);
+        tl.to("#s1-t" + n + " .txt", { opacity: 0.4, duration: 0.5, ease: "power2.out" }, t + 1.0);
+      });
+      out("#s1 .scene-inner", 10.3);
+      out("#s1 .folio", 10.3);
+
+      // Scene 2 (11 – 22)
+      rise("#s2 .folio", 11.2, 0);
+      rise("#s2-eb", 11.4, 20);
+      rise("#s2-h", 11.8, 50, 1.1);
+      rise("#s2-sub", 13.0, 30, 1);
+      [15.0, 16.0, 17.0].forEach((t, i) => rise("#s2-c" + (i + 1), t, 40, 0.9));
+      out("#s2 .scene-inner", 21.3);
+      out("#s2 .folio", 21.3);
+
+      // Scene 3 (22 – 34)
+      rise("#s3 .folio", 22.2, 0);
+      rise("#s3-eb", 22.4, 20);
+      rise("#s3-h", 22.8, 40, 1);
+      rise("#s3-lg", 23.5, 20);
+      tl.fromTo("#s3-ticks", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 23.5);
+      tl.fromTo("#s3-ph .phase", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.25, ease: "power3.out" }, 23.8);
+      const p1 = document.getElementById("s3-p1");
+      const p2 = document.getElementById("s3-p2");
+      const len1 = Math.ceil(p1.getTotalLength()) + 10;
+      const len2 = Math.ceil(p2.getTotalLength()) + 10;
+      p1.style.strokeDasharray = `${len1} ${len1}`;
+      p1.style.strokeDashoffset = len1;
+      p2.style.strokeDasharray = `${len2} ${len2}`;
+      p2.style.strokeDashoffset = len2;
+      tl.fromTo(p1, { strokeDashoffset: len1 }, { strokeDashoffset: 0, duration: 5.5, ease: "power1.inOut" }, 24.5);
+      tl.fromTo(p2, { strokeDashoffset: len2 }, { strokeDashoffset: 0, duration: 5.5, ease: "power1.inOut" }, 24.5);
+      [24.5, 25.8, 27.2, 28.6, 30.0].forEach((t, i) => {
+        tl.fromTo(`#s3-dots1 .d1:nth-child(${i + 1}), #s3-dots2 .d2:nth-child(${i + 1})`,
+          { opacity: 0, scale: 0, transformOrigin: "50% 50%" },
+          { opacity: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(2)" }, t);
+      });
+      rise("#s3-cap", 30.6, 24, 0.9);
+      out("#s3 .scene-inner", 33.3);
+      out("#s3 .folio", 33.3);
+
+      // Scene 4 (34 – 45)
+      rise("#s4 .folio", 34.2, 0);
+      rise("#s4-eb", 34.4, 20);
+      rise("#s4-h", 34.8, 50, 1.1);
+      rise("#s4-card", 36.0, 40, 1);
+      rise("#s4-btn", 37.8, 30, 0.8);
+      rise("#s4-fine", 38.8, 20, 0.8);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

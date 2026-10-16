@@ -241,7 +241,17 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         </p>
         <div class="mt-10 flex flex-wrap gap-4" data-hero-item>
           <Button href="/contact" variant="primary" class={btn}>Discuss your situation</Button>
-          <Button href="#capability-curve" variant="secondary" class={btn}>See the capability transfer</Button>
+          <button
+            type="button"
+            class:list={[btn, "open-video-trigger inline-flex items-center gap-2 rounded-sm border border-ink bg-transparent px-[18px] py-3 text-body font-medium text-ink transition-[color,background-color,transform] duration-[var(--duration-press)] ease-[var(--ease-out)] hover:bg-ink hover:text-canvas active:scale-[0.97]"]}
+            aria-haspopup="dialog"
+          >
+            <svg class="h-3.5 w-3.5 fill-current text-signal" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>Watch 45s overview</span>
+          </button>
+          <Button href="#capability-curve" variant="secondary" class={btn}>See capability transfer</Button>
         </div>
         <ul class="mono mt-12 flex flex-col gap-2 border-t border-line pt-5 text-ink lg:flex-row lg:gap-0 lg:divide-x lg:divide-line" aria-label="How we work">
           {proofLine.map((item) => <li class="lg:px-4 lg:first:pl-0">{item}</li>)}
@@ -259,7 +269,14 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
           </div>
           <div class="mono flex items-center justify-between gap-4 border-t border-line px-4 py-3">
             <span class="border border-signal px-2 py-0.5 text-signal">[ MILESTONE: HANDOVER ]</span>
-            <span class="text-graphite">OWNERSHIP SHIFTS</span>
+            <button
+              type="button"
+              class="open-video-trigger group inline-flex items-center gap-1.5 text-signal transition-colors hover:text-signal-dark"
+              aria-label="Watch 45-second animated brief"
+            >
+              <span>WATCH 45S BRIEF</span>
+              <span class="text-xs transition-transform group-hover:translate-x-0.5">▶</span>
+            </button>
           </div>
         </div>
       </div>
@@ -607,6 +624,41 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       </div>
     </div>
   </section>
+
+  <!-- Video modal dialog (0 KB initial load, native HTML5 dialog) -->
+  <dialog
+    id="video-dialog"
+    class="fixed inset-0 m-auto w-[min(92vw,960px)] max-h-[92vh] overflow-hidden rounded-sm border border-ink bg-surface p-0 shadow-2xl backdrop:bg-ink/75 backdrop:backdrop-blur-sm open:flex open:flex-col"
+    aria-labelledby="video-dialog-title"
+  >
+    <div class="mono flex items-center justify-between border-b border-line px-4 py-3 text-graphite">
+      <div class="flex items-center gap-2">
+        <span class="h-2 w-2 rounded-full bg-signal"></span>
+        <span id="video-dialog-title" class="text-ink font-semibold">[ INTRO BRIEF · 45 SECONDS ]</span>
+      </div>
+      <button
+        type="button"
+        id="close-video-btn"
+        class="mono flex items-center gap-1 border border-line px-2 py-0.5 text-graphite transition-colors hover:border-ink hover:text-ink"
+        aria-label="Close video dialog"
+      >
+        [ ESC / CLOSE ]
+      </button>
+    </div>
+    <div class="relative aspect-video w-full bg-ink">
+      <video
+        id="intro-video"
+        controls
+        playsinline
+        preload="none"
+        poster="/images/intro-poster.webp"
+        class="h-full w-full object-contain"
+      >
+        <source src="/videos/intro.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </dialog>
 </Layout>
 
 <script>
@@ -644,5 +696,39 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     });
   }
 
-  document.addEventListener("astro:page-load", initInspector);
+  function initVideoModal() {
+    const dialog = document.getElementById("video-dialog") as HTMLDialogElement | null;
+    const video = document.getElementById("intro-video") as HTMLVideoElement | null;
+    const closeBtn = document.getElementById("close-video-btn");
+    const triggers = document.querySelectorAll(".open-video-trigger");
+
+    if (!dialog || !video) return;
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        dialog.showModal();
+        video.play().catch(() => {});
+      });
+    });
+
+    const close = () => {
+      dialog.close();
+      video.pause();
+    };
+
+    closeBtn?.addEventListener("click", close);
+
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) close();
+    });
+
+    dialog.addEventListener("close", () => {
+      video.pause();
+    });
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    initInspector();
+    initVideoModal();
+  });
 </script>

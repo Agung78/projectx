@@ -23,6 +23,7 @@ const commitments = [
   },
 ];
 
+const pad = (i: number) => String(i + 1).padStart(2, "0");
 const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 ---
 
@@ -30,23 +31,30 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
   title="About · NewCo"
   description="Who we are, how our two founders work, and what every client can count on."
 >
-  <section class:list={[shell, "py-16 md:py-24"]}>
-    <h1 class="text-h1 text-navy text-balance tracking-tight">Built on trust, delivered with care.</h1>
-    <p class="text-body-lg text-slate max-w-[68ch] mt-6">
-      Your technology partner, start to finish. We design, build and support the systems businesses rely on every day.
-    </p>
+  <section class="bg-white">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <span class="mono text-blue">// LEADERSHIP &amp; COMMITMENTS</span>
+      <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+        <h1 class="text-h1 text-navy text-balance tracking-tight lg:col-span-7">Built on trust, delivered with care.</h1>
+        <p class="text-body-lg text-slate lg:col-span-5 lg:pt-2">
+          Your technology partner, start to finish. We design, build and support the systems businesses rely on every day.
+        </p>
+      </div>
+    </div>
   </section>
 
-  <section class="bg-mist py-16 md:py-24">
+  <section class="border-t border-line bg-mist py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-navy text-balance">The team behind NewCo.</h2>
-      <p class="text-body-lg text-slate max-w-[68ch] mt-4">
-        Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.
-      </p>
-      <div class="grid grid-cols-1 gap-6 mt-12 md:max-w-[880px] md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12">
+        <h2 class="text-h2 text-navy text-balance lg:col-span-5">The team behind NewCo.</h2>
+        <p class="text-body-lg text-slate lg:col-span-7">
+          Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.
+        </p>
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
         {
-          founders.map((f) => (
-            <div class="rounded-[12px] bg-white border border-mist overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+          founders.map((f, i) => (
+            <figure>
               <img
                 src={f.image}
                 alt={`${f.name}, ${f.role}`}
@@ -54,13 +62,16 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
                 height="1500"
                 loading="lazy"
                 decoding="async"
-                class="aspect-[4/5] w-full object-cover object-top border-b border-line"
+                class="aspect-[4/5] w-full rounded-xl border border-line object-cover object-top overflow-hidden"
               />
-              <div class="p-6">
-                <h3 class="text-h3 font-semibold text-navy">{f.name}</h3>
-                <p class="text-sm text-grey mt-1">{f.role}</p>
-              </div>
-            </div>
+              <figcaption class="mt-4 flex items-start justify-between gap-4 border-t border-navy pt-4">
+                <div>
+                  <h3 class="text-h3 font-semibold text-navy">{f.name}</h3>
+                  <p class="text-sm text-grey mt-1">{f.role}</p>
+                </div>
+                <span class="mono text-blue">{pad(i)}</span>
+              </figcaption>
+            </figure>
           ))
         }
       </div>
@@ -70,13 +81,14 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
   <section class="bg-white py-16 md:py-24">
     <div class={shell}>
       <h2 class="text-h2 text-navy text-balance">What every client can count on.</h2>
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mt-12">
+      <ul class="mt-12 grid grid-cols-1 overflow-hidden rounded-xl border border-line bg-white md:grid-cols-2">
         {
-          commitments.map((item) => (
-            <li class="flex gap-4">
+          commitments.map((item, i) => (
+            <li class="flex gap-4 border-t border-line p-6 first:border-t-0 md:nth-2:border-t-0 md:odd:border-r md:p-8">
               <Icon name={item.icon} class="h-8 w-8 shrink-0 text-navy" aria-hidden="true" />
               <div>
-                <h3 class="text-h3 font-semibold text-navy">{item.title}</h3>
+                <span class="mono text-blue">{pad(i)}</span>
+                <h3 class="text-h3 font-semibold text-navy mt-2">{item.title}</h3>
                 <p class="text-body text-slate mt-1">{item.description}</p>
               </div>
             </li>
@@ -88,14 +100,20 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 
   <section class="bg-mist">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 class="max-w-[22ch] text-h2 text-navy text-balance">
-        If this is how you want to work, tell us where things stand.
-      </h2>
-      <p class="mt-6 max-w-[68ch] text-body text-slate text-pretty">
-        We'll look at your systems, constraints and goals, then give you an honest recommendation on the best way forward.
-      </p>
-      <div class="mt-10">
-        <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Talk to us</Button>
+      <div class="corners rounded-xl border border-line bg-white p-8 md:p-16">
+        <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-12 lg:gap-12">
+          <div class="lg:col-span-8">
+            <h2 class="max-w-[22ch] text-h2 text-navy text-balance">
+              If this is how you want to work, tell us where things stand.
+            </h2>
+            <p class="mt-6 max-w-[68ch] text-body text-slate text-pretty">
+              We'll look at your systems, constraints and goals, then give you an honest recommendation on the best way forward.
+            </p>
+          </div>
+          <div class="lg:col-span-4 lg:justify-self-end">
+            <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Talk to us</Button>
+          </div>
+        </div>
       </div>
     </div>
   </section>

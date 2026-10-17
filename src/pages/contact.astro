@@ -8,12 +8,37 @@ import Button from "../components/Button.astro";
   description="Tell us what the business needs. We'll reply with a clear next step."
 >
   <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-16 md:py-24">
-    <h1 class="text-h1 text-navy text-balance tracking-tight">Tell us what the business needs.</h1>
-    <p class="text-body-lg text-slate max-w-[68ch] mt-6">
-      Share a few details and we'll reply with a clear next step. No obligation, and we'll never ask for passwords or system access here.
-    </p>
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
+      <aside class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
+        <span class="mono text-blue">// ENGAGEMENT BRIEF</span>
+        <h1 class="mt-6 text-h1 text-navy text-balance tracking-tight">Tell us what the business needs.</h1>
+        <p class="text-body-lg text-slate max-w-[68ch] mt-6">
+          Share a few details and we'll reply with a clear next step. No obligation, and we'll never ask for passwords or system access here.
+        </p>
 
-    <div class="mt-12 max-w-[820px]">
+        <div class="corners mt-10 border border-line bg-mist p-6">
+          <p class="mono text-grey">// DIRECT FOUNDER REVIEW</p>
+          <p class="mt-3 font-semibold text-navy">Vanezza &amp; Agung Denisa</p>
+          <p class="mt-1 text-sm text-slate">Every enquiry is read by a founder. Guaranteed 24h SLA.</p>
+        </div>
+
+        <dl class="mt-8 divide-y divide-line border-y border-line">
+          <div class="py-4">
+            <dt class="mono text-grey">// OFFICE</dt>
+            <dd class="mt-1 text-body text-navy">SCBD Jakarta, One Pacific Place Level 11</dd>
+          </div>
+          <div class="py-4">
+            <dt class="mono text-grey">// COMPANY REGISTRATION</dt>
+            <dd class="mt-1 text-body text-navy">NIB: 0120202688192</dd>
+          </div>
+        </dl>
+
+        <p class="mt-6 text-sm text-grey">We respect your privacy. See our <a href="/privacy" class="underline hover:text-navy">Privacy Policy</a>.</p>
+      </aside>
+
+      <div class="lg:col-span-7">
+      <div class="rounded-xl border border-line bg-white p-6 shadow-sm md:p-8">
+        <p class="mono mb-6 border-b border-line pb-4 text-grey">// INTAKE CONSOLE</p>
       <form
         id="contact-form"
         method="post"
@@ -79,7 +104,7 @@ import Button from "../components/Button.astro";
           <div class="flex flex-col gap-2 md:flex-row md:gap-6">
             {
               ["Email", "Phone", "Video call"].map((option) => (
-                <label class="flex items-center gap-2 text-body text-navy">
+                <label class="flex cursor-pointer items-center gap-2 rounded-full border border-field bg-white px-4 py-2 text-body text-navy has-[:checked]:border-blue has-[:checked]:bg-mist has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-blue">
                   <input type="radio" name="follow_up" value={option} required class="accent-blue" />
                   {option}
                 </label>
@@ -89,7 +114,7 @@ import Button from "../components/Button.astro";
           <p id="follow_up-error" class="hidden text-body text-red" role="alert"></p>
         </fieldset>
 
-        <details class="border-t border-line pt-6">
+        <details class="rounded-lg border border-line bg-mist p-4">
           <summary class="cursor-pointer text-sm font-semibold text-navy">A bit more (optional)</summary>
           <div class="mt-4 grid gap-6 md:grid-cols-2">
               <div class="flex flex-col gap-2">
@@ -120,7 +145,8 @@ import Button from "../components/Button.astro";
 
       </form>
       <p data-form-status tabindex="-1" class="hidden text-body outline-offset-4" role="status"></p>
-      <p class="mt-6 text-sm text-grey">We respect your privacy. See our <a href="/privacy" class="underline hover:text-navy">Privacy Policy</a>.</p>
+      </div>
+      </div>
     </div>
   </section>
 </Layout>

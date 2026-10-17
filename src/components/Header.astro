@@ -15,7 +15,7 @@ const currentPath = Astro.url.pathname;
   class="sticky top-0 z-50 bg-white border-b border-transparent data-[stuck=true]:border-line transition-[background-color,border-color] duration-200"
   data-site-header
 >
-  <div class="mx-auto flex max-w-content items-center justify-between px-[clamp(20px,5vw,80px)] py-4">
+  <div class="mx-auto flex max-w-[1200px] items-center justify-between px-4 md:px-6 py-4">
     <a href="/" class="text-h3 font-semibold tracking-tight text-ink" aria-label="NewCo, home">
       NewCo
     </a>
@@ -55,7 +55,7 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <div id="mobile-nav" hidden class="border-t border-line bg-white md:hidden" data-mobile-nav data-open="false">
-    <nav class="flex flex-col gap-1 px-[clamp(20px,5vw,80px)] py-4" aria-label="Primary">
+    <nav class="flex flex-col gap-1 px-4 md:px-6 py-4" aria-label="Primary">
       {
         navLinks.map((link) => (
           <a

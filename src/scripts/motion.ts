@@ -9,25 +9,23 @@ gsap.registerPlugin(ScrollTrigger, CustomEase);
  * Curves are the CSS motion tokens, not GSAP's power* approximations, so JS
  * and CSS motion share one feel. Keep in sync with src/styles/global.css.
  *
- * Motion follows WEBSITE-DESIGN-STANDARD §9.2: hero entrance, capability
- * curve draw, evidence reveal, tagline reveal. Everything else renders as authored.
+ * Motion follows WEBSITE-DESIGN-STANDARD §9.2: subtle fade-in on scroll at most;
+ * no parallax, no scrubbing, no animated counters. Everything else renders as authored.
  */
 CustomEase.create("site-out", "0.23, 1, 0.32, 1");
 
 const EASE_OUT = "site-out";
 
 const DURATION = {
-  reveal: 0.6,
+  reveal: 0.45,
 } as const;
 
 const STAGGER = {
   hero: 0.06,
   item: 0.07,
-  word: 0.05,
 } as const;
 
-const REVEAL_OFFSET = 16;
-const TAGLINE_OFFSET = 8;
+const REVEAL_OFFSET = 8;
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -56,50 +54,21 @@ function initHeroEntrance() {
   });
 }
 
-/** Step 2: the capability transfer explains itself as it enters view: desktop
- * lines draw across the phases and their nodes settle, while narrow-layout
- * ownership bars fill left to right.
+/** Step 2: the capability curve renders as authored (no draw or scrub);
+ * narrow-layout ownership bars fade in once.
  */
 function initCapabilityCurve() {
-  // A page may render more than one curve (hero and section), so every
-  // instance is wired, not just the first match.
   gsap.utils.toArray<HTMLElement>("[data-capability-curve]").forEach((curve) => {
-    const paths = gsap.utils.toArray<SVGPathElement>("path[data-curve-line]", curve);
-    const nodes = gsap.utils.toArray<SVGCircleElement>("[data-curve-node]", curve);
     const bars = gsap.utils.toArray<HTMLElement>("[data-ownership-bar]", curve);
-
-    // The SVG is display:none below md, where getTotalLength is unreliable
-    // and the drawn line is never seen; leave it as authored.
-    const drawable = paths.filter((path) => path.getBoundingClientRect().width > 0);
-    if (drawable.length > 0) {
-      const tl = gsap.timeline({
-        defaults: { ease: "none" }, // scrubbed motion follows the scroll position, not a curve
-        scrollTrigger: { trigger: curve, start: "top 75%", end: "bottom 60%", scrub: 0.6 },
-      });
-      drawable.forEach((path) => {
-        const length = path.getTotalLength();
-        gsap.set(path, { strokeDasharray: length });
-        tl.fromTo(path, { strokeDashoffset: length }, { strokeDashoffset: 0, duration: 1 }, 0);
-      });
-      if (nodes.length > 0) {
-        tl.from(
-          nodes,
-          { scale: 0, autoAlpha: 0, transformOrigin: "50% 50%", duration: 0.2, stagger: { amount: 0.6 } },
-          0.2,
-        );
-      }
-    }
-
-    if (bars.length > 0) {
-      gsap.from(bars, {
-        scaleX: 0,
-        duration: DURATION.reveal,
-        ease: EASE_OUT,
-        stagger: STAGGER.item,
-        transformOrigin: "left center",
-        scrollTrigger: { trigger: curve, start: "top 80%", once: true },
-      });
-    }
+    if (bars.length === 0) return;
+    gsap.from(bars, {
+      autoAlpha: 0,
+      duration: DURATION.reveal,
+      ease: EASE_OUT,
+      stagger: STAGGER.item,
+      clearProps: "opacity,visibility",
+      scrollTrigger: { trigger: curve, start: "top 80%", once: true },
+    });
   });
 }
 
@@ -132,23 +101,19 @@ function initRevealGroups() {
   });
 }
 
-/** Step 4: tagline words settle from muted to full ink as the block crosses
- * the viewport. The authored HTML is full ink, so reduced motion and no-JS
- * need nothing.
+/** Step 4: the tagline block fades in once. The authored HTML is full ink,
+ * so reduced motion and no-JS need nothing.
  */
 function initTaglineReveal() {
   const block = document.querySelector<HTMLElement>("[data-tagline-reveal]");
   if (!block) return;
-  const words = gsap.utils.toArray<HTMLElement>("[data-tagline-word]", block);
-  if (words.length === 0) return;
-  gsap.from(words, {
-    opacity: 0.3,
-    y: TAGLINE_OFFSET,
+  gsap.from(block, {
+    autoAlpha: 0,
+    y: REVEAL_OFFSET,
     duration: DURATION.reveal,
     ease: EASE_OUT,
-    stagger: STAGGER.word,
-    clearProps: "transform,opacity",
-    scrollTrigger: { trigger: block, start: "top 75%", once: true },
+    clearProps: "transform,opacity,visibility",
+    scrollTrigger: { trigger: block, start: "top 80%", once: true },
   });
 }
 
@@ -160,7 +125,7 @@ interface PhaseTelemetry {
 }
 
 /** Step 5: the capability curve becomes a readout. Hovering, focusing or
- * clicking a phase tweens the telemetry meters and numbers to that phase;
+ * clicking a phase updates the telemetry meters and numbers to that phase;
  * leaving returns to the clicked phase. The static markup has the panel
  * hidden and the triggers disabled, so this only enhances. Returns cleanup.
  */
@@ -181,7 +146,6 @@ function initPhaseTelemetry(): () => void {
     const meter = (name: string) => panel.querySelector<HTMLElement>(`[data-meter="${name}"]`)!;
     const indexOf = (el: Element) => Number(el.closest("[data-phase-index]")?.getAttribute("data-phase-index"));
 
-    const values = { client: 0, pager: 0 };
     const abort = new AbortController();
     const { signal } = abort;
     let selected = 0;
@@ -198,17 +162,8 @@ function initPhaseTelemetry(): () => void {
       readout("label").textContent = phase.label;
       readout("milestone").textContent = phase.milestone;
 
-      gsap.to(values, {
-        client: phase.client,
-        pager: phase.pager,
-        duration,
-        ease: EASE_OUT,
-        overwrite: true,
-        onUpdate: () => {
-          readout("client").textContent = `${Math.round(values.client)}%`;
-          readout("pager").textContent = `${Math.round(values.pager)}%`;
-        },
-      });
+      readout("client").textContent = `${phase.client}%`;
+      readout("pager").textContent = `${phase.pager}%`;
       gsap.to(meter("client"), { scaleX: phase.client / 100, duration, ease: EASE_OUT, overwrite: true });
       gsap.to(meter("pager"), { scaleX: phase.pager / 100, duration, ease: EASE_OUT, overwrite: true });
       gsap.to(markers, {

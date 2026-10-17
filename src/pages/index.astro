@@ -4,7 +4,6 @@ import Button from "../components/Button.astro";
 import CapabilityCurve from "../components/CapabilityCurve.astro";
 import { Icon } from "astro-icon/components";
 
-const proofLine = ["Build with your team", "Operate the system together", "Measure the path to independence"];
 
 // Two lines, split into words so each can reveal in reading order. The full
 // sentence stays in the DOM as ordinary inline text for assistive technology.
@@ -218,7 +217,7 @@ const notFit = [
 ];
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
-const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
+const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 // Buttons hold one line on desktop; they may wrap only in narrow mobile columns.
 const btn = "md:whitespace-nowrap";
 const link = "text-body font-medium text-signal underline underline-offset-4 hover:text-signal-dark md:whitespace-nowrap";
@@ -229,63 +228,36 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   description="NewCo builds with your team, operates systems together, and systematically measures progress toward your complete engineering independence."
 >
   <!-- 1. Hero -->
-  <section class:list={[shell, "pt-16 pb-24 md:pt-20"]}>
-    <div class="flex flex-col gap-12">
-      <div class="mx-auto max-w-[68ch] text-center">
-        <p class="mono text-signal" data-hero-item>EMBEDDED ENGINEERING CAPABILITY PARTNER</p>
-        <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight" data-hero-item>Build the technology your business can own.</h1>
-        <p class="mx-auto mt-8 max-w-[68ch] text-body-lg text-graphite text-pretty" data-hero-item>
-          For executives running multi-location operations where fragmented systems outpace internal
-          engineering. We begin with a 15-day paid Technical Diagnostic, build the production platform
-          alongside your engineers, and transfer day-to-day operations to your team.
-        </p>
-        <div class="mt-10 flex flex-wrap justify-center gap-4" data-hero-item>
-          <Button href="/contact" variant="primary" class={btn}>Talk to us</Button>
-          <button
-            type="button"
-            class:list={[btn, "open-video-trigger inline-flex items-center justify-center gap-2 rounded-[8px] min-h-[48px] border border-[#0a1120] bg-white px-[18px] py-3 text-body font-medium text-[#0a1120] transition-[color,background-color,border-color,transform] duration-[var(--duration-press)] ease-[var(--ease-out)] hover:bg-[#0a1120] hover:text-white active:scale-[0.97]"]}
-            aria-haspopup="dialog"
-          >
-            <svg class="h-3.5 w-3.5 fill-current text-signal" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            <span>Watch 45s overview</span>
-          </button>
-          <Button href="#capability-curve" variant="secondary" class={btn}>See capability transfer</Button>
-        </div>
-        <ul class="mono mt-12 flex flex-col items-center gap-2 border-t border-line pt-5 text-ink lg:flex-row lg:justify-center lg:gap-0 lg:divide-x lg:divide-line" aria-label="How we work">
-          {proofLine.map((item) => <li class="lg:px-4">{item}</li>)}
-        </ul>
+  <section class:list={[shell, "bg-white py-16 md:py-24"]}>
+    <div class="mx-auto flex max-w-[68ch] flex-col items-center text-center">
+      <p class="text-sm font-semibold tracking-wide text-signal" data-hero-item>Engineering partner for growing businesses</p>
+      <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight" data-hero-item>Technology built for independence.</h1>
+      <p class="mt-8 text-[18px] leading-[1.6] text-slate text-pretty" data-hero-item>
+        We engineer systems to a high standard, then transfer full ownership to the business: the code,
+        the documentation and the know-how. No vendor lock-in. No hidden dependencies.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4" data-hero-item>
+        <Button href="/contact" variant="primary" class={btn}>Talk to us</Button>
+        <button
+          type="button"
+          class="open-video-trigger group inline-flex items-center gap-2 text-body font-medium text-signal underline decoration-signal underline-offset-4 transition-colors hover:text-signal-dark"
+          aria-haspopup="dialog"
+        >
+          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          <span>Watch the 45-second intro</span>
+        </button>
       </div>
-
-      <div class="mx-auto w-full max-w-[720px]" data-hero-item>
-        <div class="border border-ink bg-surface">
-          <div class="mono flex items-center justify-between border-b border-line px-4 py-3 text-graphite">
-            <span>PHASE TELEMETRY</span>
-            <span>5 PHASES</span>
-          </div>
-          <div class="p-4 md:p-6">
-            <CapabilityCurve compact />
-          </div>
-          <div class="mono flex items-center justify-between gap-4 border-t border-line px-4 py-3">
-            <span class="border border-signal px-2 py-0.5 text-signal">MILESTONE: HANDOVER</span>
-            <button
-              type="button"
-              class="open-video-trigger group inline-flex items-center gap-1.5 text-signal transition-colors hover:text-signal-dark"
-              aria-label="Watch 45-second animated brief"
-            >
-              <span>WATCH 45S BRIEF</span>
-              <span class="text-xs transition-transform group-hover:translate-x-0.5">▶</span>
-            </button>
-          </div>
-        </div>
-      </div>
+      <p class="mt-12 flex items-center justify-center gap-x-6 font-medium text-graphite" data-hero-item>
+        <span>We build</span><span aria-hidden="true">·</span><span>We teach</span><span aria-hidden="true">·</span><span>You own.</span>
+      </p>
     </div>
   </section>
 
   <!-- 2. Core thesis -->
   <section class="border-t border-line" aria-label="Tagline">
-    <div class:list={[shell, "py-24 md:py-32"]}>
+    <div class:list={[shell, "py-16 md:py-24"]}>
       <p class="mono mb-8 text-graphite">OPERATING THESIS</p>
       <p class="max-w-[24ch] text-4xl font-semibold text-ink text-balance md:text-5xl lg:max-w-[680px] lg:text-6xl" data-tagline-reveal>
         {
@@ -338,7 +310,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   </section>
 
   <!-- 4. Outcomes -->
-  <section class:list={[shell, "py-24 md:py-32"]}>
+  <section class:list={[shell, "py-16 md:py-24"]}>
     <h2 class="max-w-[22ch] text-h2 text-ink text-balance">Three permanent engineering assets you keep.</h2>
     <div class="mt-12 grid gap-12 md:grid-cols-3 md:gap-8" data-reveal-group>
       {
@@ -357,7 +329,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
   <!-- 5. Capability curve -->
   <section id="capability-curve" class="scroll-mt-24 border-t border-line bg-surface">
-    <div class:list={[shell, "py-24 md:py-32"]}>
+    <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-7">
           <p class="mono text-signal">ENGAGEMENT MODEL</p>
@@ -390,8 +362,8 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   </section>
 
   <!-- 6. Technical Diagnostic -->
-  <section id="diagnostic" class:list={[shell, "scroll-mt-24 py-24 md:py-32"]}>
-    <div class="border border-ink bg-surface p-6 md:p-12">
+  <section id="diagnostic" class:list={[shell, "scroll-mt-24 py-16 md:py-24"]}>
+    <div class="rounded-[12px] border border-mist bg-surface p-6 shadow-[0_2px_8px_rgba(0,0,0,0.04)] md:p-12">
       <div class="grid gap-12 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-5">
           <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">TECHNICAL DIAGNOSTIC</p>
@@ -406,7 +378,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
               <dd class="mt-1 text-h3 text-ink">Fixed fee standalone product</dd>
             </div>
           </dl>
-          <p class="mt-8 border border-signal p-4 text-body-lg font-medium text-ink">
+          <p class="mt-8 rounded-[12px] border border-signal p-6 text-body-lg font-medium text-ink">
             You own every diagnostic deliverable and can execute it in-house or take it to any vendor.
           </p>
         </div>
@@ -451,7 +423,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
                         id={`specimen-${item.id}`}
                         data-spec-panel={item.id}
                         aria-labelledby={`specimen-${item.id}-title`}
-                        class:list={["p-5 md:p-6", i > 0 && "hidden"]}
+                        class:list={["p-6", i > 0 && "hidden"]}
                       >
                         <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">
                           SPECIMEN ARTIFACT: {item.id}
@@ -459,7 +431,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
                         <h3 id={`specimen-${item.id}-title`} class="mt-4 text-h3 text-ink">{item.title}</h3>
                         <p class="mt-2 text-body text-graphite">{item.artifact}</p>
 
-                        <div class="mt-5 border border-line bg-surface p-4">
+                        <div class="mt-5 rounded-[12px] border border-mist bg-surface p-6">
                           <p class="mono text-graphite">Specimen preview (illustrative)</p>
                           <blockquote class="mt-2 border-l-2 border-signal pl-3 text-body text-ink">{item.excerpt}</blockquote>
                           <p class="mono mt-3 text-graphite">
@@ -498,7 +470,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
   <!-- 7. Engineering principles -->
   <section class="border-t border-line">
-    <div class:list={[shell, "py-24 md:py-32"]}>
+    <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <h2 class="text-h2 text-ink text-balance md:col-span-7">Opinionated engineering. Accountable operational ownership.</h2>
         <div class="md:col-span-5 md:self-end">
@@ -522,7 +494,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
   <!-- 8. AI maturity -->
   <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-24 md:py-32"]}>
+    <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-7">
           <p class="mono text-signal">AI MATURITY</p>
@@ -551,7 +523,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   </section>
 
   <!-- 9. Operational evidence -->
-  <section class:list={[shell, "py-24 md:py-32"]}>
+  <section class:list={[shell, "py-16 md:py-24"]}>
     <p class="mono text-signal">OPERATIONAL EVIDENCE</p>
     <h2 class="mt-3 max-w-[22ch] text-h2 text-ink text-balance">Eight operational metrics we measure on every engagement.</h2>
     <p class="mt-6 measure text-body-lg text-graphite text-pretty">
@@ -562,7 +534,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     <ul class="mt-12 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
       {
         metrics.map((metric, i) => (
-          <li class="flex min-h-36 flex-col justify-between gap-6 bg-surface p-5" data-evidence-item>
+          <li class="flex min-h-36 flex-col justify-between gap-6 bg-surface p-6" data-evidence-item>
             <div class="flex items-center justify-between">
               <span class="mono text-graphite">M-{pad(i)}</span>
               <span class="mono text-signal">{metric.category}</span>
@@ -576,7 +548,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
   <!-- 10. Qualification -->
   <section class="border-t border-line">
-    <div class:list={[shell, "py-24 md:py-32"]}>
+    <div class:list={[shell, "py-16 md:py-24"]}>
       <h2 class="max-w-[24ch] text-h2 text-ink text-balance">We partner with businesses committed to internal technology ownership.</h2>
 
       <div class="mt-12 grid gap-12 md:grid-cols-2 md:gap-8">
@@ -612,7 +584,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
   <!-- 11. Final CTA -->
   <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "flex flex-col items-center py-24 text-center md:py-32"]}>
+    <div class:list={[shell, "flex flex-col items-center py-16 text-center md:py-24"]}>
       <h2 class="mx-auto max-w-[18ch] text-h1 text-ink text-balance">Own the technology your business runs on.</h2>
       <p class="mx-auto mt-8 max-w-[68ch] text-body-lg text-graphite text-pretty">
         Tell us where fragmented systems, vendor dependencies, or operational data silos are limiting
@@ -707,7 +679,6 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     triggers.forEach((trigger) => {
       trigger.addEventListener("click", () => {
         dialog.showModal();
-        video.play().catch(() => {});
       });
     });
 

@@ -42,14 +42,14 @@ const declines = [
 ];
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
-const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
+const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 ---
 
 <Layout
   title="About Our Capability Transfer Model | NewCo"
   description="Why NewCo exists: partnering with multi-location businesses to build permanent internal engineering capability, backed by balanced leadership governance."
 >
-  <section class:list={[shell, "pt-16 pb-16 md:pt-20 md:pb-24"]}>
+  <section class:list={[shell, "py-16 md:py-24"]}>
     <p class="mono text-signal">FOUNDING &amp; OPERATING BELIEF</p>
     <h1 class="mt-6 max-w-[20ch] text-h1 text-ink text-balance tracking-tight">
       Build engineering capability your business permanently owns.
@@ -76,8 +76,8 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
       <div class="mt-16 grid gap-6 md:grid-cols-2">
         {
           founderRoles.map((founder) => (
-            <div class="flex h-full flex-col border border-ink bg-canvas">
-              <div class="mono border-b border-line px-5 py-3 text-signal">{founder.badge}</div>
+            <div class="flex h-full flex-col overflow-hidden rounded-[12px] border border-mist bg-canvas shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <div class="mono border-b border-line px-6 py-3 text-signal">{founder.badge}</div>
               {founder.image && (
                 <img
                   src={founder.image}
@@ -89,7 +89,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
                   class="aspect-[4/5] w-full border-b border-line object-cover object-top"
                 />
               )}
-              <div class="flex-1 p-5 md:p-6">
+              <div class="flex-1 p-6">
                 <h3 class="text-h3 text-ink">{founder.role}</h3>
                 <p class="mono mt-5 text-graphite">PROMISE</p>
                 <p class="mt-1 text-body-lg font-medium text-ink">{founder.promise}</p>

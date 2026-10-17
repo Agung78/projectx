@@ -270,9 +270,9 @@ const marqueeRows = [
     </div>
   </section>
 
-  <section class="border-t border-line bg-mist py-12">
+  <section class="border-t border-line bg-mist py-16 md:py-20">
     <div class={shell}>
-      <p class="mono mb-6 text-grey">// Built on proven, widely used technology.</p>
+      <p class="mono mb-8 text-grey">// Built on proven, widely used technology.</p>
     </div>
     <div class="marquee" aria-label="Technologies we build with">
       {
@@ -281,16 +281,16 @@ const marqueeRows = [
             {[...row.items, ...row.items].map((tech, i) => (
               <li
                 aria-hidden={i >= row.items.length ? "true" : undefined}
-                class="inline-flex shrink-0 items-center gap-3 px-5 py-3 text-base font-semibold tracking-tight text-navy"
+                class="inline-flex shrink-0 items-center gap-3.5 rounded-xl border border-line/90 bg-white px-5 py-3 text-base font-semibold tracking-tight text-navy shadow-xs transition-all duration-150 hover:border-blue/50 hover:shadow-sm"
               >
                 <img
                   src={tech.icon}
                   alt={tech.wordmark ? tech.name : ""}
-                  class:list={["shrink-0", tech.wordmark ? "h-5 w-auto" : "h-6 w-6"]}
+                  class:list={["shrink-0 object-contain", tech.wordmark ? "h-5.5 w-auto" : "h-6 w-6"]}
                   loading={r === 0 && i < 4 ? "eager" : "lazy"}
                   decoding="async"
                 />
-                {!tech.wordmark && tech.name}
+                {!tech.wordmark && <span>{tech.name}</span>}
               </li>
             ))}
           </ul>
@@ -304,21 +304,22 @@ const marqueeRows = [
   .marquee {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
   }
   .marquee-track {
     display: flex;
     width: max-content;
-    gap: 0.75rem;
-    padding-right: 0.75rem;
+    gap: 1rem;
+    padding: 0.35rem 1rem;
   }
   .marquee-track-left {
-    animation: marquee-left 25s linear infinite;
+    animation: marquee-left 36s linear infinite;
   }
   .marquee-track-right {
-    animation: marquee-right 25s linear infinite;
+    animation: marquee-right 36s linear infinite;
   }
   .marquee:hover .marquee-track {
     animation-play-state: paused;

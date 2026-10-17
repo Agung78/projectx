@@ -170,6 +170,11 @@ const technologies = [
     icon: "/images/tech/nvidia.svg",
   },
 ];
+
+const marqueeRows = [
+  { direction: "left", items: technologies.slice(0, 15) },
+  { direction: "right", items: technologies.slice(15, 30) },
+];
 ---
 
 <Layout
@@ -270,31 +275,36 @@ const technologies = [
       <p class="mono mb-6 text-grey">// Built on proven, widely used technology.</p>
     </div>
     <div class="marquee" aria-label="Technologies we build with">
-      <ul class="marquee-track">
-        {
-          [...technologies, ...technologies].map((tech, i) => (
-            <li
-              aria-hidden={i >= technologies.length ? "true" : undefined}
-              class="inline-flex shrink-0 items-center gap-3 px-5 py-3 text-base font-semibold tracking-tight text-navy"
-            >
-              <img
-                src={tech.icon}
-                alt={tech.wordmark ? tech.name : ""}
-                class:list={["shrink-0", tech.wordmark ? "h-5 w-auto" : "h-6 w-6"]}
-                loading={i < 4 ? "eager" : "lazy"}
-                decoding="async"
-              />
-              {!tech.wordmark && tech.name}
-            </li>
-          ))
-        }
-      </ul>
+      {
+        marqueeRows.map((row, r) => (
+          <ul class={`marquee-track marquee-track-${row.direction}`}>
+            {[...row.items, ...row.items].map((tech, i) => (
+              <li
+                aria-hidden={i >= row.items.length ? "true" : undefined}
+                class="inline-flex shrink-0 items-center gap-3 px-5 py-3 text-base font-semibold tracking-tight text-navy"
+              >
+                <img
+                  src={tech.icon}
+                  alt={tech.wordmark ? tech.name : ""}
+                  class:list={["shrink-0", tech.wordmark ? "h-5 w-auto" : "h-6 w-6"]}
+                  loading={r === 0 && i < 4 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+                {!tech.wordmark && tech.name}
+              </li>
+            ))}
+          </ul>
+        ))
+      }
     </div>
   </section>
 </Layout>
 
 <style>
   .marquee {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     overflow: hidden;
     mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   }
@@ -303,14 +313,30 @@ const technologies = [
     width: max-content;
     gap: 0.75rem;
     padding-right: 0.75rem;
-    animation: marquee 45s linear infinite;
+  }
+  .marquee-track-left {
+    animation: marquee-left 25s linear infinite;
+  }
+  .marquee-track-right {
+    animation: marquee-right 25s linear infinite;
   }
   .marquee:hover .marquee-track {
     animation-play-state: paused;
   }
-  @keyframes marquee {
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0);
+    }
     to {
       transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
     }
   }
   @media (prefers-reduced-motion: reduce) {

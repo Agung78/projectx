@@ -1,152 +1,88 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
+import { Icon } from "astro-icon/components";
 
-// §2 Founding Structure
-const founderRoles = [
+const founders = [
+  { name: "[Name]", role: "Chief Executive Officer", image: "/images/ceo.webp" },
+  { name: "[Name]", role: "Chief Technology Officer", image: "/images/cto.webp" },
+];
+
+const commitments = [
+  { icon: "solar:chat-round-dots-linear", title: "Plain-language updates.", description: "No jargon, no surprises." },
+  { icon: "solar:tag-price-linear", title: "Clear pricing.", description: "Agreed upfront, before work begins." },
   {
-    role: "Chief Executive",
-    badge: "CHIEF EXECUTIVE",
-    promise: "Who we work with and what we promise.",
-    owns: "Client relationships, commercial terms, account governance, and client-facing delivery accountability.",
-    image: "/images/ceo.webp",
+    icon: "solar:user-speak-linear",
+    title: "A real person to talk to.",
+    description: "A named contact and agreed response times.",
   },
   {
-    role: "Chief Technology Officer",
-    badge: "CHIEF TECHNOLOGY OFFICER",
-    promise: "How it is built and whether we can promise it.",
-    owns: "Technical strategy, architecture, delivery engineering, hiring and mentoring, platform IP, and security and technical risk.",
-    image: "/images/cto.webp",
+    icon: "solar:shield-check-linear",
+    title: "Honest advice.",
+    description: "We recommend what's right for the business, not what costs the most.",
   },
 ];
 
-const sharedApprovals = [
-  "Entering a new market",
-  "Material pricing exceptions",
-  "Debt or financing",
-  "Senior hires",
-  "Changes to the house stack",
-  "Client work with unusual legal or security exposure",
-  "Any assignment of company IP",
-];
-
-// §11 What We Say No To (public subset)
-const declines = [
-  "Staff augmentation lacking architectural governance or a structured path to client independence",
-  "Fixed-scope waterfall contracts built on ambiguous or unverified requirements",
-  "Inheriting legacy codebases without an upfront Technical Diagnostic",
-  "Unpaid speculative estimates on architectures we have not directly inspected",
-  "Engagements lacking a dedicated client counterpart and an executive decision-maker",
-  "Production responsibility without defined access, system authority, and agreed service level agreements",
-  "Processing client code or proprietary data through third-party AI models without written governance approval",
-];
-
-const pad = (i: number) => String(i + 1).padStart(2, "0");
 const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 ---
 
 <Layout
-  title="About Our Capability Transfer Model | NewCo"
-  description="Why NewCo exists: partnering with multi-location businesses to build permanent internal engineering capability, backed by balanced leadership governance."
+  title="About · NewCo"
+  description="Who we are, how our two founders work, and what every client can count on."
 >
   <section class:list={[shell, "py-16 md:py-24"]}>
-    <p class="mono text-signal">FOUNDING &amp; OPERATING BELIEF</p>
-    <h1 class="mt-6 max-w-[20ch] text-h1 text-ink text-balance tracking-tight">
-      Build engineering capability your business permanently owns.
-    </h1>
-    <p class="mt-8 measure text-body-lg text-graphite text-pretty">
-      Traditional agencies maximize billable dependency by withholding operational know-how. NewCo measures success by
-      your independence: our engineers build production systems alongside your team and transfer operational ownership
-      milestone by milestone.
+    <h1 class="text-h1 text-ink text-balance tracking-tight">Built on trust, delivered with care.</h1>
+    <p class="text-body-lg text-slate max-w-[68ch] mt-6">
+      Your technology partner, start to finish. We design, build and support the systems businesses rely on every day.
     </p>
   </section>
 
-  <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <div class="md:col-span-7">
-          <p class="mono text-signal">LEADERSHIP GOVERNANCE</p>
-          <h2 class="mt-3 text-h2 text-ink text-balance">Two founders, one clear split.</h2>
-        </div>
-        <p class="measure self-end text-body-lg text-graphite md:col-span-5">
-          Every proposal requires technical feasibility sign-off from the CTO, and every architecture commitment
-          requires commercial sign-off from the CEO. Each founder holds an explicit veto within their domain.
-        </p>
-      </div>
-      <div class="mt-16 grid gap-6 md:grid-cols-2">
+  <section class="border-t border-line bg-surface py-16 md:py-24">
+    <div class={shell}>
+      <h2 class="text-h2 text-ink text-balance">The team behind NewCo.</h2>
+      <p class="text-body-lg text-slate max-w-[68ch] mt-4">
+        Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
         {
-          founderRoles.map((founder) => (
-            <div class="flex h-full flex-col overflow-hidden rounded-[12px] border border-mist bg-canvas shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-              <div class="mono border-b border-line px-6 py-3 text-signal">{founder.badge}</div>
-              {founder.image && (
-                <img
-                  src={founder.image}
-                  alt={founder.role}
-                  width="1200"
-                  height="1500"
-                  loading="lazy"
-                  decoding="async"
-                  class="aspect-[4/5] w-full border-b border-line object-cover object-top"
-                />
-              )}
-              <div class="flex-1 p-6">
-                <h3 class="text-h3 text-ink">{founder.role}</h3>
-                <p class="mono mt-5 text-graphite">PROMISE</p>
-                <p class="mt-1 text-body-lg font-medium text-ink">{founder.promise}</p>
-                <p class="mono mt-5 text-graphite">OWNS</p>
-                <p class="mt-1 text-body text-graphite">{founder.owns}</p>
+          founders.map((f) => (
+            <div class="rounded-[12px] bg-white border border-line/60 overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <img
+                src={f.image}
+                alt={`${f.name}, ${f.role}`}
+                width="1200"
+                height="1500"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[4/5] w-full object-cover object-top border-b border-line"
+              />
+              <div class="p-6">
+                <h3 class="text-h3 font-semibold text-ink">{f.name}</h3>
+                <p class="text-sm text-graphite mt-1">{f.role}</p>
               </div>
             </div>
           ))
         }
       </div>
-      <p class="mono mt-10 text-graphite">LEADERSHIP ACCOUNTABILITY: FOUNDER-DIRECT ENGAGEMENT ON EVERY DIAGNOSTIC</p>
     </div>
   </section>
 
-  <section class:list={[shell, "py-16 md:py-24"]}>
-    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-      <div class="md:col-span-5">
-        <p class="mono text-signal">SHARED APPROVAL AREAS</p>
-        <h2 class="mt-3 text-h2 text-ink text-balance">Decided together.</h2>
-        <p class="mt-6 text-body-lg text-graphite">
-          Every decision is logged with its owner, rationale, assumptions, and a review date.
-        </p>
-      </div>
-      <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
+  <section class="border-t border-line bg-white py-16 md:py-24">
+    <div class={shell}>
+      <h2 class="text-h2 text-ink text-balance">What every client can count on.</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
         {
-          sharedApprovals.map((item, i) => (
-            <li class="grid grid-cols-[4rem_1fr] gap-x-4 py-4">
-              <span class="mono text-signal">{pad(i)}</span>
-              <span class="text-body-lg text-ink">{item}</span>
+          commitments.map((item) => (
+            <li class="flex gap-4">
+              <Icon name={item.icon} class="h-8 w-8 shrink-0 text-signal" aria-hidden="true" />
+              <div>
+                <h3 class="text-h3 font-semibold text-ink">{item.title}</h3>
+                <p class="text-body text-slate mt-1">{item.description}</p>
+              </div>
             </li>
           ))
         }
       </ul>
-    </div>
-  </section>
-
-  <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <div class="md:col-span-5">
-          <p class="mono text-signal">QUALIFICATION DISCIPLINE</p>
-          <h2 class="mt-3 text-h2 text-ink text-balance">Engagements we decline.</h2>
-          <p class="mt-6 text-body-lg text-graphite">
-            Clear qualification standards protect delivery quality and ensure mutual alignment before any contract is signed.
-          </p>
-        </div>
-        <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
-          {
-            declines.map((item, i) => (
-              <li class="grid grid-cols-[4rem_1fr] gap-x-4 py-4">
-                <span class="mono text-graphite">{pad(i)}</span>
-                <span class="text-body-lg text-graphite">{item}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -157,7 +93,7 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
         If this is how you want to work, tell us where things stand.
       </h2>
       <p class="mt-6 measure text-body-lg text-graphite">
-        We evaluate your systems, operational constraints, and team goals, then provide an objective recommendation on whether the 15-day Technical Diagnostic is the right path.
+        We'll look at your systems, constraints and goals, then give you an honest recommendation on the best way forward.
       </p>
       <div class="mt-10">
         <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Talk to us</Button>

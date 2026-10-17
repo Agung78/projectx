@@ -5,203 +5,63 @@ import CapabilityCurve from "../components/CapabilityCurve.astro";
 import { Icon } from "astro-icon/components";
 
 
-// Two lines, split into words so each can reveal in reading order. The full
-// sentence stays in the DOM as ordinary inline text for assistive technology.
-const taglineLines = [
-  "Engineering capability you keep.",
-  "We build with your team, operate the system with you, and measure progress toward your independence.",
-].map((line) => line.split(" "));
-
-const dependencyCosts = [
-  { name: "Project shop", default: "Build, invoice, disappear", remains: "A proprietary system with no accountable in-house operator" },
-  { name: "Body shopping", default: "Add people by the day", remains: "Temporary feature delivery without retained team capability" },
+const problemCards = [
+  { title: "The disappearing agency", body: "Builds it, bills it, leaves." },
   {
-    name: "AI wrapper without foundations",
-    default: "Add AI to weak foundations",
-    remains: "Brittle AI prototypes with no data lineage, evaluation, or production owner",
+    title: "Short-term contractors",
+    body: "Extra developers fill the gap for a while, but when the contract ends, the knowledge walks out with them.",
   },
   {
-    name: "Handover as a ZIP file",
-    default: "Sign off, archive repository, exit",
-    remains: "Permanent vendor dependency disguised as completed delivery",
+    title: "Tech for the sake of it",
+    body: "Trendy tools added before the basics are in place, so they cost more than they deliver.",
+  },
+  {
+    title: "Handover in name only",
+    body: "The code is passed over, but nobody explains how it works or how to fix it.",
   },
 ];
 
-const outcomes = [
+const businessGets = [
   {
-    name: "Capacity",
-    body: "Your internal team independently ships production updates and manages releases without external agency bottlenecks.",
-    cue: "Lead time, deployment frequency, onboarding to first PR",
+    title: "We stay until it runs smoothly",
+    body: "We don't leave at launch. We monitor the system, fix issues fast and keep improving it until it runs smoothly.",
+    proof: "How we prove it: service recovery time, tracked from day one.",
   },
   {
-    name: "Longevity",
-    body: "Your systems remain operational and maintainable across staff transitions, tech migrations, and peak volume spikes.",
-    cue: "Capability scorecard progress, recovery time, runbook execution",
+    title: "Knowledge that stays with the business",
+    body: "Every system comes with clear documentation and guides, so the know-how belongs to the business, not to any one person.",
+    proof: "How we prove it: documentation is reviewed and signed off at every stage.",
   },
   {
-    name: "Leverage",
-    body: "Shared data pipelines, documented service patterns, and tested automation compound technical speed over time.",
-    cue: "Rework rate, change failure rate, platform reuse",
-  },
-];
-
-const phases = ["Diagnose", "Build With", "Run With", "Hand Over", "Advise"];
-
-type Deliverable = {
-  id: string;
-  title: string;
-  artifact: string;
-  contents: string[];
-  excerpt: string;
-  readout: { label: string; value: string };
-  value: string;
-};
-
-const deliverableGroups: { title: string; items: Deliverable[] }[] = [
-  {
-    title: "Where you are",
-    items: [
-      {
-        id: "01",
-        title: "Architecture and dependency map",
-        artifact: "System diagram of services, vendors, and data stores, with a named owner for every node.",
-        contents: ["Service and vendor inventory", "Single points of failure", "Owner per component"],
-        excerpt: "Order sync runs through one vendor-hosted queue with no named internal owner. If it stalls, three of five revenue flows stop.",
-        readout: { label: "Unowned critical dependencies", value: "Flagged for first-90-day ownership" },
-        value: "Leadership sees what the system actually depends on, and who is accountable for each part, before committing capital.",
-      },
-      {
-        id: "02",
-        title: "Data flow and data readiness assessment",
-        artifact: "Lineage of key data from source to dashboard, graded for trust, freshness, and access.",
-        contents: ["Source-to-report lineage", "Quality and freshness grades", "Access and permission gaps"],
-        excerpt: "Inventory counts are re-keyed by hand between POS and the warehouse. Two reports disagree on the same weekly figure.",
-        readout: { label: "Readiness grade", value: "Foundation work required before AI or automation" },
-        value: "Establishes which decisions can be trusted today and which need a data foundation first.",
-      },
-      {
-        id: "03",
-        title: "Delivery and capability baseline",
-        artifact: "Measured starting point for delivery speed, stability, and team self-sufficiency.",
-        contents: ["Lead time and deploy frequency", "Change failure and recovery time", "Onboarding to first merged PR"],
-        excerpt: "Releases wait on a single contractor. Recovery depends on tribal knowledge that is not written down.",
-        readout: { label: "Baseline captured", value: "DORA metrics plus capability scorecard" },
-        value: "Gives every later claim of progress a verified starting line to be measured against.",
-      },
-    ],
+    title: "The right tools, not the trendy ones",
+    body: "We recommend what the business actually needs. Often the simplest option is the best value, and we'll say so. New technology comes in only when it clearly pays for itself.",
+    proof: "How we prove it: every recommendation comes with its cost and expected return.",
   },
   {
-    title: "What could go wrong",
-    items: [
-      {
-        id: "04",
-        title: "Security and operational risk register",
-        artifact: "Ranked register of security, resilience, and recovery risks with owner, impact, and remediation.",
-        contents: ["Severity-ranked risks", "Patching and access review", "Recovery runbook gaps"],
-        excerpt: "Production credentials are shared across three vendors. No restore test has been run against the current backups.",
-        readout: { label: "Top risk", value: "Untested recovery path for core ordering system" },
-        value: "Turns vague unease about risk into a ranked list the executive team can fund and track.",
-      },
-      {
-        id: "05",
-        title: "AI readiness scorecard",
-        artifact: "Scored assessment of data, evaluation, ownership, and unit economics for each proposed AI use case.",
-        contents: ["Use case by readiness stage", "Evaluation and fallback needs", "Cost and ownership check"],
-        excerpt: "Demand forecasting is ready for assistive use. Customer-facing automation lacks a permissioned corpus and an evaluation set.",
-        readout: { label: "Maturity stage", value: "Decision support, not yet assistive AI" },
-        value: "Prevents AI spend on weak foundations and sequences the use cases that will earn their place.",
-      },
-      {
-        id: "06",
-        title: "Build or buy recommendations",
-        artifact: "Decision memo per capability, comparing build, buy, and retain on cost, control, and exit options.",
-        contents: ["Options with exit cost", "Total cost of ownership", "Lock-in assessment"],
-        excerpt: "Buy the payments layer. Build the inventory logic that differentiates operations. Replace the reporting tool at contract renewal.",
-        readout: { label: "Decisions made", value: "Each with owner and review date" },
-        value: "Replaces opinion with an explicit rationale, and keeps every choice replaceable.",
-      },
-    ],
-  },
-  {
-    title: "What to do next",
-    items: [
-      {
-        id: "07",
-        title: "Prioritised backlog for the first 90 days",
-        artifact: "Sequenced work items sized and ordered by risk reduction and capability gain.",
-        contents: ["Ordered, sized work items", "Dependencies and owners", "Exit criteria per item"],
-        excerpt: "Weeks 1 to 2: assign owners to critical dependencies. Weeks 3 to 6: restore test and release automation. Weeks 7 to 12: data foundation.",
-        readout: { label: "First 90 days", value: "Ready to execute in-house or with any vendor" },
-        value: "The team starts on Monday with a clear order of work instead of a wish list.",
-      },
-      {
-        id: "08",
-        title: "Twelve month roadmap and run cost estimate",
-        artifact: "Quarter-by-quarter plan with build and ongoing run cost ranges and the assumptions behind them.",
-        contents: ["Quarterly milestones", "Build and run cost ranges", "Stated assumptions"],
-        excerpt: "Run cost is shown separately from build cost, so the full cost of ownership is visible before approval.",
-        readout: { label: "Cost view", value: "Build and run shown separately" },
-        value: "Gives finance and the board a defensible plan and the true cost of keeping it running.",
-      },
-      {
-        id: "09",
-        title: "Target operating model",
-        artifact: "Roles, ownership, and decision rights for running the system well, with a named technical counterpart.",
-        contents: ["Roles and decision rights", "On-call and release ownership", "Vendor interface rules"],
-        excerpt: "One accountable operator per system. Vendors work to documented interfaces and cannot hold undocumented knowledge.",
-        readout: { label: "Ownership gaps", value: "Closed through role design, not headcount alone" },
-        value: "Defines who owns what, so capability stays in the company after any vendor leaves.",
-      },
-      {
-        id: "10",
-        title: "Capability transfer plan",
-        artifact: "Plan to move skills, runbooks, and operational ownership to your team, with measures of independence.",
-        contents: ["Skills gap by role", "Runbook and pairing schedule", "Independence measures"],
-        excerpt: "Each runbook is executed first by us with the team, then by the team with us, then by the team alone.",
-        readout: { label: "Independence target", value: "Measured by scorecard, not by sign-off" },
-        value: "Makes independence a scheduled, measurable outcome rather than an assumption at handover.",
-      },
-    ],
+    title: "A transfer that actually works",
+    body: "Before we sign off, whoever takes over, in-house staff or another provider, is walked through running, fixing and updating the system.",
+    proof: "How we prove it: a transfer checklist, agreed in the contract.",
   },
 ];
 
-const principles = [
-  {
-    name: "Smallest appropriate architecture",
-    body: "Split services only when measured throughput or organizational boundaries justify operational overhead.",
-  },
-  {
-    name: "Operations are part of engineering",
-    body: "Reliability, cloud infrastructure spend, security patching, and recovery runbooks are core product deliverables.",
-  },
-  {
-    name: "AI earns its place",
-    body: "Deploy AI features only when data foundations, accuracy benchmarks, unit economics, and fallback controls are proven.",
-  },
-  {
-    name: "Replaceable by design",
-    body: "Clean data schemas, portable container workloads, documented APIs, and reproducible infrastructure prevent vendor lock-in.",
-  },
-  { name: "Measure claims", body: "Track verified production metrics rather than activity logs or speculative estimates." },
+const howWeWorkStages = [
+  { label: "Discovery", newco: 90, client: 10, pager: 100, milestone: "Baseline Diagnostic" },
+  { label: "Development", newco: 70, client: 35, pager: 75, milestone: "Joint Engineering" },
+  { label: "Operations and Support", newco: 40, client: 65, pager: 40, milestone: "Shared Operations" },
+  { label: "Ownership Transfer", newco: 10, client: 90, pager: 0, milestone: "Autonomous Ownership" },
 ];
 
-const maturityLadder = [
-  { stage: "Data foundation", needs: "Instrumentation, governed sources, warehouse, honest dashboard." },
-  { stage: "Decision support", needs: "Reliable data and a defined decision." },
-  { stage: "Assistive AI", needs: "Permissioned corpus, evaluation set, and owner." },
-  { stage: "Embedded intelligence", needs: "Feedback loop and rollback path." },
-  { stage: "Controlled automation", needs: "Measured accuracy, bounded permissions, and audit trail." },
+const buildPrinciples = [
+  { title: "Keep it simple.", body: "No extra complexity until there's a real reason for it." },
+  { title: "Running it is part of the job.", body: "Monitoring, backups, cloud costs and recovery plans are included, not extras." },
+  { title: "Clear communication.", body: "Plain-language updates and no jargon, so decision-makers always know where things stand." },
+  { title: "Standard, proven technology.", body: "Widely used, well-supported tools, so any qualified engineer can pick the system up." },
+  { title: "Security from day one.", body: "Access controls, encryption and regular updates are built in, not added later." },
 ];
-
-const metrics = [
-  { name: "Lead time to production", category: "DORA" },
-  { name: "Deployment frequency", category: "DORA" },
-  { name: "Change failure rate", category: "DORA" },
-  { name: "Mean time to recovery (MTTR)", category: "DORA" },
-  { name: "Delivery rework rate", category: "Quality" },
-  { name: "Onboarding to first merged PR", category: "Velocity" },
-  { name: "Platform IP reuse", category: "Leverage" },
-  { name: "Capability scorecard progress", category: "Capability" },
+const adoptionSteps = [
+  "Get the data ready",
+  "Start with one clear use case",
+  "Expand carefully, with safeguards",
 ];
 
 const goodFit = [
@@ -224,8 +84,8 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 ---
 
 <Layout
-  title="Engineering capability you keep"
-  description="NewCo builds with your team, operates systems together, and systematically measures progress toward your complete engineering independence."
+  title="Technology built for independence · NewCo"
+  description="We design, build and support business systems, then transfer full ownership. No vendor lock-in, no hidden dependencies."
 >
   <!-- 1. Hero -->
   <section class:list={[shell, "bg-white py-16 md:py-24"]}>
@@ -255,236 +115,128 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     </div>
   </section>
 
-  <!-- 2. Core thesis -->
-  <section class="border-t border-line" aria-label="Tagline">
+  <!-- 2. The problem -->
+  <section class="border-t border-line bg-mist" aria-labelledby="problem-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono mb-8 text-graphite">OPERATING THESIS</p>
-      <p class="max-w-[24ch] text-4xl font-semibold text-ink text-balance md:text-5xl lg:max-w-[680px] lg:text-6xl" data-tagline-reveal>
-        {
-          taglineLines.map((words, lineIndex) => (
-            <span class:list={["block", lineIndex > 0 && "mt-8 text-2xl font-medium text-graphite md:text-3xl"]}>
-              {words.map((word) => (
-                <>
-                  <span class="inline-block" data-tagline-word>{word}</span>{" "}
-                </>
-              ))}
-            </span>
-          ))
-        }
-      </p>
-    </div>
-  </section>
-
-  <!-- 3. Market gap -->
-  <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono text-signal">THE DEPENDENCY COST</p>
-      <h2 class="mt-3 max-w-[24ch] text-h2 text-ink text-balance">
-        Most technology problems are operating-model problems.
+      <h2 id="problem-title" class="max-w-[24ch] text-h2 text-ink text-balance">
+        Getting software built is easy. Keeping it running is the hard part.
       </h2>
-      <p class="mt-6 measure text-body-lg text-graphite text-pretty">
-        Working software is not internal engineering capability. When an outside agency delivers a
-        release and departs, your business is left with code no internal engineer can explain,
-        maintain, or recover during an outage.
+      <p class="mt-6 max-w-[68ch] text-body-lg text-slate">
+        Many agencies deliver a system and leave. The business is left with code nobody in-house can fix when something breaks.
       </p>
 
-      <div class="mt-12 hidden gap-x-6 border-b border-ink pb-4 md:grid md:grid-cols-12">
-        <p class="mono text-graphite md:col-span-6">The usual arrangement</p>
-        <p class="mono text-signal md:col-span-6">What you are left with</p>
-      </div>
-
-      <dl class="flex flex-col divide-y divide-line border-b border-line max-md:mt-12 max-md:border-t max-md:border-ink">
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
         {
-          dependencyCosts.map((row) => (
-            <div class="grid gap-x-6 gap-y-2 py-6 md:grid-cols-12">
-              <dt class="md:col-span-6">
-                <span class="text-h3 text-ink">{row.name}</span>
-                {row.default && <span class="mono mt-1 block text-graphite">{row.default}</span>}
-              </dt>
-              <dd class="text-body text-graphite md:col-span-6 md:text-body-lg">{row.remains}</dd>
+          problemCards.map((card) => (
+            <div class="p-6 rounded-[12px] bg-white border border-line/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <h3 class="text-h3 text-ink">{card.title}</h3>
+              <p class="mt-3 text-body text-slate">{card.body}</p>
             </div>
           ))
         }
-      </dl>
-    </div>
-  </section>
-
-  <!-- 4. Outcomes -->
-  <section class:list={[shell, "py-16 md:py-24"]}>
-    <h2 class="max-w-[22ch] text-h2 text-ink text-balance">Three permanent engineering assets you keep.</h2>
-    <div class="mt-12 grid gap-12 md:grid-cols-3 md:gap-8" data-reveal-group>
-      {
-        outcomes.map((outcome, i) => (
-          <div class="border-t-2 border-ink pt-6" data-reveal-item>
-            <p class="mono text-signal">{pad(i)}</p>
-            <h3 class="mt-3 text-h3 text-ink">{outcome.name}</h3>
-            <p class="mt-3 text-body-lg text-graphite text-pretty">{outcome.body}</p>
-            <p class="mono mt-6 text-graphite">Evidence baselined</p>
-            <p class="mt-1 text-body text-ink">{outcome.cue}</p>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- 5. Capability curve -->
-  <section id="capability-curve" class="scroll-mt-24 border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <div class="md:col-span-7">
-          <p class="mono text-signal">ENGAGEMENT MODEL</p>
-          <h2 class="mt-3 text-h2 text-ink text-balance">A route from external support to internal ownership.</h2>
-        </div>
-        <div class="md:col-span-5">
-          <p class="text-body-lg text-graphite text-pretty">
-            We diagnose your current baseline, build the platform alongside your engineers, and share
-            production pager duty. Your team takes the primary operational lead before handover, backed
-            by ongoing advisory governance.
-          </p>
-          <a href="/how-we-work" class:list={["mt-4 inline-block", link]}>See the 5-phase delivery model</a>
-        </div>
       </div>
+    </div>
+  </section>
 
-      <ol class="mono mt-12 grid grid-cols-2 border-y border-line md:grid-cols-5" aria-label="Engagement phases">
+  <!-- 3.3 What the business gets -->
+  <section class="border-t border-line bg-white" aria-labelledby="business-gets-title">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <h2 id="business-gets-title" class="text-h2 text-ink text-balance">What the business gets instead.</h2>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
         {
-          phases.map((phase, i) => (
-            <li class="border-b border-line py-3 pr-4 text-ink max-md:odd:border-r max-md:even:pl-4 md:border-b-0 md:border-l md:pl-4 md:first:border-l-0 md:first:pl-0">
-              <span class="text-graphite">{pad(i)}</span> {phase}
-            </li>
+          businessGets.map((card) => (
+            <div class="p-6 rounded-[12px] bg-surface border border-mist shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex flex-col justify-between">
+              <div>
+                <h3 class="text-h3 text-ink">{card.title}</h3>
+                <p class="mt-3 text-body text-slate">{card.body}</p>
+              </div>
+              <p class="mt-6 text-sm italic text-graphite">{card.proof}</p>
+            </div>
           ))
         }
-      </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.4 How we work (white) -->
+  <section id="how-we-work" class="scroll-mt-24 border-t border-line bg-white">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <h2 class="text-h2 text-ink text-balance">How a project comes together.</h2>
+      <p class="mt-4 max-w-[68ch] text-body-lg text-slate">
+        Four clear stages take each project from the first conversation to a system the business fully owns.
+      </p>
 
       <div class="mt-12">
-        <CapabilityCurve />
+        <CapabilityCurve phases={howWeWorkStages} caption="" />
       </div>
+      <p class="mt-4 text-sm text-graphite">
+        Day-to-day control shifts to the business, stage by stage. Ongoing support is a choice, never a requirement.
+      </p>
+      <a href="/how-we-work" class="mt-4 inline-block font-medium text-signal underline">See how it works →</a>
     </div>
   </section>
 
-  <!-- 6. Technical Diagnostic -->
-  <section id="diagnostic" class:list={[shell, "scroll-mt-24 py-16 md:py-24"]}>
-    <div class="rounded-[12px] border border-mist bg-surface p-6 shadow-[0_2px_8px_rgba(0,0,0,0.04)] md:p-12">
-      <div class="grid gap-12 md:grid-cols-12 md:gap-x-6">
-        <div class="md:col-span-5">
-          <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">TECHNICAL DIAGNOSTIC</p>
-          <h2 class="mt-5 text-h2 text-ink text-balance">Base your engineering roadmap on verified production evidence.</h2>
-          <dl class="mt-8 grid grid-cols-1 divide-y divide-line border-y border-line">
-            <div class="py-4">
-              <dt class="mono text-graphite">Duration</dt>
-              <dd class="mt-1 text-h3 text-ink">15 business days</dd>
-            </div>
-            <div class="py-4">
-              <dt class="mono text-graphite">Commercial form</dt>
-              <dd class="mt-1 text-h3 text-ink">Fixed fee standalone product</dd>
-            </div>
-          </dl>
-          <p class="mt-8 rounded-[12px] border border-signal p-6 text-body-lg font-medium text-ink">
-            You own every diagnostic deliverable and can execute it in-house or take it to any vendor.
-          </p>
-        </div>
-
-        <div class="md:col-span-7">
-          <p class="mono text-graphite">10 DELIVERABLES</p>
-          <div data-inspector class="mt-4">
-            <div class="grid gap-8 md:grid-cols-3 md:gap-6">
-              {
-                deliverableGroups.map((group) => (
-                  <div>
-                    <h3 class="border-b border-ink pb-3 text-body-lg font-semibold text-ink">{group.title}</h3>
-                    <ul class="mt-4 flex flex-col gap-3">
-                      {group.items.map((item) => (
-                        <li class="border-b border-line pb-3 text-body text-graphite">
-                          <span data-spec-static>{item.title}</span>
-                          <button
-                            type="button"
-                            class="pressable hidden w-full cursor-pointer text-left text-graphite hover:text-ink aria-pressed:font-medium aria-pressed:text-signal"
-                            data-spec-btn={item.id}
-                            aria-pressed={item.id === "01" ? "true" : "false"}
-                            aria-controls={`specimen-${item.id}`}
-                          >
-                            <span class="mono mr-2 text-graphite">{item.id}</span>{item.title}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))
-              }
-            </div>
-
-            <div class="mt-8 border border-ink bg-canvas" data-spec-card>
-              <p class="mono border-b border-ink px-5 py-3 text-graphite">ARTIFACT SPECIMEN INSPECTOR</p>
-              <div data-spec-live>
-                {
-                  deliverableGroups
-                    .flatMap((group) => group.items)
-                    .map((item, i) => (
-                      <article
-                        id={`specimen-${item.id}`}
-                        data-spec-panel={item.id}
-                        aria-labelledby={`specimen-${item.id}-title`}
-                        class:list={["p-6", i > 0 && "hidden"]}
-                      >
-                        <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">
-                          SPECIMEN ARTIFACT: {item.id}
-                        </p>
-                        <h3 id={`specimen-${item.id}-title`} class="mt-4 text-h3 text-ink">{item.title}</h3>
-                        <p class="mt-2 text-body text-graphite">{item.artifact}</p>
-
-                        <div class="mt-5 rounded-[12px] border border-mist bg-surface p-6">
-                          <p class="mono text-graphite">Specimen preview (illustrative)</p>
-                          <blockquote class="mt-2 border-l-2 border-signal pl-3 text-body text-ink">{item.excerpt}</blockquote>
-                          <p class="mono mt-3 text-graphite">
-                            {item.readout.label}: <span class="text-ink">{item.readout.value}</span>
-                          </p>
-                        </div>
-
-                        <div class="mt-5 grid gap-5 md:grid-cols-2 md:gap-6">
-                          <div>
-                            <p class="mono text-graphite">Contents</p>
-                            <ul class="mt-2 flex flex-col gap-1 text-body text-ink">
-                              {item.contents.map((c) => (
-                                <li class="border-b border-line pb-1">{c}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <p class="mono text-graphite">Executive takeaway</p>
-                            <p class="mt-2 text-body text-ink">{item.value}</p>
-                          </div>
-                        </div>
-                      </article>
-                    ))
-                }
-              </div>
-            </div>
-          </div>
-          <div class="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <Button href="/contact" variant="primary" class={btn}>Talk to us</Button>
-            <a href="/how-we-work#diagnostic" class={link}>Explore the 15-day Technical Diagnostic</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. Engineering principles -->
-  <section class="border-t border-line">
+  <!-- 3.5 Discovery (the only dark section) -->
+  <section id="discovery" class="scroll-mt-24 bg-[#0F2A4A] text-white border-y border-white/10" aria-labelledby="discovery-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <h2 class="text-h2 text-ink text-balance md:col-span-7">Opinionated engineering. Accountable operational ownership.</h2>
-        <div class="md:col-span-5 md:self-end">
-          <a href="/how-we-work" class={link}>See the architecture in the approach</a>
+      <h2 id="discovery-title" class="text-h2 text-white text-balance">Every project starts with a clear picture.</h2>
+      <p class="text-body-lg text-white/80 max-w-[68ch] mt-4">
+        Before anything is built, we take a close look at how the business runs today. In three steps, that becomes a plan the business keeps, whether it continues with us or not.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
+        <div>
+          <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" />
+            <path d="m16 16 4.5 4.5" />
+            <path d="M8.5 11h5M11 8.5v5" />
+          </svg>
+          <h3 class="text-h3 font-semibold text-white mt-4">Understand</h3>
+          <p class="text-body text-white/70 mt-2">We map current systems, data flows and integrations, and pinpoint the bottlenecks.</p>
+        </div>
+        <div>
+          <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 6h16M4 12h11M4 18h6" />
+            <path d="m18 15 2 2 3-4" />
+          </svg>
+          <h3 class="text-h3 font-semibold text-white mt-4">Prioritise</h3>
+          <p class="text-body text-white/70 mt-2">We rank the risks, such as security gaps and single points of failure, and decide what to build, upgrade or leave as is.</p>
+        </div>
+        <div>
+          <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="5" cy="18" r="2" />
+            <circle cx="12" cy="8" r="2" />
+            <circle cx="19" cy="5" r="2" />
+            <path d="M6.5 16.5 10.5 9.6M13.8 7.2l3.4-1.4" />
+          </svg>
+          <h3 class="text-h3 font-semibold text-white mt-4">Plan</h3>
+          <p class="text-body text-white/70 mt-2">We deliver a technical roadmap with the proposed architecture, milestones and estimated costs, so every decision is based on facts.</p>
         </div>
       </div>
 
-      <ol class="mt-12 border-t border-ink" data-reveal-group>
+      <div class="mt-12">
+        <a
+          href="/contact"
+          class="rounded-[8px] min-h-[48px] bg-white text-[#0F2A4A] font-medium px-[18px] py-3 inline-flex items-center justify-center hover:bg-white/90 active:scale-[0.97]"
+        >Talk to us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.6 How we build (white) -->
+  <section id="how-we-build" class="scroll-mt-24 bg-white border-t border-line">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <h2 class="text-h2 text-ink text-balance">Simple, honest engineering.</h2>
+
+      <ol class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mt-12">
         {
-          principles.map((principle, i) => (
-            <li class="grid gap-x-6 gap-y-2 border-b border-line py-6 md:grid-cols-12" data-reveal-item>
-              <span class="mono text-signal md:col-span-1">{pad(i)}</span>
-              <h3 class="text-h3 text-ink md:col-span-5">{principle.name}</h3>
-              <p class="text-body text-graphite text-pretty md:col-span-6 md:text-body-lg">{principle.body}</p>
+          buildPrinciples.map((item, i) => (
+            <li class="flex gap-4">
+              <span class="mono text-signal">{i + 1}</span>
+              <p class="text-body text-slate">
+                <strong class="font-semibold text-ink">{item.title}</strong> {item.body}
+              </p>
             </li>
           ))
         }
@@ -492,29 +244,21 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     </div>
   </section>
 
-  <!-- 8. AI maturity -->
-  <section class="border-t border-line bg-surface">
+  <!-- 3.7 AI adoption, an optional service (mist). The only home page section that talks about AI. -->
+  <section id="ai-adoption" class="scroll-mt-24 bg-mist border-t border-line" aria-labelledby="ai-adoption-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <div class="md:col-span-7">
-          <p class="mono text-signal">AI MATURITY</p>
-          <h2 class="mt-3 text-h2 text-ink text-balance">A disciplined path to AI adoption.</h2>
-        </div>
-        <p class="measure text-body-lg text-graphite text-pretty md:col-span-5">
-          AI creates value only on sound data foundations. Each maturity stage requires verified data
-          quality, defined operational decisions, regression evaluations, and fallback procedures
-          before deployment. The diagnostic identifies the lowest stage that drives measurable
-          business ROI.
-        </p>
-      </div>
+      <p class="text-sm font-semibold tracking-wide text-signal">Optional service</p>
+      <h2 id="ai-adoption-title" class="mt-3 text-h2 text-ink text-balance">Want to bring AI into the business? We can help.</h2>
+      <p class="text-body-lg text-slate max-w-[68ch] mt-4">
+        Our systems are engineered by people, not generated by AI. When a business wants to use AI, we help it adopt it properly: reliable data first, then AI only where it clearly pays off.
+      </p>
 
-      <ol class="mt-12 grid border-t border-ink md:grid-cols-5">
+      <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
         {
-          maturityLadder.map((rung, i) => (
-            <li class="flex flex-col gap-2 border-b border-line py-6 md:border-b-0 md:border-l md:px-5 md:first:border-l-0 md:first:pl-0">
-              <span class="mono text-signal">{pad(i)}</span>
-              <p class="text-body-lg font-semibold text-ink">{rung.stage}</p>
-              <p class="text-body text-graphite">{rung.needs}</p>
+          adoptionSteps.map((title, i) => (
+            <li class="p-6 rounded-[12px] bg-white border border-line/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <span class="mono text-signal">{i + 1}</span>
+              <p class="mt-2 text-body-lg font-semibold text-ink">{title}</p>
             </li>
           ))
         }
@@ -522,28 +266,57 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     </div>
   </section>
 
-  <!-- 9. Operational evidence -->
-  <section class:list={[shell, "py-16 md:py-24"]}>
-    <p class="mono text-signal">OPERATIONAL EVIDENCE</p>
-    <h2 class="mt-3 max-w-[22ch] text-h2 text-ink text-balance">Eight operational metrics we measure on every engagement.</h2>
-    <p class="mt-6 measure text-body-lg text-graphite text-pretty">
-      We verify engineering progress with quantitative operational data rather than subjective
-      status reports. These eight benchmarks define team capability from baseline to handover:
-    </p>
+  <!-- 3.8 The numbers we track (white) -->
+  <section id="numbers" class="scroll-mt-24 bg-white border-t border-line" aria-labelledby="numbers-title">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <h2 id="numbers-title" class="text-h2 text-ink text-balance">Eight numbers that prove progress.</h2>
+      <p class="text-body-lg text-slate max-w-[68ch] mt-4">
+        No vague status reports. We measure these on every project and report them in plain language. The first four are the industry-standard DORA metrics used by top engineering teams.
+      </p>
 
-    <ul class="mt-12 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
-      {
-        metrics.map((metric, i) => (
-          <li class="flex min-h-36 flex-col justify-between gap-6 bg-surface p-6" data-evidence-item>
-            <div class="flex items-center justify-between">
-              <span class="mono text-graphite">M-{pad(i)}</span>
-              <span class="mono text-signal">{metric.category}</span>
-            </div>
-            <span class="text-h3 text-ink text-balance">{metric.name}</span>
-          </li>
-        ))
-      }
-    </ul>
+      <table class="w-full text-left border-collapse mt-12">
+        <thead>
+          <tr class="border-b border-line">
+            <th scope="col" class="py-4 pr-6 text-sm font-semibold tracking-wide text-ink">Metric</th>
+            <th scope="col" class="py-4 pr-6 text-sm font-semibold tracking-wide text-ink">What it tells you</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-line">
+          <tr>
+            <td class="py-4 pr-6 font-semibold text-ink">Lead time</td>
+            <td class="py-4 pr-6 text-slate">How long a change takes to go live</td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-6 font-semibold text-ink">Release frequency</td>
+            <td class="py-4 pr-6 text-slate">How often updates go live</td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-6 font-semibold text-ink">Change failure rate</td>
+            <td class="py-4 pr-6 text-slate">How often an update causes a problem</td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-6 font-semibold text-ink">Recovery time</td>
+            <td class="py-4 pr-6 text-slate">How fast service is restored after an issue</td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-6 font-semibold text-ink">Rework rate</td>
+            <td class="py-4 pr-6 text-slate">How much work has to be redone</td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-6 font-semibold text-ink">Uptime</td>
+            <td class="py-4 pr-6 text-slate">How much of the time the system is available</td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-6 font-semibold text-ink">Response time</td>
+            <td class="py-4 pr-6 text-slate">How quickly support requests are answered</td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-6 font-semibold text-ink">Transfer readiness</td>
+            <td class="py-4 pr-6 text-slate">How complete the documentation and transfer checklist are</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <!-- 10. Qualification -->
@@ -588,7 +361,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       <h2 class="mx-auto max-w-[18ch] text-h1 text-ink text-balance">Own the technology your business runs on.</h2>
       <p class="mx-auto mt-8 max-w-[68ch] text-body-lg text-graphite text-pretty">
         Tell us where fragmented systems, vendor dependencies, or operational data silos are limiting
-        growth. We will evaluate your architecture and recommend whether a 15-day diagnostic is the
+        growth. We will evaluate your architecture and recommend whether a technical discovery is the
         right investment.
       </p>
       <div class="mt-10">
@@ -634,40 +407,6 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 </Layout>
 
 <script>
-  // Without JS every specimen is rendered in full as stacked static content.
-  // This upgrade turns the titles into toggle buttons and shows one panel.
-  function initInspector() {
-    document.querySelectorAll<HTMLElement>("[data-inspector]").forEach((root) => {
-      const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-spec-btn]"));
-      const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-spec-panel]"));
-      const live = root.querySelector<HTMLElement>("[data-spec-live]");
-      if (!buttons.length || !panels.length || !live) return;
-
-      root.querySelectorAll<HTMLElement>("[data-spec-static]").forEach((el) => el.classList.add("hidden"));
-      buttons.forEach((b) => b.classList.remove("hidden"));
-
-      const select = (id: string, announce: boolean) => {
-        buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.specBtn === id)));
-        panels.forEach((p) => p.classList.toggle("hidden", p.dataset.specPanel !== id));
-        // Polite announcements only after a user action, never on initial load.
-        if (announce) live.setAttribute("aria-live", "polite");
-        // Panel heights differ, so ScrollTrigger must re-measure everything below.
-        window.dispatchEvent(new Event("resize"));
-      };
-
-      buttons.forEach((b, i) => {
-        b.addEventListener("click", () => select(b.dataset.specBtn!, true));
-        b.addEventListener("keydown", (event) => {
-          const step = event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : event.key === "ArrowUp" || event.key === "ArrowLeft" ? -1 : 0;
-          if (!step) return;
-          event.preventDefault();
-          buttons[(i + step + buttons.length) % buttons.length].focus();
-        });
-      });
-
-    });
-  }
-
   function initVideoModal() {
     const dialog = document.getElementById("video-dialog") as HTMLDialogElement | null;
     const video = document.getElementById("intro-video") as HTMLVideoElement | null;
@@ -699,7 +438,6 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   }
 
   document.addEventListener("astro:page-load", () => {
-    initInspector();
     initVideoModal();
   });
 </script>

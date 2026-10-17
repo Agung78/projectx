@@ -1,326 +1,131 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CapabilityCurve from "../components/CapabilityCurve.astro";
-import CapabilityScorecard from "../components/CapabilityScorecard.astro";
-import Button from "../components/Button.astro";
-// §6 Engagement Model. A real sequence, so the phases are numbered.
-const phases = [
-  {
-    name: "Technical Diagnostic",
-    term: "15 business days, fixed fee",
-    body: "We map the architecture, data, risks, and delivery capability, and draft the transfer plan. You own every output.",
-  },
-  {
-    name: "Build With",
-    term: "3-9 months, retainer plus capability milestones",
-    body: "Your named counterpart works in the same planning, review, repository, and release process as our engineers.",
-  },
-  {
-    name: "Run With",
-    term: "12+ months, operations retainer",
-    body: "We share production responsibility under agreed service levels. Your team shadows the pager, then shares it.",
-  },
-  {
-    name: "Hand Over",
-    term: "Ends after an agreed observation period",
-    body: "Complete when your team deploys, rolls back, handles incidents, and reviews architecture changes without us.",
-  },
-  {
-    name: "Advise",
-    term: "Monthly retainer",
-    body: "Fractional CTO support: architecture review, hiring panels, due diligence, and periodic operating reviews.",
-  },
-];
 
-const tags = ["ROADMAP", "ARCHITECTURE", "DEPLOYS", "INCIDENTS", "HIRING"];
-const responsibilities = [
-  { area: "Roadmap prioritisation", who: "Shared; your executive sponsor holds the final call" },
-  { area: "Architecture decisions", who: "We propose, you approve; your team authors ADRs by handover" },
-  { area: "Production deploys", who: "Paired in Build With, shared in Run With, yours from Hand Over" },
-  { area: "Incident response", who: "Your team shadows, then shares, the pager in Run With; yours from Hand Over" },
-  { area: "Hiring and team structure", who: "Your decision; we sit on hiring panels when asked" },
-];
-
-const houseStack = [
-  { layer: "Frontend", choice: "Next.js; Vue 3 where the context justifies it" },
-  { layer: "Backend", choice: "NestJS for services; Python for data and ML" },
-  { layer: "Data", choice: "Managed PostgreSQL with Prisma" },
-  { layer: "Analytics", choice: "BigQuery, warehouse-first" },
-  { layer: "Infrastructure", choice: "Cloud Run, managed services, infrastructure as code" },
-  { layer: "AI", choice: "Provider-neutral; chosen by quality, privacy, latency, and cost" },
-];
-
-const pad = (i: number) => String(i + 1).padStart(2, "0");
 const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 
-// §6 Phase 0 outputs, grouped by the question each one answers.
-const outputGroups = [
+const stages = [
   {
-    title: "Where you are",
-    items: [
-      "Current-state architecture and dependency map",
-      "Data-flow and data-readiness assessment",
-      "Delivery and capability baseline",
-    ],
+    name: "Discovery",
+    body: "We learn how the business runs, map its current systems and agree the plan together.",
+    gets: "a technical roadmap with architecture, milestones and estimated costs.",
   },
   {
-    title: "What could go wrong",
-    items: ["Security and operational risk register", "AI-readiness scorecard", "Build-versus-buy recommendations"],
+    name: "Development",
+    body: "We design and build the system, with regular check-ins and demos so the business can see and test it as it takes shape.",
+    gets: "a working system, tested and ready for real use.",
   },
   {
-    title: "What to do next",
-    items: [
-      "Prioritised 90-day backlog",
-      "Twelve-month investment roadmap and three-year direction",
-      "Target operating model, estimated run cost, and delivery options",
-      "Capability-transfer plan and a recommendation for the next phase",
-    ],
+    name: "Operations and Support",
+    body: "After launch, we monitor the system, fix issues, and keep it secure and up to date until it runs smoothly.",
+    gets: "a stable system with agreed response times.",
+  },
+  {
+    name: "Ownership Transfer",
+    body: "We transfer everything needed to run the system independently, to in-house staff, a new hire or another provider.",
+    gets: "full ownership, with no dependence on us.",
   },
 ];
 
-const diagnosticInputs = [
-  "Read access to repositories and architecture documentation",
-  "Infrastructure and data inventories",
-  "Interviews with the people who run the system today",
-  "Your security questionnaires and policies",
-  "Recent delivery and incident history",
+const howWeWorkStages = [
+  { label: "Discovery", newco: 90, client: 10, pager: 100, milestone: "Baseline Diagnostic" },
+  { label: "Development", newco: 70, client: 35, pager: 75, milestone: "Joint Engineering" },
+  { label: "Operations and Support", newco: 40, client: 65, pager: 40, milestone: "Shared Operations" },
+  { label: "Ownership Transfer", newco: 10, client: 90, pager: 0, milestone: "Autonomous Ownership" },
 ];
 
-// A real sequence, so the steps are numbered.
-const diagnosticSteps = [
-  { title: "Kickoff and access", body: "We define scope boundaries, establish secure repository access, and meet the operators running your systems." },
-  { title: "Evidence gathering", body: "We inspect architecture schemas, audit code and deployment pipelines, and conduct structured technical interviews." },
-  { title: "Synthesis", body: "We consolidate findings into the operational risk register, team capability baseline, 90-day backlog, and 12-month roadmap." },
-  { title: "Walkthrough", body: "We present findings and technical trade-offs directly to executive sponsors and engineering leadership." },
-  { title: "Your decision", body: "You retain full ownership of all ten deliverables to execute internally, take to open tender, or transition into Build With." },
+const handover = [
+  { item: "Source code", included: "Every line, stored in the business's own account" },
+  { item: "Documentation", included: "How the system works, written in plain language" },
+  { item: "Accounts and access", included: "Hosting, domains and services in the business's name" },
+  { item: "Running guides", included: "Step-by-step instructions for everyday tasks and updates" },
+  { item: "Recovery plan", included: "How to restore the system from backup if something goes wrong" },
+  { item: "Security review", included: "Passwords changed and access checked before sign-off" },
+  { item: "Live walkthrough", included: "A guided session with whoever takes over" },
+  { item: "Ongoing support", included: "Available from us if the business wants it, never required" },
 ];
+
+const technologies = ["Next.js", "NestJS", "PostgreSQL", "Google Cloud", "BigQuery"];
 ---
 
 <Layout
-  title="How We Work: Engineering Capability Transfer & Technical Diagnostic | NewCo"
-  description="Our 5-phase engineering model transfers ownership to your team with measurable scorecards, starting with a 15-day fixed-fee Technical Diagnostic."
+  title="How we work · NewCo"
+  description="Four clear stages, from Discovery to full ownership transfer, with the business informed at every step."
 >
   <section class:list={[shell, "py-16 md:py-24"]}>
-    <p class="mono text-signal">HOW WE WORK</p>
-    <h1 class="mt-6 max-w-[20ch] text-h1 text-ink text-balance tracking-tight">Handover is designed into the engagement from day one.</h1>
-    <p class="mt-8 measure text-body-lg text-graphite text-pretty">
-      Every engagement is structured as a capability-transfer contract with defined milestones, objective handover
-      criteria, and scheduled transitions of operational authority.
+    <p class="mono mb-6 text-signal">HOW WE WORK</p>
+    <h1 class="text-h1 text-ink text-balance tracking-tight">One clear process, start to finish.</h1>
+    <p class="text-body-lg text-slate max-w-[68ch] text-pretty mt-6">
+      We work alongside the business at every stage, and it always has the final say. Every decision is explained in
+      plain language, with no jargon.
     </p>
   </section>
 
-  <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono text-signal">5 PHASES</p>
-      <h2 class="mt-3 text-h2 text-ink text-balance">Five phases, one direction.</h2>
-      <ol class="mt-16 flex flex-col divide-y divide-line border-y border-line" data-reveal-group>
+  <section class="border-t border-line bg-surface py-16 md:py-24">
+    <div class={shell}>
+      <h2 class="text-h2 text-ink text-balance">Four stages, one direction.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
         {
-          phases.map((phase, i) => (
-            <li class="grid gap-x-6 gap-y-3 py-8 md:grid-cols-12" data-reveal-item>
-              <span class="mono text-signal md:col-span-1">{pad(i)}</span>
-              <div class="md:col-span-4">
-                <h3 class="text-h3 text-ink">{phase.name}</h3>
-                <p class="mono mt-3 inline-block border border-line px-2 py-0.5 text-graphite">{phase.term}</p>
+          stages.map((stage) => (
+            <div class="p-6 rounded-[12px] bg-white border border-line/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex flex-col justify-between">
+              <div>
+                <h3 class="text-h3 text-ink">{stage.name}</h3>
+                <p class="mt-3 text-graphite">{stage.body}</p>
               </div>
-              <p class="text-body-lg text-graphite md:col-span-7">{phase.body}</p>
-            </li>
+              <p class="mt-6 text-sm text-ink">
+                <span class="font-semibold">The business gets:</span> {stage.gets}
+              </p>
+            </div>
           ))
         }
-      </ol>
-      <div class="mt-16 rounded-[12px] border border-mist bg-canvas p-6 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-        <CapabilityCurve />
       </div>
-    </div>
-  </section>
-
-  <section class:list={[shell, "py-16 md:py-24"]}>
-    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-      <div class="md:col-span-7">
-        <p class="mono text-signal">EVIDENCE FRAMEWORK</p>
-        <h2 class="mt-3 text-h2 text-ink text-balance">The scorecard that decides handover.</h2>
-      </div>
-      <p class="measure self-end text-body-lg text-graphite md:col-span-5">
-        Counterparts earn operational sign-off by demonstrating live production workflows—shipping releases, resolving
-        incidents, and defending architecture decisions.
+      <p class="text-sm text-graphite mt-6">
+        How long each stage takes depends on the project. We agree the timeline during Discovery.
       </p>
-    </div>
-    <div class="mt-16">
-      <CapabilityScorecard />
-    </div>
-  </section>
-
-  <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono text-signal">OPERATING MODEL &amp; GOVERNANCE</p>
-      <h2 class="mt-3 max-w-[24ch] text-h2 text-ink text-balance">Operational decision rights across each phase.</h2>
-      <dl class="mt-16 flex flex-col divide-y divide-line border-y border-line">
-        {
-          responsibilities.map((row, i) => (
-            <div class="grid gap-x-6 gap-y-2 py-5 md:grid-cols-12">
-              <dt class="md:col-span-5">
-                <span class="mono block text-graphite">{tags[i]}</span>
-                <span class="mt-1 block text-body-lg font-semibold text-ink">{row.area}</span>
-              </dt>
-              <dd class="text-body-lg text-graphite md:col-span-7">{row.who}</dd>
-            </div>
-          ))
-        }
-      </dl>
-    </div>
-  </section>
-
-  <section class:list={[shell, "py-16 md:py-24"]}>
-    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-      <div class="md:col-span-5">
-        <p class="mono text-signal">HOUSE STACK</p>
-        <h2 class="mt-3 text-h2 text-ink text-balance">Opinionated standards for operational stability.</h2>
-        <p class="mt-6 text-body-lg text-graphite">
-          Every project starts from one house stack, so your team inherits something others can operate too. Any
-          deviation needs a written ADR covering the reason, lifecycle cost, owner, exit path, and your approval.
-        </p>
-      </div>
-      <dl class="flex flex-col divide-y divide-line overflow-hidden rounded-[12px] border border-mist bg-surface md:col-span-6 md:col-start-7">
-        {
-          houseStack.map((row, i) => (
-            <div class="grid grid-cols-[9rem_1fr] gap-x-4 px-4 py-4">
-              <dt>
-                <span class="mono block text-signal">L{pad(i)}</span>
-                <span class="mono block text-ink">{row.layer}</span>
-              </dt>
-              <dd class="text-body text-graphite">{row.choice}</dd>
-            </div>
-          ))
-        }
-      </dl>
-    </div>
-  </section>
-
-  <section id="diagnostic" class:list={[shell, "scroll-mt-24 border-t border-line py-16 md:py-24"]}>
-    <p class="mono text-signal">TECHNICAL DIAGNOSTIC SPECIFICATION</p>
-    <h2 class="mt-6 max-w-[20ch] text-h1 text-ink text-balance tracking-tight">
-      Know your architecture before committing to a multi-month build.
-    </h2>
-    <p class="mt-8 measure text-body-lg text-graphite text-pretty">
-      A 15-day fixed-fee evaluation delivering a clear, evidence-backed assessment of your systems, data pipelines,
-      operational risks, and team readiness.
-    </p>
-    <div class="mono mt-8 flex flex-wrap gap-3">
-      <span class="border border-signal px-2 py-1 text-signal">15 BUSINESS DAYS</span>
-      <span class="border border-ink px-2 py-1 text-ink">FIXED FEE STANDALONE</span>
-    </div>
-    <div class="mt-8 max-w-[62ch] rounded-[12px] border border-mist bg-surface p-6">
-      <p class="mono text-graphite">OWNERSHIP GUARANTEE</p>
-      <p class="mt-2 text-body-lg font-medium text-ink">You own every diagnostic deliverable and can execute it in-house or take it to any vendor.</p>
-    </div>
-    <div class="mt-10">
-      <Button href="/contact" variant="secondary" class="md:whitespace-nowrap">Talk to us</Button>
-    </div>
-  </section>
-
-  <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-        <div class="md:col-span-7">
-          <p class="mono text-signal">10 DELIVERABLES</p>
-          <h2 class="mt-3 text-h2 text-ink text-balance">Ten verified deliverables yours to keep.</h2>
-        </div>
-        <p class="measure self-end text-body-lg text-graphite md:col-span-5">
-          The diagnostic is an independent, standalone deliverable that provides an objective roadmap whether you build with NewCo, in-house, or with another partner.
-        </p>
-      </div>
-      <div class="mt-16 grid gap-6 md:grid-cols-3">
-        {
-          outputGroups.map((group, gi) => {
-            const offset = outputGroups.slice(0, gi).reduce((n, g) => n + g.items.length, 0);
-            return (
-              <div class="overflow-hidden rounded-[12px] border border-mist bg-canvas shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                <div class="mono border-b border-line px-4 py-3 text-graphite">{group.title}</div>
-                <ul class="flex flex-col divide-y divide-line">
-                  {group.items.map((item, i) => (
-                    <li class="px-4 py-4">
-                      <span class="mono block text-signal">{pad(offset + i)}</span>
-                      <span class="mt-1 block text-body-lg text-ink">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })
-        }
+      <div class="mt-8 rounded-[12px] border border-line/60 bg-white p-6 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+        <CapabilityCurve
+          phases={howWeWorkStages}
+          caption="By the final stage, the business runs its technology on its own terms."
+        />
       </div>
     </div>
   </section>
 
-  <section class:list={[shell, "py-16 md:py-24"]}>
-    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-      <div class="md:col-span-5">
-        <p class="mono text-signal">DIAGNOSTIC INPUTS &amp; DATA GOVERNANCE</p>
-        <h2 class="mt-3 text-h2 text-ink text-balance">What we need from you.</h2>
-        <p class="mt-6 text-body-lg text-graphite">Honest findings need real access.</p>
-        <div class="mt-6 rounded-[12px] border border-mist bg-surface p-6">
-          <p class="mono text-graphite">AI DATA PRIVACY &amp; SECURITY</p>
-          <p class="mt-2 text-body text-ink">
-            Client code and data stay private: we route prompts and architecture files to AI tooling only after your explicit approval of data retention, encryption, and residency terms.
-          </p>
-        </div>
-      </div>
-      <ul class="flex flex-col divide-y divide-line border-y border-line md:col-span-6 md:col-start-7">
-        {
-          diagnosticInputs.map((item, i) => (
-            <li class="grid grid-cols-[4rem_1fr] gap-x-4 py-4">
-              <span class="mono text-signal">{pad(i)}</span>
-              <span class="text-body-lg text-ink">{item}</span>
-            </li>
-          ))
-        }
-      </ul>
+  <section class="border-t border-line bg-white py-16 md:py-24">
+    <div class={shell}>
+      <h2 class="text-h2 text-ink text-balance">Everything handed over, nothing held back.</h2>
+      <p class="text-body-lg text-slate max-w-[68ch] mt-4">
+        Before we sign off, each item below is delivered and walked through with whoever will run the system. The
+        checklist is agreed in the contract.
+      </p>
+      <table class="w-full text-left border-collapse mt-12 divide-y divide-line">
+        <thead>
+          <tr>
+            <th scope="col" class="text-sm font-semibold tracking-wide text-ink border-b border-line py-4 pr-6">Item</th>
+            <th scope="col" class="text-sm font-semibold tracking-wide text-ink border-b border-line py-4 pr-6">
+              What's included
+            </th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-line">
+          {
+            handover.map((row) => (
+              <tr>
+                <th scope="row" class="py-4 pr-6 align-top font-medium text-ink">{row.item}</th>
+                <td class="py-4 pr-6 text-graphite">{row.included}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono text-signal">5-STAGE PROCESS</p>
-      <h2 class="mt-3 text-h2 text-ink text-balance">How the 15 days run.</h2>
-      <ol class="mt-16 flex flex-col divide-y divide-line border-y border-line">
-        {
-          diagnosticSteps.map((step, i) => (
-            <li class="grid gap-x-6 gap-y-2 py-6 md:grid-cols-12">
-              <span class="mono text-signal md:col-span-1">{pad(i)}</span>
-              <h3 class="text-h3 text-ink md:col-span-4">{step.title}</h3>
-              <p class="text-body-lg text-graphite md:col-span-7">{step.body}</p>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </section>
-
-  <section class:list={[shell, "py-16 md:py-24"]}>
-    <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
-      <div class="md:col-span-7">
-        <p class="mono text-signal">QUALIFICATION &amp; FIT</p>
-        <h2 class="mt-3 text-h2 text-ink text-balance">Who it is for.</h2>
-      </div>
-      <div class="flex flex-col gap-6 md:col-span-5">
-        <p class="text-body-lg text-graphite">
-          Operators about to commit real budget to a rebuild, a migration, or an AI initiative, who want an independent
-          view first.
-        </p>
-        <p class="text-body-lg text-graphite">
-          It is also how every engagement with us starts. We do not take over a codebase we have not diagnosed.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono text-signal">PRICING & NEXT STEP</p>
-      <h2 class="mt-3 max-w-[24ch] text-h2 text-ink text-balance">
-        Pricing is confirmed once scope is agreed. Delivered as a fixed-fee standalone product with no multi-month lock-in.
-      </h2>
-      <div class="mt-10">
-        <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Talk to us</Button>
+  <section class="border-t border-line bg-surface py-12">
+    <div class={shell}>
+      <p class="text-center text-sm font-medium text-graphite mb-8">Built on proven, widely used technology.</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 grayscale opacity-70">
+        {technologies.map((name) => <span class="text-base font-semibold tracking-tight text-graphite">{name}</span>)}
       </div>
     </div>
   </section>

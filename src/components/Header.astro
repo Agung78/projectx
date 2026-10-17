@@ -1,6 +1,4 @@
 ---
-import Button from "./Button.astro";
-
 const navLinks = [
   { href: "/how-we-work", label: "How we work" },
   { href: "/about", label: "About" },
@@ -35,10 +33,6 @@ const currentPath = Astro.url.pathname;
         }
       </nav>
 
-      <div class="hidden md:block">
-        <Button href="/contact" variant="primary">Talk to us</Button>
-      </div>
-
       <button
         type="button"
         class="pressable flex h-11 w-11 items-center justify-center rounded-sm border border-line md:hidden"
@@ -67,9 +61,6 @@ const currentPath = Astro.url.pathname;
           </a>
         ))
       }
-      <Button href="/contact" variant="primary" class="mt-2 w-full justify-center">
-        Talk to us
-      </Button>
     </nav>
   </div>
 </header>

@@ -48,6 +48,11 @@ const handover = [
 
 const technologies = [
   {
+    name: "Astro",
+    icon: "/images/tech/astro.svg",
+    wordmark: true,
+  },
+  {
     name: "Next.js",
     icon: "/images/tech/nextdotjs.svg",
   },
@@ -120,8 +125,16 @@ const technologies = [
     icon: "/images/tech/railway.svg",
   },
   {
+    name: "Docker",
+    icon: "/images/tech/docker.svg",
+  },
+  {
     name: "Snyk",
     icon: "/images/tech/snyk.svg",
+  },
+  {
+    name: "Semgrep",
+    icon: "/images/tech/semgrep.svg",
   },
   {
     name: "Veracode",
@@ -156,6 +169,11 @@ const technologies = [
     name: "NVIDIA",
     icon: "/images/tech/nvidia.svg",
   },
+];
+
+const marqueeRows = [
+  { direction: "left", items: technologies.slice(0, 15) },
+  { direction: "right", items: technologies.slice(15, 30) },
 ];
 ---
 
@@ -252,52 +270,74 @@ const technologies = [
     </div>
   </section>
 
-  <section class="border-t border-line bg-mist py-12">
+  <section class="border-t border-line bg-mist py-16 md:py-20">
     <div class={shell}>
-      <p class="mono mb-6 text-grey">// Built on proven, widely used technology.</p>
+      <p class="mono mb-8 text-grey">// Built on proven, widely used technology.</p>
     </div>
     <div class="marquee" aria-label="Technologies we build with">
-      <ul class="marquee-track">
-        {
-          [...technologies, ...technologies].map((tech, i) => (
-            <li
-              aria-hidden={i >= technologies.length ? "true" : undefined}
-              class="inline-flex shrink-0 items-center gap-3 px-5 py-3 text-base font-semibold tracking-tight text-navy"
-            >
-              <img
-                src={tech.icon}
-                alt={tech.wordmark ? tech.name : ""}
-                class:list={["shrink-0", tech.wordmark ? "h-5 w-auto" : "h-6 w-6"]}
-                loading={i < 4 ? "eager" : "lazy"}
-                decoding="async"
-              />
-              {!tech.wordmark && tech.name}
-            </li>
-          ))
-        }
-      </ul>
+      {
+        marqueeRows.map((row, r) => (
+          <ul class={`marquee-track marquee-track-${row.direction}`}>
+            {[...row.items, ...row.items].map((tech, i) => (
+              <li
+                aria-hidden={i >= row.items.length ? "true" : undefined}
+                class="inline-flex shrink-0 items-center gap-3.5 rounded-xl border border-line/90 bg-white px-5 py-3 text-base font-semibold tracking-tight text-navy shadow-xs transition-all duration-150 hover:border-blue/50 hover:shadow-sm"
+              >
+                <img
+                  src={tech.icon}
+                  alt={tech.wordmark ? tech.name : ""}
+                  class:list={["shrink-0 object-contain", tech.wordmark ? "h-5.5 w-auto" : "h-6 w-6"]}
+                  loading={r === 0 && i < 4 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+                {!tech.wordmark && <span>{tech.name}</span>}
+              </li>
+            ))}
+          </ul>
+        ))
+      }
     </div>
   </section>
 </Layout>
 
 <style>
   .marquee {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
   }
   .marquee-track {
     display: flex;
     width: max-content;
-    gap: 0.75rem;
-    padding-right: 0.75rem;
-    animation: marquee 45s linear infinite;
+    gap: 1rem;
+    padding: 0.35rem 1rem;
+  }
+  .marquee-track-left {
+    animation: marquee-left 36s linear infinite;
+  }
+  .marquee-track-right {
+    animation: marquee-right 36s linear infinite;
   }
   .marquee:hover .marquee-track {
     animation-play-state: paused;
   }
-  @keyframes marquee {
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0);
+    }
     to {
       transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
     }
   }
   @media (prefers-reduced-motion: reduce) {

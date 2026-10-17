@@ -1,6 +1,6 @@
 # NewCo — Embedded Engineering Capability Partner
 
-> Working draft v0.2 · 2026-09-21 · Authors: Agung (CTO) + Partner (CEO / Client & Commercial)
+> Working draft v1.0 · 2026-10-17 · Authors: Vanezza (CEO) + Agung Denisa (CTO)
 
 ---
 
@@ -24,8 +24,8 @@ AI is a delivery advantage and a product option—not a reason to force AI into 
 
 | | Role | Owns |
 |---|---|---|
-| **Partner** | CEO / Managing Director | Client relationships, introductions, commercial terms, account governance, client-facing delivery accountability |
-| **Agung** | CTO | Technical strategy, architecture, delivery engineering, hiring and mentoring, platform IP, security and technical risk |
+| **Vanezza** | Chief Executive Officer | Client relationships, commercial terms, account governance, client-facing delivery accountability |
+| **Agung Denisa** | Chief Technology Officer | Technical strategy, architecture, delivery engineering, hiring and mentoring, platform IP, security and technical risk |
 
 **Operating rule:** the CEO owns *who we work with and what we promise*. The CTO owns *how it is built and whether we can promise it*. No proposal leaves without CTO feasibility sign-off; no architecture or support commitment is approved without CEO commercial sign-off. Each founder has one documented veto within their area of ownership.
 
@@ -108,9 +108,11 @@ Every AI feature must have an owner, evaluation suite, quality threshold, cost b
 
 ## 6. Engagement Model — The Capability Curve
 
-Engagements are capability-transfer contracts, not open-ended project phases.
+Engagements are capability-transfer contracts, not open-ended project phases. On the public-facing website, this is structured into four customer-accessible stages: **Discovery**, **Development**, **Operations and Support**, and **Ownership Transfer** (with ongoing Advisory as an optional continuity choice).
 
-### Phase 0 — Technical Diagnostic
+Internally and contractually, the capability curve maps to these delivery phases:
+
+### Phase 0 — Technical Diagnostic (Discovery)
 
 **Typical duration:** 15 business days; fixed fee.
 
@@ -182,15 +184,14 @@ Opinionated, not mercenary. We choose fewer tools and go deep so engineers can m
 
 | Layer | Default | Rule |
 |---|---|---|
-| Frontend | Next.js; Vue 3 when client context or product constraints justify it | One primary path; deviation requires an ADR |
-| Backend | NestJS for structured services; Python for data and ML | Express is used only where its simplicity is the explicit advantage |
-| Data layer | Managed PostgreSQL + Prisma | Type-safe schema and migration discipline |
-| Analytics | BigQuery on GCP | Warehouse-first; do not turn OLTP into the analytics platform |
-| Infrastructure | Cloud Run, managed services, IaC | Serverless-first where operationally and financially appropriate |
-| CI/CD | Reusable pipeline templates | Quality, security, dependency, and deployment controls are gates |
-| AI | Provider-neutral interface; model selected by quality, privacy, latency, and cost | Current defaults are documented in an ADR, not hard-coded into company identity |
+| Frontend | Astro for content/marketing; Next.js or Vue 3 for web applications | One primary path; deviation requires an ADR |
+| Backend | NestJS for structured services; Fastify/Node.js for lightweight APIs; Python for data/ML | Express is used only where simplicity is the explicit advantage |
+| Data layer | Managed PostgreSQL + Prisma / Supabase / Neon | Type-safe schema and migration discipline |
+| Analytics | BigQuery on GCP; Snowflake when enterprise data warehouses exist | Warehouse-first; do not turn OLTP into analytics |
+| Infrastructure | Google Cloud Run, Cloudflare, Render, Railway, Docker, IaC | Serverless-first where operationally and financially sound |
+| CI/CD & Security | Automated pipelines with Snyk, Semgrep, Veracode, Strix AI | Quality, security, dependency, and vulnerability controls are gates |
+| AI Delivery & Models | Provider-neutral interface; Claude, Gemini, ChatGPT, DeepSeek, GLM | Selected by quality, privacy, latency, and cost under approved governance |
 | Observability | One standard for logs, metrics, traces, alerts, and ownership | Every production service has a service owner and runbook |
-
 Every project starts from the house path. Deviation requires a written ADR covering rationale, lifecycle cost, operational owner, exit path, and client approval where relevant. Variety is a cost we charge for, not a default we absorb.
 
 ### 8.1 Internal platform
@@ -312,36 +313,36 @@ Operating guardrails:
 
 ---
 
-## 14. Name and Brand Direction — Open
+## 14. Entity and Brand Identity — Established
 
-Naming criteria:
+Corporate Entity:
 
-- Pronounceable in Bahasa Indonesia and English without explanation
-- Connotes capability transfer and partnership, not agency or generic solutions
-- Domain and trademark availability checked in Indonesia, Singapore, and Australia
-- Avoid saturated terms such as “Digital”, “Solutions”, “Nusantara”, “Tech”, and “Labs”
+- **Company Name:** PT NewCo Teknologi Indonesia
+- **Registered Office:** One Pacific Place, Level 11, SCBD, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan 12190, Indonesia
+- **Company Registration / NIB:** `0120202688192`
 
-Possible taglines:
+Brand Identity & Taglines:
 
-1. *Engineering capacity you keep.*
-2. *Build it with your team. Own it for the long term.*
-3. *Engineering capability, built to stay.*
-
+1. **Primary Headline:** *Technology built for independence.*
+2. **Operating Principle:** *We build · We teach · You own.*
+3. **Supporting Positioning:** *We engineer systems to a high standard, then transfer full ownership to the business: the code, the documentation and the know-how. No vendor lock-in. No hidden dependencies.*
+4. **Public Site Architecture:** Static Astro site at `projectx-gold.vercel.app` with routes `/`, `/how-we-work`, `/about`, `/contact`, `/privacy`.
 ---
 
-## 15. Open Decisions — Both Founders
+## 15. Status of Governance Decisions
 
-1. **Legal structure and jurisdiction:** PT PMA, Singapore Pte Ltd with Indonesian delivery entity, or another structure; obtain tax and legal advice.
-2. **Founder agreement:** equity, vesting, network contribution, IP assignment, deadlock, continuity, and exit.
-3. **Initial vertical:** choose one beachhead before the first proposal.
-4. **First hire:** delivery engineer versus delivery/PM; use the capacity trigger in §13.
-5. **Bench and risk reserve:** define minimum cash reserve and support-capacity funding.
-6. **First three logos:** score against the qualification criteria; do not bend the model silently.
-7. **Contract pack:** MSA, diagnostic SOW, Build With SOW, Run With/SLO schedule, IP schedule, data-processing terms, and security appendix.
-8. **AI governance:** approved tools, client-data rules, retention, model-provider review, and incident process.
-9. **House-stack ADRs:** select the primary frontend, queue, observability, IaC, and deployment paths.
-10. **Evidence baseline:** decide which claims NewCo can publish only after measurement.
+### Resolved
+1. **Legal structure & jurisdiction:** Established as PT NewCo Teknologi Indonesia, One Pacific Place Level 11, SCBD, Jakarta Selatan (NIB: `0120202688192`).
+2. **Founding Leadership:** Vanezza (Chief Executive Officer) and Agung Denisa (Chief Technology Officer).
+3. **Brand & Public Presence:** Live marketing site (`projectx-gold.vercel.app`) with 4-stage transfer model, clear client commitments, and interactive capability curve.
+4. **Public AI Governance:** Formalized on `/privacy` (zero model training on client assets, scoped access, approved tooling only).
 
+### Ongoing / Operational
+1. **First hire:** Delivery engineer versus delivery/PM as capacity triggers dictate.
+2. **Bench and risk reserve:** Minimum cash reserve and shared support-capacity funding.
+3. **First client engagements:** Score strictly against qualification criteria; maintain 24-hour response SLA on direct founder reviews.
+4. **Contract pack:** MSA, diagnostic/discovery SOW, Build With SOW, Run With/SLO schedule, IP schedule.
+5. **Evidence baseline:** Continue tracking DORA and operational metrics (lead time, change-failure rate, MTTR, recovery time, rework, transfer readiness).
 ---
 
 ## 16. First 90 Days

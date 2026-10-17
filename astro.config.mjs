@@ -17,7 +17,14 @@ export default defineConfig({
     '/approach': '/how-we-work',
     '/diagnostic': '/how-we-work',
   },
-  integrations: [icon(), sitemap()],
+  integrations: [icon(),
+    sitemap({
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

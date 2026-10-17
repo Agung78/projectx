@@ -301,8 +301,15 @@
     transition: transform var(--duration-popover) var(--ease-out);
   }
 
-  details[open] > summary::before {
+  /* data-closing flips the chevron at the start of the collapse, while [open] is still set. */
+  details[open]:not([data-closing]) > summary::before {
     transform: translateY(1px) rotate(-135deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    details > summary::before {
+      transition: none;
+    }
   }
 
   /*

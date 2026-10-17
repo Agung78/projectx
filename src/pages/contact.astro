@@ -4,37 +4,31 @@ import Button from "../components/Button.astro";
 ---
 
 <Layout
-  title="Contact · NewCo"
-  description="Tell us what the business needs. We'll reply with a clear next step."
+  title="Contact NewCo · Discuss Systems & Engineering Handover"
+  description="Contact NewCo's founders to discuss your business systems, technical constraints, and path to full engineering independence."
 >
   <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-16 md:py-24">
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
-      <aside class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
+      <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
         <span class="mono text-blue">// ENGAGEMENT BRIEF</span>
         <h1 class="mt-6 text-h1 text-navy text-balance tracking-tight">Tell us what the business needs.</h1>
         <p class="text-body-lg text-slate max-w-[68ch] mt-6">
           Share a few details and we'll reply with a clear next step. No obligation, and we'll never ask for passwords or system access here.
         </p>
 
-        <div class="corners mt-10 border border-line bg-mist p-6">
-          <p class="mono text-grey">// DIRECT FOUNDER REVIEW</p>
-          <p class="mt-3 font-semibold text-navy">Vanezza &amp; Agung Denisa</p>
-          <p class="mt-1 text-sm text-slate">Every enquiry is read by a founder. Guaranteed 24h SLA.</p>
+        <div class="mt-8 border-t border-line pt-6">
+          <h2 class="text-sm font-semibold tracking-wide text-navy uppercase mono">// Direct Founder Review</h2>
+          <p class="mt-2 text-body text-slate">Every enquiry is reviewed directly by our founders, Vanezza and Agung Denisa, with a guaranteed 24-hour response.</p>
+          <h3 class="text-sm font-semibold tracking-wide text-navy uppercase mono mt-6">// What to expect</h3>
+          <ul class="mt-3 flex flex-col gap-3 text-sm text-slate list-disc pl-4">
+            <li>An initial 30-minute scoping call to understand your systems and constraints.</li>
+            <li>Clear technical recommendations and capability baseline assessment.</li>
+            <li>Honest fit evaluation: we only take on engagements where we can ensure complete handover.</li>
+          </ul>
         </div>
 
-        <dl class="mt-8 divide-y divide-line border-y border-line">
-          <div class="py-4">
-            <dt class="mono text-grey">// OFFICE</dt>
-            <dd class="mt-1 text-body text-navy">SCBD Jakarta, One Pacific Place Level 11</dd>
-          </div>
-          <div class="py-4">
-            <dt class="mono text-grey">// COMPANY REGISTRATION</dt>
-            <dd class="mt-1 text-body text-navy">NIB: 0120202688192</dd>
-          </div>
-        </dl>
-
         <p class="mt-6 text-sm text-grey">We respect your privacy. See our <a href="/privacy" class="underline hover:text-navy">Privacy Policy</a>.</p>
-      </aside>
+      </div>
 
       <div class="lg:col-span-7">
       <div class="rounded-xl border border-line bg-white p-6 shadow-sm md:p-8">
@@ -114,9 +108,9 @@ import Button from "../components/Button.astro";
           <p id="follow_up-error" class="hidden text-body text-red" role="alert"></p>
         </fieldset>
 
-        <details class="rounded-lg border border-line bg-mist p-4">
+        <details class="rounded-lg border border-line bg-mist p-4" data-accordion>
           <summary class="cursor-pointer text-sm font-semibold text-navy">A bit more (optional)</summary>
-          <div class="mt-4 grid gap-6 md:grid-cols-2">
+          <div class="mt-4 grid gap-6 md:grid-cols-2" data-accordion-content>
               <div class="flex flex-col gap-2">
                 <label for="project_type" class="text-sm font-semibold text-slate">What best describes the project?</label>
                 <select id="project_type" name="project_type" class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
@@ -127,13 +121,13 @@ import Button from "../components/Button.astro";
                 </select>
               </div>
               <div class="flex flex-col gap-2">
-              <label for="it_contact" class="text-sm font-semibold text-slate">Is there an IT contact or provider we should speak with?</label>
-              <input id="it_contact" name="it_contact" type="text"
+              <label for="decision_maker" class="text-sm font-semibold text-slate">Who's the main decision-maker?</label>
+              <input id="decision_maker" name="decision_maker" type="text"
                 class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
               </div>
               <div class="flex flex-col gap-2">
-              <label for="decision_maker" class="text-sm font-semibold text-slate">Who's the main decision-maker?</label>
-              <input id="decision_maker" name="decision_maker" type="text"
+              <label for="it_contact" class="text-sm font-semibold text-slate">Is there an IT contact or provider we should speak with?</label>
+              <input id="it_contact" name="it_contact" type="text"
                 class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
               </div>
           </div>
@@ -241,7 +235,7 @@ import Button from "../components/Button.astro";
         form.hidden = true;
         status.classList.remove("hidden");
         status.innerHTML =
-          "Thanks, we've got it. We'll reply within two business days with a clear next step.";
+          "Thanks, we've got it. We'll reply within 24 hours with a clear next step.";
         status.classList.add("text-green", "text-body-lg", "font-semibold");
         requestAnimationFrame(() => {
           status.dataset.visible = "true";
@@ -256,5 +250,79 @@ import Button from "../components/Button.astro";
   }
   }
 
+  function initAccordions() {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const DURATION = 260;
+    const EASING = "cubic-bezier(0.23, 1, 0.32, 1)";
+
+    document.querySelectorAll<HTMLDetailsElement>("details[data-accordion]").forEach((details) => {
+      if (details.dataset.bound === "true") return;
+      details.dataset.bound = "true";
+
+      const summary = details.querySelector("summary");
+      const content = details.querySelector<HTMLElement>("[data-accordion-content]");
+      if (!summary || !content) return;
+      let animation: Animation | null = null;
+
+      const snapshot = () => {
+        const style = getComputedStyle(content);
+        return { height: style.height, opacity: style.opacity, marginTop: style.marginTop };
+      };
+
+      const run = (opening: boolean) => {
+        // Capture the live values so a mid-animation toggle reverses from where it is.
+        const from = animation
+          ? snapshot()
+          : opening
+            ? { height: "0px", opacity: "0", marginTop: "0px" }
+            : null;
+        animation?.cancel();
+
+        if (opening) {
+          details.open = true;
+          delete details.dataset.closing;
+        } else {
+          details.dataset.closing = "true";
+        }
+
+        const natural = snapshot();
+        const collapsed = { height: "0px", opacity: "0", marginTop: "0px" };
+        const start = from ?? natural;
+        const end = opening ? natural : collapsed;
+
+        content.style.overflow = "hidden";
+        const current = content.animate([start, end], {
+          duration: DURATION,
+          easing: EASING,
+          fill: "forwards",
+        });
+        animation = current;
+
+        current.onfinish = () => {
+          if (animation !== current) return;
+          animation = null;
+          if (!opening) {
+            details.open = false;
+            delete details.dataset.closing;
+          }
+          current.cancel();
+          content.style.overflow = "";
+        };
+        // A cancelled animation was superseded by a newer toggle, which owns cleanup.
+      };
+
+      summary.addEventListener("click", (event) => {
+        if (reducedMotion.matches) {
+          delete details.dataset.closing;
+          return;
+        }
+        event.preventDefault();
+        const isOpen = details.open && !details.dataset.closing;
+        run(!isOpen);
+      });
+    });
+  }
+
   document.addEventListener("astro:page-load", initContactForm);
+  document.addEventListener("astro:page-load", initAccordions);
 </script>

@@ -47,6 +47,20 @@ const padBottom = 56;
 const plotHeight = height - padTop - padBottom;
 const stepX = (width - padX * 2) / (phases.length - 1);
 
+// Phase hit-areas are centred on each node; clamp so the outer ones stay inside the viewBox.
+function bandFor(i: number) {
+  const x0 = Math.max(0, padX + stepX * i - stepX / 2);
+  const x1 = Math.min(width, padX + stepX * i + stepX / 2);
+  return { x: x0, width: x1 - x0 };
+}
+
+// Edge labels anchor inward so long text is never clipped by the viewBox.
+function anchorFor(i: number) {
+  if (i === 0) return "start";
+  if (i === phases.length - 1) return "end";
+  return "middle";
+}
+
 function toY(value: number) {
   return padTop + plotHeight * (1 - value / 100);
 }
@@ -76,9 +90,9 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
           {phases.map((phase, i) => (
             <g data-phase-marker opacity="0" aria-hidden="true">
               <rect
-                x={padX + stepX * i - stepX / 2}
+                x={bandFor(i).x}
                 y={padTop - 12}
-                width={stepX}
+                width={bandFor(i).width}
                 height={plotHeight + 24}
                 fill="var(--color-blue)"
                 fill-opacity="0.06"
@@ -108,7 +122,7 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
               <text
                 x={padX + stepX * i}
                 y={height - 20}
-                text-anchor="middle"
+                text-anchor={anchorFor(i)}
                 class="fill-navy"
                 style="font-size: 15px; font-weight: 600;"
               >
@@ -119,9 +133,9 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
 
           {phases.map((_phase, i) => (
             <rect
-              x={padX + stepX * i - stepX / 2}
+              x={bandFor(i).x}
               y="0"
-              width={stepX}
+              width={bandFor(i).width}
               height={height}
               fill="transparent"
               data-phase-index={i}

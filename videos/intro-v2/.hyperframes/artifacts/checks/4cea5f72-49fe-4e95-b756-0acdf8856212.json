@@ -1,0 +1,574 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 7,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "3 tl.fromTo() calls target \"#wipe2\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": "#wipe2",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/intro-v2/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 10.4s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "3 tl.fromTo() calls target \"#wipe\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": "#wipe",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/intro-v2/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 10.5s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 0 has 4 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/intro-v2/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s1\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s1",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/intro-v2/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s2\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s2",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/intro-v2/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s3\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s3",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/intro-v2/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s4\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s4",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/intro-v2/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 9,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 17.5,
+        "selector": "#s2-t1 > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 248.05,
+          "top": 470.56,
+          "right": 883.47,
+          "bottom": 518.53,
+          "width": 635.42,
+          "height": 47.97
+        },
+        "containerSelector": "#s2-t1 > div:nth-of-type(2) > span:nth-of-type(2)",
+        "text": "Project shop: build, invoice, disappear",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.33,
+        "dataAttributes": {
+          "data-hf-id": "hf-501q"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 248.05,
+          "y": 470.56,
+          "width": 635.42,
+          "height": 47.97
+        },
+        "firstSeen": 17.5,
+        "lastSeen": 17.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          17.5
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 22.5,
+        "selector": "#s3-h > span:nth-of-type(1) > i:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 157.15,
+          "top": 246.51,
+          "right": 285.13,
+          "bottom": 320.35,
+          "width": 127.97,
+          "height": 73.83
+        },
+        "containerSelector": "#s3-h > span:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 159.28,
+          "top": 175.58,
+          "right": 283,
+          "bottom": 246.06,
+          "width": 123.72,
+          "height": 70.48
+        },
+        "overflow": {
+          "left": 2.13,
+          "right": 2.13,
+          "bottom": 74.29
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 157.15,
+          "y": 246.51,
+          "width": 127.97,
+          "height": 73.83
+        },
+        "firstSeen": 22.5,
+        "lastSeen": 22.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.5
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 22.5,
+        "selector": "#s3-h > span:nth-of-type(2) > i:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 291.26,
+          "top": 249.72,
+          "right": 327.52,
+          "bottom": 317.14,
+          "width": 36.26,
+          "height": 67.42
+        },
+        "containerSelector": "#s3-h > span:nth-of-type(2)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 293.5,
+          "top": 175.58,
+          "right": 325.28,
+          "bottom": 246.06,
+          "width": 31.78,
+          "height": 70.48
+        },
+        "overflow": {
+          "left": 2.24,
+          "right": 2.24,
+          "bottom": 71.08
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 291.26,
+          "y": 249.72,
+          "width": 36.26,
+          "height": 67.42
+        },
+        "firstSeen": 22.5,
+        "lastSeen": 22.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.5
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 22.5,
+        "selector": "#s3-h > span:nth-of-type(3) > i:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 333.72,
+          "top": 244.47,
+          "right": 520.11,
+          "bottom": 322.39,
+          "width": 186.39,
+          "height": 77.92
+        },
+        "containerSelector": "#s3-h > span:nth-of-type(3)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 335.78,
+          "top": 175.58,
+          "right": 518.05,
+          "bottom": 246.06,
+          "width": 182.27,
+          "height": 70.48
+        },
+        "overflow": {
+          "left": 2.06,
+          "right": 2.06,
+          "bottom": 76.33
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 333.72,
+          "y": 244.47,
+          "width": 186.39,
+          "height": 77.92
+        },
+        "firstSeen": 22.5,
+        "lastSeen": 22.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.5
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 22.5,
+        "selector": "#s3-h > span:nth-of-type(4) > i:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 526.49,
+          "top": 244.6,
+          "right": 709.3,
+          "bottom": 322.26,
+          "width": 182.81,
+          "height": 77.67
+        },
+        "containerSelector": "#s3-h > span:nth-of-type(4)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 528.55,
+          "top": 175.58,
+          "right": 707.24,
+          "bottom": 246.06,
+          "width": 178.69,
+          "height": 70.48
+        },
+        "overflow": {
+          "left": 2.06,
+          "right": 2.06,
+          "bottom": 76.2
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 526.49,
+          "y": 244.6,
+          "width": 182.81,
+          "height": 77.67
+        },
+        "firstSeen": 22.5,
+        "lastSeen": 22.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.5
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 22.5,
+        "selector": "#s3-h > span:nth-of-type(5) > i:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 715.75,
+          "top": 242.67,
+          "right": 953.57,
+          "bottom": 324.19,
+          "width": 237.82,
+          "height": 81.52
+        },
+        "containerSelector": "#s3-h > span:nth-of-type(5)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 717.74,
+          "top": 175.58,
+          "right": 951.58,
+          "bottom": 246.06,
+          "width": 233.83,
+          "height": 70.48
+        },
+        "overflow": {
+          "bottom": 78.13
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 715.75,
+          "y": 242.67,
+          "width": 237.82,
+          "height": 81.52
+        },
+        "firstSeen": 22.5,
+        "lastSeen": 22.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.5
+        ]
+      },
+      {
+        "code": "clipped_text",
+        "severity": "info",
+        "time": 42.5,
+        "selector": "#s4-btn",
+        "message": "Text content is clipped by its own box.",
+        "rect": {
+          "left": 147.04,
+          "top": 863.72,
+          "right": 621.4,
+          "bottom": 973.61,
+          "width": 474.36,
+          "height": 109.89
+        },
+        "text": "Discuss your situation",
+        "fixHint": "Text is 474px x 110px inside 474px x 110px and overflows by up to 200px; widen the text box to at least ~674px, or allow wrapping with max-width/fitTextFontSize.",
+        "overflow": {
+          "right": 200
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-ol5h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 147.04,
+          "y": 863.72,
+          "width": 474.36,
+          "height": 109.89
+        },
+        "firstSeen": 42.5,
+        "lastSeen": 42.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          42.5
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 42.5,
+        "selector": "span.shine",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 597.21,
+          "top": 863.72,
+          "right": 826.95,
+          "bottom": 973.61,
+          "width": 229.73,
+          "height": 109.89
+        },
+        "containerSelector": "#s4-btn",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 147.04,
+          "top": 863.72,
+          "right": 621.4,
+          "bottom": 973.61,
+          "width": 474.36,
+          "height": 109.89
+        },
+        "overflow": {
+          "right": 205.55
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 597.21,
+          "y": 863.72,
+          "width": 229.73,
+          "height": 109.89
+        },
+        "firstSeen": 42.5,
+        "lastSeen": 42.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          42.5
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 42.5,
+        "selector": "span.shine",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 597.21,
+          "top": 863.72,
+          "right": 826.95,
+          "bottom": 973.61,
+          "width": 229.73,
+          "height": 109.89
+        },
+        "containerSelector": "#s4-btn",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 147.04,
+          "top": 863.72,
+          "right": 621.4,
+          "bottom": 973.61,
+          "width": 474.36,
+          "height": 109.89
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 597.21,
+          "y": 863.72,
+          "width": 229.73,
+          "height": 109.89
+        },
+        "firstSeen": 42.5,
+        "lastSeen": 42.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          42.5
+        ]
+      }
+    ],
+    "duration": 45,
+    "samples": [
+      2.5,
+      7.5,
+      12.5,
+      17.5,
+      22.5,
+      27.5,
+      32.5,
+      37.5,
+      42.5
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 9,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      2.5,
+      12.5,
+      22.5,
+      32.5,
+      42.5
+    ],
+    "checked": 60,
+    "passed": 60
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

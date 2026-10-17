@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #FFFFFF;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #FFFFFF;
+        color: #0F2A4A;
+        font-family: system-ui, -apple-system, sans-serif;
+        overflow: hidden;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        padding: 120px 160px;
+      }
+      .scene-inner {
+        position: absolute;
+        inset: 120px 160px;
+        display: flex;
+        flex-direction: column;
+      }
+      .rule {
+        width: 100%;
+        height: 1px;
+        background: #E2E8F0;
+      }
+      .folio {
+        position: absolute;
+        left: 160px;
+        right: 160px;
+        top: 64px;
+        height: 28px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #5B6878;
+        font-weight: 600;
+      }
+      .folio b {
+        color: #1D5FD1;
+        font-weight: 600;
+      }
+      .eyebrow {
+        font-size: 24px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #1D5FD1;
+        font-weight: 600;
+      }
+      h1,
+      h2 {
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.02;
+        color: #0F2A4A;
+      }
+      .mono {
+        font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .corners {
+        position: relative;
+      }
+      .corners::before,
+      .corners::after {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        content: "";
+      }
+      .corners::before {
+        top: -4px;
+        left: -4px;
+        border-top: 2px solid #0F2A4A;
+        border-left: 2px solid #0F2A4A;
+      }
+      .corners::after {
+        bottom: -4px;
+        right: -4px;
+        border-bottom: 2px solid #0F2A4A;
+        border-right: 2px solid #0F2A4A;
+      }
+
+      #root {
+        background-image:
+          linear-gradient(#EEF2F8 1px, transparent 1px),
+          linear-gradient(90deg, #EEF2F8 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+      .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+      .w > i { display: inline-block; font-style: normal; will-change: transform; }
+      #wipe {
+        position: absolute; inset: 0; z-index: 50;
+        background: #1D5FD1;
+      }
+      #wipe2 {
+        position: absolute; inset: 0; z-index: 49;
+        background: #0F2A4A;
+      }
+      #s4 .btn { position: relative; overflow: hidden; }
+      #s4 .btn .shine {
+        position: absolute; top: 0; bottom: 0; left: 0; width: 40%;
+        background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+        transform: translateX(-150%) skewX(-20deg);
+      }
+      .pulse { fill: none; stroke: #1D5FD1; stroke-width: 3; opacity: 0; }
+
+      /* Scene 1 — Hero */
+      #s1 h1 {
+        font-size: 104px;
+        width: 1500px;
+        margin-top: 56px;
+      }
+      #s1 .tagline {
+        margin-top: 24px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 12px 8px;
+        align-items: center;
+        border: 1px solid #E2E8F0;
+        background: #F4F6FA;
+        color: #0F2A4A;
+        padding: 14px 24px;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      #s1 .tagline span {
+        color: #1D5FD1;
+      }
+      #s1 .body {
+        margin-top: 64px;
+        font-size: 32px;
+        line-height: 1.5;
+        color: #1F2933;
+        max-width: 960px;
+      }
+
+      /* Scene 2 — Problem */
+      #s2 h2 {
+        font-size: 64px;
+        width: 1500px;
+        margin-top: 28px;
+      }
+      #s2 .sub {
+        margin-top: 24px;
+        width: 1200px;
+        font-size: 32px;
+        line-height: 1.5;
+        color: #5B6878;
+      }
+      #s2 .traps {
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+      }
+      .trap {
+        position: relative;
+        display: flex;
+        align-items: baseline;
+        gap: 36px;
+        padding: 28px 0;
+        border-top: 1px solid #E2E8F0;
+      }
+      .trap .n {
+        width: 60px;
+        font-size: 24px;
+        letter-spacing: 0.12em;
+        color: #1D5FD1;
+        font-weight: 600;
+      }
+      .trap .t {
+        position: relative;
+        font-size: 40px;
+        letter-spacing: -0.02em;
+        font-weight: 500;
+        color: #0F2A4A;
+      }
+      .trap .t .txt {
+        display: block;
+      }
+      .trap .strike {
+        position: absolute;
+        left: -8px;
+        top: 50%;
+        width: calc(100% + 16px);
+        height: 4px;
+        margin-top: -2px;
+        background: #1D5FD1;
+        transform-origin: left center;
+      }
+
+      /* Scene 3 — Capability curve */
+      #s3 h2 {
+        font-size: 64px;
+        width: 1500px;
+        margin-top: 28px;
+      }
+      #s3 .sub {
+        margin-top: 24px;
+        width: 1200px;
+        font-size: 32px;
+        line-height: 1.5;
+        color: #5B6878;
+      }
+      #s3 .legend {
+        position: absolute;
+        left: 0;
+        top: 250px;
+        display: flex;
+        gap: 56px;
+        font-size: 24px;
+        color: #5B6878;
+        font-weight: 500;
+      }
+      .legend .it {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .legend .sw {
+        width: 40px;
+        height: 6px;
+      }
+      #s3 .chart {
+        position: absolute;
+        left: 0;
+        top: 310px;
+        width: 1600px;
+        height: 380px;
+      }
+      #s3 svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1600px;
+        height: 380px;
+        overflow: visible;
+      }
+      #s3 .phases {
+        position: absolute;
+        left: 0;
+        top: 710px;
+        width: 1600px;
+        height: 70px;
+      }
+      .phase {
+        position: absolute;
+        top: 0;
+        width: 320px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .phase small {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+        letter-spacing: 0.18em;
+        color: #1D5FD1;
+      }
+      #s3 .caption {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        font-size: 34px;
+        letter-spacing: -0.01em;
+        font-weight: 500;
+        color: #0F2A4A;
+        padding-left: 24px;
+        border-left: 6px solid #1D5FD1;
+      }
+
+      /* Scene 4 — Entry point */
+      #s4 h1 {
+        font-size: 88px;
+        line-height: 1.1;
+        max-width: 960px;
+        width: 960px;
+        margin-top: 40px;
+      }
+      #s4 .diag {
+        position: absolute;
+        right: 0;
+        top: 60px;
+        width: 560px;
+        background: #F4F6FA;
+        border: 1px solid #E2E8F0;
+        padding: 44px 44px 48px;
+      }
+      #s4 .diag .name {
+        margin-top: 20px;
+        font-size: 56px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+      #s4 .diag .meta {
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid #E2E8F0;
+        font-size: 28px;
+        line-height: 1.45;
+        color: #5B6878;
+      }
+      #s4 .cta-row {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 48px;
+      }
+      #s4 .btn {
+        background: #1D5FD1;
+        color: #FFFFFF;
+        font-size: 36px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        padding: 32px 56px;
+      }
+      #s4 .fine {
+        font-size: 30px;
+        color: #5B6878;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-i657"
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="53"
+      data-width="1920"
+      data-height="1080"
+    >
+      <audio id="vo-s1" src="assets/vo-s1.mp3" data-start="0.3" data-duration="12.72" data-track-index="1"></audio>
+      <audio id="vo-s2" src="assets/vo-s2.mp3" data-start="14.5" data-duration="11.83" data-track-index="1"></audio>
+      <audio id="vo-s3" src="assets/vo-s3.mp3" data-start="28" data-duration="13.09" data-track-index="1"></audio>
+      <audio id="vo-s4" src="assets/vo-s4.mp3" data-start="42.5" data-duration="10.03" data-track-index="1"></audio>
+
+      <!-- Scene 1 — Hero (0 – 14) -->
+      <section data-hf-id="hf-hlpu" id="s1" class="scene clip" data-start="0" data-duration="14" data-track-index="0">
+        <div data-hf-id="hf-zsq7" class="folio"><span data-hf-id="hf-bdr3">NewCo</span><b data-hf-id="hf-krr2">01 / Technology built for independence</b></div>
+        <div data-hf-id="hf-97sb" class="scene-inner">
+          <div data-hf-id="hf-vfwl" class="eyebrow" id="s1-eb">// INDEPENDENT SYSTEM ENGINEERING</div>
+          <h1 data-hf-id="hf-2yyx" id="s1-h">Technology built for independence.</h1>
+          <div data-hf-id="hf-jgyx" class="tagline corners" id="s1-tag">
+            <span data-hf-id="hf-ygvp">We build</span><span data-hf-id="hf-iqcm" aria-hidden="true">·</span><span data-hf-id="hf-oqgc">We teach</span><span data-hf-id="hf-917u" aria-hidden="true">·</span><span data-hf-id="hf-2y7e">You own.</span>
+          </div>
+          <div data-hf-id="hf-n5m4" class="body" id="s1-body">
+            We engineer systems to a high standard, then transfer full ownership to the business: the code,
+            the documentation and the know-how. No vendor lock-in. No hidden dependencies.
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 2 — Problem (14 – 27.5) -->
+      <section data-hf-id="hf-4amf" id="s2" class="scene clip" data-start="14" data-duration="13.5" data-track-index="0">
+        <div data-hf-id="hf-sksv" class="folio"><span data-hf-id="hf-cdzz">NewCo</span><b data-hf-id="hf-1mii">02 / The problem</b></div>
+        <div data-hf-id="hf-skgb" class="scene-inner">
+          <div data-hf-id="hf-ck63" class="eyebrow" id="s2-eb">Getting software built is easy. Keeping it running is the hard part.</div>
+          <h2 data-hf-id="hf-t4y9" id="s2-h">The market defaults.</h2>
+          <p data-hf-id="hf-rlef" class="sub" id="s2-sub">Many agencies deliver a system and leave. The business is left with code nobody in-house can fix when something breaks.</p>
+          <div data-hf-id="hf-dzow" class="traps">
+            <div data-hf-id="hf-t6d0" class="trap" id="s2-t1">
+              <div data-hf-id="hf-g2fx" class="n">A</div>
+              <div data-hf-id="hf-i7y4" class="t"><span data-hf-id="hf-501q" class="txt">Project shop: build, invoice, disappear</span><span data-hf-id="hf-2svb" class="strike"></span></div>
+            </div>
+            <div data-hf-id="hf-1u8v" class="trap" id="s2-t2">
+              <div data-hf-id="hf-h9d0" class="n">B</div>
+              <div data-hf-id="hf-9yr8" class="t"><span data-hf-id="hf-mpdg" class="txt">Body shopping: temporary hands, zero retained capability</span><span data-hf-id="hf-tt8n" class="strike"></span></div>
+            </div>
+            <div data-hf-id="hf-xw4u" class="trap" id="s2-t3">
+              <div data-hf-id="hf-gv1z" class="n">C</div>
+              <div data-hf-id="hf-8ru5" class="t"><span data-hf-id="hf-nx9y" class="txt">Handover as a ZIP file: vendor lock-in disguised as delivery</span><span data-hf-id="hf-texm" class="strike"></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 3 — Capability curve (27.5 – 42) -->
+      <section data-hf-id="hf-0rs5" id="s3" class="scene clip" data-start="27.5" data-duration="14.5" data-track-index="0">
+        <div data-hf-id="hf-s6hu" class="folio"><span data-hf-id="hf-bzoy">NewCo</span><b data-hf-id="hf-ulq3">03 / The capability curve</b></div>
+        <div data-hf-id="hf-s65a" class="scene-inner">
+          <div data-hf-id="hf-pjvc" class="eyebrow" id="s3-eb">// PROCESS</div>
+          <h2 data-hf-id="hf-jj46" id="s3-h">How a project comes together.</h2>
+          <p data-hf-id="hf-py0y" class="sub" id="s3-sub">Four clear stages take each project from the first conversation to a system the business fully owns.</p>
+          <div data-hf-id="hf-ln9f" class="legend" id="s3-lg">
+            <div data-hf-id="hf-27q6" class="it"><span data-hf-id="hf-wtq2" class="sw" style="background:#5B6878"></span>NewCo Partner Involvement</div>
+            <div data-hf-id="hf-xz4l" class="it"><span data-hf-id="hf-2xkr" class="sw" style="background:#1D5FD1"></span>Client Internal Capability</div>
+          </div>
+          <div data-hf-id="hf-ntnc" class="chart">
+            <svg data-hf-id="hf-jn9z" viewBox="0 0 1600 380" xmlns="http://www.w3.org/2000/svg">
+              <g data-hf-id="hf-8jus" stroke="#E2E8F0" stroke-width="1">
+                <line data-hf-id="hf-928f" x1="0" y1="20" x2="1600" y2="20" />
+                <line data-hf-id="hf-2zy3" x1="0" y1="190" x2="1600" y2="190" />
+                <line data-hf-id="hf-lqm9" x1="0" y1="360" x2="1600" y2="360" />
+              </g>
+              <g data-hf-id="hf-xwod" id="s3-ticks" stroke="#E2E8F0" stroke-width="1">
+                <line data-hf-id="hf-b11x" x1="160" y1="20" x2="160" y2="360" />
+                <line data-hf-id="hf-mhhf" x1="480" y1="20" x2="480" y2="360" />
+                <line data-hf-id="hf-1qur" x1="800" y1="20" x2="800" y2="360" />
+                <line data-hf-id="hf-7jed" x1="1120" y1="20" x2="1120" y2="360" />
+                <line data-hf-id="hf-je1h" x1="1440" y1="20" x2="1440" y2="360" />
+              </g>
+              <path data-hf-id="hf-t2vz" id="s3-p1" d="M 160 50 C 300 55, 360 90, 480 110 C 600 130, 680 175, 800 195 C 920 215, 1000 270, 1120 290 C 1240 310, 1320 325, 1440 325" fill="none" stroke="#5B6878" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <path data-hf-id="hf-8b5n" id="s3-p2" d="M 160 330 C 300 325, 360 290, 480 270 C 600 250, 680 205, 800 185 C 920 165, 1000 110, 1120 90 C 1240 70, 1320 55, 1440 55" fill="none" stroke="#1D5FD1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <circle id="s3-pulse" class="pulse" cx="800" cy="190" r="14" />
+              <g data-hf-id="hf-1e7f" id="s3-dots1" fill="#FFFFFF" stroke="#5B6878" stroke-width="5">
+                <circle data-hf-id="hf-tndc" class="d1" cx="160" cy="50" r="11" />
+                <circle data-hf-id="hf-n9zg" class="d1" cx="480" cy="110" r="11" />
+                <circle data-hf-id="hf-rp2n" class="d1" cx="800" cy="195" r="11" />
+                <circle data-hf-id="hf-nsal" class="d1" cx="1120" cy="290" r="11" />
+                <circle data-hf-id="hf-xynx" class="d1" cx="1440" cy="325" r="11" />
+              </g>
+              <g data-hf-id="hf-mebz" id="s3-dots2" fill="#FFFFFF" stroke="#1D5FD1" stroke-width="5">
+                <circle data-hf-id="hf-1c1y" class="d2" cx="160" cy="330" r="11" />
+                <circle data-hf-id="hf-x822" class="d2" cx="480" cy="270" r="11" />
+                <circle data-hf-id="hf-2l6r" class="d2" cx="800" cy="185" r="11" />
+                <circle data-hf-id="hf-5kzc" class="d2" cx="1120" cy="90" r="11" />
+                <circle data-hf-id="hf-qb8m" class="d2" cx="1440" cy="55" r="11" />
+              </g>
+            </svg>
+          </div>
+          <div data-hf-id="hf-7921" class="phases" id="s3-ph">
+            <div data-hf-id="hf-9342" class="phase" style="left: 0"><small data-hf-id="hf-79w7">01</small>Diagnose</div>
+            <div data-hf-id="hf-oh3v" class="phase" style="left: 320px"><small data-hf-id="hf-6vl6">02</small>Build With</div>
+            <div data-hf-id="hf-jl3b" class="phase" style="left: 640px"><small data-hf-id="hf-6ha5">03</small>Run With</div>
+            <div data-hf-id="hf-7t5u" class="phase" style="left: 960px"><small data-hf-id="hf-99fc">04</small>Hand Over</div>
+            <div data-hf-id="hf-nffj" class="phase" style="left: 1280px"><small data-hf-id="hf-8v4b">05</small>Advise</div>
+          </div>
+          <div data-hf-id="hf-kq2b" class="caption" id="s3-cap">Handover is a success metric — not a hidden failure condition.</div>
+        </div>
+      </section>
+
+      <!-- Scene 4 — Entry point (42 – 53) -->
+      <section data-hf-id="hf-sas8" id="s4" class="scene clip" data-start="42" data-duration="11" data-track-index="0">
+        <div data-hf-id="hf-rs6t" class="folio"><span data-hf-id="hf-bldx">NewCo</span><b data-hf-id="hf-v95p">04 / The entry point</b></div>
+        <div data-hf-id="hf-rru9" class="scene-inner">
+          <div data-hf-id="hf-uf3f" class="eyebrow" id="s4-eb">The entry point</div>
+          <h1 data-hf-id="hf-8ud9" id="s4-h">Own the next stage<br data-hf-id="hf-x5px" />of your technology.</h1>
+          <div data-hf-id="hf-q2qr" class="diag corners" id="s4-card">
+            <div data-hf-id="hf-l1wn" class="eyebrow">Start here</div>
+            <div data-hf-id="hf-wtez" class="name">Technical Diagnostic</div>
+            <div data-hf-id="hf-ifq6" class="meta">15 business days · Fixed fee · Client-owned architecture, risk register, &amp; roadmap</div>
+          </div>
+          <div data-hf-id="hf-whmp" class="cta-row">
+            <div data-hf-id="hf-ol5h" class="btn" id="s4-btn">Discuss your situation<span class="shine"></span></div>
+            <div data-hf-id="hf-740c" class="fine" id="s4-fine">No speculative estimate. No vendor lock-in.</div>
+          </div>
+        </div>
+      </section>
+      <div id="wipe2"></div>
+      <div id="wipe"></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const rise = (sel, t, y = 36, d = 0.8) =>
+        tl.fromTo(sel, { opacity: 0, y }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+
+      // Split headline text nodes into masked words (keeps <br>)
+      const split = (sel) => {
+        const el = document.querySelector(sel);
+        [...el.childNodes].forEach((n) => {
+          if (n.nodeType !== 3) return;
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((p) => {
+            if (!p) return;
+            if (/^\s+$/.test(p)) return frag.append(" ");
+            const w = document.createElement("span");
+            w.className = "w";
+            w.innerHTML = "<i></i>";
+            w.firstChild.textContent = p;
+            frag.append(w);
+          });
+          n.replaceWith(frag);
+        });
+        return el.querySelectorAll(".w > i");
+      };
+      const words = (sel, t, stagger = 0.08) =>
+        tl.fromTo(split(sel), { yPercent: 115, rotate: 4 },
+          { yPercent: 0, rotate: 0, duration: 0.9, stagger, ease: "expo.out" }, t);
+      // Two-layer wipe that covers the cut at time t
+      let firstWipe = true;
+      const wipe = (t) => {
+        const ir = firstWipe; firstWipe = false;
+        tl.fromTo("#wipe2", { xPercent: -101 }, { xPercent: 101, duration: 1.1, ease: "expo.inOut", immediateRender: ir }, t - 0.6);
+        tl.fromTo("#wipe", { xPercent: -101 }, { xPercent: 101, duration: 1.1, ease: "expo.inOut", immediateRender: ir }, t - 0.5);
+      };
+      // Slow push-in so no frame is ever static
+      const drift = (sel, t, d) =>
+        tl.fromTo(sel, { scale: 1, transformOrigin: "30% 40%" }, { scale: 1.035, duration: d, ease: "none" }, t);
+
+      tl.fromTo("#root", { backgroundPosition: "0px 0px" }, { backgroundPosition: "-200px -100px", duration: 53, ease: "none" }, 0);
+
+      // Beats are cued to pauses in each VO take (audio offset + phrase start)
+      // Scene 1 (0 – 14) · VO @0.3
+      drift("#s1 .scene-inner", 0, 14);
+      rise("#s1 .folio", 0.1, 0);
+      tl.fromTo("#s1-eb", { opacity: 0, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "power3.inOut" }, 0.1);
+      words("#s1-h", 0.3, 0.09);
+      tl.fromTo("#s1-tag", { opacity: 0, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 0.6, ease: "power3.out" }, 2.2);
+      const tagIn = { opacity: 1, y: 0, duration: 0.45, ease: "back.out(2)" };
+      tl.fromTo("#s1-tag span:nth-child(1)", { opacity: 0, y: 14 }, tagIn, 2.56);                    // "We build"
+      tl.fromTo("#s1-tag span:nth-child(2), #s1-tag span:nth-child(3)", { opacity: 0, y: 14 }, tagIn, 3.49); // "We teach"
+      tl.fromTo("#s1-tag span:nth-child(4), #s1-tag span:nth-child(5)", { opacity: 0, y: 14 }, tagIn, 4.48); // "You own"
+      tl.fromTo("#s1-tag span:last-child", { scale: 1 }, { scale: 1.12, duration: 0.25, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "left center" }, 4.9);
+      rise("#s1-body", 5.4, 30, 1);                                                                    // "We engineer systems"
+      wipe(14);
+
+      // Scene 2 (14 – 27.5) · VO @14.5
+      drift("#s2 .scene-inner", 14, 13.5);
+      rise("#s2 .folio", 14.3, 0);
+      rise("#s2-eb", 14.4, 20);
+      words("#s2-h", 14.6, 0.1);
+      rise("#s2-sub", 18.4, 30, 1);                                                                    // "Most agencies…"
+      [20.27, 21.39, 22.85].forEach((t, i) => {                                                        // A / B / C phrases
+        const n = i + 1;
+        tl.fromTo("#s2-t" + n, { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.6, ease: "expo.out" }, t - 0.15);
+        tl.fromTo("#s2-t" + n + " .n", { scale: 0, rotate: -90 }, { scale: 1, rotate: 0, duration: 0.5, ease: "back.out(3)" }, t - 0.05);
+        tl.fromTo("#s2-t" + n + " .strike", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "expo.inOut" }, t + 0.6);
+        tl.to("#s2-t" + n + " .t", { x: 6, duration: 0.05, yoyo: true, repeat: 3, ease: "none" }, t + 0.95);
+        tl.to("#s2-t" + n + " .txt", { opacity: 0.35, duration: 0.4, ease: "power2.out" }, t + 0.95);
+      });
+      wipe(27.5);
+
+      // Scene 3 (27.5 – 42) · VO @28
+      drift("#s3 .scene-inner", 27.5, 14.5);
+      rise("#s3 .folio", 27.8, 0);
+      rise("#s3-eb", 27.9, 20);
+      words("#s3-h", 28.0, 0.08);
+      rise("#s3-sub", 28.8, 30, 1);
+      rise("#s3-lg", 29.5, 20);
+      tl.fromTo("#s3-ticks line", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.8, stagger: 0.1, ease: "expo.out" }, 29.5);
+      tl.fromTo("#s3-ph .phase", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: "back.out(1.6)" }, 29.9);
+      const p1 = document.getElementById("s3-p1");
+      const p2 = document.getElementById("s3-p2");
+      const len1 = Math.ceil(p1.getTotalLength()) + 10;
+      const len2 = Math.ceil(p2.getTotalLength()) + 10;
+      p1.style.strokeDasharray = `${len1} ${len1}`;
+      p2.style.strokeDasharray = `${len2} ${len2}`;
+      const stages = [31.26, 32.52, 33.54, 34.61, 35.74];                                              // Diagnose … Advise
+      tl.fromTo(p1, { strokeDashoffset: len1 }, { strokeDashoffset: 0, duration: 4.48, ease: "none" }, 31.26);
+      tl.fromTo(p2, { strokeDashoffset: len2 }, { strokeDashoffset: 0, duration: 4.48, ease: "none" }, 31.26);
+      stages.forEach((t, i) => {
+        tl.fromTo(`#s3-dots1 .d1:nth-child(${i + 1}), #s3-dots2 .d2:nth-child(${i + 1})`,
+          { opacity: 0, scale: 0, transformOrigin: "50% 50%" },
+          { opacity: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(3)" }, t);
+        tl.fromTo(`#s3-ph .phase:nth-child(${i + 1})`, { color: "#0F2A4A" }, { color: "#1D5FD1", duration: 0.2, yoyo: true, repeat: 1, repeatDelay: 0.5 }, t);
+      });
+      tl.fromTo("#s3-pulse", { opacity: 0.9, scale: 1, transformOrigin: "50% 50%" }, { opacity: 0, scale: 5, duration: 1.1, ease: "expo.out" }, stages[2]);
+      tl.fromTo("#s3-cap", { opacity: 0, x: -40, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "expo.out" }, 36.9); // "Handover is a success metric"
+      wipe(42);
+
+      // Scene 4 (42 – 53) · VO @42.5
+      drift("#s4 .scene-inner", 42, 11);
+      rise("#s4 .folio", 42.3, 0);
+      rise("#s4-eb", 42.3, 20);
+      words("#s4-h", 42.5, 0.1);
+      tl.fromTo("#s4-card", { opacity: 0, rotateY: -25, x: 80, transformPerspective: 1200 }, { opacity: 1, rotateY: 0, x: 0, duration: 1.2, ease: "expo.out" }, 45.2); // "Start with a Technical Diagnostic"
+      tl.fromTo("#s4-btn", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(2)" }, 50.5);   // "Discuss your situation"
+      tl.fromTo("#s4-btn .shine", { xPercent: -150 }, { xPercent: 400, duration: 1.0, ease: "power2.inOut" }, 51.0);
+      tl.to("#s4-btn", { scale: 0.96, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.inOut" }, 52.1);
+      rise("#s4-fine", 51.3, 20, 0.8);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

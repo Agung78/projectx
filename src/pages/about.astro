@@ -4,8 +4,8 @@ import Button from "../components/Button.astro";
 import { Icon } from "astro-icon/components";
 
 const founders = [
-  { name: "[Name]", role: "Chief Executive Officer", image: "/images/ceo.webp" },
-  { name: "[Name]", role: "Chief Technology Officer", image: "/images/cto.webp" },
+  { name: "Vanezza", role: "Chief Executive Officer", image: "/images/ceo.webp" },
+  { name: "Agung Denisa", role: "Chief Technology Officer", image: "/images/cto.webp" },
 ];
 
 const commitments = [
@@ -31,22 +31,22 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
   description="Who we are, how our two founders work, and what every client can count on."
 >
   <section class:list={[shell, "py-16 md:py-24"]}>
-    <h1 class="text-h1 text-ink text-balance tracking-tight">Built on trust, delivered with care.</h1>
+    <h1 class="text-h1 text-navy text-balance tracking-tight">Built on trust, delivered with care.</h1>
     <p class="text-body-lg text-slate max-w-[68ch] mt-6">
       Your technology partner, start to finish. We design, build and support the systems businesses rely on every day.
     </p>
   </section>
 
-  <section class="border-t border-line bg-surface py-16 md:py-24">
+  <section class="bg-mist py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-ink text-balance">The team behind NewCo.</h2>
+      <h2 class="text-h2 text-navy text-balance">The team behind NewCo.</h2>
       <p class="text-body-lg text-slate max-w-[68ch] mt-4">
         Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+      <div class="grid grid-cols-1 gap-6 mt-12 md:max-w-[880px] md:grid-cols-2">
         {
           founders.map((f) => (
-            <div class="rounded-[12px] bg-white border border-line/60 overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+            <div class="rounded-[12px] bg-white border border-mist overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
               <img
                 src={f.image}
                 alt={`${f.name}, ${f.role}`}
@@ -57,8 +57,8 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
                 class="aspect-[4/5] w-full object-cover object-top border-b border-line"
               />
               <div class="p-6">
-                <h3 class="text-h3 font-semibold text-ink">{f.name}</h3>
-                <p class="text-sm text-graphite mt-1">{f.role}</p>
+                <h3 class="text-h3 font-semibold text-navy">{f.name}</h3>
+                <p class="text-sm text-grey mt-1">{f.role}</p>
               </div>
             </div>
           ))
@@ -67,16 +67,16 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
     </div>
   </section>
 
-  <section class="border-t border-line bg-white py-16 md:py-24">
+  <section class="bg-white py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-ink text-balance">What every client can count on.</h2>
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+      <h2 class="text-h2 text-navy text-balance">What every client can count on.</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mt-12">
         {
           commitments.map((item) => (
             <li class="flex gap-4">
-              <Icon name={item.icon} class="h-8 w-8 shrink-0 text-signal" aria-hidden="true" />
+              <Icon name={item.icon} class="h-8 w-8 shrink-0 text-navy" aria-hidden="true" />
               <div>
-                <h3 class="text-h3 font-semibold text-ink">{item.title}</h3>
+                <h3 class="text-h3 font-semibold text-navy">{item.title}</h3>
                 <p class="text-body text-slate mt-1">{item.description}</p>
               </div>
             </li>
@@ -86,13 +86,12 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
     </div>
   </section>
 
-  <section class="border-t border-line bg-surface">
+  <section class="bg-mist">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono text-signal">NEXT STEP</p>
-      <h2 class="mt-3 max-w-[22ch] text-h2 text-ink text-balance">
+      <h2 class="max-w-[22ch] text-h2 text-navy text-balance">
         If this is how you want to work, tell us where things stand.
       </h2>
-      <p class="mt-6 measure text-body-lg text-graphite">
+      <p class="mt-6 max-w-[68ch] text-body text-slate text-pretty">
         We'll look at your systems, constraints and goals, then give you an honest recommendation on the best way forward.
       </p>
       <div class="mt-10">

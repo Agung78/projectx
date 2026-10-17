@@ -58,25 +58,24 @@ const sections = [
   description="How NewCo handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data."
 >
   <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-16 md:py-24">
-    <p class="mono text-signal">LEGAL</p>
-    <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight">Privacy Policy</h1>
-    <p class="mt-8 measure text-body-lg text-graphite">
+    <h1 class="text-h1 text-navy text-balance tracking-tight">Privacy Policy</h1>
+    <p class="mt-8 measure text-body-lg text-slate">
       NewCo works inside our clients' systems, so confidentiality is part of how we operate, not a footnote. This
       policy explains what we collect, how we protect it, and what we will never do with it.
     </p>
-    <p class="mt-4 mono text-graphite">LAST UPDATED: OCTOBER 2026</p>
+    <p class="mt-4 text-xs text-grey">LAST UPDATED: OCTOBER 2026</p>
 
     <div class="mt-16 flex flex-col gap-12 border-t border-line pt-16">
       {
         sections.map((section) => (
           <div class="grid gap-6 md:grid-cols-12">
-            <h2 class="text-h3 text-ink md:col-span-4">{section.title}</h2>
+            <h2 class="text-h3 text-navy md:col-span-4">{section.title}</h2>
             <div class="md:col-span-8">
               {section.body.map((paragraph, i) => (
-                <p class:list={["measure text-body text-graphite", i > 0 && "mt-4"]}>{paragraph}</p>
+                <p class:list={["measure text-body text-slate", i > 0 && "mt-4"]}>{paragraph}</p>
               ))}
               {section.list && (
-                <ul class="mt-4 measure list-disc pl-5 text-body text-graphite">
+                <ul class="mt-4 measure list-disc pl-5 text-body text-slate">
                   {section.list.map((item) => (
                     <li class="mt-2">{item}</li>
                   ))}
@@ -89,8 +88,8 @@ const sections = [
     </div>
 
     <div class="mt-16 border-t border-line pt-8">
-      <p class="measure text-body text-graphite">
-        Questions about this policy? <a href="/contact" class="text-ink underline underline-offset-4 hover:text-signal">Contact us</a>.
+      <p class="measure text-body text-slate">
+        Questions about this policy? <a href="/contact" class="text-navy underline underline-offset-4 hover:text-blue">Contact us</a>.
       </p>
     </div>
   </section>

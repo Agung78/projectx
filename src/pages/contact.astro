@@ -8,7 +8,7 @@ import Button from "../components/Button.astro";
   description="Tell us what the business needs. We'll reply with a clear next step."
 >
   <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-16 md:py-24">
-    <h1 class="text-h1 text-ink text-balance tracking-tight">Tell us what the business needs.</h1>
+    <h1 class="text-h1 text-navy text-balance tracking-tight">Tell us what the business needs.</h1>
     <p class="text-body-lg text-slate max-w-[68ch] mt-6">
       Share a few details and we'll reply with a clear next step. No obligation, and we'll never ask for passwords or system access here.
     </p>
@@ -18,83 +18,83 @@ import Button from "../components/Button.astro";
         id="contact-form"
         method="post"
         novalidate
-        class="flex flex-col gap-6 border border-ink bg-surface p-5 md:p-8"
+        class="flex flex-col gap-8"
         data-contact-form
       >
         <div class="grid gap-6 md:grid-cols-2">
             <div class="flex flex-col gap-2">
-                <label for="name" class="mono text-graphite">Your name<span aria-hidden="true"> *</span></label>
+                <label for="name" class="text-sm font-semibold text-slate">Your name<span aria-hidden="true"> *</span></label>
                 <input id="name" name="name" type="text" required autocomplete="name"
-                  class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="name-error" />
-                <p id="name-error" class="hidden text-body text-error" role="alert"></p>
+                <p id="name-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="company" class="mono text-graphite">Company<span aria-hidden="true"> *</span></label>
+                <label for="company" class="text-sm font-semibold text-slate">Company<span aria-hidden="true"> *</span></label>
                 <input id="company" name="company" type="text" required autocomplete="organization"
-                  class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="company-error" />
-                <p id="company-error" class="hidden text-body text-error" role="alert"></p>
+                <p id="company-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="role" class="mono text-graphite">Your role<span aria-hidden="true"> *</span></label>
+                <label for="role" class="text-sm font-semibold text-slate">Your role<span aria-hidden="true"> *</span></label>
                 <input id="role" name="role" type="text" required autocomplete="organization-title"
-                  class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="role-error" />
-                <p id="role-error" class="hidden text-body text-error" role="alert"></p>
+                <p id="role-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="email" class="mono text-graphite">Email<span aria-hidden="true"> *</span></label>
+                <label for="email" class="text-sm font-semibold text-slate">Email<span aria-hidden="true"> *</span></label>
                 <input id="email" name="email" type="email" required autocomplete="email"
-                  class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="email-error" />
-                <p id="email-error" class="hidden text-body text-error" role="alert"></p>
+                <p id="email-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="region" class="mono text-graphite">Country or region<span aria-hidden="true"> *</span></label>
+                <label for="region" class="text-sm font-semibold text-slate">Country or region<span aria-hidden="true"> *</span></label>
                 <input id="region" name="region" type="text" required autocomplete="country-name"
-                  class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="region-error" />
-                <p id="region-error" class="hidden text-body text-error" role="alert"></p>
+                <p id="region-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="locations" class="mono text-graphite">How many locations or branches?<span aria-hidden="true"> *</span></label>
+                <label for="locations" class="text-sm font-semibold text-slate">How many locations or branches?<span aria-hidden="true"> *</span></label>
                 <input id="locations" name="locations" type="text" required
-                  class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="locations-error" />
-                <p id="locations-error" class="hidden text-body text-error" role="alert"></p>
+                <p id="locations-error" class="hidden text-body text-red" role="alert"></p>
               </div>
         </div>
 
         <div class="flex flex-col gap-2">
-          <label for="help" class="mono text-graphite">What would you like help with?<span aria-hidden="true"> *</span></label>
+          <label for="help" class="text-sm font-semibold text-slate">What would you like help with?<span aria-hidden="true"> *</span></label>
           <textarea id="help" name="help" required rows="4"
-            class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+            class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
             aria-describedby="help-error"></textarea>
-          <p id="help-error" class="hidden text-body text-error" role="alert"></p>
+          <p id="help-error" class="hidden text-body text-red" role="alert"></p>
         </div>
 
-        <fieldset class="flex flex-col gap-2">
-          <legend class="mono text-graphite">How should we follow up?<span aria-hidden="true"> *</span></legend>
+        <fieldset class="flex flex-col gap-2" aria-describedby="follow_up-error">
+          <legend class="text-sm font-semibold text-slate">How should we follow up?<span aria-hidden="true"> *</span></legend>
           <div class="flex flex-col gap-2 md:flex-row md:gap-6">
             {
               ["Email", "Phone", "Video call"].map((option) => (
-                <label class="flex items-center gap-2 text-body text-ink">
-                  <input type="radio" name="follow_up" value={option} required class="accent-signal" />
+                <label class="flex items-center gap-2 text-body text-navy">
+                  <input type="radio" name="follow_up" value={option} required class="accent-blue" />
                   {option}
                 </label>
               ))
             }
           </div>
-          <p id="follow_up-error" class="hidden text-body text-error" role="alert"></p>
+          <p id="follow_up-error" class="hidden text-body text-red" role="alert"></p>
         </fieldset>
 
-        <details class="border border-line bg-surface p-4">
-          <summary class="mono cursor-pointer text-ink">A bit more (optional)</summary>
+        <details class="border-t border-line pt-6">
+          <summary class="cursor-pointer text-sm font-semibold text-navy">A bit more (optional)</summary>
           <div class="mt-4 grid gap-6 md:grid-cols-2">
               <div class="flex flex-col gap-2">
-                <label for="project_type" class="mono text-graphite">What best describes the project?</label>
-                <select id="project_type" name="project_type" class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal">
+                <label for="project_type" class="text-sm font-semibold text-slate">What best describes the project?</label>
+                <select id="project_type" name="project_type" class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
                   <option value="">Select one</option>
                   <option value="New system">New system</option>
                   <option value="Improve an existing system">Improve an existing system</option>
@@ -102,14 +102,14 @@ import Button from "../components/Button.astro";
                 </select>
               </div>
               <div class="flex flex-col gap-2">
-              <label for="it_contact" class="mono text-graphite">Is there an IT contact or provider we should speak with?</label>
+              <label for="it_contact" class="text-sm font-semibold text-slate">Is there an IT contact or provider we should speak with?</label>
               <input id="it_contact" name="it_contact" type="text"
-                class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal" />
+                class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
               </div>
               <div class="flex flex-col gap-2">
-              <label for="decision_maker" class="mono text-graphite">Who's the main decision-maker?</label>
+              <label for="decision_maker" class="text-sm font-semibold text-slate">Who's the main decision-maker?</label>
               <input id="decision_maker" name="decision_maker" type="text"
-                class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal" />
+                class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
               </div>
           </div>
         </details>
@@ -118,19 +118,20 @@ import Button from "../components/Button.astro";
           <span data-button-label>Send</span>
         </Button>
 
-        <p data-form-status class="hidden text-body" role="status"></p>
       </form>
-      <p class="mt-4 text-xs text-graphite">We respect your privacy. See our <a href="/privacy" class="underline hover:text-ink">Privacy Policy</a>.</p>
+      <p data-form-status tabindex="-1" class="hidden text-body outline-offset-4" role="status"></p>
+      <p class="mt-6 text-sm text-grey">We respect your privacy. See our <a href="/privacy" class="underline hover:text-navy">Privacy Policy</a>.</p>
     </div>
   </section>
 </Layout>
 
 <script>
+  function initContactForm() {
   const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
   if (form) {
     const submitButton = form.querySelector<HTMLButtonElement>("[data-submit-button]");
     const buttonLabel = form.querySelector<HTMLElement>("[data-button-label]");
-    const status = form.querySelector<HTMLElement>("[data-form-status]");
+    const status = document.querySelector<HTMLElement>("[data-form-status]");
 
     const requiredFields = Array.from(
       form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]")
@@ -214,10 +215,11 @@ import Button from "../components/Button.astro";
         form.hidden = true;
         status.classList.remove("hidden");
         status.innerHTML =
-          "Thanks, we've got it. We'll reply within [X] business days with a clear next step.";
-        status.classList.add("text-success", "text-body-lg", "font-medium");
+          "Thanks, we've got it. We'll reply within two business days with a clear next step.";
+        status.classList.add("text-green", "text-body-lg", "font-semibold");
         requestAnimationFrame(() => {
           status.dataset.visible = "true";
+          status.focus();
         });
       }
     });
@@ -226,4 +228,7 @@ import Button from "../components/Button.astro";
       field.addEventListener("input", () => clearError(field));
     });
   }
+  }
+
+  document.addEventListener("astro:page-load", initContactForm);
 </script>

@@ -45,7 +45,28 @@ const handover = [
   { item: "Ongoing support", included: "Available from us if the business wants it, never required" },
 ];
 
-const technologies = ["Next.js", "NestJS", "PostgreSQL", "Google Cloud", "BigQuery"];
+const technologies = [
+  {
+    name: "Next.js",
+    icon: '<circle cx="12" cy="12" r="10"/><path d="M9 16V8l7 9M16 8v4"/>',
+  },
+  {
+    name: "NestJS",
+    icon: '<path d="M12 2l8 4.5v11L12 22l-8-4.5v-11z"/><path d="M9 16V8l6 8V8"/>',
+  },
+  {
+    name: "PostgreSQL",
+    icon: '<ellipse cx="12" cy="5.5" rx="7" ry="3"/><path d="M5 5.5v13c0 1.7 3.1 3 7 3s7-1.3 7-3v-13M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+  },
+  {
+    name: "Google Cloud",
+    icon: '<path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5a4.2 4.2 0 0 1-.5 8.5z"/>',
+  },
+  {
+    name: "BigQuery",
+    icon: '<circle cx="10.5" cy="10.5" r="7"/><path d="M8 13v-3M10.5 13V8M13 13v-2M16 16l5 5"/>',
+  },
+];
 ---
 
 <Layout
@@ -53,36 +74,35 @@ const technologies = ["Next.js", "NestJS", "PostgreSQL", "Google Cloud", "BigQue
   description="Four clear stages, from Discovery to full ownership transfer, with the business informed at every step."
 >
   <section class:list={[shell, "py-16 md:py-24"]}>
-    <p class="mono mb-6 text-signal">HOW WE WORK</p>
-    <h1 class="text-h1 text-ink text-balance tracking-tight">One clear process, start to finish.</h1>
+    <h1 class="text-h1 text-navy text-balance tracking-tight">One clear process, start to finish.</h1>
     <p class="text-body-lg text-slate max-w-[68ch] text-pretty mt-6">
       We work alongside the business at every stage, and it always has the final say. Every decision is explained in
       plain language, with no jargon.
     </p>
   </section>
 
-  <section class="border-t border-line bg-surface py-16 md:py-24">
+  <section class="bg-mist py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-ink text-balance">Four stages, one direction.</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
+      <h2 class="text-h2 text-navy text-balance">Four stages, one direction.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
         {
           stages.map((stage) => (
-            <div class="p-6 rounded-[12px] bg-white border border-line/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex flex-col justify-between">
+            <div class="p-6 rounded-[12px] bg-white border border-mist shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex flex-col justify-between">
               <div>
-                <h3 class="text-h3 text-ink">{stage.name}</h3>
-                <p class="mt-3 text-graphite">{stage.body}</p>
+                <h3 class="text-h3 text-navy">{stage.name}</h3>
+                <p class="mt-3 text-grey">{stage.body}</p>
               </div>
-              <p class="mt-6 text-sm text-ink">
+              <p class="mt-6 text-sm text-navy">
                 <span class="font-semibold">The business gets:</span> {stage.gets}
               </p>
             </div>
           ))
         }
       </div>
-      <p class="text-sm text-graphite mt-6">
+      <p class="mt-8 text-sm text-grey">
         How long each stage takes depends on the project. We agree the timeline during Discovery.
       </p>
-      <div class="mt-8 rounded-[12px] border border-line/60 bg-white p-6 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+      <div class="mt-16">
         <CapabilityCurve
           phases={howWeWorkStages}
           caption="By the final stage, the business runs its technology on its own terms."
@@ -91,9 +111,9 @@ const technologies = ["Next.js", "NestJS", "PostgreSQL", "Google Cloud", "BigQue
     </div>
   </section>
 
-  <section class="border-t border-line bg-white py-16 md:py-24">
+  <section class="bg-white py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-ink text-balance">Everything handed over, nothing held back.</h2>
+      <h2 class="text-h2 text-navy text-balance">Everything handed over, nothing held back.</h2>
       <p class="text-body-lg text-slate max-w-[68ch] mt-4">
         Before we sign off, each item below is delivered and walked through with whoever will run the system. The
         checklist is agreed in the contract.
@@ -101,8 +121,8 @@ const technologies = ["Next.js", "NestJS", "PostgreSQL", "Google Cloud", "BigQue
       <table class="w-full text-left border-collapse mt-12 divide-y divide-line">
         <thead>
           <tr>
-            <th scope="col" class="text-sm font-semibold tracking-wide text-ink border-b border-line py-4 pr-6">Item</th>
-            <th scope="col" class="text-sm font-semibold tracking-wide text-ink border-b border-line py-4 pr-6">
+            <th scope="col" class="text-sm font-semibold tracking-wide text-navy border-b border-line py-4 pr-6">Item</th>
+            <th scope="col" class="text-sm font-semibold tracking-wide text-navy border-b border-line py-4 pr-6">
               What's included
             </th>
           </tr>
@@ -111,8 +131,8 @@ const technologies = ["Next.js", "NestJS", "PostgreSQL", "Google Cloud", "BigQue
           {
             handover.map((row) => (
               <tr>
-                <th scope="row" class="py-4 pr-6 align-top font-medium text-ink">{row.item}</th>
-                <td class="py-4 pr-6 text-graphite">{row.included}</td>
+                <th scope="row" class="py-4 pr-6 align-top font-semibold text-navy">{row.item}</th>
+                <td class="py-4 pr-6 text-slate">{row.included}</td>
               </tr>
             ))
           }
@@ -121,11 +141,28 @@ const technologies = ["Next.js", "NestJS", "PostgreSQL", "Google Cloud", "BigQue
     </div>
   </section>
 
-  <section class="border-t border-line bg-surface py-12">
+  <section class="bg-mist py-12">
     <div class={shell}>
-      <p class="text-center text-sm font-medium text-graphite mb-8">Built on proven, widely used technology.</p>
-      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 grayscale opacity-70">
-        {technologies.map((name) => <span class="text-base font-semibold tracking-tight text-graphite">{name}</span>)}
+      <p class="text-center text-sm font-semibold text-grey mb-8">Built on proven, widely used technology.</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 grayscale">
+        {
+          technologies.map((tech) => (
+            <span class="inline-flex items-center gap-2 text-base font-semibold tracking-tight text-grey">
+              <svg
+                viewBox="0 0 24 24"
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                set:html={tech.icon}
+              />
+              {tech.name}
+            </span>
+          ))
+        }
       </div>
     </div>
   </section>

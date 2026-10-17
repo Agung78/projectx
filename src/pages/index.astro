@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import CapabilityCurve from "../components/CapabilityCurve.astro";
-import { Icon } from "astro-icon/components";
 
 
 const problemCards = [
@@ -64,23 +63,11 @@ const adoptionSteps = [
   "Expand carefully, with safeguards",
 ];
 
-const goodFit = [
-  "Multi-location operators managing distributed POS, inventory, and order systems.",
-  "Companies with an executive sponsor and a designated technical counterpart.",
-  "Teams requiring a verified diagnostic and data baseline before large capital builds.",
-];
-
-const notFit = [
-  "One-off project builds seeking handoff without operational capability transfer.",
-  "Procurement races comparing daily contractor rates before scoping requirements.",
-  "Rushed AI feature requests lacking clean data sources or operational safeguards.",
-];
-
 const pad = (i: number) => String(i + 1).padStart(2, "0");
 const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 // Buttons hold one line on desktop; they may wrap only in narrow mobile columns.
 const btn = "md:whitespace-nowrap";
-const link = "text-body font-medium text-signal underline underline-offset-4 hover:text-signal-dark md:whitespace-nowrap";
+const link = "text-body font-semibold text-blue underline underline-offset-4 hover:text-blue-dark md:whitespace-nowrap";
 ---
 
 <Layout
@@ -90,46 +77,37 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <!-- 1. Hero -->
   <section class:list={[shell, "bg-white py-16 md:py-24"]}>
     <div class="mx-auto flex max-w-[68ch] flex-col items-center text-center">
-      <p class="text-sm font-semibold tracking-wide text-signal" data-hero-item>Engineering partner for growing businesses</p>
-      <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight" data-hero-item>Technology built for independence.</h1>
+      <p class="text-sm font-semibold tracking-wide text-grey" data-hero-item>Engineering partner for growing businesses</p>
+      <h1 class="mt-6 text-h1 text-navy text-balance tracking-tight">Technology built for independence.</h1>
       <p class="mt-8 text-[18px] leading-[1.6] text-slate text-pretty" data-hero-item>
         We engineer systems to a high standard, then transfer full ownership to the business: the code,
         the documentation and the know-how. No vendor lock-in. No hidden dependencies.
       </p>
       <div class="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4" data-hero-item>
         <Button href="/contact" variant="primary" class={btn}>Talk to us</Button>
-        <button
-          type="button"
-          class="open-video-trigger group inline-flex items-center gap-2 text-body font-medium text-signal underline decoration-signal underline-offset-4 transition-colors hover:text-signal-dark"
-          aria-haspopup="dialog"
-        >
-          <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-          <span>Watch the 45-second intro</span>
-        </button>
+        <button type="button" class="open-video-trigger inline-flex items-center gap-2 text-body font-semibold text-blue underline decoration-blue underline-offset-4 hover:text-blue-dark" aria-haspopup="dialog">Watch the 45-second intro</button>
       </div>
-      <p class="mt-12 flex items-center justify-center gap-x-6 font-medium text-graphite" data-hero-item>
+      <p class="mt-12 flex w-full items-center justify-center gap-x-6 border-t border-line pt-8 font-semibold text-grey" data-hero-item>
         <span>We build</span><span aria-hidden="true">·</span><span>We teach</span><span aria-hidden="true">·</span><span>You own.</span>
       </p>
     </div>
   </section>
 
   <!-- 2. The problem -->
-  <section class="border-t border-line bg-mist" aria-labelledby="problem-title">
+  <section class="bg-mist" aria-labelledby="problem-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 id="problem-title" class="max-w-[24ch] text-h2 text-ink text-balance">
+      <h2 id="problem-title" class="max-w-[24ch] text-h2 text-navy text-balance">
         Getting software built is easy. Keeping it running is the hard part.
       </h2>
-      <p class="mt-6 max-w-[68ch] text-body-lg text-slate">
+      <p class="mt-4 max-w-[68ch] text-body-lg text-slate">
         Many agencies deliver a system and leave. The business is left with code nobody in-house can fix when something breaks.
       </p>
 
       <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
         {
           problemCards.map((card) => (
-            <div class="p-6 rounded-[12px] bg-white border border-line/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-              <h3 class="text-h3 text-ink">{card.title}</h3>
+            <div class="p-6 rounded-[12px] bg-white border border-mist shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <h3 class="text-h3 text-navy">{card.title}</h3>
               <p class="mt-3 text-body text-slate">{card.body}</p>
             </div>
           ))
@@ -139,19 +117,19 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   </section>
 
   <!-- 3.3 What the business gets -->
-  <section class="border-t border-line bg-white" aria-labelledby="business-gets-title">
+  <section class="bg-white" aria-labelledby="business-gets-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 id="business-gets-title" class="text-h2 text-ink text-balance">What the business gets instead.</h2>
+      <h2 id="business-gets-title" class="text-h2 text-navy text-balance">What the business gets instead.</h2>
 
-      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="mt-12 grid grid-cols-1 gap-x-12 gap-y-12 md:grid-cols-2">
         {
           businessGets.map((card) => (
-            <div class="p-6 rounded-[12px] bg-surface border border-mist shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex flex-col justify-between">
+            <div class="flex flex-col justify-between border-t border-line pt-6">
               <div>
-                <h3 class="text-h3 text-ink">{card.title}</h3>
+                <h3 class="text-h3 text-navy">{card.title}</h3>
                 <p class="mt-3 text-body text-slate">{card.body}</p>
               </div>
-              <p class="mt-6 text-sm italic text-graphite">{card.proof}</p>
+              <p class="mt-6 text-sm italic text-grey">{card.proof}</p>
             </div>
           ))
         }
@@ -162,7 +140,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <!-- 3.4 How we work (white) -->
   <section id="how-we-work" class="scroll-mt-24 border-t border-line bg-white">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 class="text-h2 text-ink text-balance">How a project comes together.</h2>
+      <h2 class="text-h2 text-navy text-balance">How a project comes together.</h2>
       <p class="mt-4 max-w-[68ch] text-body-lg text-slate">
         Four clear stages take each project from the first conversation to a system the business fully owns.
       </p>
@@ -170,15 +148,15 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       <div class="mt-12">
         <CapabilityCurve phases={howWeWorkStages} caption="" />
       </div>
-      <p class="mt-4 text-sm text-graphite">
+      <p class="mt-6 text-sm text-grey">
         Day-to-day control shifts to the business, stage by stage. Ongoing support is a choice, never a requirement.
       </p>
-      <a href="/how-we-work" class="mt-4 inline-block font-medium text-signal underline">See how it works →</a>
+      <a href="/how-we-work" class="mt-6 inline-block font-semibold text-blue underline underline-offset-4 hover:text-blue-dark">See how it works →</a>
     </div>
   </section>
 
   <!-- 3.5 Discovery (the only dark section) -->
-  <section id="discovery" class="scroll-mt-24 bg-[#0F2A4A] text-white border-y border-white/10" aria-labelledby="discovery-title">
+  <section id="discovery" class="scroll-mt-24 bg-navy text-white" aria-labelledby="discovery-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
       <h2 id="discovery-title" class="text-h2 text-white text-balance">Every project starts with a clear picture.</h2>
       <p class="text-body-lg text-white/80 max-w-[68ch] mt-4">
@@ -216,26 +194,23 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       </div>
 
       <div class="mt-12">
-        <a
-          href="/contact"
-          class="rounded-[8px] min-h-[48px] bg-white text-[#0F2A4A] font-medium px-[18px] py-3 inline-flex items-center justify-center hover:bg-white/90 active:scale-[0.97]"
-        >Talk to us</a>
+        <Button href="/contact" variant="inverse">Talk to us</Button>
       </div>
     </div>
   </section>
 
   <!-- 3.6 How we build (white) -->
-  <section id="how-we-build" class="scroll-mt-24 bg-white border-t border-line">
+  <section id="how-we-build" class="scroll-mt-24 bg-white">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 class="text-h2 text-ink text-balance">Simple, honest engineering.</h2>
+      <h2 class="text-h2 text-navy text-balance">Simple, honest engineering.</h2>
 
       <ol class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mt-12">
         {
           buildPrinciples.map((item, i) => (
             <li class="flex gap-4">
-              <span class="mono text-signal">{i + 1}</span>
+              <span class="w-4 shrink-0 text-sm font-semibold text-grey">{i + 1}</span>
               <p class="text-body text-slate">
-                <strong class="font-semibold text-ink">{item.title}</strong> {item.body}
+                <strong class="font-semibold text-navy">{item.title}</strong> {item.body}
               </p>
             </li>
           ))
@@ -245,20 +220,20 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   </section>
 
   <!-- 3.7 AI adoption, an optional service (mist). The only home page section that talks about AI. -->
-  <section id="ai-adoption" class="scroll-mt-24 bg-mist border-t border-line" aria-labelledby="ai-adoption-title">
+  <section id="ai-adoption" class="scroll-mt-24 bg-mist" aria-labelledby="ai-adoption-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="text-sm font-semibold tracking-wide text-signal">Optional service</p>
-      <h2 id="ai-adoption-title" class="mt-3 text-h2 text-ink text-balance">Want to bring AI into the business? We can help.</h2>
+      <p class="text-sm font-semibold tracking-wide text-grey">Optional service</p>
+      <h2 id="ai-adoption-title" class="mt-3 text-h2 text-navy text-balance">Want to bring AI into the business? We can help.</h2>
       <p class="text-body-lg text-slate max-w-[68ch] mt-4">
         Our systems are engineered by people, not generated by AI. When a business wants to use AI, we help it adopt it properly: reliable data first, then AI only where it clearly pays off.
       </p>
 
-      <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      <ol class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8 mt-12">
         {
           adoptionSteps.map((title, i) => (
-            <li class="p-6 rounded-[12px] bg-white border border-line/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-              <span class="mono text-signal">{i + 1}</span>
-              <p class="mt-2 text-body-lg font-semibold text-ink">{title}</p>
+            <li class="border-t border-field pt-6">
+              <span class="text-sm font-semibold text-grey">{i + 1}</span>
+              <p class="mt-2 text-body-lg font-semibold text-navy">{title}</p>
             </li>
           ))
         }
@@ -267,9 +242,9 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   </section>
 
   <!-- 3.8 The numbers we track (white) -->
-  <section id="numbers" class="scroll-mt-24 bg-white border-t border-line" aria-labelledby="numbers-title">
+  <section id="numbers" class="scroll-mt-24 bg-white" aria-labelledby="numbers-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 id="numbers-title" class="text-h2 text-ink text-balance">Eight numbers that prove progress.</h2>
+      <h2 id="numbers-title" class="text-h2 text-navy text-balance">Eight numbers that prove progress.</h2>
       <p class="text-body-lg text-slate max-w-[68ch] mt-4">
         No vague status reports. We measure these on every project and report them in plain language. The first four are the industry-standard DORA metrics used by top engineering teams.
       </p>
@@ -277,41 +252,41 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       <table class="w-full text-left border-collapse mt-12">
         <thead>
           <tr class="border-b border-line">
-            <th scope="col" class="py-4 pr-6 text-sm font-semibold tracking-wide text-ink">Metric</th>
-            <th scope="col" class="py-4 pr-6 text-sm font-semibold tracking-wide text-ink">What it tells you</th>
+            <th scope="col" class="w-2/5 py-4 pr-6 text-sm font-semibold tracking-wide text-navy md:w-1/3">Metric</th>
+            <th scope="col" class="py-4 pr-6 text-sm font-semibold tracking-wide text-navy">What it tells you</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-line">
           <tr>
-            <td class="py-4 pr-6 font-semibold text-ink">Lead time</td>
+            <td class="py-4 pr-6 font-semibold text-navy">Lead time</td>
             <td class="py-4 pr-6 text-slate">How long a change takes to go live</td>
           </tr>
           <tr>
-            <td class="py-4 pr-6 font-semibold text-ink">Release frequency</td>
+            <td class="py-4 pr-6 font-semibold text-navy">Release frequency</td>
             <td class="py-4 pr-6 text-slate">How often updates go live</td>
           </tr>
           <tr>
-            <td class="py-4 pr-6 font-semibold text-ink">Change failure rate</td>
+            <td class="py-4 pr-6 font-semibold text-navy">Change failure rate</td>
             <td class="py-4 pr-6 text-slate">How often an update causes a problem</td>
           </tr>
           <tr>
-            <td class="py-4 pr-6 font-semibold text-ink">Recovery time</td>
+            <td class="py-4 pr-6 font-semibold text-navy">Recovery time</td>
             <td class="py-4 pr-6 text-slate">How fast service is restored after an issue</td>
           </tr>
           <tr>
-            <td class="py-4 pr-6 font-semibold text-ink">Rework rate</td>
+            <td class="py-4 pr-6 font-semibold text-navy">Rework rate</td>
             <td class="py-4 pr-6 text-slate">How much work has to be redone</td>
           </tr>
           <tr>
-            <td class="py-4 pr-6 font-semibold text-ink">Uptime</td>
+            <td class="py-4 pr-6 font-semibold text-navy">Uptime</td>
             <td class="py-4 pr-6 text-slate">How much of the time the system is available</td>
           </tr>
           <tr>
-            <td class="py-4 pr-6 font-semibold text-ink">Response time</td>
+            <td class="py-4 pr-6 font-semibold text-navy">Response time</td>
             <td class="py-4 pr-6 text-slate">How quickly support requests are answered</td>
           </tr>
           <tr>
-            <td class="py-4 pr-6 font-semibold text-ink">Transfer readiness</td>
+            <td class="py-4 pr-6 font-semibold text-navy">Transfer readiness</td>
             <td class="py-4 pr-6 text-slate">How complete the documentation and transfer checklist are</td>
           </tr>
         </tbody>
@@ -319,125 +294,44 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     </div>
   </section>
 
-  <!-- 10. Qualification -->
-  <section class="border-t border-line">
-    <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 class="max-w-[24ch] text-h2 text-ink text-balance">We partner with businesses committed to internal technology ownership.</h2>
-
-      <div class="mt-12 grid gap-12 md:grid-cols-2 md:gap-8">
-        <div>
-          <h3 class="mono border-b border-ink pb-4 text-success">GOOD FIT</h3>
-          <ul class="mt-6 flex flex-col gap-4">
-            {
-              goodFit.map((item) => (
-                <li class="flex items-start gap-3 text-body-lg text-ink">
-                  <Icon name="solar:check-circle-linear" class="mt-1 h-5 w-5 shrink-0 text-success" aria-hidden="true" />
-                  {item}
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-        <div>
-          <h3 class="mono border-b border-ink pb-4 text-graphite">PROBABLY NOT A FIT</h3>
-          <ul class="mt-6 flex flex-col gap-4">
-            {
-              notFit.map((item) => (
-                <li class="flex items-start gap-3 text-body-lg text-graphite">
-                  <Icon name="solar:close-circle-linear" class="mt-1 h-5 w-5 shrink-0 text-graphite" aria-hidden="true" />
-                  {item}
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 11. Final CTA -->
-  <section class="border-t border-line bg-surface">
+  <!-- 3.9 Final CTA (mist) -->
+  <section class="bg-mist">
     <div class:list={[shell, "flex flex-col items-center py-16 text-center md:py-24"]}>
-      <h2 class="mx-auto max-w-[18ch] text-h1 text-ink text-balance">Own the technology your business runs on.</h2>
-      <p class="mx-auto mt-8 max-w-[68ch] text-body-lg text-graphite text-pretty">
-        Tell us where fragmented systems, vendor dependencies, or operational data silos are limiting
-        growth. We will evaluate your architecture and recommend whether a technical discovery is the
-        right investment.
-      </p>
+      <h2 class="mx-auto max-w-[24ch] text-h2 text-navy text-balance">Own the technology your business runs on.</h2>
+      <p class="mx-auto mt-4 max-w-[68ch] text-body-lg text-slate text-pretty">Whether it's a brand-new system or improving one already in place, tell us what's slowing the business down and we'll suggest the best place to start.</p>
       <div class="mt-10">
         <Button href="/contact" variant="primary" class={btn}>Talk to us</Button>
       </div>
     </div>
   </section>
 
-  <!-- Video modal dialog (0 KB initial load, native HTML5 dialog) -->
-  <dialog
-    id="video-dialog"
-    class="fixed inset-0 m-auto w-[min(92vw,960px)] max-h-[92vh] overflow-hidden rounded-sm border border-ink bg-surface p-0 shadow-2xl backdrop:bg-ink/75 backdrop:backdrop-blur-sm open:flex open:flex-col"
-    aria-labelledby="video-dialog-title"
-  >
-    <div class="mono flex items-center justify-between border-b border-line px-4 py-3 text-graphite">
-      <div class="flex items-center gap-2">
-        <span class="h-2 w-2 rounded-full bg-signal"></span>
-        <span id="video-dialog-title" class="text-ink font-semibold">INTRO BRIEF · 45 SECONDS</span>
-      </div>
-      <button
-        type="button"
-        id="close-video-btn"
-        class="mono flex items-center gap-1 border border-line px-2 py-0.5 text-graphite transition-colors hover:border-ink hover:text-ink"
-        aria-label="Close video dialog"
-      >
-        ESC / CLOSE
-      </button>
+  <dialog id="video-dialog" data-lenis-prevent class="fixed inset-0 m-auto w-[min(92vw,960px)] max-h-[92vh] overflow-hidden rounded-[12px] border border-line bg-mist p-0 shadow-2xl backdrop:bg-navy/75 backdrop:backdrop-blur-sm open:flex open:flex-col" aria-labelledby="video-dialog-title">
+    <div class="flex items-center justify-between border-b border-line px-4 py-3 md:px-6">
+      <h2 id="video-dialog-title" class="text-sm font-semibold tracking-wide text-navy">Intro Brief · 45 seconds</h2>
+      <button type="button" class="close-video-trigger -my-2 -mr-2 min-h-[44px] px-2 text-sm font-semibold text-grey hover:text-navy" aria-label="ESC / Close video dialog">ESC / Close</button>
     </div>
-    <div class="relative aspect-video w-full bg-ink">
-      <video
-        id="intro-video"
-        controls
-        playsinline
-        preload="none"
-        poster="/images/intro-poster.webp"
-        class="h-full w-full object-contain"
-      >
-        <source src="/videos/intro.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <video id="intro-video" controls playsinline preload="metadata" poster="/images/intro-poster.webp" class="h-full w-full object-contain">
+      <source src="/videos/intro.mp4" type="video/mp4" />
+      <track kind="captions" src="/videos/intro.vtt" srclang="en" label="English" default />
+      Your browser does not support the video tag.
+    </video>
   </dialog>
+
+  <script>
+    function initVideoDialog() {
+      const dialog = document.getElementById("video-dialog") as HTMLDialogElement | null;
+      const video = document.getElementById("intro-video") as HTMLVideoElement | null;
+      if (dialog && video) {
+        document.querySelectorAll(".open-video-trigger").forEach((el) =>
+          el.addEventListener("click", () => dialog.showModal()),
+        );
+        dialog.querySelector(".close-video-trigger")?.addEventListener("click", () => dialog.close());
+        dialog.addEventListener("close", () => video.pause());
+        dialog.addEventListener("click", (e) => {
+          if (e.target === dialog) dialog.close();
+        });
+      }
+    }
+    document.addEventListener("astro:page-load", initVideoDialog);
+  </script>
 </Layout>
-
-<script>
-  function initVideoModal() {
-    const dialog = document.getElementById("video-dialog") as HTMLDialogElement | null;
-    const video = document.getElementById("intro-video") as HTMLVideoElement | null;
-    const closeBtn = document.getElementById("close-video-btn");
-    const triggers = document.querySelectorAll(".open-video-trigger");
-
-    if (!dialog || !video) return;
-
-    triggers.forEach((trigger) => {
-      trigger.addEventListener("click", () => {
-        dialog.showModal();
-      });
-    });
-
-    const close = () => {
-      dialog.close();
-      video.pause();
-    };
-
-    closeBtn?.addEventListener("click", close);
-
-    dialog.addEventListener("click", (e) => {
-      if (e.target === dialog) close();
-    });
-
-    dialog.addEventListener("close", () => {
-      video.pause();
-    });
-  }
-
-  document.addEventListener("astro:page-load", () => {
-    initVideoModal();
-  });
-</script>

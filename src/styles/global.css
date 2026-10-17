@@ -18,15 +18,8 @@
   --color-green: #0E9F6E;
   --color-red: #C2410C;
 
-  --color-canvas: #FFFFFF;
-  --color-surface: #F4F6FA;
-  --color-ink: #0F2A4A;
-  --color-graphite: #5B6878;
   --color-line: #E2E8F0;
-  --color-signal: #1D5FD1;
-  --color-signal-dark: #1548A6;
-  --color-success: #0E9F6E;
-  --color-error: #C2410C;
+  --color-field: #8795A8;
 
   /* Typography — Section 5 */
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
@@ -118,7 +111,7 @@
   h1,
   h2,
   h3 {
-    color: #0F2A4A;
+    color: var(--color-navy);
     font-weight: 600;
   }
 
@@ -141,6 +134,10 @@
     outline: 2px solid var(--color-blue);
     outline-offset: 2px;
     border-radius: 2px;
+  }
+
+  footer :focus-visible {
+    outline-color: var(--color-white);
   }
 
   a {
@@ -220,8 +217,8 @@
     left: var(--spacing-4);
     top: -60px;
     z-index: 100;
-    background-color: var(--color-ink);
-    color: var(--color-canvas);
+    background-color: var(--color-navy);
+    color: var(--color-white);
     padding: var(--spacing-3) var(--spacing-4);
     border-radius: 4px;
     transition: top 150ms var(--ease-out);

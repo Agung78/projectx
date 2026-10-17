@@ -12,11 +12,11 @@ const currentPath = Astro.url.pathname;
 
 <header
   transition:persist
-  class="sticky top-0 z-50 bg-white border-b border-transparent data-[stuck=true]:border-line transition-[background-color,border-color] duration-200"
+  class="group/header sticky top-0 z-50 bg-white border-b border-transparent data-[stuck=true]:border-line transition-[background-color,border-color] duration-200"
   data-site-header
 >
   <div class="mx-auto flex max-w-[1200px] items-center justify-between px-4 md:px-6 py-4">
-    <a href="/" class="text-h3 font-semibold tracking-tight text-ink" aria-label="NewCo, home">
+    <a href="/" class="text-h3 font-semibold tracking-tight text-navy" aria-label="NewCo, home">
       NewCo
     </a>
 
@@ -26,7 +26,7 @@ const currentPath = Astro.url.pathname;
           navLinks.map((link) => (
             <a
               href={link.href}
-              class="nav-link relative text-body text-graphite transition-colors hover:text-ink aria-[current=page]:text-ink aria-[current=page]:font-medium"
+              class="nav-link relative text-body text-grey transition-colors hover:text-navy aria-[current=page]:text-navy aria-[current=page]:font-semibold"
               aria-current={currentPath === link.href ? "page" : undefined}
             >
               {link.label}
@@ -35,13 +35,13 @@ const currentPath = Astro.url.pathname;
         }
       </nav>
 
-      <div class="hidden md:block">
+      <div class="hidden md:block transition-[opacity,visibility] duration-200 md:opacity-0 md:invisible md:pointer-events-none group-data-[stuck=true]/header:opacity-100 group-data-[stuck=true]/header:visible group-data-[stuck=true]/header:pointer-events-auto">
         <Button href="/contact" variant="primary">Talk to us</Button>
       </div>
 
       <button
         type="button"
-        class="pressable flex items-center justify-center rounded-sm border border-line p-2 md:hidden"
+        class="pressable flex h-11 w-11 items-center justify-center rounded-sm border border-line md:hidden"
         data-menu-toggle
         aria-expanded="false"
         aria-controls="mobile-nav"
@@ -60,7 +60,7 @@ const currentPath = Astro.url.pathname;
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="rounded-sm px-2 py-3 text-body-lg text-ink"
+            class="rounded-sm px-2 py-3 text-body-lg text-navy"
             aria-current={currentPath === link.href ? "page" : undefined}
           >
             {link.label}

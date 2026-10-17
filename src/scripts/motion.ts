@@ -42,7 +42,8 @@ let ctx: gsap.Context | undefined;
  * legible; gsap.from only sets the start state once JS runs.
  */
 function initHeroEntrance() {
-  const items = gsap.utils.toArray<HTMLElement>("[data-hero-item]");
+  // The h1 is the LCP element: it is never hidden or faded, only secondary items enter.
+  const items = gsap.utils.toArray<HTMLElement>("[data-hero-item]").filter((el) => !el.matches("h1"));
   if (items.length === 0) return;
   gsap.from(items, {
     y: REVEAL_OFFSET,

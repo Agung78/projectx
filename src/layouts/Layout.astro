@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const pageTitle = `${title} | NewCo`;
+const pageTitle = title.includes("NewCo") ? title : `${title} | NewCo`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("/og-image.png", Astro.site);
 const structuredData = {
@@ -69,7 +69,7 @@ const structuredData = {
     </script>
     <ClientRouter />
   </head>
-  <body class="bg-canvas text-ink">
+  <body class="bg-white text-slate">
     <a href="#main" class="skip-link">Skip to main content</a>
     <Header />
     <main id="main">

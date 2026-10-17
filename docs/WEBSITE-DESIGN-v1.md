@@ -1,530 +1,292 @@
-# NewCo Website — First-Version Design
+# NewCo Website — Production Design & Architecture Specification
 
-> Draft v0.1 · 2026-09-21
-> Based on `COMPANY-TECH-IDENTITY.md`
+> Version 2.0 · 2026-10-17  
+> Supersedes: Draft v0.1 (2026-09-21)  
+> Aligned with codebase: `src/pages/*`, `src/components/*`, `src/styles/global.css`
 
-## 1. Design Brief
+---
 
-NewCo's first website should persuade business owners and executive sponsors that NewCo is the accountable engineering partner for building technology capability they retain.
+## 1. Executive Summary & Positioning
 
-The website must distinguish NewCo from:
+NewCo is an independent engineering partner that builds with client teams, operates systems together, and systematically transfers complete ownership of the technology, architecture, runbooks, and capability to the business.
 
-- Project shops that build and disappear
-- Staff-augmentation vendors that provide temporary capacity
-- AI-demo agencies that skip data, governance, evaluation, and operations
-- Vendors that create dependency through opaque systems and weak handover
+### Core Brand Claims
 
-The site should sell the first appropriate conversation: a paid **Technical Diagnostic**. It should not attempt to sell every service, explain the entire house stack, or make unsupported claims before evidence exists.
+- **Primary Headline:** *Technology built for independence.*
+- **Action Principle:** *We build · We teach · You own.*
+- **Core Narrative:** *We engineer systems to a high standard, then transfer full ownership to the business: the code, the documentation and the know-how. No vendor lock-in. No hidden dependencies.*
 
-### Core message
+### Market Distinction
 
-> We build with your team, operate the system with you, and measure progress toward your independence.
+The website explicitly distinguishes NewCo from common industry defaults:
 
-### Recommended positioning line
-
-> **Engineering capability you keep.**
-
-### Primary audience
-
-Business owners, managing directors, CEOs, COOs, and executive sponsors of operationally complex businesses—initially Indonesian multi-location hospitality and retail operators—with fragmented systems, meaningful operational data, and no internal engineering leadership.
-
-### Primary conversion
-
-Book a conversation about a paid Technical Diagnostic.
-
-Secondary conversion: request an introduction or send a short description of the current technology situation.
-
-## 2. First-Version Goals
-
-### The website should
-
-1. Make NewCo's category clear within the first screen.
-2. Explain why capability transfer is a business outcome, not training attached to delivery.
-3. Show that NewCo owns operational accountability alongside the client.
-4. Make the Technical Diagnostic tangible and credible.
-5. Establish senior technical trust without overwhelming executives with implementation detail.
-6. Qualify out poor-fit opportunities before a sales conversation.
-7. Create a foundation for later case studies, evidence, and service pages.
-
-### The website should not
-
-- Present NewCo as a generic software agency.
-- Lead with technologies, frameworks, or model vendors.
-- Claim specific client outcomes before they are measured.
-- Promise that clients will never need NewCo again.
-- Turn the AI maturity ladder into a product catalogue.
-- Publish legal, security, compliance, or performance claims without evidence.
-- Use a pricing table before diagnostic economics and commercial packaging are final.
-
-## 3. Recommended Site Shape
-
-### Version 1: focused marketing site
-
-Use one strong landing page with a small number of supporting pages:
-
-- `/` — Home
-- `/diagnostic` — Technical Diagnostic
-- `/approach` — How NewCo works
-- `/about` — Founders, principles, and independence model
-- `/contact` — Qualification-oriented contact form
-
-The homepage carries the core argument. Supporting pages answer the questions an interested executive will ask after understanding the positioning.
-
-### Navigation
-
-- Approach
-- Technical Diagnostic
-- About
-- Contact
-
-Persistent header CTA:
-
-> Discuss your situation
-
-Avoid a large services dropdown in version 1. The engagement model is a progression, not a menu of disconnected services.
-
-## 4. Homepage Design
-
-### 4.1 Hero: state the business problem and durable outcome
-
-**Eyebrow:** EMBEDDED ENGINEERING CAPABILITY PARTNER
-
-**Headline:**
-
-> Build the technology your business can own.
-
-**Supporting copy:**
-
-> NewCo helps operationally complex businesses build, operate, and internalise the engineering capability required to run their systems with confidence.
-
-**Primary CTA:**
-
-> Discuss your situation
-
-**Secondary CTA:**
-
-> See how the capability transfer works
-
-Hero proof points, presented as compact text rather than decorative badges:
-
-- Build with your team
-- Operate the system together
-- Measure the path to independence
-
-Visual treatment: a simple capability-transfer diagram or editorial system map. Avoid generic laptop, server-room, or robot imagery.
-
-### 4.2 The problem: the cost of dependency
-
-**Section heading:**
-
-> Most technology problems are operating-model problems.
-
-Explain that a release is not the same as capability. The client may have software but still lack:
-
-- A person who can make and defend architecture decisions
-- A reliable production delivery path
-- Incident and recovery ownership
-- Trusted operational data
-- Security and dependency routines
-- A route to replace or extend the incumbent system
-
-Use a two-column contrast:
-
-| Common default | What remains afterward |
+| Market Default | What NewCo Delivers |
 |---|---|
-| Build, invoice, disappear | A system nobody internally can operate |
-| Add people by the day | Temporary capacity without retained capability |
-| Add AI to weak foundations | A demo without trustworthy data or evaluation |
-| Handover as a final ZIP file | Vendor dependency disguised as delivery |
-
-Keep this section concise. It establishes the category without attacking named competitors.
-
-### 4.3 Three durable outcomes
-
-**Section heading:**
-
-> The deliverable is more than software.
-
-Three equal cards or columns:
-
-#### Capacity
-
-Your team can ship, operate, and improve the system.
-
-#### Longevity
-
-The system has an accountable operating model beyond the initial release.
-
-#### Leverage
-
-Reusable engineering assets, data foundations, and measured automation compound over time.
-
-Each card should include a concrete evidence cue, not an abstract claim:
-
-- Capacity: client counterpart ships a production change
-- Longevity: client team responds using runbooks and operational telemetry
-- Leverage: reusable component or automation is measured in production
-
-### 4.4 The engagement model: capability curve
-
-**Section heading:**
-
-> A route from external support to internal ownership.
-
-Show the phases as a horizontal path on desktop and a vertical sequence on mobile:
-
-1. **Diagnose** — establish the current state, risks, capability baseline, and 90-day priorities.
-2. **Build With** — deliver the working system alongside the named client counterpart.
-3. **Run With** — share production responsibility, operations, security, and recovery.
-4. **Hand Over** — confirm the client can independently perform agreed delivery and operations activities.
-5. **Advise** — provide fractional CTO and governance support when useful.
-
-Important copy:
-
-> Handover is a success metric—not a hidden failure condition.
-
-The diagram should show decreasing NewCo day-to-day ownership and increasing client ownership. Do not frame it as a forced offboarding cliff; advisory continuity remains available.
-
-### 4.5 Technical Diagnostic feature section
-
-**Section heading:**
-
-> Start with evidence, not a speculative estimate.
-
-**Copy:**
-
-> In 15 business days, NewCo maps the systems, data, risks, delivery capability, and investment choices that matter. You own the output and can take it to any vendor.
-
-Show the output groups in a compact grid:
-
-- Current-state architecture and dependency map
-- Data-flow and data-readiness assessment
-- Security and operational risk register
-- Delivery and capability baseline
-- AI-readiness scorecard
-- Prioritised 90-day backlog
-- Twelve-month investment roadmap
-- Target operating model and estimated run cost
-- Build-versus-buy recommendations
-- Capability-transfer plan
-
-CTA:
-
-> Explore the Technical Diagnostic
-
-Commercial language should say that it is a fixed-fee, standalone product. Do not publish price until pricing is approved.
-
-### 4.6 Principles: how NewCo works
-
-**Section heading:**
-
-> Opinionated about ownership. Pragmatic about technology.
-
-Use five short principles:
-
-1. **Smallest appropriate architecture** — split systems only when a measured boundary justifies the operational cost.
-2. **Operations are part of engineering** — reliability, cost, security, backups, and recovery belong in the product.
-3. **AI earns its place** — use it where it improves quality or speed; build it into products only when evidence and controls exist.
-4. **Replaceable by design** — exportable data, documented interfaces, reproducible environments, and transferable operations.
-5. **Measure claims** — publish evidence, not activity or aspiration.
-
-Avoid turning this into a long technical manifesto on the homepage. Link to the Approach page for depth.
-
-### 4.7 AI section: disciplined, not performative
-
-**Section heading:**
-
-> AI is a delivery advantage and a product option—not a strategy by itself.
-
-Explain in executive language:
-
-- NewCo may use AI for implementation, review, security triage, dependency analysis, documentation, and code understanding.
-- Client code, prompts, logs, and data are governed by approved privacy, retention, residency, and access rules.
-- Product AI begins with data, a defined decision, evaluation, ownership, economics, failure handling, and a safe disable path.
-
-Optional visual: a restrained maturity ladder from data foundation to controlled automation. On the homepage, show only the ladder labels and link to deeper explanation.
-
-### 4.8 Qualification section
-
-**Section heading:**
-
-> NewCo works best when ownership is part of the brief.
-
-Good fit:
-
-- Operationally complex, multi-location businesses
-- A named client-side technical counterpart
-- An executive sponsor with decision authority
-- At least two meaningful operational data sources
-- Appropriate repository, infrastructure, and data access
-- Budget for a paid diagnostic and multi-month relationship
-- Willingness to make product, security, and architecture decisions
-
-Not a fit:
-
-- Cheap MVP requests with no ownership path
-- Day-rate comparison as the primary buying criterion
-- Production responsibility without access, authority, or defined obligations
-- AI features without data, evaluation, owner, and fallback
-- Unpaid estimates for unseen systems
-
-This section should qualify respectfully, not sound defensive.
-
-### 4.9 Evidence section
-
-Until NewCo has publishable case studies, use an explicit evidence framework rather than invented testimonials or vague logos.
-
-**Section heading:**
-
-> Evidence will replace promises.
-
-Show the measures NewCo intends to baseline and improve:
-
-- Lead time
-- Deployment frequency
-- Change-failure rate
-- Mean time to recovery
-- Rework
-- Onboarding-to-first-PR
-- Platform reuse
-- Capability scorecard progress
-
-Use a note such as:
-
-> We publish measured outcomes when the work gives us evidence to publish.
-
-When genuine evidence exists, replace this section with case studies containing context, intervention, baseline, result, timeframe, and client permission.
-
-### 4.10 Final CTA
-
-**Headline:**
-
-> Own the next stage of your technology.
-
-**Copy:**
-
-> Tell us where your systems, data, delivery process, or internal capability are constraining the business. We will determine whether a Technical Diagnostic is the right next step.
-
-**CTA:**
-
-> Start a conversation
-
-Secondary reassurance:
-
-> No speculative estimate. No obligation to continue with NewCo after the diagnostic.
-
-## 5. Technical Diagnostic Page
-
-The diagnostic page should convert informed interest into a qualified enquiry.
-
-### Sections
-
-1. **Promise** — a 15-business-day evidence-based assessment.
-2. **Who it is for** — operational complexity, fragmented systems, executive sponsor, named counterpart.
-3. **What we examine** — architecture, data, delivery, operations, security, AI readiness, economics.
-4. **What you receive** — the ten outputs from the company identity document.
-5. **How the work runs** — access and inventory, interviews, evidence review, synthesis, readout.
-6. **What happens afterward** — the client chooses whether to build with NewCo, use another vendor, or act independently.
-7. **Commercial principle** — fixed-fee and profitable standalone; price shown only when approved.
-8. **CTA** — request a diagnostic conversation.
-
-Important trust statement:
-
-> You own the diagnostic outputs and can take them to any vendor.
-
-## 6. Approach Page
-
-The Approach page explains the capability curve and operational model in more depth.
-
-Include:
-
-- Diagnose, Build With, Run With, Hand Over, Advisory
-- Capability-transfer scorecard
-- Evidence required for architecture, delivery, operations, recovery, data, security, decision-making, and planning
-- Shared responsibilities and decision rights
-- How NewCo handles deviations from the house stack through ADRs
-- Why handover is planned from the beginning
-
-Avoid publishing contract-level SLOs, response targets, or legal allocations until the commercial and legal documents are final.
-
-## 7. About Page
-
-The About page should establish accountability without over-indexing on founder biography.
-
-### Structure
-
-- What NewCo believes: clients should own their technology.
-- Founder roles:
-  - CEO / Managing Director: client relationships, commercial terms, account governance, delivery accountability.
-  - CTO: technical strategy, architecture, engineering, hiring, platform IP, security, and technical risk.
-- Operating rule: the CEO owns who NewCo works with and what it promises; the CTO owns how it is built and whether it can be promised.
-- Shared approval areas: markets, material pricing exceptions, senior hires, house-stack changes, unusual legal/security exposure, and company IP assignment.
-- Commitment to documented decisions and explicit ownership.
-
-Do not publish sensitive founder-agreement details. The website can communicate governance without exposing private legal arrangements.
-
-## 8. Contact and Conversion Flow
-
-### Recommended form
-
-Keep the first form short enough for an executive to complete:
-
-- Name
-- Company
-- Role
-- Email
-- Country / operating region
-- What is currently constraining the business?
-- Approximate number of locations or operating units
-- Preferred way to continue the conversation
-
-Optional qualification fields:
-
-- Named technical counterpart available: yes / no / uncertain
-- Executive sponsor available: yes / no / uncertain
-- Primary situation: fragmented systems / delivery reliability / data foundation / AI readiness / internal engineering capability / other
-
-After submission:
-
-1. Confirm receipt without promising fit.
-2. Explain that NewCo reviews the situation against its qualification criteria.
-3. Offer a scheduling link only if the operational workflow is ready.
-4. Store and process submitted information under a documented privacy policy.
-
-Do not ask for repository access, credentials, production details, or sensitive client data through the public form.
-
-## 9. Visual Direction
-
-### Personality
-
-- Senior
-- Clear
-- Calm
-- Exact
-- Operational
-- Independent-minded
-- Human, but not casual
-
-### Layout
-
-- Generous whitespace
-- Strong editorial grid
-- Short sections with clear headings
-- Diagrams and evidence cards instead of decorative illustrations
-- One primary CTA repeated consistently
-- Responsive design with a readable mobile sequence
-
-### Colour
-
-Recommended starting palette:
-
-- Warm off-white or light stone background
-- Near-black text
-- Muted graphite and grey for secondary content
-- One restrained signal colour for links, diagrams, and CTAs
-
-The signal colour should communicate confidence and movement without resembling a neon AI brand. Final colour selection should be tested for contrast and accessibility.
-
-### Typography
-
-Use one highly legible display or variable sans-serif family with a strong text companion, or one family with sufficient weight and optical range. Prioritise:
-
-- Executive readability
-- Clear hierarchy
-- Strong numerals for metrics and phases
-- Reliable rendering across browsers
-
-### Imagery
-
-Prefer:
-
-- System maps
-- Capability curves
-- Architecture fragments
-- Operational dashboards used as abstract evidence, with no client-confidential data
-- Editorial diagrams
-
-Avoid:
-
-- Generic team high-fives
-- Server rooms
-- Robots and glowing brains
-- Stock images of executives pointing at screens
-- Decorative cloud and circuit illustrations
-
-## 10. Content and Claim Governance
-
-Every public claim should be classified as one of:
-
-- **Principle** — what NewCo believes and intends to do.
-- **Method** — how NewCo works.
-- **Evidence** — a measured result supported by a client-approved source.
-- **Capability** — an asset or service NewCo can currently deliver.
-- **Future intention** — clearly labelled as planned, not available now.
-
-Do not publish:
-
-- Client names or logos without permission.
-- Specific security or compliance claims without scope and evidence.
-- AI accuracy or ROI claims without an evaluation and baseline.
-- Operational response promises before the Run With service definition is approved.
-- House-stack details as though tools alone create outcomes.
-
-## 11. First-Version Scope
-
-### Include now
-
-- Responsive homepage
-- Technical Diagnostic page
-- Approach page
-- About page
-- Contact page or qualified enquiry flow
-- Accessible typography, colour contrast, keyboard navigation, and form errors
-- Privacy notice and basic analytics consent approach
-- Search-engine metadata and social sharing metadata
-- Lightweight performance budget
-
-### Defer
-
-- Blog or resource centre
-- Client portal
-- Interactive diagnostic calculator
-- CMS unless content will genuinely change frequently
-- Platform licensing page
-- Detailed service pricing
-- Case studies without approved evidence
-- Careers page until hiring is active
-- Complex animations and 3D visuals
-
-## 12. Success Criteria
-
-The first version is successful if:
-
-1. An executive can explain what NewCo does after one visit.
-2. The site clearly differentiates NewCo from a project shop, staff-augmentation vendor, and AI-demo agency.
-3. A qualified visitor understands why the Technical Diagnostic is the first step.
-4. The site communicates client ownership without implying NewCo abandons the client after handover.
-5. The qualification criteria reduce unsuitable enquiries.
-6. All public outcome claims are either principles, methods, or evidenced results.
-7. The site produces qualified diagnostic conversations rather than generic contact volume.
-
-## 13. Decisions Still Required Before Implementation
-
-- Final company name and domain
-- Final tagline: recommended starting point is “Engineering capability you keep.”
-- First beachhead wording: hospitality, retail, or broader operationally complex businesses
-- Primary signal colour and typography
-- Founder headshots and biographies, if used
-- Contact handling, CRM, scheduling, and privacy workflow
-- Whether the initial site is static or CMS-backed
-- Approved evidence, references, and case-study permissions
-- Legal review of privacy, IP, security, and service claims
-
-## 14. Recommended Next Design Step
-
-Create two visual homepage directions for comparison:
-
-1. **Editorial operating partner** — typographic, restrained, diagram-led, high-trust.
-2. **Systems capability map** — more structured, with the capability curve and evidence model as the dominant visual language.
-
-The first direction is recommended for the initial site because executive trust and clarity matter more than technical spectacle. The second direction can influence diagrams and the Approach page without becoming the entire brand.
+| **The disappearing agency:** builds, bills, and leaves an unmaintainable codebase. | **We stay until it runs smoothly:** shared monitoring, rapid incident response, and baseline recovery metrics. |
+| **Short-term contractors:** temporary hands whose knowledge leaves when the contract ends. | **Knowledge that stays with the business:** exhaustive documentation, code walkthroughs, and repository-owned runbooks. |
+| **Tech for the sake of it:** trendy, costly tools added before basics are in place. | **The right tools, not the trendy ones:** proven technology, clear cost/return justification, and AI only where it pays for itself. |
+| **Handover in name only:** a final code drop with no operational explanation. | **A transfer that actually works:** contractual handover checklist, credential transfer, and live guided walkthroughs. |
+
+---
+
+## 2. Information Architecture & Navigation
+
+The production site is a tightly focused 5-page static site with automated 301 redirects for historical routes:
+
+```
+/                     ── Home (Full thesis, 4 stages, principles, metrics, video intro)
+/how-we-work          ── Methodology, 4-stage transfer curve, handover checklist, tech stack
+/about                ── Leadership (Vanezza, CEO & Agung Denisa, CTO), client commitments
+/contact              ── Direct founder review, qualification intake console
+/privacy              ── Confidentiality, data protection, strict AI privacy governance
+/approach             ── 301 Redirect to /how-we-work
+/diagnostic           ── 301 Redirect to /how-we-work
+```
+
+### Global Header Navigation
+
+- Persistent sticky header with transparent-to-border scroll transition.
+- Brand wordmark: **NewCo** (links to `/`).
+- Links: `How we work`, `About`, `Contact`.
+- Mobile navigation: Accessible animated clip-path drawer with focus trapping and ESC dismissal.
+
+### Global Footer
+
+- Dark navy anchor surface (`bg-navy text-white`).
+- Quick navigation links.
+- Regulatory & corporate identity:
+  - **PT NewCo Teknologi Indonesia**
+  - One Pacific Place, Level 11, SCBD, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan 12190, Indonesia
+  - NIB / Company Registration: `0120202688192`
+- Copyright statement and link to `/privacy`.
+
+---
+
+## 3. Page-by-Page Specifications
+
+### 3.1 Homepage (`/`)
+
+1. **Hero Section:**
+   - Monospace eyebrow: `// INDEPENDENT SYSTEM ENGINEERING` + tagline `Engineering partner for growing businesses`.
+   - Title: *Technology built for independence.*
+   - Proof chip: `.corners` bracketed callout: `We build · We teach · You own.`
+   - Body copy highlighting zero vendor lock-in and retained know-how.
+   - Primary CTA: *Talk to us* (`/contact`).
+   - Video modal trigger: *Watch the 45-second intro* opening the accessible native dialog player.
+
+2. **The Problem Section:**
+   - Headline: *Getting software built is easy. Keeping it running is the hard part.*
+   - 4 architectural cards:
+     1. The disappearing agency
+     2. Short-term contractors
+     3. Tech for the sake of it
+     4. Handover in name only
+
+3. **What the Business Gets Instead:**
+   - Headline: *What the business gets instead.*
+   - 4 evidence-backed cards with concrete proof chips:
+     - *We stay until it runs smoothly* (Proof: service recovery time tracked from day one)
+     - *Knowledge that stays with the business* (Proof: documentation reviewed and signed off at every stage)
+     - *The right tools, not the trendy ones* (Proof: every recommendation comes with its cost and expected return)
+     - *A transfer that actually works* (Proof: transfer checklist agreed in the contract)
+
+4. **Process & Capability Curve:**
+   - Headline: *How a project comes together.*
+   - Explanatory copy on day-to-day control shifting stage-by-stage to the business.
+   - Embeds `CapabilityCurve.astro` (FIG. 01 OWNERSHIP CURVE) across 4 stages.
+
+5. **Discovery Section (The Dark Accent Section):**
+   - Navy surface (`bg-navy text-white`) with corner brackets.
+   - Headline: *Every project starts with a clear picture.*
+   - 3 structured steps with inline SVG technical iconography:
+     - **Step 01 Understand:** Map current systems, data flows, and bottlenecks.
+     - **Step 02 Prioritise:** Rank risks, single points of failure, and upgrade choices.
+     - **Step 03 Plan:** Technical roadmap with architecture, milestones, and estimated costs.
+   - CTA button: *Talk to us* (`variant="inverse"`).
+
+6. **How We Build (Principles):**
+   - Headline: *Simple, honest engineering.*
+   - 5 numbered principles:
+     1. *Keep it simple:* No extra complexity until there's a real reason for it.
+     2. *Running it is part of the job:* Monitoring, backups, cloud costs, and recovery plans are included.
+     3. *Clear communication:* Plain-language updates and zero jargon.
+     4. *Standard, proven technology:* Widely used, well-supported tools that any qualified engineer can maintain.
+     5. *Security from day one:* Access controls, encryption, and regular updates built in from the start.
+
+7. **AI Adoption (Optional Service):**
+   - Tag: `// Optional service`
+   - Headline: *Want to bring AI into the business? We can help.*
+   - Clear boundary statement: Systems are engineered by humans; AI is adopted only where reliable data exists and it pays for itself.
+   - 3 sequential steps:
+     1. Get the data ready
+     2. Start with one clear use case
+     3. Expand carefully, with safeguards
+
+8. **The Numbers We Track (DORA + Operational Metrics):**
+   - Headline: *Eight numbers that prove progress.*
+   - Two-column table layout:
+     - `01 Lead time` — How long a change takes to go live
+     - `02 Release frequency` — How often updates go live
+     - `03 Change failure rate` — How often an update causes a problem
+     - `04 Recovery time` — How fast service is restored after an issue
+     - `05 Rework rate` — How much work has to be redone
+     - `06 Uptime` — How much of the time the system is available
+     - `07 Response time` — How quickly support requests are answered
+     - `08 Transfer readiness` — How complete the documentation and transfer checklist are
+
+9. **Final CTA:**
+   - Headline: *Own the technology your business runs on.*
+   - Reassurance copy and primary *Talk to us* button.
+
+10. **Intro Video Dialog Modal:**
+    - Native HTML `<dialog>` with backdrop blur, custom close button, ESC key handler, and Lenis scroll prevention (`data-lenis-prevent`).
+    - Hosts `/videos/intro.mp4`, poster `/images/intro-poster.webp`, and English VTT captions `/videos/intro.vtt`.
+
+---
+
+### 3.2 How We Work (`/how-we-work`)
+
+1. **Hero:**
+   - Eyebrow: `// METHODOLOGY & PROCESS`
+   - Title: *One clear process, start to finish.*
+   - Core premise: Collaborative delivery where the client always holds final decision rights.
+
+2. **Four Stages Breakdown & Curve:**
+   - Title: *Four stages, one direction.*
+   - 4 stage cards detailing what NewCo does and what the business gets:
+     - **Discovery:** Gets a technical roadmap with architecture, milestones, and estimated costs.
+     - **Development:** Gets a working system, tested and ready for real use.
+     - **Operations and Support:** Gets a stable system with agreed response times.
+     - **Ownership Transfer:** Gets full autonomous ownership with zero vendor lock-in.
+   - Full-width `CapabilityCurve.astro` (FIG. 01 OWNERSHIP CURVE).
+
+3. **Handover Checklist Table:**
+   - Title: *Everything handed over, nothing held back.*
+   - 8 contractual handover deliverables:
+     1. `Source code`: Stored directly in the client's own repository.
+     2. `Documentation`: Plain-language explanation of system architecture.
+     3. `Accounts and access`: Cloud, domains, and SaaS accounts in the client's name.
+     4. `Running guides`: Step-by-step instructions for everyday operations.
+     5. `Recovery plan`: Backup restoration and incident recovery instructions.
+     6. `Security review`: Credentials rotated and access validated prior to sign-off.
+     7. `Live walkthrough`: Guided walkthrough sessions for internal staff or incoming partners.
+     8. `Ongoing support`: Optional advisory continuity, never a forced dependency.
+
+4. **Technology Stack Marquee:**
+   - Title: `// Built on proven, widely used technology.`
+   - Dual-row opposing animated marquee featuring 30 vetted technologies:
+     - Frontend: Astro, Next.js, Vue, Vite, Tailwind CSS, Bootstrap.
+     - Backend & Runtime: Node.js, NestJS, Fastify, Express.js.
+     - Databases & Storage: PostgreSQL, Supabase, Neon, Snowflake, BigQuery.
+     - Cloud & Infrastructure: Google Cloud, Cloudflare, Render, Railway, Docker.
+     - Security & Quality: Snyk, Semgrep, Veracode, Strix AI.
+     - AI Models & Frameworks: Claude, Gemini, ChatGPT, DeepSeek, GLM, NVIDIA.
+
+---
+
+### 3.3 About (`/about`)
+
+1. **Hero:**
+   - Eyebrow: `// LEADERSHIP & COMMITMENTS`
+   - Title: *Built on trust, delivered with care.*
+
+2. **Founders Section:**
+   - Dual-founder structure and governance rule: proposals are jointly evaluated on commercial viability and technical feasibility.
+   - **Vanezza** — Chief Executive Officer (commercial governance, account accountability).
+   - **Agung Denisa** — Chief Technology Officer (technical strategy, architecture, platform IP).
+   - High-resolution portraits with dimensional attributes, eager loading, and high fetchpriority.
+
+3. **Client Commitments:**
+   - 4 core commitments paired with Solar line icons:
+     1. *Plain-language updates:* No jargon, no surprises.
+     2. *Clear pricing:* Agreed upfront, before work begins.
+     3. *A real person to talk to:* A named contact and agreed response times.
+     4. *Honest advice:* What is right for the business, not what costs the most.
+
+4. **Leadership Collaboration Model:**
+   - Concrete explanation of how NewCo engineers embed with existing client teams, join sprints, review pull requests, document architecture in client repos, and conclude with autonomous ownership.
+
+---
+
+### 3.4 Contact (`/contact`)
+
+1. **Briefing Header:**
+   - Eyebrow: `// ENGAGEMENT BRIEF`
+   - Title: *Tell us what the business needs.*
+   - Direct Founder Review guarantee: 24-hour response SLA directly from Vanezza and Agung Denisa.
+   - 3-point expectation list: 30-minute scoping call, technical recommendations, honest fit evaluation.
+
+2. **Intake Console Form:**
+   - Monospace header: `// INTAKE CONSOLE`
+   - Required fields with instant validation: Name, Company, Role, Email, Country/Region, Number of locations/branches, Help requested.
+   - Follow-up preference radio options: Email, Phone, Video call.
+   - Collapsible `<details>` accordion (`A bit more (optional)`) for deeper qualification:
+     - Project type: New system / Improve existing / Not sure yet.
+     - Main decision-maker.
+     - IT contact or provider details.
+   - Accessible error alerts and live status banner.
+
+---
+
+### 3.5 Privacy Policy (`/privacy`)
+
+1. **Scope:** Information submitted through web forms; strict confidentiality of client architecture data.
+2. **AI Data Privacy Governance:**
+   - Client source code and data stay completely private.
+   - Zero model training: client code or documents are never used to train public or proprietary models.
+   - Approved tooling only with contractual confidentiality protections.
+   - Scoped access without secrets or production credentials.
+   - Client right to prohibit AI tooling on their assets.
+3. **Data Retention & Indonesian Regulatory Compliance:**
+   - 12-month retention for unpursued inquiries; immediate return/deletion upon engagement handover.
+   - Full compliance with Indonesian data protection regulations.
+
+---
+
+## 4. Visual Design Tokens & Styling
+
+```css
+/* Color Palette */
+--color-white: #FFFFFF;      /* Clean canvas */
+--color-mist: #F4F6FA;       /* Slate-tinted paper */
+--color-navy: #0F2A4A;       /* Display text & dark accents */
+--color-slate: #1F2933;      /* Body typography */
+--color-grey: #5B6878;       /* Metadata, captions, NewCo line */
+--color-blue: #1D5FD1;       /* Client ownership line & primary CTA */
+--color-blue-dark: #1548A6;  /* CTA hover */
+--color-line: #E2E8F0;       /* Hairline borders & rules */
+--color-field: #8795A8;      /* Form input borders */
+--color-green: #0E9F6E;      /* Success status */
+--color-red: #C2410C;        /* Error alert */
+
+/* Architectural Utility Classes */
+.mono {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.corners {
+  position: relative;
+}
+.corners::before { /* Top-left L-bracket */ }
+.corners::after { /* Bottom-right L-bracket */ }
+
+.grid-lines {
+  background-image: linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+```
+
+---
+
+## 5. Technology Stack & Runtime
+
+- **Framework:** Astro 7.3 (`output: "static"`)
+- **Styling:** Tailwind CSS 4 via `@tailwindcss/vite`
+- **Animation & Scroll:** GSAP 3.15, ScrollTrigger, CustomEase, Lenis 1.3
+- **Iconography:** `astro-icon` with `@iconify-json/solar`
+- **Typography:** Plus Jakarta Sans (Google Fonts)
+- **Deployment:** Vercel Static Hosting with automated 301 redirects and strict security headers

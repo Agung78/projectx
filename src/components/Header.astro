@@ -2,8 +2,7 @@
 import Button from "./Button.astro";
 
 const navLinks = [
-  { href: "/approach", label: "Approach" },
-  { href: "/diagnostic", label: "Technical Diagnostic" },
+  { href: "/how-we-work", label: "How we work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -13,7 +12,7 @@ const currentPath = Astro.url.pathname;
 
 <header
   transition:persist
-  class="sticky top-0 z-50 bg-canvas/95 backdrop-blur-[2px] transition-[background-color,border-color] duration-200 data-[stuck=true]:border-b data-[stuck=true]:border-line"
+  class="sticky top-0 z-50 bg-white border-b border-transparent data-[stuck=true]:border-line transition-[background-color,border-color] duration-200"
   data-site-header
 >
   <div class="mx-auto flex max-w-content items-center justify-between px-[clamp(20px,5vw,80px)] py-4">
@@ -21,39 +20,41 @@ const currentPath = Astro.url.pathname;
       NewCo
     </a>
 
-    <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
-      {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="nav-link relative text-body text-graphite transition-colors hover:text-ink aria-[current=page]:text-ink aria-[current=page]:font-medium"
-            aria-current={currentPath === link.href ? "page" : undefined}
-          >
-            {link.label}
-          </a>
-        ))
-      }
-    </nav>
+    <div class="flex items-center justify-end gap-8">
+      <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="nav-link relative text-body text-graphite transition-colors hover:text-ink aria-[current=page]:text-ink aria-[current=page]:font-medium"
+              aria-current={currentPath === link.href ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
 
-    <div class="hidden md:block">
-      <Button href="/contact" variant="primary">Discuss your situation</Button>
+      <div class="hidden md:block">
+        <Button href="/contact" variant="primary">Talk to us</Button>
+      </div>
+
+      <button
+        type="button"
+        class="pressable flex items-center justify-center rounded-sm border border-line p-2 md:hidden"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span class="sr-only">Open menu</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </button>
     </div>
-
-    <button
-      type="button"
-      class="pressable flex items-center justify-center rounded-sm border border-line p-2 md:hidden"
-      data-menu-toggle
-      aria-expanded="false"
-      aria-controls="mobile-nav"
-    >
-      <span class="sr-only">Open menu</span>
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-      </svg>
-    </button>
   </div>
 
-  <div id="mobile-nav" hidden class="border-t border-line bg-canvas md:hidden" data-mobile-nav data-open="false">
+  <div id="mobile-nav" hidden class="border-t border-line bg-white md:hidden" data-mobile-nav data-open="false">
     <nav class="flex flex-col gap-1 px-[clamp(20px,5vw,80px)] py-4" aria-label="Primary">
       {
         navLinks.map((link) => (
@@ -67,7 +68,7 @@ const currentPath = Astro.url.pathname;
         ))
       }
       <Button href="/contact" variant="primary" class="mt-2 w-full justify-center">
-        Discuss your situation
+        Talk to us
       </Button>
     </nav>
   </div>

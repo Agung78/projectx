@@ -6,14 +6,14 @@ import Button from "../components/Button.astro";
 const founderRoles = [
   {
     role: "Chief Executive",
-    badge: "[ CHIEF EXECUTIVE ]",
+    badge: "CHIEF EXECUTIVE",
     promise: "Who we work with and what we promise.",
     owns: "Client relationships, commercial terms, account governance, and client-facing delivery accountability.",
     image: "/images/ceo.webp",
   },
   {
     role: "Chief Technology Officer",
-    badge: "[ CHIEF TECHNOLOGY OFFICER ]",
+    badge: "CHIEF TECHNOLOGY OFFICER",
     promise: "How it is built and whether we can promise it.",
     owns: "Technical strategy, architecture, delivery engineering, hiring and mentoring, platform IP, and security and technical risk.",
     image: "/images/cto.webp",
@@ -50,7 +50,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
   description="Why NewCo exists: partnering with multi-location businesses to build permanent internal engineering capability, backed by balanced leadership governance."
 >
   <section class:list={[shell, "pt-16 pb-16 md:pt-20 md:pb-24"]}>
-    <p class="mono text-signal">[ FOUNDING &amp; OPERATING BELIEF ]</p>
+    <p class="mono text-signal">FOUNDING &amp; OPERATING BELIEF</p>
     <h1 class="mt-6 max-w-[20ch] text-h1 text-ink text-balance tracking-tight">
       Build engineering capability your business permanently owns.
     </h1>
@@ -65,7 +65,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
     <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-7">
-          <p class="mono text-signal">[ LEADERSHIP GOVERNANCE ]</p>
+          <p class="mono text-signal">LEADERSHIP GOVERNANCE</p>
           <h2 class="mt-3 text-h2 text-ink text-balance">Two founders, one clear split.</h2>
         </div>
         <p class="measure self-end text-body-lg text-graphite md:col-span-5">
@@ -91,23 +91,23 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
               )}
               <div class="flex-1 p-5 md:p-6">
                 <h3 class="text-h3 text-ink">{founder.role}</h3>
-                <p class="mono mt-5 text-graphite">[ PROMISE ]</p>
+                <p class="mono mt-5 text-graphite">PROMISE</p>
                 <p class="mt-1 text-body-lg font-medium text-ink">{founder.promise}</p>
-                <p class="mono mt-5 text-graphite">[ OWNS ]</p>
+                <p class="mono mt-5 text-graphite">OWNS</p>
                 <p class="mt-1 text-body text-graphite">{founder.owns}</p>
               </div>
             </div>
           ))
         }
       </div>
-      <p class="mono mt-10 text-graphite">[ LEADERSHIP ACCOUNTABILITY: FOUNDER-DIRECT ENGAGEMENT ON EVERY DIAGNOSTIC ]</p>
+      <p class="mono mt-10 text-graphite">LEADERSHIP ACCOUNTABILITY: FOUNDER-DIRECT ENGAGEMENT ON EVERY DIAGNOSTIC</p>
     </div>
   </section>
 
   <section class:list={[shell, "py-16 md:py-24"]}>
     <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
       <div class="md:col-span-5">
-        <p class="mono text-signal">[ SHARED APPROVAL AREAS ]</p>
+        <p class="mono text-signal">SHARED APPROVAL AREAS</p>
         <h2 class="mt-3 text-h2 text-ink text-balance">Decided together.</h2>
         <p class="mt-6 text-body-lg text-graphite">
           Every decision is logged with its owner, rationale, assumptions, and a review date.
@@ -117,7 +117,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
         {
           sharedApprovals.map((item, i) => (
             <li class="grid grid-cols-[4rem_1fr] gap-x-4 py-4">
-              <span class="mono text-signal">[ {pad(i)} ]</span>
+              <span class="mono text-signal">{pad(i)}</span>
               <span class="text-body-lg text-ink">{item}</span>
             </li>
           ))
@@ -130,7 +130,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
     <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-5">
-          <p class="mono text-signal">[ QUALIFICATION DISCIPLINE ]</p>
+          <p class="mono text-signal">QUALIFICATION DISCIPLINE</p>
           <h2 class="mt-3 text-h2 text-ink text-balance">Engagements we decline.</h2>
           <p class="mt-6 text-body-lg text-graphite">
             Clear qualification standards protect delivery quality and ensure mutual alignment before any contract is signed.
@@ -140,7 +140,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
           {
             declines.map((item, i) => (
               <li class="grid grid-cols-[4rem_1fr] gap-x-4 py-4">
-                <span class="mono text-graphite">[ {pad(i)} ]</span>
+                <span class="mono text-graphite">{pad(i)}</span>
                 <span class="text-body-lg text-graphite">{item}</span>
               </li>
             ))
@@ -152,7 +152,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
 
   <section class="border-t border-line bg-surface">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono text-signal">[ NEXT STEP ]</p>
+      <p class="mono text-signal">NEXT STEP</p>
       <h2 class="mt-3 max-w-[22ch] text-h2 text-ink text-balance">
         If this is how you want to work, tell us where things stand.
       </h2>
@@ -160,7 +160,7 @@ const shell = "mx-auto max-w-content px-[clamp(20px,5vw,80px)]";
         We evaluate your systems, operational constraints, and team goals, then provide an objective recommendation on whether the 15-day Technical Diagnostic is the right path.
       </p>
       <div class="mt-10">
-        <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Discuss your situation</Button>
+        <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Talk to us</Button>
       </div>
     </div>
   </section>

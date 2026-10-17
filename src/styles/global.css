@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource-variable/schibsted-grotesk";
 @import "lenis/dist/lenis.css";
 
 @theme {
@@ -9,29 +8,39 @@
    * always means "client ownership". Warm cream + terracotta was dropped as
    * a templated default (frontend-design review, 2026-09).
    */
-  --color-canvas: #eef1f0;
-  --color-surface: #f8faf9;
-  --color-ink: #13212c;
-  --color-graphite: #4a5864;
-  --color-line: #cfd8dc;
-  --color-signal: #2446c8;
-  --color-signal-dark: #18319a;
-  --color-success: #2f6b4f;
-  --color-error: #b0372e;
+  --color-white: #FFFFFF;
+  --color-mist: #F4F6FA;
+  --color-navy: #0F2A4A;
+  --color-slate: #1F2933;
+  --color-grey: #5B6878;
+  --color-blue: #1D5FD1;
+  --color-blue-dark: #1548A6;
+  --color-green: #0E9F6E;
+  --color-red: #C2410C;
+
+  --color-canvas: #FFFFFF;
+  --color-surface: #F4F6FA;
+  --color-ink: #0F2A4A;
+  --color-graphite: #5B6878;
+  --color-line: #E2E8F0;
+  --color-signal: #1D5FD1;
+  --color-signal-dark: #1548A6;
+  --color-success: #0E9F6E;
+  --color-error: #C2410C;
 
   /* Typography — Section 5 */
-  --font-sans: "Schibsted Grotesk Variable", "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 
   --text-display: clamp(3.5rem, 8vw, 7.5rem);
   --text-display--line-height: 1.02;
-  --text-display--font-weight: 800;
+  --text-display--font-weight: 600;
 
-  --text-h1: clamp(2.75rem, 5vw, 5.25rem);
-  --text-h1--line-height: 1.05;
-  --text-h1--font-weight: 700;
+  --text-h1: clamp(2.125rem, 2.5vw + 1.35rem, 3.5rem);
+  --text-h1--line-height: 1.15;
+  --text-h1--font-weight: 600;
 
-  --text-h2: clamp(2rem, 3.5vw, 3.5rem);
-  --text-h2--line-height: 1.1;
+  --text-h2: clamp(1.625rem, 1.25vw + 1.25rem, 2.25rem);
+  --text-h2--line-height: 1.2;
   --text-h2--font-weight: 600;
 
   --text-h3: 1.5rem;
@@ -40,10 +49,10 @@
 
   --text-body-lg: 1.25rem;
   --text-body-lg--line-height: 1.5;
-  --text-body-lg--font-weight: 450;
+  --text-body-lg--font-weight: 400;
 
-  --text-body: 1rem;
-  --text-body--line-height: 1.55;
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.6;
   --text-body--font-weight: 400;
 
   --text-label: 0.875rem;
@@ -69,7 +78,7 @@
 
   /* Grid + measure — Section 3 */
   --container-content: 1200px;
-  --container-measure: 62ch;
+  --container-measure: 68ch;
 
   --breakpoint-sm: 480px;
   --breakpoint-md: 768px;
@@ -97,21 +106,39 @@
   }
 
   body {
-    background-color: var(--color-canvas);
-    color: var(--color-ink);
+    background-color: var(--color-white, #FFFFFF);
+    color: var(--color-slate, #1F2933);
     font-family: var(--font-sans);
-    font-size: var(--text-body);
-    line-height: var(--text-body--line-height);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
 
+  h1,
+  h2,
+  h3 {
+    color: #0F2A4A;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: clamp(2.125rem, 2.5vw + 1.35rem, 3.5rem);
+    line-height: 1.15;
+  }
+
+  h2 {
+    font-size: clamp(1.625rem, 1.25vw + 1.25rem, 2.25rem);
+    line-height: 1.2;
+  }
+
   ::selection {
-    background-color: var(--color-signal);
-    color: var(--color-surface);
+    background-color: var(--color-blue);
+    color: var(--color-white);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-signal);
+    outline: 2px solid var(--color-blue);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -222,7 +249,7 @@
   }
 
   .measure {
-    max-width: var(--container-measure);
+    max-width: 68ch;
   }
 
   .pressable {

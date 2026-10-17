@@ -13,6 +13,10 @@ const site = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 export default defineConfig({
   site,
+  redirects: {
+    '/approach': '/how-we-work',
+    '/diagnostic': '/how-we-work',
+  },
   integrations: [icon(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

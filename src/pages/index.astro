@@ -230,20 +230,20 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 >
   <!-- 1. Hero -->
   <section class:list={[shell, "pt-16 pb-24 md:pt-20"]}>
-    <div class="grid gap-12 md:grid-cols-12 md:gap-x-6">
-      <div class="md:col-span-7">
-        <p class="mono text-signal" data-hero-item>[ EMBEDDED ENGINEERING CAPABILITY PARTNER ]</p>
+    <div class="flex flex-col gap-12">
+      <div class="mx-auto max-w-[68ch] text-center">
+        <p class="mono text-signal" data-hero-item>EMBEDDED ENGINEERING CAPABILITY PARTNER</p>
         <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight" data-hero-item>Build the technology your business can own.</h1>
-        <p class="mt-8 measure text-body-lg text-graphite text-pretty" data-hero-item>
+        <p class="mx-auto mt-8 max-w-[68ch] text-body-lg text-graphite text-pretty" data-hero-item>
           For executives running multi-location operations where fragmented systems outpace internal
           engineering. We begin with a 15-day paid Technical Diagnostic, build the production platform
           alongside your engineers, and transfer day-to-day operations to your team.
         </p>
-        <div class="mt-10 flex flex-wrap gap-4" data-hero-item>
-          <Button href="/contact" variant="primary" class={btn}>Discuss your situation</Button>
+        <div class="mt-10 flex flex-wrap justify-center gap-4" data-hero-item>
+          <Button href="/contact" variant="primary" class={btn}>Talk to us</Button>
           <button
             type="button"
-            class:list={[btn, "open-video-trigger inline-flex items-center gap-2 rounded-sm border border-ink bg-transparent px-[18px] py-3 text-body font-medium text-ink transition-[color,background-color,transform] duration-[var(--duration-press)] ease-[var(--ease-out)] hover:bg-ink hover:text-canvas active:scale-[0.97]"]}
+            class:list={[btn, "open-video-trigger inline-flex items-center justify-center gap-2 rounded-[8px] min-h-[48px] border border-[#0a1120] bg-white px-[18px] py-3 text-body font-medium text-[#0a1120] transition-[color,background-color,border-color,transform] duration-[var(--duration-press)] ease-[var(--ease-out)] hover:bg-[#0a1120] hover:text-white active:scale-[0.97]"]}
             aria-haspopup="dialog"
           >
             <svg class="h-3.5 w-3.5 fill-current text-signal" viewBox="0 0 24 24" aria-hidden="true">
@@ -253,22 +253,22 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
           </button>
           <Button href="#capability-curve" variant="secondary" class={btn}>See capability transfer</Button>
         </div>
-        <ul class="mono mt-12 flex flex-col gap-2 border-t border-line pt-5 text-ink lg:flex-row lg:gap-0 lg:divide-x lg:divide-line" aria-label="How we work">
-          {proofLine.map((item) => <li class="lg:px-4 lg:first:pl-0">{item}</li>)}
+        <ul class="mono mt-12 flex flex-col items-center gap-2 border-t border-line pt-5 text-ink lg:flex-row lg:justify-center lg:gap-0 lg:divide-x lg:divide-line" aria-label="How we work">
+          {proofLine.map((item) => <li class="lg:px-4">{item}</li>)}
         </ul>
       </div>
 
-      <div class="md:col-span-5 md:col-start-8" data-hero-item>
+      <div class="mx-auto w-full max-w-[720px]" data-hero-item>
         <div class="border border-ink bg-surface">
           <div class="mono flex items-center justify-between border-b border-line px-4 py-3 text-graphite">
-            <span>[ PHASE TELEMETRY ]</span>
+            <span>PHASE TELEMETRY</span>
             <span>5 PHASES</span>
           </div>
           <div class="p-4 md:p-6">
             <CapabilityCurve compact />
           </div>
           <div class="mono flex items-center justify-between gap-4 border-t border-line px-4 py-3">
-            <span class="border border-signal px-2 py-0.5 text-signal">[ MILESTONE: HANDOVER ]</span>
+            <span class="border border-signal px-2 py-0.5 text-signal">MILESTONE: HANDOVER</span>
             <button
               type="button"
               class="open-video-trigger group inline-flex items-center gap-1.5 text-signal transition-colors hover:text-signal-dark"
@@ -286,7 +286,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <!-- 2. Core thesis -->
   <section class="border-t border-line" aria-label="Tagline">
     <div class:list={[shell, "py-24 md:py-32"]}>
-      <p class="mono mb-8 text-graphite">[ OPERATING THESIS ]</p>
+      <p class="mono mb-8 text-graphite">OPERATING THESIS</p>
       <p class="max-w-[24ch] text-4xl font-semibold text-ink text-balance md:text-5xl lg:max-w-[680px] lg:text-6xl" data-tagline-reveal>
         {
           taglineLines.map((words, lineIndex) => (
@@ -306,7 +306,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
   <!-- 3. Market gap -->
   <section class="border-t border-line bg-surface">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <p class="mono text-signal">[ THE DEPENDENCY COST ]</p>
+      <p class="mono text-signal">THE DEPENDENCY COST</p>
       <h2 class="mt-3 max-w-[24ch] text-h2 text-ink text-balance">
         Most technology problems are operating-model problems.
       </h2>
@@ -327,7 +327,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
             <div class="grid gap-x-6 gap-y-2 py-6 md:grid-cols-12">
               <dt class="md:col-span-6">
                 <span class="text-h3 text-ink">{row.name}</span>
-                {row.default && <span class="mono mt-1 block text-graphite">[ {row.default} ]</span>}
+                {row.default && <span class="mono mt-1 block text-graphite">{row.default}</span>}
               </dt>
               <dd class="text-body text-graphite md:col-span-6 md:text-body-lg">{row.remains}</dd>
             </div>
@@ -344,7 +344,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       {
         outcomes.map((outcome, i) => (
           <div class="border-t-2 border-ink pt-6" data-reveal-item>
-            <p class="mono text-signal">[{pad(i)}]</p>
+            <p class="mono text-signal">{pad(i)}</p>
             <h3 class="mt-3 text-h3 text-ink">{outcome.name}</h3>
             <p class="mt-3 text-body-lg text-graphite text-pretty">{outcome.body}</p>
             <p class="mono mt-6 text-graphite">Evidence baselined</p>
@@ -360,7 +360,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     <div class:list={[shell, "py-24 md:py-32"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-7">
-          <p class="mono text-signal">[ ENGAGEMENT MODEL ]</p>
+          <p class="mono text-signal">ENGAGEMENT MODEL</p>
           <h2 class="mt-3 text-h2 text-ink text-balance">A route from external support to internal ownership.</h2>
         </div>
         <div class="md:col-span-5">
@@ -369,7 +369,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
             production pager duty. Your team takes the primary operational lead before handover, backed
             by ongoing advisory governance.
           </p>
-          <a href="/approach" class:list={["mt-4 inline-block", link]}>See the 5-phase delivery model</a>
+          <a href="/how-we-work" class:list={["mt-4 inline-block", link]}>See the 5-phase delivery model</a>
         </div>
       </div>
 
@@ -394,7 +394,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     <div class="border border-ink bg-surface p-6 md:p-12">
       <div class="grid gap-12 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-5">
-          <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">[ TECHNICAL DIAGNOSTIC ]</p>
+          <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">TECHNICAL DIAGNOSTIC</p>
           <h2 class="mt-5 text-h2 text-ink text-balance">Base your engineering roadmap on verified production evidence.</h2>
           <dl class="mt-8 grid grid-cols-1 divide-y divide-line border-y border-line">
             <div class="py-4">
@@ -412,7 +412,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         </div>
 
         <div class="md:col-span-7">
-          <p class="mono text-graphite">[ 10 DELIVERABLES ]</p>
+          <p class="mono text-graphite">10 DELIVERABLES</p>
           <div data-inspector class="mt-4">
             <div class="grid gap-8 md:grid-cols-3 md:gap-6">
               {
@@ -441,7 +441,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
             </div>
 
             <div class="mt-8 border border-ink bg-canvas" data-spec-card>
-              <p class="mono border-b border-ink px-5 py-3 text-graphite">[ ARTIFACT SPECIMEN INSPECTOR ]</p>
+              <p class="mono border-b border-ink px-5 py-3 text-graphite">ARTIFACT SPECIMEN INSPECTOR</p>
               <div data-spec-live>
                 {
                   deliverableGroups
@@ -454,7 +454,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
                         class:list={["p-5 md:p-6", i > 0 && "hidden"]}
                       >
                         <p class="mono inline-block border border-signal px-2 py-0.5 text-signal">
-                          [ SPECIMEN ARTIFACT: {item.id} ]
+                          SPECIMEN ARTIFACT: {item.id}
                         </p>
                         <h3 id={`specimen-${item.id}-title`} class="mt-4 text-h3 text-ink">{item.title}</h3>
                         <p class="mt-2 text-body text-graphite">{item.artifact}</p>
@@ -488,8 +488,8 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
             </div>
           </div>
           <div class="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <Button href="/contact" variant="primary" class={btn}>Discuss your situation</Button>
-            <a href="/diagnostic" class={link}>Explore the 15-day Technical Diagnostic</a>
+            <Button href="/contact" variant="primary" class={btn}>Talk to us</Button>
+            <a href="/how-we-work#diagnostic" class={link}>Explore the 15-day Technical Diagnostic</a>
           </div>
         </div>
       </div>
@@ -502,7 +502,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <h2 class="text-h2 text-ink text-balance md:col-span-7">Opinionated engineering. Accountable operational ownership.</h2>
         <div class="md:col-span-5 md:self-end">
-          <a href="/approach" class={link}>See the architecture in the approach</a>
+          <a href="/how-we-work" class={link}>See the architecture in the approach</a>
         </div>
       </div>
 
@@ -510,7 +510,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         {
           principles.map((principle, i) => (
             <li class="grid gap-x-6 gap-y-2 border-b border-line py-6 md:grid-cols-12" data-reveal-item>
-              <span class="mono text-signal md:col-span-1">[{pad(i)}]</span>
+              <span class="mono text-signal md:col-span-1">{pad(i)}</span>
               <h3 class="text-h3 text-ink md:col-span-5">{principle.name}</h3>
               <p class="text-body text-graphite text-pretty md:col-span-6 md:text-body-lg">{principle.body}</p>
             </li>
@@ -525,7 +525,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     <div class:list={[shell, "py-24 md:py-32"]}>
       <div class="grid gap-8 md:grid-cols-12 md:gap-x-6">
         <div class="md:col-span-7">
-          <p class="mono text-signal">[ AI MATURITY ]</p>
+          <p class="mono text-signal">AI MATURITY</p>
           <h2 class="mt-3 text-h2 text-ink text-balance">A disciplined path to AI adoption.</h2>
         </div>
         <p class="measure text-body-lg text-graphite text-pretty md:col-span-5">
@@ -552,7 +552,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
   <!-- 9. Operational evidence -->
   <section class:list={[shell, "py-24 md:py-32"]}>
-    <p class="mono text-signal">[ OPERATIONAL EVIDENCE ]</p>
+    <p class="mono text-signal">OPERATIONAL EVIDENCE</p>
     <h2 class="mt-3 max-w-[22ch] text-h2 text-ink text-balance">Eight operational metrics we measure on every engagement.</h2>
     <p class="mt-6 measure text-body-lg text-graphite text-pretty">
       We verify engineering progress with quantitative operational data rather than subjective
@@ -565,7 +565,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
           <li class="flex min-h-36 flex-col justify-between gap-6 bg-surface p-5" data-evidence-item>
             <div class="flex items-center justify-between">
               <span class="mono text-graphite">M-{pad(i)}</span>
-              <span class="mono text-signal">[ {metric.category} ]</span>
+              <span class="mono text-signal">{metric.category}</span>
             </div>
             <span class="text-h3 text-ink text-balance">{metric.name}</span>
           </li>
@@ -581,7 +581,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
       <div class="mt-12 grid gap-12 md:grid-cols-2 md:gap-8">
         <div>
-          <h3 class="mono border-b border-ink pb-4 text-success">[ GOOD FIT ]</h3>
+          <h3 class="mono border-b border-ink pb-4 text-success">GOOD FIT</h3>
           <ul class="mt-6 flex flex-col gap-4">
             {
               goodFit.map((item) => (
@@ -594,7 +594,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
           </ul>
         </div>
         <div>
-          <h3 class="mono border-b border-ink pb-4 text-graphite">[ PROBABLY NOT A FIT ]</h3>
+          <h3 class="mono border-b border-ink pb-4 text-graphite">PROBABLY NOT A FIT</h3>
           <ul class="mt-6 flex flex-col gap-4">
             {
               notFit.map((item) => (
@@ -612,15 +612,15 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
 
   <!-- 11. Final CTA -->
   <section class="border-t border-line bg-surface">
-    <div class:list={[shell, "py-24 md:py-32"]}>
-      <h2 class="max-w-[18ch] text-h1 text-ink text-balance">Own the technology your business runs on.</h2>
-      <p class="mt-8 measure text-body-lg text-graphite text-pretty">
+    <div class:list={[shell, "flex flex-col items-center py-24 text-center md:py-32"]}>
+      <h2 class="mx-auto max-w-[18ch] text-h1 text-ink text-balance">Own the technology your business runs on.</h2>
+      <p class="mx-auto mt-8 max-w-[68ch] text-body-lg text-graphite text-pretty">
         Tell us where fragmented systems, vendor dependencies, or operational data silos are limiting
         growth. We will evaluate your architecture and recommend whether a 15-day diagnostic is the
         right investment.
       </p>
       <div class="mt-10">
-        <Button href="/contact" variant="primary" class={btn}>Discuss your situation</Button>
+        <Button href="/contact" variant="primary" class={btn}>Talk to us</Button>
       </div>
     </div>
   </section>
@@ -634,7 +634,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
     <div class="mono flex items-center justify-between border-b border-line px-4 py-3 text-graphite">
       <div class="flex items-center gap-2">
         <span class="h-2 w-2 rounded-full bg-signal"></span>
-        <span id="video-dialog-title" class="text-ink font-semibold">[ INTRO BRIEF · 45 SECONDS ]</span>
+        <span id="video-dialog-title" class="text-ink font-semibold">INTRO BRIEF · 45 SECONDS</span>
       </div>
       <button
         type="button"
@@ -642,7 +642,7 @@ const link = "text-body font-medium text-signal underline underline-offset-4 hov
         class="mono flex items-center gap-1 border border-line px-2 py-0.5 text-graphite transition-colors hover:border-ink hover:text-ink"
         aria-label="Close video dialog"
       >
-        [ ESC / CLOSE ]
+        ESC / CLOSE
       </button>
     </div>
     <div class="relative aspect-video w-full bg-ink">

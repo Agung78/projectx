@@ -1,23 +1,35 @@
 ---
-interface Props {
-  compact?: boolean;
+interface Phase {
+  label: string;
+  newco: number;
+  client: number;
+  pager: number;
+  milestone: string;
 }
 
-const { compact = false } = Astro.props;
+interface Props {
+  compact?: boolean;
+  phases?: Phase[];
+  caption?: string;
+}
 
-const phases = [
+const { compact = false, phases: phasesProp, caption } = Astro.props;
+
+const defaultPhases: Phase[] = [
   { label: "Diagnose", newco: 92, client: 8, pager: 100, milestone: "Baseline Diagnostic" },
   { label: "Build With", newco: 74, client: 30, pager: 75, milestone: "Joint Delivery" },
   { label: "Run With", newco: 48, client: 58, pager: 50, milestone: "Shared Pager" },
   { label: "Hand Over", newco: 22, client: 82, pager: 15, milestone: "Autonomous Handover" },
   { label: "Advise", newco: 10, client: 94, pager: 0, milestone: "Advisory Governance" },
 ];
+const phases = phasesProp ?? defaultPhases;
 // Single source for the enhancement script; the markup below is the no-JS fallback.
 const telemetryData = JSON.stringify(
   phases.map(({ label, client, pager, milestone }) => ({ label, client, pager, milestone })),
 );
 
-const captionText = "Handover is a success metric, not a hidden failure condition.";
+// An empty caption hides the caption and note so the page can supply its own.
+const captionText = caption ?? "Handover is a success metric, not a hidden failure condition.";
 // Shape only: real levels come from each client's capability scorecard baseline.
 const illustrativeNote = "Illustrative shape. Actual levels are baselined per engagement.";
 
@@ -35,6 +47,20 @@ const padBottom = 56;
 const plotHeight = height - padTop - padBottom;
 const stepX = (width - padX * 2) / (phases.length - 1);
 
+// Phase hit-areas are centred on each node; clamp so the outer ones stay inside the viewBox.
+function bandFor(i: number) {
+  const x0 = Math.max(0, padX + stepX * i - stepX / 2);
+  const x1 = Math.min(width, padX + stepX * i + stepX / 2);
+  return { x: x0, width: x1 - x0 };
+}
+
+// Edge labels anchor inward so long text is never clipped by the viewBox.
+function anchorFor(i: number) {
+  if (i === 0) return "start";
+  if (i === phases.length - 1) return "end";
+  return "middle";
+}
+
 function toY(value: number) {
   return padTop + plotHeight * (1 - value / 100);
 }
@@ -48,8 +74,7 @@ function pathFor(key: "newco" | "client") {
 const newcoPath = pathFor("newco");
 const clientPath = pathFor("client");
 
-const descText =
-  "A line chart across five phases (Diagnose, Build With, Run With, Hand Over, Advise) showing NewCo's day to day ownership decreasing from high to low while the client's ownership increases from low to high.";
+const descText = `A line chart across ${phases.length} phases (${phases.map((p) => p.label).join(", ")}) showing NewCo's day to day ownership decreasing from high to low while the client's ownership increases from low to high.`;
 ---
 
 <div
@@ -65,15 +90,15 @@ const descText =
           {phases.map((phase, i) => (
             <g data-phase-marker opacity="0" aria-hidden="true">
               <rect
-                x={padX + stepX * i - stepX / 2}
+                x={bandFor(i).x}
                 y={padTop - 12}
-                width={stepX}
+                width={bandFor(i).width}
                 height={plotHeight + 24}
-                fill="var(--color-signal)"
+                fill="var(--color-blue)"
                 fill-opacity="0.06"
               />
-              <circle cx={padX + stepX * i} cy={toY(phase.newco)} r="9" fill="none" stroke="var(--color-graphite)" stroke-width="1.5" />
-              <circle cx={padX + stepX * i} cy={toY(phase.client)} r="9" fill="none" stroke="var(--color-signal)" stroke-width="1.5" />
+              <circle cx={padX + stepX * i} cy={toY(phase.newco)} r="9" fill="none" stroke="var(--color-navy)" stroke-width="1.5" />
+              <circle cx={padX + stepX * i} cy={toY(phase.client)} r="9" fill="none" stroke="var(--color-green)" stroke-width="1.5" />
             </g>
           ))}
           {phases.map((_phase, i) => (
@@ -87,18 +112,18 @@ const descText =
             />
           ))}
 
-          <path d={newcoPath} fill="none" stroke="var(--color-graphite)" stroke-width="2.5" data-curve-line />
-          <path d={clientPath} fill="none" stroke="var(--color-signal)" stroke-width="2.5" data-curve-line />
+          <path d={newcoPath} fill="none" stroke="var(--color-navy)" stroke-width="2.5" data-curve-line />
+          <path d={clientPath} fill="none" stroke="var(--color-green)" stroke-width="2.5" data-curve-line />
 
           {phases.map((phase, i) => (
             <>
-              <circle cx={padX + stepX * i} cy={toY(phase.newco)} r="4" fill="var(--color-graphite)" data-curve-node />
-              <circle cx={padX + stepX * i} cy={toY(phase.client)} r="4" fill="var(--color-signal)" data-curve-node />
+              <circle cx={padX + stepX * i} cy={toY(phase.newco)} r="4" fill="var(--color-navy)" data-curve-node />
+              <circle cx={padX + stepX * i} cy={toY(phase.client)} r="4" fill="var(--color-green)" data-curve-node />
               <text
                 x={padX + stepX * i}
                 y={height - 20}
-                text-anchor="middle"
-                class="fill-ink"
+                text-anchor={anchorFor(i)}
+                class="fill-navy"
                 style="font-size: 15px; font-weight: 600;"
               >
                 {phase.label}
@@ -108,9 +133,9 @@ const descText =
 
           {phases.map((_phase, i) => (
             <rect
-              x={padX + stepX * i - stepX / 2}
+              x={bandFor(i).x}
               y="0"
-              width={stepX}
+              width={bandFor(i).width}
               height={height}
               fill="transparent"
               data-phase-index={i}
@@ -120,18 +145,19 @@ const descText =
           ))}
         </svg>
 
-        <div class="mt-4 flex items-center gap-6 label text-graphite">
+        <div class="mt-4 flex items-center gap-6 label text-grey">
           <span class="flex items-center gap-2">
-            <span class="h-2 w-2 rounded-full bg-graphite" aria-hidden="true" />
+            <span class="h-2 w-2 rounded-full bg-navy" aria-hidden="true" />
             NewCo day to day ownership
           </span>
           <span class="flex items-center gap-2">
-            <span class="h-2 w-2 rounded-full bg-signal" aria-hidden="true" />
+            <span class="h-2 w-2 rounded-full bg-green" aria-hidden="true" />
             Client ownership
           </span>
         </div>
 
-        <div role="group" aria-label="Select a phase" class="mt-6 grid grid-cols-5 border-y border-line">
+        <div role="group" aria-label="Select a phase" class="mt-6 grid border-y border-line"
+          style={`grid-template-columns: repeat(${phases.length}, minmax(0, 1fr))`}>
           {phases.map((phase, i) => (
             <div data-phase-index={i} class="group/phase">
               <button
@@ -139,9 +165,9 @@ const descText =
                 data-phase-trigger
                 aria-pressed="false"
                 disabled
-                class="mono w-full px-2 py-3 text-left text-graphite transition-colors duration-(--duration-hover) ease-(--ease-out) group-data-[active=true]/phase:bg-surface group-data-[active=true]/phase:text-signal group-data-[interactive=true]/curve:cursor-pointer"
+                class="w-full px-2 py-3 text-left text-xs font-semibold text-grey transition-colors duration-(--duration-hover) ease-(--ease-out) group-data-[active=true]/phase:bg-mist group-data-[active=true]/phase:text-blue group-data-[interactive=true]/curve:cursor-pointer"
               >
-                <span class="text-graphite/70">{String(i + 1).padStart(2, "0")}</span> {phase.milestone}
+                <span class="text-grey">{String(i + 1).padStart(2, "0")}</span> {phase.milestone}
               </button>
             </div>
           ))}
@@ -151,13 +177,13 @@ const descText =
   }
 
   <div class:list={[compact ? "flex flex-1 flex-col" : "md:hidden"]}>
-    <p class="label flex flex-wrap items-center gap-x-6 gap-y-2 text-graphite">
+    <p class="label flex flex-wrap items-center gap-x-6 gap-y-2 text-grey">
       <span class="flex items-center gap-2">
-        <span class="h-2 w-2 rounded-full bg-graphite" aria-hidden="true"></span>
+        <span class="h-2 w-2 rounded-full bg-navy" aria-hidden="true"></span>
         NewCo
       </span>
       <span class="flex items-center gap-2">
-        <span class="h-2 w-2 rounded-full bg-signal" aria-hidden="true"></span>
+        <span class="h-2 w-2 rounded-full bg-green" aria-hidden="true"></span>
         Client
       </span>
       <span class="ml-auto">Day to day ownership</span>
@@ -169,17 +195,17 @@ const descText =
           <li
             data-phase-index={i}
             class:list={[
-              "group/row grid grid-cols-[2ch_1fr] items-baseline gap-x-4 gap-y-2 transition-colors duration-(--duration-hover) ease-(--ease-out) data-[active=true]:bg-surface group-data-[interactive=true]/curve:cursor-pointer",
+              "group/row grid grid-cols-[2ch_1fr] items-baseline gap-x-4 gap-y-2 transition-colors duration-(--duration-hover) ease-(--ease-out) data-[active=true]:bg-mist group-data-[interactive=true]/curve:cursor-pointer",
               compact ? "flex-1 content-center py-2.5" : "py-4",
             ]}
           >
-            <span class="mono text-graphite/70 group-data-[active=true]/row:text-signal">{String(i + 1).padStart(2, "0")}</span>
+            <span class="text-xs text-grey group-data-[active=true]/row:text-blue">{String(i + 1).padStart(2, "0")}</span>
             <div>
-              <p class="flex flex-wrap items-baseline justify-between gap-x-3 text-body font-semibold text-ink">
+              <p class="flex flex-wrap items-baseline justify-between gap-x-3 text-body font-semibold text-navy">
                 <button type="button" data-phase-trigger aria-pressed="false" disabled class="text-left font-semibold group-data-[interactive=true]/curve:cursor-pointer">
                   {phase.label}
                 </button>
-                <span class="mono font-medium text-graphite">{phase.milestone}</span>
+                <span class="text-xs font-semibold text-grey">{phase.milestone}</span>
               </p>
               {/*
                 Two stacked tracks rather than one split bar: a single bar reads
@@ -189,7 +215,7 @@ const descText =
                 <div class="flex items-center gap-3">
                   <span class="h-[3px] flex-1 bg-line" aria-hidden="true">
                     <span
-                      class="block h-full origin-left bg-graphite"
+                      class="block h-full origin-left bg-navy"
                       style={`width:${phase.newco}%`}
                       data-ownership-bar
                     />
@@ -198,7 +224,7 @@ const descText =
                 <div class="flex items-center gap-3">
                   <span class="h-[3px] flex-1 bg-line" aria-hidden="true">
                     <span
-                      class="block h-full origin-left bg-signal"
+                      class="block h-full origin-left bg-green"
                       style={`width:${phase.client}%`}
                       data-ownership-bar
                     />
@@ -216,25 +242,25 @@ const descText =
   </div>
 
   {/* Telemetry readout: hidden until motion.ts enhances it, so no-JS and reduced motion see only the static chart. */}
-  <div data-telemetry hidden class:list={["border border-line bg-surface p-4", compact ? "mt-4" : "mt-6"]}>
-    <p class="mono flex items-baseline justify-between gap-3 text-graphite">
-      <span>[ Phase <span data-readout="index">01</span> / {String(phases.length).padStart(2, "0")} ]</span>
-      <span data-readout="label" class="text-ink">{phases[0].label}</span>
+  <div data-telemetry hidden class:list={["border border-line bg-mist p-4", compact ? "mt-4" : "mt-6"]}>
+    <p class="flex items-baseline text-xs justify-between gap-3 text-grey">
+      <span>Phase <span data-readout="index">01</span> / {String(phases.length).padStart(2, "0")}</span>
+      <span data-readout="label" class="text-navy">{phases[0].label}</span>
     </p>
-    <p data-readout="milestone" class="mt-2 text-body font-semibold text-ink">{phases[0].milestone}</p>
+    <p data-readout="milestone" class="mt-2 text-body font-semibold text-navy">{phases[0].milestone}</p>
     <dl class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
       {
         [
-          { key: "client", label: "Client Ownership", color: "bg-signal", value: phases[0].client },
-          { key: "pager", label: "NewCo Pager Share", color: "bg-graphite", value: phases[0].pager },
+          { key: "client", label: "Client Ownership", color: "bg-green", value: phases[0].client },
+          { key: "pager", label: "NewCo Pager Share", color: "bg-navy", value: phases[0].pager },
         ].map((m) => (
           <div>
-            <dt class="mono text-graphite">{m.label}</dt>
+            <dt class="text-xs text-grey">{m.label}</dt>
             <dd class="mt-1 flex items-center gap-3">
               <span class="h-[3px] flex-1 bg-line" aria-hidden="true">
                 <span class={`block h-full origin-left ${m.color}`} style={`transform:scaleX(${m.value / 100})`} data-meter={m.key} />
               </span>
-              <span class="mono w-[4ch] text-right text-ink" data-readout={m.key}>{m.value}%</span>
+              <span class="w-[4ch] text-right text-xs tabular-nums text-navy" data-readout={m.key}>{m.value}%</span>
             </dd>
           </div>
         ))
@@ -243,8 +269,12 @@ const descText =
   </div>
   <p class="sr-only" role="status" aria-live="polite" data-telemetry-live></p>
 
-  <p class:list={["font-medium text-ink", compact ? "mt-4 text-body" : "mt-6 text-body-lg"]}>
-    {captionText}
-  </p>
-  <p class="mt-2 text-label font-normal text-graphite">{illustrativeNote}</p>
+  {
+    captionText && (
+      <>
+        <p class:list={["font-semibold text-navy", compact ? "mt-4 text-body" : "mt-6 text-body-lg"]}>{captionText}</p>
+        <p class="mt-2 text-label font-normal text-grey">{illustrativeNote}</p>
+      </>
+    )
+  }
 </div>

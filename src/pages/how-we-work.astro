@@ -1,0 +1,308 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CapabilityCurve from "../components/CapabilityCurve.astro";
+
+const pad = (i: number) => String(i + 1).padStart(2, "0");
+const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
+
+const stages = [
+  {
+    name: "Discovery",
+    body: "We learn how the business runs, map its current systems and agree the plan together.",
+    gets: "a technical roadmap with architecture, milestones and estimated costs.",
+  },
+  {
+    name: "Development",
+    body: "We design and build the system, with regular check-ins and demos so the business can see and test it as it takes shape.",
+    gets: "a working system, tested and ready for real use.",
+  },
+  {
+    name: "Operations and Support",
+    body: "After launch, we monitor the system, fix issues, and keep it secure and up to date until it runs smoothly.",
+    gets: "a stable system with agreed response times.",
+  },
+  {
+    name: "Ownership Transfer",
+    body: "We transfer everything needed to run the system independently, to in-house staff, a new hire or another provider.",
+    gets: "full ownership, with no dependence on us.",
+  },
+];
+
+const howWeWorkStages = [
+  { label: "Discovery", newco: 90, client: 10, pager: 100, milestone: "Baseline Diagnostic" },
+  { label: "Development", newco: 70, client: 35, pager: 75, milestone: "Joint Engineering" },
+  { label: "Operations and Support", newco: 40, client: 65, pager: 40, milestone: "Shared Operations" },
+  { label: "Ownership Transfer", newco: 10, client: 90, pager: 0, milestone: "Autonomous Ownership" },
+];
+
+const handover = [
+  { item: "Source code", included: "Every line, stored in the business's own account" },
+  { item: "Documentation", included: "How the system works, written in plain language" },
+  { item: "Accounts and access", included: "Hosting, domains and services in the business's name" },
+  { item: "Running guides", included: "Step-by-step instructions for everyday tasks and updates" },
+  { item: "Recovery plan", included: "How to restore the system from backup if something goes wrong" },
+  { item: "Security review", included: "Passwords changed and access checked before sign-off" },
+  { item: "Live walkthrough", included: "A guided session with whoever takes over" },
+  { item: "Ongoing support", included: "Available from us if the business wants it, never required" },
+];
+
+const technologies = [
+  {
+    name: "Next.js",
+    icon: "/images/tech/nextdotjs.svg",
+  },
+  {
+    name: "Vue",
+    icon: "/images/tech/vuedotjs.svg",
+  },
+  {
+    name: "Vite",
+    icon: "/images/tech/vite.svg",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "/images/tech/tailwindcss.svg",
+  },
+  {
+    name: "Bootstrap",
+    icon: "/images/tech/bootstrap.svg",
+  },
+  {
+    name: "Node.js",
+    icon: "/images/tech/nodedotjs.svg",
+  },
+  {
+    name: "NestJS",
+    icon: "/images/tech/nestjs.svg",
+  },
+  {
+    name: "Fastify",
+    icon: "/images/tech/fastify.svg",
+  },
+  {
+    name: "Express.js",
+    icon: "/images/tech/express.svg",
+  },
+  {
+    name: "PostgreSQL",
+    icon: "/images/tech/postgresql.svg",
+  },
+  {
+    name: "Supabase",
+    icon: "/images/tech/supabase.svg",
+  },
+  {
+    name: "Neon",
+    icon: "/images/tech/neon.svg",
+  },
+  {
+    name: "Snowflake",
+    icon: "/images/tech/snowflake.svg",
+  },
+  {
+    name: "BigQuery",
+    icon: "/images/tech/googlebigquery.svg",
+  },
+  {
+    name: "Google Cloud",
+    icon: "/images/tech/googlecloud.svg",
+  },
+  {
+    name: "Cloudflare",
+    icon: "/images/tech/cloudflare.svg",
+  },
+  {
+    name: "Render",
+    icon: "/images/tech/render.svg",
+  },
+  {
+    name: "Railway",
+    icon: "/images/tech/railway.svg",
+  },
+  {
+    name: "Snyk",
+    icon: "/images/tech/snyk.svg",
+  },
+  {
+    name: "Veracode",
+    icon: "/images/tech/veracode.svg",
+    wordmark: true,
+  },
+  {
+    name: "Strix AI",
+    icon: "/images/tech/strix.png",
+  },
+  {
+    name: "Claude",
+    icon: "/images/tech/claude.svg",
+  },
+  {
+    name: "Gemini",
+    icon: "/images/tech/gemini.svg",
+  },
+  {
+    name: "ChatGPT",
+    icon: "/images/tech/chatgpt.svg",
+  },
+  {
+    name: "DeepSeek",
+    icon: "/images/tech/deepseek.svg",
+  },
+  {
+    name: "GLM",
+    icon: "/images/tech/glm.svg",
+  },
+  {
+    name: "NVIDIA",
+    icon: "/images/tech/nvidia.svg",
+  },
+];
+---
+
+<Layout
+  title="How We Work · 4-Stage Engineering Transfer | NewCo"
+  description="Our 4-stage engineering model transfers full system ownership to your team, from Discovery through autonomous operations."
+>
+  <section class="bg-white">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <span class="mono text-blue">// METHODOLOGY &amp; PROCESS</span>
+      <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+        <h1 class="text-h1 text-navy text-balance tracking-tight lg:col-span-7">One clear process, start to finish.</h1>
+        <p class="text-body-lg text-slate text-pretty lg:col-span-5 lg:pt-2">
+          We work alongside the business at every stage, and it always has the final say. Every decision is explained in
+          plain language, with no jargon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-mist py-16 md:py-24">
+    <div class={shell}>
+      <h2 class="text-h2 text-navy text-balance">Four stages, one direction.</h2>
+      <div class="mt-12 grid grid-cols-1 overflow-hidden rounded-xl border border-line bg-white md:grid-cols-2 lg:grid-cols-4">
+        {
+          stages.map((stage, i) => (
+            <div class="flex flex-col justify-between border-t border-line p-6 first:border-t-0 md:nth-2:border-t-0 md:odd:border-r md:p-8 lg:border-t-0 lg:border-r lg:last:border-r-0">
+              <div>
+                <span class="mono text-blue">{`STEP // ${pad(i)}`}</span>
+                <p class="mt-4 text-[2.5rem] font-semibold leading-none text-navy/15" aria-hidden="true">{pad(i)}</p>
+                <h3 class="mt-4 text-h3 text-navy">{stage.name}</h3>
+                <p class="mt-3 text-grey">{stage.body}</p>
+              </div>
+              <p class="mt-6 border border-line bg-mist px-3 py-2 text-sm text-navy">
+                <span class="font-semibold">The business gets:</span> {stage.gets}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-8 text-sm text-grey">
+        How long each stage takes depends on the project. We agree the timeline during Discovery.
+      </p>
+      <div class="mt-16">
+        <div class="corners rounded-xl border border-line bg-white p-3 md:p-6">
+          <div class="mb-4 flex items-center justify-between border-b border-line pb-3">
+            <span class="mono text-grey">// FIG. 01</span>
+            <span class="mono text-grey">OWNERSHIP CURVE</span>
+          </div>
+          <CapabilityCurve
+            phases={howWeWorkStages}
+            caption="By the final stage, the business runs its technology on its own terms."
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 md:py-24">
+    <div class={shell}>
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+        <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
+          <span class="mono text-grey">// HANDOVER CHECKLIST</span>
+          <h2 class="mt-4 text-h2 text-navy text-balance">Everything handed over, nothing held back.</h2>
+          <p class="text-body-lg text-slate max-w-[68ch] mt-4">
+            Before we sign off, each item below is delivered and walked through with whoever will run the system. The
+            checklist is agreed in the contract.
+          </p>
+        </div>
+
+        <div class="corners overflow-hidden rounded-xl border border-line bg-white lg:col-span-7">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-line bg-mist">
+                <th scope="col" class="mono px-4 py-4 text-navy md:px-6">Item</th>
+                <th scope="col" class="mono px-4 py-4 text-navy md:px-6">What's included</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line">
+              {
+                handover.map((row, i) => (
+                  <tr>
+                    <th scope="row" class="px-4 py-4 align-top font-bold text-navy md:px-6">
+                      <span class="mono mr-2 text-blue">{pad(i)}</span>{row.item}
+                    </th>
+                    <td class="px-4 py-4 text-slate md:px-6">{row.included}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-mist py-12">
+    <div class={shell}>
+      <p class="mono mb-6 text-grey">// Built on proven, widely used technology.</p>
+    </div>
+    <div class="marquee" aria-label="Technologies we build with">
+      <ul class="marquee-track">
+        {
+          [...technologies, ...technologies].map((tech, i) => (
+            <li
+              aria-hidden={i >= technologies.length ? "true" : undefined}
+              class="inline-flex shrink-0 items-center gap-3 px-5 py-3 text-base font-semibold tracking-tight text-navy"
+            >
+              <img
+                src={tech.icon}
+                alt={tech.wordmark ? tech.name : ""}
+                class:list={["shrink-0", tech.wordmark ? "h-5 w-auto" : "h-6 w-6"]}
+                loading={i < 4 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              {!tech.wordmark && tech.name}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 0.75rem;
+    padding-right: 0.75rem;
+    animation: marquee 45s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

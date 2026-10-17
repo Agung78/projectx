@@ -4,203 +4,168 @@ import Button from "../components/Button.astro";
 ---
 
 <Layout
-  title="Discuss Your Engineering Situation | NewCo"
-  description="Schedule an introductory scoping discussion with NewCo. We review your multi-location operational constraints and recommend clear next steps."
+  title="Contact NewCo · Discuss Systems & Engineering Handover"
+  description="Contact NewCo's founders to discuss your business systems, technical constraints, and path to full engineering independence."
 >
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] py-16 md:pt-20 md:pb-24">
-    <div class="grid gap-12 md:grid-cols-12">
-      <div class="md:col-span-5">
-        <p class="mono text-signal">[ QUALIFICATION &amp; CONTACT ]</p>
-        <h1 class="mt-6 text-h1 text-ink text-balance tracking-tight">Discuss your engineering situation.</h1>
-        <p class="mt-8 measure text-body-lg text-graphite">
-          Tell us about your multi-location systems, technical constraints, and current bottlenecks. We evaluate every
-          inquiry against our fit criteria and outline the most effective next step for your business.
+  <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-16 md:py-24">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
+      <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
+        <span class="mono text-blue">// ENGAGEMENT BRIEF</span>
+        <h1 class="mt-6 text-h1 text-navy text-balance tracking-tight">Tell us what the business needs.</h1>
+        <p class="text-body-lg text-slate max-w-[68ch] mt-6">
+          Share a few details and we'll reply with a clear next step. No obligation, and we'll never ask for passwords or system access here.
         </p>
-        <p class="mt-4 measure text-body text-graphite">
-          Introductory consultations are exploratory and confidential. We never request credentials or sensitive system access through web inquiries.
-        </p>
-      </div>
 
-      <div class="md:col-span-7">
-        <form
-          id="contact-form"
-          method="post"
-          novalidate
-          class="flex flex-col gap-6 border border-ink bg-surface p-5 md:p-8"
-          data-contact-form
-        >
-          <div class="grid gap-6 md:grid-cols-2">
-            <div class="flex flex-col gap-2">
-              <label for="name" class="mono text-graphite">Name<span aria-hidden="true"> *</span></label>
-              <input id="name" name="name" type="text" required autocomplete="name"
-                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-                aria-describedby="name-error" />
-              <p id="name-error" class="hidden text-body text-error" role="alert"></p>
-            </div>
-
-            <div class="flex flex-col gap-2">
-              <label for="company" class="mono text-graphite">Company<span aria-hidden="true"> *</span></label>
-              <input id="company" name="company" type="text" required autocomplete="organization"
-                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-                aria-describedby="company-error" />
-              <p id="company-error" class="hidden text-body text-error" role="alert"></p>
-            </div>
-
-            <div class="flex flex-col gap-2">
-              <label for="role" class="mono text-graphite">Role<span aria-hidden="true"> *</span></label>
-              <input id="role" name="role" type="text" required autocomplete="organization-title"
-                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-                aria-describedby="role-error" />
-              <p id="role-error" class="hidden text-body text-error" role="alert"></p>
-            </div>
-
-            <div class="flex flex-col gap-2">
-              <label for="email" class="mono text-graphite">Email<span aria-hidden="true"> *</span></label>
-              <input id="email" name="email" type="email" required autocomplete="email"
-                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-                aria-describedby="email-error" />
-              <p id="email-error" class="hidden text-body text-error" role="alert"></p>
-            </div>
-
-            <div class="flex flex-col gap-2">
-              <label for="region" class="mono text-graphite">Country / operating region<span aria-hidden="true"> *</span></label>
-              <input id="region" name="region" type="text" required autocomplete="country-name"
-                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-                aria-describedby="region-error" />
-              <p id="region-error" class="hidden text-body text-error" role="alert"></p>
-            </div>
-
-            <div class="flex flex-col gap-2">
-              <label for="locations" class="mono text-graphite">Approximate locations or operating units<span aria-hidden="true"> *</span></label>
-              <input id="locations" name="locations" type="text" required
-                class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-                aria-describedby="locations-error" />
-              <p id="locations-error" class="hidden text-body text-error" role="alert"></p>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-2">
-            <label for="constraint" class="mono text-graphite">Current constraint<span aria-hidden="true"> *</span></label>
-            <textarea id="constraint" name="constraint" required rows="4"
-              class="border border-line bg-surface px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
-              aria-describedby="constraint-error"></textarea>
-            <p id="constraint-error" class="hidden text-body text-error" role="alert"></p>
-          </div>
-
-          <fieldset class="flex flex-col gap-2">
-            <legend class="mono text-graphite">Preferred way to continue<span aria-hidden="true"> *</span></legend>
-            <div class="flex flex-col gap-2 md:flex-row md:gap-6">
-              {
-                ["Email", "Call", "Video call"].map((option) => (
-                  <label class="flex items-center gap-2 text-body text-ink">
-                    <input type="radio" name="preferred_contact" value={option} required class="accent-signal" />
-                    {option}
-                  </label>
-                ))
-              }
-            </div>
-            <p id="preferred_contact-error" class="hidden text-body text-error" role="alert"></p>
-          </fieldset>
-
-          <details class="border border-line bg-surface p-4">
-            <summary class="mono cursor-pointer text-ink">[ Optional qualification details ]</summary>
-            <div class="mt-4 grid gap-6 md:grid-cols-2">
-              <div class="flex flex-col gap-2">
-                <label for="technical_counterpart" class="mono text-graphite">Technical counterpart</label>
-                <input id="technical_counterpart" name="technical_counterpart" type="text"
-                  class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal" />
-              </div>
-              <div class="flex flex-col gap-2">
-                <label for="executive_sponsor" class="mono text-graphite">Executive sponsor</label>
-                <input id="executive_sponsor" name="executive_sponsor" type="text"
-                  class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal" />
-              </div>
-              <div class="flex flex-col gap-2 md:col-span-2">
-                <label for="primary_situation" class="mono text-graphite">Primary situation</label>
-                <textarea id="primary_situation" name="primary_situation" rows="3"
-                  class="border border-line bg-canvas px-4 py-3 text-body text-ink focus:border-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"></textarea>
-              </div>
-            </div>
-          </details>
-
-          <Button type="submit" variant="primary" class="mt-2 w-fit justify-center md:whitespace-nowrap" data-submit-button>
-            <span data-button-label>Send my situation</span>
-          </Button>
-
-          <p data-form-status class="hidden text-body" role="status"></p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-content px-[clamp(20px,5vw,80px)] pb-24">
-    <div class="grid gap-12 border-t border-line pt-16 md:grid-cols-12">
-      <div class="md:col-span-5">
-        <p class="mono text-signal">[ WHAT TO EXPECT ]</p>
-        <h2 class="mt-6 text-h2 text-ink text-balance tracking-tight">What happens after you write to us.</h2>
-      </div>
-      <div class="flex flex-col gap-12 md:col-span-7">
-        <div>
-          <h3 class="text-h3 text-ink">What to expect</h3>
-          <p class="mt-4 measure text-body text-graphite">
-            A founder reads every request personally. We compare what you describe against the situations we know
-            how to help with, and we reply by email with a recommended next step. That step might be a conversation,
-            a scoped diagnostic, a pointer to a better-suited partner, or a plain statement that we are not the right
-            fit. You will never be passed to a sales queue or asked to sit through a generic presentation.
-          </p>
-          <p class="mt-4 measure text-body text-graphite">
-            The more specific you are about the constraint you are facing, the more useful our reply will be. Tell us
-            what is slowing your engineering team down, what has already been tried, and what a good outcome looks
-            like twelve months from now.
-          </p>
-        </div>
-
-        <div>
-          <h3 class="text-h3 text-ink">Fit criteria</h3>
-          <p class="mt-4 measure text-body text-graphite">
-            We work best with organisations that want to own their engineering capability rather than rent it
-            indefinitely. In practice, that means a few things:
-          </p>
-          <ul class="mt-4 measure list-disc pl-5 text-body text-graphite">
-            <li>You have a technical counterpart who can work alongside us day to day.</li>
-            <li>An executive sponsor is willing to make decisions about priorities and trade-offs.</li>
-            <li>The constraint is real and specific, such as architecture, delivery speed, reliability or hiring.</li>
-            <li>You are prepared to measure progress against a scorecard and to take over the work by the end.</li>
+        <div class="mt-8 border-t border-line pt-6">
+          <h2 class="text-sm font-semibold tracking-wide text-navy uppercase mono">// Direct Founder Review</h2>
+          <p class="mt-2 text-body text-slate">Every enquiry is reviewed directly by our founders, with a guaranteed 24-hour response.</p>
+          <h3 class="text-sm font-semibold tracking-wide text-navy uppercase mono mt-6">// What to expect</h3>
+          <ul class="mt-3 flex flex-col gap-3 text-sm text-slate list-disc pl-4">
+            <li>An initial 30-minute scoping call to understand your systems and constraints.</li>
+            <li>Clear technical recommendations and capability baseline assessment.</li>
+            <li>Honest fit evaluation: we only take on engagements where we can ensure complete handover.</li>
           </ul>
-          <p class="mt-4 measure text-body text-graphite">
-            We decline work where the goal is permanent outsourcing, where there is no sponsor with authority, or
-            where the request is for staff augmentation under another name. Saying no early saves everyone time.
-          </p>
         </div>
 
-        <div>
-          <h3 class="text-h3 text-ink">Consultation timeline</h3>
-          <p class="mt-4 measure text-body text-graphite">
-            Within two business days you will receive a reply confirming whether your request matches our criteria.
-            If it does, we schedule an introductory conversation of around forty-five minutes, usually within the
-            following week, to understand your systems, your team and your goals in more detail.
-          </p>
-          <p class="mt-4 measure text-body text-graphite">
-            After that conversation we send a short written recommendation. If a technical diagnostic is the right
-            starting point, the recommendation includes scope, fixed fee and dates. There is no obligation at any
-            stage, and we never ask for credentials or production access through this form.
-          </p>
+        <p class="mt-6 text-sm text-grey">We respect your privacy. See our <a href="/privacy" class="underline hover:text-navy">Privacy Policy</a>.</p>
+      </div>
+
+      <div class="lg:col-span-7">
+      <div class="rounded-xl border border-line bg-white p-6 shadow-sm md:p-8">
+        <p class="mono mb-6 border-b border-line pb-4 text-grey">// INTAKE CONSOLE</p>
+      <form
+        id="contact-form"
+        method="post"
+        novalidate
+        class="flex flex-col gap-8"
+        data-contact-form
+      >
+        <div class="grid gap-6 md:grid-cols-2">
+            <div class="flex flex-col gap-2">
+                <label for="name" class="text-sm font-semibold text-slate">Your name<span aria-hidden="true"> *</span></label>
+                <input id="name" name="name" type="text" required autocomplete="name"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+                  aria-describedby="name-error" />
+                <p id="name-error" class="hidden text-body text-red" role="alert"></p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="company" class="text-sm font-semibold text-slate">Company<span aria-hidden="true"> *</span></label>
+                <input id="company" name="company" type="text" required autocomplete="organization"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+                  aria-describedby="company-error" />
+                <p id="company-error" class="hidden text-body text-red" role="alert"></p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="role" class="text-sm font-semibold text-slate">Your role<span aria-hidden="true"> *</span></label>
+                <input id="role" name="role" type="text" required autocomplete="organization-title"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+                  aria-describedby="role-error" />
+                <p id="role-error" class="hidden text-body text-red" role="alert"></p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="email" class="text-sm font-semibold text-slate">Email<span aria-hidden="true"> *</span></label>
+                <input id="email" name="email" type="email" required autocomplete="email"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+                  aria-describedby="email-error" />
+                <p id="email-error" class="hidden text-body text-red" role="alert"></p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="region" class="text-sm font-semibold text-slate">Country or region<span aria-hidden="true"> *</span></label>
+                <input id="region" name="region" type="text" required autocomplete="country-name"
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+                  aria-describedby="region-error" />
+                <p id="region-error" class="hidden text-body text-red" role="alert"></p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="locations" class="text-sm font-semibold text-slate">How many locations or branches?<span aria-hidden="true"> *</span></label>
+                <input id="locations" name="locations" type="text" required
+                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+                  aria-describedby="locations-error" />
+                <p id="locations-error" class="hidden text-body text-red" role="alert"></p>
+              </div>
         </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="help" class="text-sm font-semibold text-slate">What would you like help with?<span aria-hidden="true"> *</span></label>
+          <textarea id="help" name="help" required rows="4"
+            class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+            aria-describedby="help-error"></textarea>
+          <p id="help-error" class="hidden text-body text-red" role="alert"></p>
+        </div>
+
+        <fieldset class="flex flex-col gap-2" aria-describedby="follow_up-error">
+          <legend class="text-sm font-semibold text-slate">How should we follow up?<span aria-hidden="true"> *</span></legend>
+          <div class="flex flex-col gap-2 md:flex-row md:gap-6">
+            {
+              ["Email", "Phone", "Video call"].map((option) => (
+                <label class="flex cursor-pointer items-center gap-2 rounded-full border border-field bg-white px-4 py-2 text-body text-navy has-[:checked]:border-blue has-[:checked]:bg-mist has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-blue">
+                  <input type="radio" name="follow_up" value={option} required class="accent-blue" />
+                  {option}
+                </label>
+              ))
+            }
+          </div>
+          <p id="follow_up-error" class="hidden text-body text-red" role="alert"></p>
+        </fieldset>
+
+        <details class="rounded-lg border border-line bg-mist p-4" data-accordion>
+          <summary class="cursor-pointer text-sm font-semibold text-navy">A bit more (optional)</summary>
+          <div class="mt-4 grid gap-6 md:grid-cols-2" data-accordion-content>
+              <div class="flex flex-col gap-2">
+                <label for="project_type" class="text-sm font-semibold text-slate">What best describes the project?</label>
+                <select id="project_type" name="project_type" class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
+                  <option value="">Select one</option>
+                  <option value="New system">New system</option>
+                  <option value="Improve an existing system">Improve an existing system</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-2">
+              <label for="decision_maker" class="text-sm font-semibold text-slate">Who's the main decision-maker?</label>
+              <input id="decision_maker" name="decision_maker" type="text"
+                class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
+              </div>
+              <div class="flex flex-col gap-2">
+              <label for="it_contact" class="text-sm font-semibold text-slate">Is there an IT contact or provider we should speak with?</label>
+              <input id="it_contact" name="it_contact" type="text"
+                class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
+              </div>
+          </div>
+        </details>
+
+        <Button type="submit" variant="primary" class="mt-2 w-fit justify-center md:whitespace-nowrap" data-submit-button>
+          <span data-button-label>Send</span>
+        </Button>
+
+      </form>
+      <p data-form-status tabindex="-1" class="hidden text-body outline-offset-4" role="status"></p>
+      </div>
       </div>
     </div>
   </section>
 </Layout>
 
 <script>
+  function initContactForm() {
   const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
   if (form) {
     const submitButton = form.querySelector<HTMLButtonElement>("[data-submit-button]");
     const buttonLabel = form.querySelector<HTMLElement>("[data-button-label]");
-    const status = form.querySelector<HTMLElement>("[data-form-status]");
+    const status = document.querySelector<HTMLElement>("[data-form-status]");
 
     const requiredFields = Array.from(
       form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]")
     );
+
+    const messages: Record<string, string> = {
+      name: "Please enter your name",
+      company: "Please add your company",
+      role: "Please add your role",
+      email: "Please add your email",
+      region: "Please add your country or region",
+      locations: "Please add how many locations or branches",
+      help: "Please tell us what you'd like help with",
+    };
 
     function showError(field: HTMLInputElement | HTMLTextAreaElement, message: string) {
       const errorId = field.getAttribute("aria-describedby");
@@ -225,10 +190,10 @@ import Button from "../components/Button.astro";
     }
 
     function validateRadioGroup(): boolean {
-      const checked = form?.querySelector<HTMLInputElement>('input[name="preferred_contact"]:checked');
-      const errorEl = document.getElementById("preferred_contact-error");
+      const checked = form?.querySelector<HTMLInputElement>('input[name="follow_up"]:checked');
+      const errorEl = document.getElementById("follow_up-error");
       if (!checked && errorEl) {
-        errorEl.textContent = "Choose a preferred way to continue.";
+        errorEl.textContent = "Please choose how we should follow up";
         errorEl.classList.remove("hidden");
         return false;
       }
@@ -243,10 +208,10 @@ import Button from "../components/Button.astro";
       requiredFields.forEach((field) => {
         if (field.type === "radio") return;
         if (!field.value.trim()) {
-          showError(field, "This field is required.");
+          showError(field, messages[field.name] ?? "This field is required");
           valid = false;
         } else if (field.type === "email" && !/^\S+@\S+\.\S+$/.test(field.value)) {
-          showError(field, "Enter a valid email address.");
+          showError(field, "Please enter a valid email address");
           valid = false;
         } else {
           clearError(field);
@@ -270,10 +235,11 @@ import Button from "../components/Button.astro";
         form.hidden = true;
         status.classList.remove("hidden");
         status.innerHTML =
-          "Sent. We review every request against our fit criteria and will reply by email with a recommended next step.";
-        status.classList.add("text-success", "text-body-lg", "font-medium");
+          "Thanks, we've got it. We'll reply within 24 hours with a clear next step.";
+        status.classList.add("text-green", "text-body-lg", "font-semibold");
         requestAnimationFrame(() => {
           status.dataset.visible = "true";
+          status.focus();
         });
       }
     });
@@ -282,4 +248,81 @@ import Button from "../components/Button.astro";
       field.addEventListener("input", () => clearError(field));
     });
   }
+  }
+
+  function initAccordions() {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const DURATION = 260;
+    const EASING = "cubic-bezier(0.23, 1, 0.32, 1)";
+
+    document.querySelectorAll<HTMLDetailsElement>("details[data-accordion]").forEach((details) => {
+      if (details.dataset.bound === "true") return;
+      details.dataset.bound = "true";
+
+      const summary = details.querySelector("summary");
+      const content = details.querySelector<HTMLElement>("[data-accordion-content]");
+      if (!summary || !content) return;
+      let animation: Animation | null = null;
+
+      const snapshot = () => {
+        const style = getComputedStyle(content);
+        return { height: style.height, opacity: style.opacity, marginTop: style.marginTop };
+      };
+
+      const run = (opening: boolean) => {
+        // Capture the live values so a mid-animation toggle reverses from where it is.
+        const from = animation
+          ? snapshot()
+          : opening
+            ? { height: "0px", opacity: "0", marginTop: "0px" }
+            : null;
+        animation?.cancel();
+
+        if (opening) {
+          details.open = true;
+          delete details.dataset.closing;
+        } else {
+          details.dataset.closing = "true";
+        }
+
+        const natural = snapshot();
+        const collapsed = { height: "0px", opacity: "0", marginTop: "0px" };
+        const start = from ?? natural;
+        const end = opening ? natural : collapsed;
+
+        content.style.overflow = "hidden";
+        const current = content.animate([start, end], {
+          duration: DURATION,
+          easing: EASING,
+          fill: "forwards",
+        });
+        animation = current;
+
+        current.onfinish = () => {
+          if (animation !== current) return;
+          animation = null;
+          if (!opening) {
+            details.open = false;
+            delete details.dataset.closing;
+          }
+          current.cancel();
+          content.style.overflow = "";
+        };
+        // A cancelled animation was superseded by a newer toggle, which owns cleanup.
+      };
+
+      summary.addEventListener("click", (event) => {
+        if (reducedMotion.matches) {
+          delete details.dataset.closing;
+          return;
+        }
+        event.preventDefault();
+        const isOpen = details.open && !details.dataset.closing;
+        run(!isOpen);
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initContactForm);
+  document.addEventListener("astro:page-load", initAccordions);
 </script>

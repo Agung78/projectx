@@ -13,7 +13,18 @@ const site = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 export default defineConfig({
   site,
-  integrations: [icon(), sitemap()],
+  redirects: {
+    '/approach': '/how-we-work',
+    '/diagnostic': '/how-we-work',
+  },
+  integrations: [icon(),
+    sitemap({
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

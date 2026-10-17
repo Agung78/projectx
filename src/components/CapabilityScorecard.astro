@@ -1,7 +1,7 @@
 ---
 /*
  * §7 Capability-Transfer Scorecard. One source for the eight capabilities and
- * four checkpoints so the home page and /approach never drift apart.
+ * four checkpoints so the home page and /how-we-work never drift apart.
  */
 interface Props {
   tone?: "dark" | "light";
@@ -24,8 +24,8 @@ const scorecard = [
 const checkpoints = ["Baseline", "Build With", "Before shared ops", "Handover"];
 
 const c = dark
-  ? { head: "text-canvas/60", rule: "border-canvas/30", row: "border-canvas/15", name: "text-canvas", body: "text-canvas/80", dot: "border-canvas/40" }
-  : { head: "text-graphite", rule: "border-ink", row: "border-line", name: "text-ink", body: "text-graphite", dot: "border-graphite/50" };
+  ? { head: "text-white/60", rule: "border-white/30", row: "border-white/15", name: "text-white", body: "text-white/80", dot: "border-white/40" }
+  : { head: "text-grey", rule: "border-navy", row: "border-line", name: "text-navy", body: "text-grey", dot: "border-grey/50" };
 ---
 
 <table class="w-full border-collapse text-left">
@@ -58,7 +58,7 @@ const c = dark
               <span
                 class:list={[
                   "inline-block h-4 w-4 rounded-full border",
-                  i === checkpoints.length - 1 ? "border-2 border-signal" : c.dot,
+                  i === checkpoints.length - 1 ? "border-2 border-blue" : c.dot,
                 ]}
               />
               <span class="sr-only">{checkpoint}: assessed</span>

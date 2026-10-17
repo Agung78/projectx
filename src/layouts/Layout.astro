@@ -10,9 +10,10 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const pageTitle = `${title} | NewCo`;
+const pageTitle = title.includes("NewCo") ? title : `${title} | NewCo`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("/og-image.png", Astro.site);
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -24,6 +25,11 @@ const structuredData = {
       logo: new URL("/favicon.svg", Astro.site).href,
       description:
         "NewCo builds with your team, operates systems together, and measures progress toward your engineering independence.",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        url: new URL("/contact", Astro.site).href,
+      },
     },
     {
       "@type": "WebSite",
@@ -32,6 +38,27 @@ const structuredData = {
       name: "NewCo",
       publisher: { "@id": new URL("/#organization", Astro.site).href },
     },
+    ...(isHome
+      ? []
+      : [
+          {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: new URL("/", Astro.site).href,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: pageTitle,
+                item: canonicalURL.href,
+              },
+            ],
+          },
+        ]),
   ],
 };
 ---
@@ -42,7 +69,11 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="llms" href="/llms.txt" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
@@ -66,7 +97,7 @@ const structuredData = {
     </script>
     <ClientRouter />
   </head>
-  <body class="bg-canvas text-ink">
+  <body class="bg-white text-slate">
     <a href="#main" class="skip-link">Skip to main content</a>
     <Header />
     <main id="main">

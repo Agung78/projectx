@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const sections = [
+  {
+    title: "Information you submit through the contact form",
+    body: [
+      "When you write to us, we collect the details you choose to provide: your name, company, role, email address, country or region, how many locations or branches, what you would like help with, and how you prefer us to follow up. Optional fields, such as project type, IT contact or main decision-maker, are collected only if you complete them.",
+      "We use this information for one purpose: to assess your enquiry against our fit criteria and reply with a recommended next step. We do not use it for unrelated marketing, and we do not sell, rent or trade it.",
+      "Please do not include credentials, access keys, personal data about your customers or any other sensitive material in the form. We will never ask for them through a web enquiry.",
+    ],
+  },
+  {
+    title: "Non-disclosure of architecture data",
+    body: [
+      "Details you share about your systems, infrastructure, architecture, vendors, security posture or operating model are treated as confidential from the first conversation. We use them only to scope and deliver the work you have asked us to consider.",
+      "Access is limited to the people at NewCo who need it for your engagement. We do not publish, reference or reuse your architecture information, including in case studies or marketing, without your written permission. We are glad to sign a mutual non-disclosure agreement before any detailed technical discussion.",
+    ],
+  },
+  {
+    title: "AI data privacy governance",
+    body: [
+      "Where we use AI-assisted tooling in our work, the following rules apply to every engagement:",
+    ],
+    list: [
+      "Your code and data stay private. Client source code, documentation, datasets and system information are never published or shared with other clients.",
+      "No model training on client assets. We do not use your code, data or documents to train or fine-tune any AI model, ours or a third party's, without your explicit written consent.",
+      "Approved tooling only. Client material is processed only with tools and providers whose terms exclude training on submitted content and that meet the confidentiality commitments we have made to you.",
+      "Scoped access. AI tools see only what is necessary for the task, and never production credentials or secrets.",
+      "Your say. Clients may restrict or prohibit AI-assisted tooling on their assets, and we will honour that in the engagement terms.",
+    ],
+  },
+  {
+    title: "Data retention",
+    body: [
+      "Contact form enquiries that do not lead to an engagement are kept for up to twelve months so that we can respond and follow up, and are then deleted.",
+      "For active engagements, we keep project material only for the duration of the work and a short handover period agreed with you. At the end of the engagement, we return or securely delete client code, data and architecture information as the contract specifies, except where the law requires us to keep records, such as invoices and contracts.",
+    ],
+  },
+  {
+    title: "Your rights and privacy requests",
+    body: [
+      "You may ask us at any time to confirm what personal information we hold about you, correct it, or delete it. You may also withdraw any consent you have given, including consent relating to AI use of your assets.",
+      "To make a request, contact us through the contact page and mark your message \"Privacy request\". We will confirm receipt and respond within a reasonable period, and in any case within the time required by applicable law, including Indonesian data protection regulation.",
+    ],
+  },
+  {
+    title: "Changes to this policy",
+    body: [
+      "We will update this page when our practices change and revise the date above. Material changes that affect an active engagement will be communicated to you directly.",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Privacy Policy · How NewCo Protects Client Data"
+  description="How NewCo handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data."
+>
+  <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-16 md:py-24">
+    <h1 class="text-h1 text-navy text-balance tracking-tight">Privacy Policy</h1>
+    <p class="mt-8 measure text-body-lg text-slate">
+      NewCo works inside our clients' systems, so confidentiality is part of how we operate, not a footnote. This
+      policy explains what we collect, how we protect it, and what we will never do with it.
+    </p>
+    <p class="mt-4 text-xs text-grey">LAST UPDATED: OCTOBER 2026</p>
+
+    <div class="mt-16 flex flex-col gap-12 border-t border-line pt-16">
+      {
+        sections.map((section) => (
+          <div class="grid gap-6 md:grid-cols-12">
+            <h2 class="text-h3 text-navy md:col-span-4">{section.title}</h2>
+            <div class="md:col-span-8">
+              {section.body.map((paragraph, i) => (
+                <p class:list={["measure text-body text-slate", i > 0 && "mt-4"]}>{paragraph}</p>
+              ))}
+              {section.list && (
+                <ul class="mt-4 measure list-disc pl-5 text-body text-slate">
+                  {section.list.map((item) => (
+                    <li class="mt-2">{item}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 border-t border-line pt-8">
+      <p class="measure text-body text-slate">
+        Questions about this policy? <a href="/contact" class="text-navy underline underline-offset-4 hover:text-blue">Contact us</a>.
+      </p>
+    </div>
+  </section>
+</Layout>

@@ -17,17 +17,15 @@ CustomEase.create("site-out", "0.23, 1, 0.32, 1");
 const EASE_OUT = "site-out";
 
 const DURATION = {
-  reveal: 0.6,
+  reveal: 0.45,
 } as const;
 
 const STAGGER = {
   hero: 0.06,
   item: 0.07,
-  word: 0.05,
 } as const;
 
-const REVEAL_OFFSET = 16;
-const TAGLINE_OFFSET = 8;
+const REVEAL_OFFSET = 8;
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -44,7 +42,8 @@ let ctx: gsap.Context | undefined;
  * legible; gsap.from only sets the start state once JS runs.
  */
 function initHeroEntrance() {
-  const items = gsap.utils.toArray<HTMLElement>("[data-hero-item]");
+  // The h1 is the LCP element: it is never hidden or faded, only secondary items enter.
+  const items = gsap.utils.toArray<HTMLElement>("[data-hero-item]").filter((el) => !el.matches("h1"));
   if (items.length === 0) return;
   gsap.from(items, {
     y: REVEAL_OFFSET,
@@ -132,23 +131,19 @@ function initRevealGroups() {
   });
 }
 
-/** Step 4: tagline words settle from muted to full ink as the block crosses
- * the viewport. The authored HTML is full ink, so reduced motion and no-JS
- * need nothing.
+/** Step 4: the tagline block fades in once. The authored HTML is full ink,
+ * so reduced motion and no-JS need nothing.
  */
 function initTaglineReveal() {
   const block = document.querySelector<HTMLElement>("[data-tagline-reveal]");
   if (!block) return;
-  const words = gsap.utils.toArray<HTMLElement>("[data-tagline-word]", block);
-  if (words.length === 0) return;
-  gsap.from(words, {
-    opacity: 0.3,
-    y: TAGLINE_OFFSET,
+  gsap.from(block, {
+    autoAlpha: 0,
+    y: REVEAL_OFFSET,
     duration: DURATION.reveal,
     ease: EASE_OUT,
-    stagger: STAGGER.word,
-    clearProps: "transform,opacity",
-    scrollTrigger: { trigger: block, start: "top 75%", once: true },
+    clearProps: "transform,opacity,visibility",
+    scrollTrigger: { trigger: block, start: "top 80%", once: true },
   });
 }
 
@@ -160,7 +155,7 @@ interface PhaseTelemetry {
 }
 
 /** Step 5: the capability curve becomes a readout. Hovering, focusing or
- * clicking a phase tweens the telemetry meters and numbers to that phase;
+ * clicking a phase updates the telemetry meters and numbers to that phase;
  * leaving returns to the clicked phase. The static markup has the panel
  * hidden and the triggers disabled, so this only enhances. Returns cleanup.
  */
@@ -181,7 +176,6 @@ function initPhaseTelemetry(): () => void {
     const meter = (name: string) => panel.querySelector<HTMLElement>(`[data-meter="${name}"]`)!;
     const indexOf = (el: Element) => Number(el.closest("[data-phase-index]")?.getAttribute("data-phase-index"));
 
-    const values = { client: 0, pager: 0 };
     const abort = new AbortController();
     const { signal } = abort;
     let selected = 0;
@@ -198,17 +192,8 @@ function initPhaseTelemetry(): () => void {
       readout("label").textContent = phase.label;
       readout("milestone").textContent = phase.milestone;
 
-      gsap.to(values, {
-        client: phase.client,
-        pager: phase.pager,
-        duration,
-        ease: EASE_OUT,
-        overwrite: true,
-        onUpdate: () => {
-          readout("client").textContent = `${Math.round(values.client)}%`;
-          readout("pager").textContent = `${Math.round(values.pager)}%`;
-        },
-      });
+      readout("client").textContent = `${phase.client}%`;
+      readout("pager").textContent = `${phase.pager}%`;
       gsap.to(meter("client"), { scaleX: phase.client / 100, duration, ease: EASE_OUT, overwrite: true });
       gsap.to(meter("pager"), { scaleX: phase.pager / 100, duration, ease: EASE_OUT, overwrite: true });
       gsap.to(markers, {

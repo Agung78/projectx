@@ -6,6 +6,12 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
+// iOS Safari and Brave-on-iOS resize the visual viewport as the toolbar shows
+// and hides mid-scroll; a refresh per resize restarts in-flight reveals and
+// snaps the drag. Ignore pure-height resizes on touch devices, keep
+// real ones (orientation, width change) refreshing.
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 /**
  * Curves are the CSS motion tokens, not GSAP's power* approximations, so JS
  * and CSS motion share one feel. Keep in sync with src/styles/global.css.
@@ -293,9 +299,13 @@ function initLenis() {
 }
 
 let refreshFrame = 0;
-/** Layout changes (resize, inspector panel swaps) shift trigger positions;
- * coalesce them into one refresh per frame and let Lenis re-measure. */
+// iOS toolbar show/hide fires resize with width unchanged; refreshing there
+// snaps the drag, so only refresh on real layout change.
+let lastInnerWidth = 0;
 function onLayoutChange() {
+  if (lastInnerWidth === 0) lastInnerWidth = window.innerWidth;
+  if (window.innerWidth === lastInnerWidth) return;
+  lastInnerWidth = window.innerWidth;
   cancelAnimationFrame(refreshFrame);
   refreshFrame = requestAnimationFrame(() => {
     lenis?.resize();
@@ -306,6 +316,7 @@ function onLayoutChange() {
 function destroyLenis() {
   window.removeEventListener("resize", onLayoutChange);
   cancelAnimationFrame(refreshFrame);
+  lastInnerWidth = 0;
   if (lenisTick) gsap.ticker.remove(lenisTick);
   lenisTick = undefined;
   lenis?.destroy();

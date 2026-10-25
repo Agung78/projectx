@@ -34,9 +34,15 @@ const currentPath = Astro.url.pathname;
         }
       </nav>
 
-      <div class="hidden items-center rounded-sm border border-line text-sm font-semibold md:flex" role="group" aria-label="Language">
-        <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="rounded-sm bg-mist px-2.5 py-1.5 text-navy">EN</button>
-        <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="rounded-sm px-2.5 py-1.5 text-grey hover:text-navy">ID</button>
+      <div class="relative hidden items-center rounded-sm border border-line p-0.5 text-sm font-semibold md:inline-flex" role="group" aria-label="Language">
+        <span
+          class="pointer-events-none absolute inset-y-0.5 left-0.5 w-[calc(50%-2px)] rounded-xs bg-mist transition-transform duration-200 ease-out motion-reduce:transition-none"
+          style="transform: translateX(0%)"
+          data-lang-indicator
+          aria-hidden="true"
+        />
+        <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-navy cursor-pointer motion-reduce:transition-none">EN</button>
+        <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-grey hover:text-navy cursor-pointer motion-reduce:transition-none">ID</button>
       </div>
 
       <button
@@ -68,9 +74,17 @@ const currentPath = Astro.url.pathname;
           </a>
         ))
       }
-      <div class="flex items-center gap-2 px-2 py-3" role="group" aria-label="Language">
-        <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="rounded-sm border border-line bg-mist px-3 py-1.5 text-sm font-semibold text-navy">EN</button>
-        <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="rounded-sm px-3 py-1.5 text-sm font-semibold text-grey hover:text-navy">ID</button>
+      <div class="px-2 py-3">
+        <div class="relative inline-flex items-center rounded-sm border border-line p-0.5 text-sm font-semibold" role="group" aria-label="Language">
+          <span
+            class="pointer-events-none absolute inset-y-0.5 left-0.5 w-[calc(50%-2px)] rounded-xs bg-mist transition-transform duration-200 ease-out motion-reduce:transition-none"
+            style="transform: translateX(0%)"
+            data-lang-indicator
+            aria-hidden="true"
+          />
+          <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-navy cursor-pointer motion-reduce:transition-none">EN</button>
+          <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-grey hover:text-navy cursor-pointer motion-reduce:transition-none">ID</button>
+        </div>
       </div>
     </nav>
   </div>

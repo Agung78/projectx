@@ -11,27 +11,27 @@ function e(en: string, id: string): Entry {
 export const STRINGS: Record<string, Entry> = {
   "about.commitments.contact-desc": e(
     "A named contact and agreed response times.",
-    "Kontak bernama jelas dan waktu respons yang disepakati.",
+    "Narahubung khusus yang jelas dengan jaminan waktu respons yang telah disepakati.",
   ),
   "about.commitments.contact-title": e(
     "A real person to talk to.",
-    "Ada orang yang bisa dihubungi.",
+    "Bicara langsung dengan orang sungguhan",
   ),
   "about.commitments.honest-desc": e(
     "We recommend what's right for the business, not what costs the most.",
-    "Kami merekomendasikan yang benar untuk bisnis, bukan yang paling mahal.",
+    "Kami merekomendasikan solusi yang paling tepat untuk bisnis Anda, bukan yang biayanya paling mahal.",
   ),
   "about.commitments.honest-title": e(
     "Honest advice.",
-    "Nasihat yang jujur.",
+    "Saran yang jujur",
   ),
   "about.commitments.plain-desc": e(
     "No jargon, no surprises.",
-    "Tanpa jargon, tanpa kejutan.",
+    "Tanpa istilah rumit (jargon), tanpa kejutan tak terduga.",
   ),
   "about.commitments.plain-title": e(
     "Plain-language updates.",
-    "Pembaruan berbahasa lugas.",
+    "Pembaruan dalam bahasa yang lugas",
   ),
   "about.commitments.pricing-desc": e(
     "Agreed upfront, before work begins.",
@@ -39,27 +39,27 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "about.commitments.pricing-title": e(
     "Clear pricing.",
-    "Harga yang jelas.",
+    "Biaya yang transparan",
   ),
   "about.commitments.title": e(
     "What every client can count on.",
-    "Yang selalu bisa diandalkan setiap klien.",
+    "Komitmen kami untuk setiap klien.",
   ),
   "about.commitments.work-p1": e(
     "We work directly alongside your existing engineers, technical leads, and founders. Rather than operating in an isolated agency silo, our engineers join your sprints, review pull requests with your team, and establish shared coding standards from day one.",
-    "Kami bekerja berdampingan langsung dengan engineer, technical lead, dan pendiri Anda. Alih-alih beroperasi sebagai agensi yang terpisah, engineer kami bergabung dalam sprint Anda, meninjau pull request bersama tim Anda, dan menetapkan standar kode bersama sejak hari pertama.",
+    "Kami bekerja langsung berdampingan dengan para engineer, tech lead, dan founder Anda. Alih-alih bekerja terisolasi secara terpisah layaknya agensi pada umumnya, tim kami ikut bergabung dalam sprint, meninjau pull request bersama tim Anda, serta menyelaraskan standar coding sejak hari pertama.",
   ),
   "about.commitments.work-p2": e(
     "Every architecture decision, infrastructure deployment, and operational runbook is documented directly in your repositories. When our engagement concludes, your business holds complete, autonomous ownership of the code, systems, and deployment pipelines.",
-    "Setiap keputusan arsitektur, deployment infrastruktur, dan runbook operasional didokumentasikan langsung di repositori Anda. Saat penugasan kami berakhir, bisnis Anda memegang kepemilikan penuh dan mandiri atas kode, sistem, dan pipeline deployment.",
+    "Setiap keputusan arsitektur, penerapan infrastruktur, hingga panduan operasional (runbook) didokumentasikan langsung di repositori milik Anda. Begitu masa kerja sama tuntas, bisnis Anda memegang kepemilikan mandiri secara penuh atas seluruh kode, sistem, serta jalur penerapan (deployment pipelines).",
   ),
   "about.commitments.work-title": e(
     "How we work with your leadership",
-    "Cara kami bekerja dengan pimpinan Anda",
+    "Cara kami berkolaborasi dengan jajaran pimpinan Anda",
   ),
   "about.cta.body": e(
     "We'll look at your systems, constraints and goals, then give you an honest recommendation on the best way forward.",
-    "Kami akan menelaah sistem, kendala, dan tujuan Anda, lalu memberi rekomendasi jujur tentang langkah terbaik ke depan.",
+    "Kami akan meninjau sistem, batasan, dan target bisnis Anda, lalu memberikan rekomendasi jujur mengenai langkah terbaik ke depan.",
   ),
   "about.cta.button": e(
     "Talk to us",
@@ -67,7 +67,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "about.cta.title": e(
     "If this is how you want to work, tell us where things stand.",
-    "Jika cara kerja seperti ini yang Anda inginkan, sampaikan kondisi Anda.",
+    "Jika ini cara kerja yang Anda cari, ceritakan kondisi Anda saat ini.",
   ),
   "about.hero.eyebrow": e(
     "// LEADERSHIP & COMMITMENTS",
@@ -75,11 +75,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "about.hero.lede": e(
     "Your technology partner, start to finish. We design, build and support the systems businesses rely on every day.",
-    "Mitra teknologi Anda, dari awal sampai akhir. Kami merancang, membangun, dan mendukung sistem yang diandalkan bisnis setiap hari.",
+    "Mitra teknologi Anda, dari awal hingga tuntas. Kami merancang, membangun, dan mendukung sistem yang diandalkan bisnis setiap hari.",
   ),
   "about.hero.title": e(
     "Built on trust, delivered with care.",
-    "Dibangun atas kepercayaan, disampaikan dengan saksama.",
+    "Dibangun atas dasar kepercayaan, dihadirkan dengan sepenuh hati.",
   ),
   "about.team.alt-ceo": e(
     "Vanezza, Chief Executive Officer",
@@ -91,7 +91,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "about.team.lede": e(
     "Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.",
-    "Setiap proposal diperiksa oleh kedua pendiri, satu dari sisi bisnis dan satu dari sisi teknis, sehingga yang kami janjikan selalu yang bisa kami wujudkan.",
+    "Setiap proposal ditinjau langsung oleh kedua pendiri—satu dari sisi bisnis dan satu dari sisi teknis—sehingga apa yang kami janjikan selalu dapat kami wujudkan.",
   ),
   "about.team.role-ceo": e(
     "Chief Executive Officer",
@@ -107,15 +107,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilitycurve.caption": e(
     "Handover is a success metric, not a hidden failure condition.",
-    "Serah terima adalah ukuran keberhasilan, bukan kondisi kegagalan yang tersembunyi.",
+    "Serah terima itu tolok ukur keberhasilan, bukan sumber masalah tersembunyi.",
   ),
   "capabilitycurve.desc": e(
     "A line chart across 5 phases (Diagnose, Build With, Run With, Hand Over, Advise) showing NewCo's day to day ownership decreasing from high to low while the client's ownership increases from low to high.",
-    "Diagram garis lima tahap (Diagnosis, Membangun Bersama, Berjalan Bersama, Serah Terima, Pendampingan) yang menunjukkan kepemilikan harian NewCo menurun dari tinggi ke rendah sementara kepemilikan klien naik dari rendah ke tinggi.",
+    "Grafik garis lima tahap (Diagnosis, Bangun Bareng, Jalan Bareng, Serah Terima, Pendampingan) yang nunjukin porsi kerja harian NewCo turun dari besar ke kecil, sementara porsi klien naik dari kecil ke besar.",
   ),
   "capabilitycurve.legend.client": e(
     "Client ownership",
-    "Kepemilikan klien",
+    "Porsi klien",
   ),
   "capabilitycurve.legend.client-short": e(
     "Client",
@@ -123,7 +123,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilitycurve.legend.newco": e(
     "NewCo day to day ownership",
-    "Kepemilikan harian NewCo",
+    "Porsi harian NewCo",
   ),
   "capabilitycurve.legend.newco-short": e(
     "NewCo",
@@ -131,11 +131,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilitycurve.legend.ownership": e(
     "Day to day ownership",
-    "Kepemilikan harian",
+    "Porsi kerja harian",
   ),
   "capabilitycurve.note": e(
-    "{illustrativeNote}",
-    "Bentuk ilustratif. Level aktual ditetapkan per penugasan.",
+    "Illustrative",
+    "Ilustrasi",
   ),
   "capabilitycurve.phase1.label": e(
     "Diagnose",
@@ -143,7 +143,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilitycurve.phase1.live": e(
     "Diagnose: client ownership 8 percent, NewCo pager share 100 percent. Baseline Diagnostic.",
-    "Diagnosis: kepemilikan klien 8 persen, porsi pager NewCo 100 persen. Diagnosis Awal.",
+    "Diagnosis: porsi klien 8 persen, piket NewCo 100 persen. Diagnosis Awal.",
   ),
   "capabilitycurve.phase1.milestone": e(
     "Baseline Diagnostic",
@@ -151,39 +151,39 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilitycurve.phase1.sr": e(
     "Illustrative: NewCo ownership about 92 percent, client ownership about 8 percent.",
-    "Ilustrasi: kepemilikan NewCo sekitar 92 persen, kepemilikan klien sekitar 8 persen.",
+    "Ilustrasi: porsi NewCo sekitar 92 persen, porsi klien sekitar 8 persen.",
   ),
   "capabilitycurve.phase2.label": e(
     "Build With",
-    "Membangun Bersama",
+    "Bangun Bareng",
   ),
   "capabilitycurve.phase2.live": e(
     "Build With: client ownership 30 percent, NewCo pager share 75 percent. Joint Delivery.",
-    "Membangun Bersama: kepemilikan klien 30 persen, porsi pager NewCo 75 persen. Serah Terima Bersama.",
+    "Bangun Bareng: porsi klien 30 persen, piket NewCo 75 persen. Delivery Bareng.",
   ),
   "capabilitycurve.phase2.milestone": e(
     "Joint Delivery",
-    "Serah Terima Bersama",
+    "Delivery Bareng",
   ),
   "capabilitycurve.phase2.sr": e(
     "Illustrative: NewCo ownership about 74 percent, client ownership about 30 percent.",
-    "Ilustrasi: kepemilikan NewCo sekitar 74 persen, kepemilikan klien sekitar 30 persen.",
+    "Ilustrasi: porsi NewCo sekitar 74 persen, porsi klien sekitar 30 persen.",
   ),
   "capabilitycurve.phase3.label": e(
     "Run With",
-    "Berjalan Bersama",
+    "Jalan Bareng",
   ),
   "capabilitycurve.phase3.live": e(
     "Run With: client ownership 58 percent, NewCo pager share 50 percent. Shared Pager.",
-    "Berjalan Bersama: kepemilikan klien 58 persen, porsi pager NewCo 50 persen. Pager Bersama.",
+    "Jalan Bareng: porsi klien 58 persen, piket NewCo 50 persen. Piket Bareng.",
   ),
   "capabilitycurve.phase3.milestone": e(
     "Shared Pager",
-    "Pager Bersama",
+    "Piket Bareng",
   ),
   "capabilitycurve.phase3.sr": e(
     "Illustrative: NewCo ownership about 48 percent, client ownership about 58 percent.",
-    "Ilustrasi: kepemilikan NewCo sekitar 48 persen, kepemilikan klien sekitar 58 persen.",
+    "Ilustrasi: porsi NewCo sekitar 48 persen, porsi klien sekitar 58 persen.",
   ),
   "capabilitycurve.phase4.label": e(
     "Hand Over",
@@ -191,15 +191,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilitycurve.phase4.live": e(
     "Hand Over: client ownership 82 percent, NewCo pager share 15 percent. Autonomous Handover.",
-    "Serah Terima: kepemilikan klien 82 persen, porsi pager NewCo 15 persen. Alih Kelola Mandiri.",
+    "Serah Terima: porsi klien 82 persen, piket NewCo 15 persen. Lepas Mandiri.",
   ),
   "capabilitycurve.phase4.milestone": e(
     "Autonomous Handover",
-    "Alih Kelola Mandiri",
+    "Lepas Mandiri",
   ),
   "capabilitycurve.phase4.sr": e(
     "Illustrative: NewCo ownership about 22 percent, client ownership about 82 percent.",
-    "Ilustrasi: kepemilikan NewCo sekitar 22 persen, kepemilikan klien sekitar 82 persen.",
+    "Ilustrasi: porsi NewCo sekitar 22 persen, porsi klien sekitar 82 persen.",
   ),
   "capabilitycurve.phase5.label": e(
     "Advise",
@@ -207,15 +207,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilitycurve.phase5.live": e(
     "Advise: client ownership 94 percent, NewCo pager share 0 percent. Advisory Governance.",
-    "Pendampingan: kepemilikan klien 94 persen, porsi pager NewCo 0 persen. Tata Kelola Pendampingan.",
+    "Pendampingan: porsi klien 94 persen, piket NewCo 0 persen. Tata Kelola Pendamping.",
   ),
   "capabilitycurve.phase5.milestone": e(
     "Advisory Governance",
-    "Tata Kelola Pendampingan",
+    "Tata Kelola Pendamping",
   ),
   "capabilitycurve.phase5.sr": e(
     "Illustrative: NewCo ownership about 10 percent, client ownership about 94 percent.",
-    "Ilustrasi: kepemilikan NewCo sekitar 10 persen, kepemilikan klien sekitar 94 persen.",
+    "Ilustrasi: porsi NewCo sekitar 10 persen, porsi klien sekitar 94 persen.",
   ),
   "capabilitycurve.phasegroup": e(
     "Select a phase",
@@ -223,11 +223,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilitycurve.telemetry.client": e(
     "Client Ownership",
-    "Kepemilikan Klien",
+    "Porsi Klien",
   ),
   "capabilitycurve.telemetry.pager": e(
     "NewCo Pager Share",
-    "Porsi Pager NewCo",
+    "Piket NewCo",
   ),
   "capabilitycurve.telemetry.phase": e(
     "Phase",
@@ -235,11 +235,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.caption": e(
     "Capability-transfer scorecard: each capability, its handover evidence, and the four assessment checkpoints.",
-    "Kartu skor alih kapabilitas: setiap kapabilitas, bukti serah terimanya, dan empat titik penilaian.",
-  ),
-  "capabilityscorecard.check1": e(
-    "Baseline",
-    "Baseline",
+    "Kartu skor alih kapabilitas: tiap kemampuan, bukti serah terimanya, dan empat titik penilaiannya.",
   ),
   "capabilityscorecard.check1-assessed": e(
     "Baseline: assessed",
@@ -247,11 +243,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.check2": e(
     "Build With",
-    "Membangun Bersama",
+    "Bangun Bareng",
   ),
   "capabilityscorecard.check2-assessed": e(
     "Build With: assessed",
-    "Membangun Bersama: dinilai",
+    "Bangun Bareng: sudah dinilai",
   ),
   "capabilityscorecard.check3": e(
     "Before shared ops",
@@ -259,7 +255,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.check3-assessed": e(
     "Before shared ops: assessed",
-    "Sebelum operasi bersama: dinilai",
+    "Sebelum operasi bersama: sudah dinilai",
   ),
   "capabilityscorecard.check4": e(
     "Handover",
@@ -267,7 +263,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.check4-assessed": e(
     "Handover: assessed",
-    "Serah terima: dinilai",
+    "Serah terima: sudah dinilai",
   ),
   "capabilityscorecard.col-capability": e(
     "Capability",
@@ -283,7 +279,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.row1.evidence": e(
     "Explains the major components, constraints, and trade-offs.",
-    "Menjelaskan komponen utama, kendala, dan trade-off.",
+    "Bisa menjelaskan komponen utama, kendala, dan trade-off-nya.",
   ),
   "capabilityscorecard.row2.capability": e(
     "Delivery",
@@ -291,7 +287,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.row2.evidence": e(
     "Ships a production change through the normal controls.",
-    "Mengirim perubahan produksi melalui kontrol yang normal.",
+    "Bisa merilis perubahan ke production lewat kontrol yang normal.",
   ),
   "capabilityscorecard.row3.capability": e(
     "Operations",
@@ -299,7 +295,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.row3.evidence": e(
     "Responds to an incident using logs, metrics, traces, and runbooks.",
-    "Menanggapi insiden memakai log, metrika, trace, dan runbook.",
+    "Bisa menangani insiden pakai log, metrik, trace, dan runbook.",
   ),
   "capabilityscorecard.row4.capability": e(
     "Recovery",
@@ -307,7 +303,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.row4.evidence": e(
     "Executes rollback and recovery procedures.",
-    "Menjalankan prosedur rollback dan pemulihan.",
+    "Bisa menjalankan prosedur rollback dan pemulihan.",
   ),
   "capabilityscorecard.row5.capability": e(
     "Data",
@@ -315,7 +311,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.row5.evidence": e(
     "Validates freshness, quality, lineage, and permissions.",
-    "Memvalidasi kesegaran, kualitas, silsilah, dan izin.",
+    "Bisa memastikan data segar, berkualitas, jelas asal-usulnya, dan izinnya benar.",
   ),
   "capabilityscorecard.row6.capability": e(
     "Security",
@@ -323,7 +319,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.row6.evidence": e(
     "Remediates a dependency or access-control issue.",
-    "Meremediasi isu dependensi atau kontrol akses.",
+    "Bisa membereskan masalah dependensi atau kontrol akses.",
   ),
   "capabilityscorecard.row7.capability": e(
     "Decision-making",
@@ -331,7 +327,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.row7.evidence": e(
     "Authors and defends an architecture decision record.",
-    "Menyusun dan mempertahankan catatan keputusan arsitektur.",
+    "Bisa menyusun dan mempertahankan catatan keputusan arsitektur.",
   ),
   "capabilityscorecard.row8.capability": e(
     "Planning",
@@ -339,7 +335,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "capabilityscorecard.row8.evidence": e(
     "Prioritises and delivers the next iteration without us.",
-    "Memprioritaskan dan melaksanakan iterasi berikutnya tanpa kami.",
+    "Bisa memprioritaskan dan mengerjakan iterasi berikutnya tanpa kami.",
   ),
   "contact.form.company-label": e(
     "Company",
@@ -359,43 +355,43 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "contact.form.err-company": e(
     "Please enter your company",
-    "Mohon masukkan perusahaan Anda",
+    "Isi nama perusahaan Anda",
   ),
   "contact.form.err-email": e(
     "Please enter your email address",
-    "Mohon masukkan alamat email Anda",
+    "Isi alamat email Anda",
   ),
   "contact.form.err-email-invalid": e(
     "Please enter a valid email address",
-    "Mohon masukkan alamat email yang valid",
+    "Isi alamat email yang valid",
   ),
   "contact.form.err-followup": e(
     "Please choose how we should follow up",
-    "Mohon pilih cara kami menindaklanjuti",
+    "Pilih cara kami menghubungi Anda",
   ),
   "contact.form.err-help": e(
     "Please tell us what you would like help with",
-    "Mohon sampaikan bantuan yang Anda butuhkan",
+    "Ceritakan bantuan yang Anda butuhkan",
   ),
   "contact.form.err-locations": e(
     "Please tell us how many locations or branches",
-    "Mohon sampaikan jumlah lokasi atau cabang",
+    "Isi jumlah lokasi atau cabang",
   ),
   "contact.form.err-name": e(
     "Please enter your name",
-    "Mohon masukkan nama Anda",
+    "Isi nama Anda",
   ),
   "contact.form.err-region": e(
     "Please enter your country or region",
-    "Mohon masukkan negara atau wilayah Anda",
+    "Isi negara atau wilayah Anda",
   ),
   "contact.form.err-required": e(
     "This field is required",
-    "Bagian ini wajib diisi",
+    "Kolom ini wajib diisi",
   ),
   "contact.form.err-role": e(
     "Please enter your role",
-    "Mohon masukkan peran Anda",
+    "Isi peran Anda",
   ),
   "contact.form.followup-email": e(
     "Email",
@@ -403,7 +399,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "contact.form.followup-label": e(
     "How should we follow up?",
-    "Bagaimana kami menindaklanjuti?",
+    "Mau kami hubungi lewat apa?",
   ),
   "contact.form.followup-phone": e(
     "Phone",
@@ -419,15 +415,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "contact.form.it-label": e(
     "Is there an IT contact or provider we should speak with?",
-    "Adakah kontak IT atau penyedia yang perlu kami ajak bicara?",
+    "Ada kontak IT atau vendor yang perlu kami ajak bicara?",
   ),
   "contact.form.locations-label": e(
     "How many locations or branches?",
-    "Berapa lokasi atau cabang?",
+    "Ada berapa lokasi atau cabang?",
   ),
   "contact.form.more-title": e(
     "A bit more (optional)",
-    "Sedikit lagi (opsional)",
+    "Sedikit lagi (boleh dilewati)",
   ),
   "contact.form.name-label": e(
     "Your name",
@@ -439,7 +435,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "contact.form.project-label": e(
     "What best describes the project?",
-    "Apa yang paling menggambarkan proyek ini?",
+    "Proyeknya seperti apa?",
   ),
   "contact.form.project-new": e(
     "New system",
@@ -451,7 +447,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "contact.form.project-unsure": e(
     "Not sure yet",
-    "Belum yakin",
+    "Belum tahu",
   ),
   "contact.form.region-label": e(
     "Country or region",
@@ -471,31 +467,31 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "contact.form.success": e(
     "Thanks, we've got it. We'll reply within 24 hours with a clear next step.",
-    "Terima kasih, sudah kami terima. Kami akan membalas dalam 24 jam dengan langkah jelas berikutnya.",
+    "Terima kasih, sudah kami terima. Kami balas dalam 24 jam dengan langkah berikutnya yang jelas.",
   ),
   "contact.intro.expect-1": e(
     "An initial 30-minute scoping call to understand your systems and constraints.",
-    "Panggilan scoping awal 30 menit untuk memahami sistem dan kendala Anda.",
+    "Sesi diskusi awal (scoping call) selama 30 menit untuk memahami sistem dan batasan Anda.",
   ),
   "contact.intro.expect-2": e(
     "Clear technical recommendations and capability baseline assessment.",
-    "Rekomendasi teknis yang jelas dan penilaian baseline kapabilitas.",
+    "Rekomendasi teknis yang jelas serta penilaian tolok ukur kapabilitas (baseline assessment).",
   ),
   "contact.intro.expect-3": e(
     "Honest fit evaluation: we only take on engagements where we can ensure complete handover.",
-    "Evaluasi kecocokan yang jujur: kami hanya mengambil penugasan yang bisa kami pastikan alih kelolanya.",
+    "Evaluasi kesesuaian yang jujur: kami hanya menerima proyek jika kami yakin dapat menjamin serah terima secara tuntas.",
   ),
   "contact.intro.expect-title": e(
     "// What to expect",
-    "// Yang bisa diharapkan",
+    "// APA YANG AKAN ANDA DAPATKAN",
   ),
   "contact.intro.eyebrow": e(
     "// ENGAGEMENT BRIEF",
-    "// BRIEF PENGAJUAN",
+    "// BRIEF KERJA SAMA",
   ),
   "contact.intro.lede": e(
     "Share a few details and we'll reply with a clear next step. No obligation, and we'll never ask for passwords or system access here.",
-    "Bagikan beberapa detail dan kami akan membalas dengan langkah jelas berikutnya. Tanpa kewajiban, dan kami tidak akan pernah meminta kata sandi atau akses sistem di sini.",
+    "Bagikan beberapa detail singkat dan kami akan membalas dengan langkah konkret berikutnya. Tanpa ikatan apa pun, dan kami tidak akan pernah meminta kata sandi atau akses sistem di sini.",
   ),
   "contact.intro.privacy-link": e(
     "Privacy Policy",
@@ -507,19 +503,19 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "contact.intro.privacy-suffix": e(
     ".",
-    "kami.",
+    " kami.",
   ),
   "contact.intro.review-body": e(
     "Every enquiry is reviewed directly by our founders, with a guaranteed 24-hour response.",
-    "Setiap pengajuan ditinjau langsung oleh para pendiri kami, dengan respons 24 jam yang terjamin.",
+    "Setiap pertanyaan ditinjau langsung oleh para pendiri kami, dengan jaminan respons dalam waktu 24 jam.",
   ),
   "contact.intro.review-title": e(
     "// Direct Founder Review",
-    "// Tinjauan Langsung Pendiri",
+    "// DITINJAU LANGSUNG OLEH PENDIRI",
   ),
   "contact.intro.title": e(
     "Tell us what the business needs.",
-    "Sampaikan kebutuhan bisnis Anda.",
+    "Ceritakan apa yang bisnis Anda butuhkan.",
   ),
   "footer.company": e(
     "Company",
@@ -527,7 +523,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "footer.cta": e(
     "Start a conversation",
-    "Mulai percakapan",
+    "Mulai diskusi",
   ),
   "footer.office-label": e(
     "Registered office",
@@ -543,15 +539,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "footer.tagline": e(
     "Systems built properly, documented fully, and owned by the business.",
-    "Sistem yang dibangun dengan benar, didokumentasikan lengkap, dan dimiliki oleh bisnis.",
+    "Sistem yang dibangun dengan tepat, terdokumentasi lengkap, dan sepenuhnya milik bisnis Anda.",
   ),
   "howwework.curve.caption": e(
     "By the final stage, the business runs its technology on its own terms.",
-    "Pada tahap akhir, bisnis menjalankan teknologinya dengan caranya sendiri.",
+    "Pada tahap akhir, bisnis menjalankan teknologinya dengan kendali penuh secara mandiri.",
   ),
   "howwework.curve.development.label": e(
     "Development",
-    "Development",
+    "Pengembangan",
   ),
   "howwework.curve.development.milestone": e(
     "Joint Engineering",
@@ -559,7 +555,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "howwework.curve.discovery.label": e(
     "Discovery",
-    "Discovery",
+    "Pencarian",
   ),
   "howwework.curve.discovery.milestone": e(
     "Baseline Diagnostic",
@@ -575,7 +571,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "howwework.curve.operations.milestone": e(
     "Shared Operations",
-    "Operasi Bersama",
+    "Operasi dan Dukungan",
   ),
   "howwework.curve.title": e(
     "OWNERSHIP CURVE",
@@ -587,27 +583,27 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "howwework.curve.transfer.milestone": e(
     "Autonomous Ownership",
-    "Kepemilikan Mandiri",
+    "Mandiri Penuh",
   ),
   "howwework.handover.accounts.included": e(
     "Hosting, domains and services in the business's name",
-    "Hosting, domain, dan layanan atas nama bisnis",
+    "Hosting, domain, dan seluruh layanan terdaftar resmi atas nama bisnis Anda",
   ),
   "howwework.handover.accounts.item": e(
     "Accounts and access",
-    "Akun dan akses",
+    "Akun & Hak Akses",
   ),
   "howwework.handover.col-included": e(
     "What's included",
-    "Cakupannya",
+    "CAKUPAN KELENGKAPAN",
   ),
   "howwework.handover.col-item": e(
     "Item",
-    "Item",
+    "POIN / ITEM",
   ),
   "howwework.handover.documentation.included": e(
     "How the system works, written in plain language",
-    "Cara kerja sistem, ditulis dengan bahasa lugas",
+    "Cara kerja sistem yang ditulis dengan bahasa lugas dan mudah dipahami",
   ),
   "howwework.handover.documentation.item": e(
     "Documentation",
@@ -619,59 +615,59 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "howwework.handover.guides.included": e(
     "Step-by-step instructions for everyday tasks and updates",
-    "Instruksi langkah demi langkah untuk tugas harian dan pembaruan",
+    "Panduan langkah demi langkah untuk tugas harian serta pembaruan sistem",
   ),
   "howwework.handover.guides.item": e(
     "Running guides",
-    "Panduan menjalankan",
+    "Panduan Operasional",
   ),
   "howwework.handover.heading": e(
     "Everything handed over, nothing held back.",
-    "Semua diserahterimakan, tanpa ada yang ditahan.",
+    "Semua diserahkan tuntas, tanpa ada yang ditahan.",
   ),
   "howwework.handover.lede": e(
     "Before we sign off, each item below is delivered and walked through with whoever will run the system. The checklist is agreed in the contract.",
-    "Sebelum kami serah terima, setiap item di bawah disampaikan dan dijelaskan langsung kepada siapa pun yang akan menjalankan sistem. Daftar periksanya disepakati dalam kontrak.",
+    "Sebelum persetujuan akhir, setiap poin di bawah ini diserahkan dan dipandu langsung bersama siapa pun yang akan mengelola sistem Anda. Daftar periksa ini telah disepakati di dalam kontrak.",
   ),
   "howwework.handover.recovery.included": e(
     "How to restore the system from backup if something goes wrong",
-    "Cara memulihkan sistem dari cadangan jika terjadi masalah",
+    "Cara memulihkan sistem dari salinan cadangan (backup) jika terjadi kendala",
   ),
   "howwework.handover.recovery.item": e(
     "Recovery plan",
-    "Rencana pemulihan",
+    "Rencana Pemulihan",
   ),
   "howwework.handover.security.included": e(
     "Passwords changed and access checked before sign-off",
-    "Kata sandi diganti dan akses diperiksa sebelum serah terima",
+    "Kata sandi diperbarui dan seluruh hak akses diverifikasi sebelum serah terima akhir",
   ),
   "howwework.handover.security.item": e(
     "Security review",
-    "Tinjauan keamanan",
+    "Pemeriksaan Keamanan",
   ),
   "howwework.handover.source-code.included": e(
     "Every line, stored in the business's own account",
-    "Setiap baris, tersimpan di akun milik bisnis sendiri",
+    "Setiap baris kode, tersimpan langsung di akun milik bisnis Anda sendiri",
   ),
   "howwework.handover.source-code.item": e(
     "Source code",
-    "Kode sumber",
+    "Kode Sumber",
   ),
   "howwework.handover.support.included": e(
     "Available from us if the business wants it, never required",
-    "Tersedia dari kami bila bisnis menginginkannya, tidak pernah wajib",
+    "Selalu tersedia jika bisnis Anda menginginkannya, tanpa kewajiban yang mengikat",
   ),
   "howwework.handover.support.item": e(
     "Ongoing support",
-    "Dukungan lanjutan",
+    "Dukungan Berkelanjutan",
   ),
   "howwework.handover.walkthrough.included": e(
     "A guided session with whoever takes over",
-    "Sesi pendampingan dengan siapa pun penerusnya",
+    "Sesi pendampingan terpandu bersama pihak yang akan mengambil alih sistem",
   ),
   "howwework.handover.walkthrough.item": e(
     "Live walkthrough",
-    "Walkthrough langsung",
+    "Sesi Panduan Langsung",
   ),
   "howwework.hero.eyebrow": e(
     "// METHODOLOGY & PROCESS",
@@ -679,75 +675,75 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "howwework.hero.lede": e(
     "We work alongside the business at every stage, and it always has the final say. Every decision is explained in plain language, with no jargon.",
-    "Kami bekerja berdampingan dengan bisnis di setiap tahap, dan bisnis selalu memegang keputusan akhir. Setiap keputusan dijelaskan dengan bahasa lugas, tanpa jargon.",
+    "Kami mendampingi bisnis Anda di setiap tahapan, dan keputusan akhir selalu berada di tangan Anda. Setiap keputusan dijelaskan dengan bahasa yang lugas, tanpa istilah teknis yang rumit.",
   ),
   "howwework.hero.title": e(
     "One clear process, start to finish.",
-    "Satu proses yang jelas, dari awal sampai akhir.",
+    "Satu proses yang jelas, dari awal hingga tuntas.",
   ),
   "howwework.stages.development.body": e(
     "We design and build the system, with regular check-ins and demos so the business can see and test it as it takes shape.",
-    "Kami merancang dan membangun sistem, dengan check-in dan demo berkala agar bisnis bisa melihat dan mengujinya selagi terbentuk.",
+    "Kami merancang dan membangun sistem, lengkap dengan sesi evaluasi rutin dan demo berkala agar Anda dapat melihat langsung serta menguji perkembangannya.",
   ),
   "howwework.stages.development.gets": e(
     "a working system, tested and ready for real use.",
-    "sistem yang berfungsi, teruji, dan siap dipakai nyata.",
+    "Sistem yang berfungsi penuh, teruji, dan siap pakai.",
   ),
   "howwework.stages.development.name": e(
     "Development",
-    "Development",
+    "Pengembangan",
   ),
   "howwework.stages.discovery.body": e(
     "We learn how the business runs, map its current systems and agree the plan together.",
-    "Kami mempelajari cara bisnis berjalan, memetakan sistem yang ada, dan menyepakati rencana bersama.",
+    "Kami mempelajari alur bisnis Anda, memetakan sistem yang saat ini berjalan, dan menyepakati rencana bersama.",
   ),
   "howwework.stages.discovery.gets": e(
     "a technical roadmap with architecture, milestones and estimated costs.",
-    "peta jalan teknis berisi arsitektur, tonggak, dan estimasi biaya.",
+    "Roadmap teknis lengkap beserta arsitektur, tahapan pengerjaan (milestones), dan estimasi biaya.",
   ),
   "howwework.stages.discovery.name": e(
     "Discovery",
-    "Discovery",
+    "Analisis Kebutuhan",
   ),
   "howwework.stages.gets-label": e(
     "The business gets:",
-    "Yang didapat bisnis:",
+    "Yang diperoleh bisnis Anda:",
   ),
   "howwework.stages.heading": e(
     "Four stages, one direction.",
-    "Empat tahap, satu arah.",
+    "Empat tahap, satu arah yang jelas.",
   ),
   "howwework.stages.note": e(
     "How long each stage takes depends on the project. We agree the timeline during Discovery.",
-    "Durasi tiap tahap tergantung proyek. Linimasanya kami sepakati saat Discovery.",
+    "Durasi setiap tahapan disesuaikan dengan skala proyek. Garis waktu (timeline) akan disepakati bersama pada tahap Discovery.",
   ),
   "howwework.stages.operations.body": e(
     "After launch, we monitor the system, fix issues, and keep it secure and up to date until it runs smoothly.",
-    "Setelah peluncuran, kami memantau sistem, memperbaiki masalah, dan menjaganya aman dan mutakhir sampai berjalan lancar.",
+    "Setelah peluncuran, kami memantau sistem, menangani kendala, serta menjaganya tetap aman dan terbarui hingga dapat berjalan dengan lancar.",
   ),
   "howwework.stages.operations.gets": e(
     "a stable system with agreed response times.",
-    "sistem yang stabil dengan waktu respons yang disepakati.",
+    "Sistem yang stabil dengan jaminan waktu respons (response time) yang telah disepakati bersama.",
   ),
   "howwework.stages.operations.name": e(
     "Operations and Support",
-    "Operasi dan Dukungan",
+    "Operasional & Dukungan",
   ),
   "howwework.stages.step-prefix": e(
     "STEP //",
-    "LANGKAH //",
+    "TAHAP //",
   ),
   "howwework.stages.transfer.body": e(
     "We transfer everything needed to run the system independently, to in-house staff, a new hire or another provider.",
-    "Kami mengalihkan semua yang dibutuhkan untuk menjalankan sistem secara mandiri, kepada staf internal, karyawan baru, maupun penyedia lain.",
+    "Kami menyerahkan segala hal yang dibutuhkan agar sistem dapat dikelola secara mandiri—baik oleh tim internal Anda, karyawan baru, maupun vendor lain.",
   ),
   "howwework.stages.transfer.gets": e(
     "full ownership, with no dependence on us.",
-    "kepemilikan penuh, tanpa ketergantungan pada kami.",
+    "Kepemilikan penuh, tanpa ketergantungan lanjutan pada kami.",
   ),
   "howwework.stages.transfer.name": e(
     "Ownership Transfer",
-    "Alih Kepemilikan",
+    "Serah Terima Kepemilikan",
   ),
   "howwework.tech.aria": e(
     "Technologies we build with",
@@ -763,23 +759,23 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.ai.lede": e(
     "Our systems are engineered by people, not generated by AI. When a business wants to use AI, we help it adopt it properly: reliable data first, then AI only where it clearly pays off.",
-    "Sistem kami direkayasa oleh manusia, bukan dihasilkan AI. Saat bisnis ingin memakai AI, kami membantu mengadopsinya dengan benar: data yang andal dulu, lalu AI hanya di titik yang jelas memberikan hasil.",
+    "Sistem kami dibangun oleh para praktisi berpengalaman, bukan sekadar dibuat otomatis oleh AI. Saat bisnis Anda ingin mengadopsi AI, kami memastikannya berjalan dengan tepat: utamakan data yang andal, lalu terapkan AI hanya di aspek yang terbukti memberi dampak nyata.",
   ),
   "index.ai.step1": e(
     "Get the data ready",
-    "Siapkan datanya",
+    "Siapkan dan matangkan data",
   ),
   "index.ai.step2": e(
     "Start with one clear use case",
-    "Mulai dari satu kasus guna yang jelas",
+    "Mulai dari satu use case yang terarah",
   ),
   "index.ai.step3": e(
     "Expand carefully, with safeguards",
-    "Kembangkan bertahap dengan pengaman",
+    "Kembangkan secara terukur, dengan proteksi ketat",
   ),
   "index.ai.title": e(
     "Want to bring AI into the business? We can help.",
-    "Ingin membawa AI ke bisnis? Kami bisa membantu.",
+    "Ingin menerapkan AI ke dalam bisnis Anda? Kami siap membantu.",
   ),
   "index.build.eyebrow": e(
     "// PRINCIPLES",
@@ -787,23 +783,23 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.build.principle1.body": e(
     "No extra complexity until there's a real reason for it.",
-    "Tanpa kompleksitas tambahan sampai ada alasan yang nyata.",
+    "Hindari kerumitan berlebih, kecuali memang ada alasan kuat yang membutuhkannya.",
   ),
   "index.build.principle1.title": e(
     "Keep it simple.",
-    "Tetap sederhana.",
+    "Buat tetap sederhana.",
   ),
   "index.build.principle2.body": e(
     "Monitoring, backups, cloud costs and recovery plans are included, not extras.",
-    "Pemantauan, cadangan, biaya cloud, dan rencana pemulihan sudah termasuk, bukan tambahan.",
+    "Pemantauan (monitoring), pencadangan (backup), efisiensi biaya cloud, hingga rencana pemulihan sudah termasuk di dalamnya, bukan sekadar opsi tambahan.",
   ),
   "index.build.principle2.title": e(
     "Running it is part of the job.",
-    "Menjalankannya adalah bagian dari pekerjaan.",
+    "Memastikan operasional berjalan adalah bagian dari tugas kami.",
   ),
   "index.build.principle3.body": e(
     "Plain-language updates and no jargon, so decision-makers always know where things stand.",
-    "Pembaruan berbahasa lugas tanpa jargon, sehingga pengambil keputusan selalu tahu perkembangannya.",
+    "Pembaruan berkala disampaikan dengan bahasa yang lugas tanpa istilah rumit (jargon), sehingga para pengambil keputusan selalu tahu kondisi proyek secara pasti.",
   ),
   "index.build.principle3.title": e(
     "Clear communication.",
@@ -811,15 +807,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.build.principle4.body": e(
     "Widely used, well-supported tools, so any qualified engineer can pick the system up.",
-    "Tools yang dipakai luas dan didukung baik, sehingga engineer mana pun yang qualified bisa meneruskan sistem.",
+    "Kami menggunakan alat yang lazim dan memiliki dukungan ekosistem luas, sehingga engineer kompeten mana pun bisa langsung melanjutkan dan mengelola sistem tersebut dengan mudah.",
   ),
   "index.build.principle4.title": e(
     "Standard, proven technology.",
-    "Teknologi standar yang terbukti.",
+    "Teknologi standar yang teruji.",
   ),
   "index.build.principle5.body": e(
     "Access controls, encryption and regular updates are built in, not added later.",
-    "Kontrol akses, enkripsi, dan pembaruan rutin sudah tertanam sejak awal, bukan ditempel belakangan.",
+    "Kontrol akses, enkripsi, dan pembaruan rutin sudah terpasang sejak awal perancangan, bukan baru dipikirkan belakangan.",
   ),
   "index.build.principle5.title": e(
     "Security from day one.",
@@ -827,11 +823,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.build.title": e(
     "Simple, honest engineering.",
-    "Rekayasa yang sederhana dan jujur.",
+    "Engineering yang lugas dan jujur.",
   ),
   "index.cta.body": e(
     "Whether it's a brand-new system or improving one already in place, tell us what's slowing the business down and we'll suggest the best place to start.",
-    "Baik sistem baru maupun menyempurnakan yang sudah ada, sampaikan apa yang menghambat bisnis dan kami akan menyarankan titik awal terbaik.",
+    "Baik untuk membangun sistem baru maupun menyempurnakan sistem yang sudah ada, ceritakan apa yang menghambat laju bisnis Anda, dan kami akan menyarankan langkah awal terbaik untuk memulainya.",
   ),
   "index.cta.button": e(
     "Talk to us",
@@ -839,7 +835,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.cta.title": e(
     "Own the technology your business runs on.",
-    "Miliki teknologi yang menjalankan bisnis Anda.",
+    "Miliki kendali penuh atas teknologi yang menggerakkan bisnis Anda.",
   ),
   "index.discovery.cta": e(
     "Talk to us",
@@ -847,15 +843,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.discovery.eyebrow": e(
     "// DISCOVERY",
-    "// DISCOVERY",
+    "// PENCARIAN",
   ),
   "index.discovery.lede": e(
     "Before anything is built, we take a close look at how the business runs today. In three steps, that becomes a plan the business keeps, whether it continues with us or not.",
-    "Sebelum ada yang dibangun, kami mencermati cara bisnis berjalan saat ini. Dalam tiga langkah, itu menjadi rencana yang tetap milik bisnis, baik lanjut bersama kami maupun tidak.",
+    "Sebelum dibangun, kami melihat cara perusahaan Anda berjalan. Hanya tiga langkah, akan menjadi rencana tetap untuk bisnis, baik dengan kami ataupun tidak.",
   ),
   "index.discovery.step1.body": e(
     "We map current systems, data flows and integrations, and pinpoint the bottlenecks.",
-    "Kami memetakan sistem, alur data, dan integrasi saat ini, serta menemukan titik sumbatnya.",
+    "Kami petakan sistem, alur data, integrasi, dan mencari titik masalahnya.",
   ),
   "index.discovery.step1.num": e(
     "STEP // 01",
@@ -867,7 +863,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.discovery.step2.body": e(
     "We rank the risks, such as security gaps and single points of failure, and decide what to build, upgrade or leave as is.",
-    "Kami memeringkat risiko, seperti celah keamanan dan titik kegagalan tunggal, lalu memutuskan apa yang dibangun, ditingkatkan, atau dibiarkan.",
+    "Kami urutkan risiko — seperti celah keamanan dan titik kegagalan — lalu putuskan mana yang dibangun, di-upgrade, atau diabaikan.",
   ),
   "index.discovery.step2.num": e(
     "STEP // 02",
@@ -879,7 +875,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.discovery.step3.body": e(
     "We deliver a technical roadmap with the proposed architecture, milestones and estimated costs, so every decision is based on facts.",
-    "Kami menyusun peta jalan teknis berisi usulan arsitektur, tonggak, dan estimasi biaya, sehingga setiap keputusan berbasis fakta.",
+    "Kami susun roadmap teknis berisi usulan arsitektur, target, dan estimasi biaya, setiap keputusan berdasarkan fakta.",
   ),
   "index.discovery.step3.num": e(
     "STEP // 03",
@@ -891,59 +887,59 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.discovery.title": e(
     "Every project starts with a clear picture.",
-    "Setiap proyek dimulai dengan gambaran yang jelas.",
+    "Setiap proyek dimulai dengan visi yang jelas.",
   ),
   "index.gets.gets1.body": e(
     "We don't leave at launch. We monitor the system, fix issues fast and keep improving it until it runs smoothly.",
-    "Kami tidak pergi saat peluncuran. Kami memantau sistem, memperbaiki masalah dengan cepat, dan terus menyempurnakannya sampai berjalan lancar.",
+    "Kami tidak pergi begitu saja. Sistemnya kami pantau, masalahnya kami bereskan dengan cepat, dan terus kami perbaiki sampai stabil.",
   ),
   "index.gets.gets1.proof": e(
     "How we prove it: service recovery time, tracked from day one.",
-    "Buktinya: waktu pemulihan layanan, dilacak sejak hari pertama.",
+    "Bukti: waktu pemulihan layanan, kami catat sejak hari pertama.",
   ),
   "index.gets.gets1.title": e(
     "We stay until it runs smoothly",
-    "Kami bertahan sampai sistem berjalan lancar",
+    "Kami bertahan sampai sistemnya stabil",
   ),
   "index.gets.gets2.body": e(
     "Every system comes with clear documentation and guides, so the know-how belongs to the business, not to any one person.",
-    "Setiap sistem dilengkapi dokumentasi dan panduan yang jelas, sehingga pengetahuannya milik bisnis, bukan milik perorangan.",
+    "Setiap sistem dilengkapi dokumentasi dan panduan yang jelas, tetap milik perusahaan Anda, bukan milik perorangan.",
   ),
   "index.gets.gets2.proof": e(
     "How we prove it: documentation is reviewed and signed off at every stage.",
-    "Buktinya: dokumentasi ditinjau dan disahkan di setiap tahap.",
+    "Bukti: dokumentasi dicek dan disahkan di setiap tahap.",
   ),
   "index.gets.gets2.title": e(
     "Knowledge that stays with the business",
-    "Pengetahuan yang menetap di bisnis",
+    "Pengetahuan tetap milik perusahaan Anda",
   ),
   "index.gets.gets3.body": e(
     "We recommend what the business actually needs. Often the simplest option is the best value, and we'll say so. New technology comes in only when it clearly pays for itself.",
-    "Kami merekomendasikan yang benar-benar dibutuhkan bisnis. Sering kali opsi paling sederhana adalah yang paling bernilai, dan kami akan menyatakannya. Teknologi baru hanya masuk bila jelas memberikan hasil.",
+    "Kami merekomendasi berdasarkan apa yang dibutuhkan perusahaan Anda. Sering kali opsi paling sederhana justru yang paling menguntungkan, dan kami akan bilang begitu. Teknologi baru hanya masuk jika jelas sepadan.",
   ),
   "index.gets.gets3.proof": e(
     "How we prove it: every recommendation comes with its cost and expected return.",
-    "Buktinya: setiap rekomendasi disertai biaya dan hasil yang diharapkan.",
+    "Bukti: setiap rekomendasi disertai biaya dan hasil yang diharapkan.",
   ),
   "index.gets.gets3.title": e(
     "The right tools, not the trendy ones",
-    "Tools yang tepat, bukan yang trendi",
+    "Tools yang tepat, bukan yang sekedar tren",
   ),
   "index.gets.gets4.body": e(
     "Before we sign off, whoever takes over, in-house staff or another provider, is walked through running, fixing and updating the system.",
-    "Sebelum kami serah terima, siapa pun penerusnya, staf internal maupun penyedia lain, dipandu menjalankan, memperbaiki, dan memperbarui sistem.",
+    "Sebelum kami lepas, siapa pun penerusnya — tim internal atau vendor lain — kami pandu langsung cara menjalankan, memperbaiki, dan meng-update sistemnya.",
   ),
   "index.gets.gets4.proof": e(
     "How we prove it: a transfer checklist, agreed in the contract.",
-    "Buktinya: daftar periksa serah terima, disepakati dalam kontrak.",
+    "Bukti: daftar serah terima, disepakati di kontrak.",
   ),
   "index.gets.gets4.title": e(
     "A transfer that actually works",
-    "Alih kelola yang benar-benar berjalan",
+    "Serah terima yang berjalan",
   ),
   "index.gets.title": e(
     "What the business gets instead.",
-    "Yang didapat bisnis sebagai gantinya.",
+    "Yang Anda dapatkan.",
   ),
   "index.hero.cta": e(
     "Talk to us",
@@ -955,11 +951,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.hero.kicker": e(
     "Engineering partner for growing businesses",
-    "Mitra rekayasa untuk bisnis yang bertumbuh",
+    "Partner rekayasa untuk perusahaan yang bertumbuh",
   ),
   "index.hero.lede": e(
     "We engineer systems to a high standard, then transfer full ownership to the business: the code, the documentation and the know-how. No vendor lock-in. No hidden dependencies.",
-    "Kami merekayasa sistem dengan standar tinggi, lalu mengalihkan kepemilikan penuh kepada bisnis: kode, dokumentasi, dan pengetahuannya. Tanpa vendor lock-in. Tanpa ketergantungan tersembunyi.",
+    "Kami membangun sistem dengan standar tinggi, lalu menyerahkan kepemilikan penuh ke Anda: kode, dokumentasi, dan pengetahuannya. Tanpa vendor lock-in. Tanpa ketergantungan tersembunyi.",
   ),
   "index.hero.tag1": e(
     "We build",
@@ -967,19 +963,19 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.hero.tag2": e(
     "We teach",
-    "Kami mengajarkan",
+    "Kami mengajari",
   ),
   "index.hero.tag3": e(
     "You own.",
-    "Anda memiliki.",
+    "Anda miliki.",
   ),
   "index.hero.title": e(
     "Technology built for independence.",
-    "Teknologi yang dibangun untuk kemandirian.",
+    "Teknologi yang dibangun mandiri.",
   ),
   "index.hero.video": e(
     "Watch the 1 minute intro",
-    "Tonton intro 1 menit",
+    "Tonton video 1 menit",
   ),
   "index.howwework.eyebrow": e(
     "// PROCESS",
@@ -995,7 +991,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.howwework.lede": e(
     "Four clear stages take each project from the first conversation to a system the business fully owns.",
-    "Empat tahap yang jelas membawa setiap proyek dari percakapan pertama hingga sistem yang sepenuhnya dimiliki bisnis.",
+    "Empat tahap yang jelas membawa tiap proyek dari obrolan pertama sampai sistem yang sepenuhnya milik Anda.",
   ),
   "index.howwework.link": e(
     "See how it works →",
@@ -1003,11 +999,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.howwework.note": e(
     "Day-to-day control shifts to the business, stage by stage. Ongoing support is a choice, never a requirement.",
-    "Kendali harian beralih ke bisnis, tahap demi tahap. Dukungan lanjutan adalah pilihan, bukan kewajiban.",
+    "Kendali harian beralih ke Anda, tahap demi tahap. Dukungan lanjutan itu pilihan, bukan kewajiban.",
   ),
   "index.howwework.stage1.label": e(
     "Discovery",
-    "Discovery",
+    "Pencarian",
   ),
   "index.howwework.stage1.milestone": e(
     "Baseline Diagnostic",
@@ -1015,7 +1011,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.howwework.stage2.label": e(
     "Development",
-    "Development",
+    "Pengembangan",
   ),
   "index.howwework.stage2.milestone": e(
     "Joint Engineering",
@@ -1027,7 +1023,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.howwework.stage3.milestone": e(
     "Shared Operations",
-    "Operasi Bersama",
+    "Operasi dan Dukungan",
   ),
   "index.howwework.stage4.label": e(
     "Ownership Transfer",
@@ -1035,7 +1031,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.howwework.stage4.milestone": e(
     "Autonomous Ownership",
-    "Kepemilikan Mandiri",
+    "Mandiri Penuh",
   ),
   "index.howwework.title": e(
     "How a project comes together.",
@@ -1043,103 +1039,103 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.numbers.col-metric": e(
     "Metric",
-    "Metrika",
+    "Metrik",
   ),
   "index.numbers.col-tells": e(
     "What it tells you",
-    "Artinya bagi Anda",
+    "Arti / Makna bagi Anda",
   ),
   "index.numbers.eyebrow": e(
     "// METRICS",
-    "// METRIKA",
+    "// METRIK",
   ),
   "index.numbers.lede": e(
     "No vague status reports. We measure these on every project and report them in plain language. The first four are the industry-standard DORA metrics used by top engineering teams.",
-    "Tanpa laporan status yang samar. Kami mengukur delapan hal ini di setiap proyek dan melaporkannya dengan bahasa lugas. Empat yang pertama adalah metrika DORA standar industri yang dipakai tim rekayasa papan atas.",
+    "Tanpa laporan status yang mengambang. Kami mengukurnya di setiap proyek dan menyajikannya dalam bahasa yang lugas. Empat metrik pertama merupakan standar industri DORA yang digunakan oleh tim engineering kelas dunia.",
   ),
   "index.numbers.metric1.metric": e(
     "Lead time",
-    "Lead time",
+    "Durasi Penerapan",
   ),
   "index.numbers.metric1.tells": e(
     "How long a change takes to go live",
-    "Berapa lama perubahan sampai live",
+    "Berapa lama waktu yang dibutuhkan dari perubahan kode hingga tayang (go-live)",
   ),
   "index.numbers.metric2.metric": e(
     "Release frequency",
-    "Frekuensi rilis",
+    "Frekuensi Rilis",
   ),
   "index.numbers.metric2.tells": e(
     "How often updates go live",
-    "Seberapa sering pembaruan live",
+    "Seberapa sering pembaruan sistem dirilis",
   ),
   "index.numbers.metric3.metric": e(
     "Change failure rate",
-    "Tingkat kegagalan perubahan",
+    "Tingkat Kegagalan Perubahan",
   ),
   "index.numbers.metric3.tells": e(
     "How often an update causes a problem",
-    "Seberapa sering pembaruan menimbulkan masalah",
+    "Seberapa sering pembaruan yang dirilis memicu kendala atau masalah",
   ),
   "index.numbers.metric4.metric": e(
     "Recovery time",
-    "Waktu pemulihan",
+    "Waktu Pemulihan",
   ),
   "index.numbers.metric4.tells": e(
     "How fast service is restored after an issue",
-    "Seberapa cepat layanan pulih setelah gangguan",
+    "Seberapa cepat layanan pulih kembali setelah terjadi gangguan",
   ),
   "index.numbers.metric5.metric": e(
     "Rework rate",
-    "Tingkat pengerjaan ulang",
+    "Tingkat Pengerjaan Ulang",
   ),
   "index.numbers.metric5.tells": e(
     "How much work has to be redone",
-    "Berapa banyak pekerjaan yang harus diulang",
+    "Seberapa banyak pekerjaan yang harus diulang atau diperbaiki kembali",
   ),
   "index.numbers.metric6.metric": e(
     "Uptime",
-    "Uptime",
+    "Waktu Aktif Sistem",
   ),
   "index.numbers.metric6.tells": e(
     "How much of the time the system is available",
-    "Seberapa sering sistem tersedia",
+    "Berapa persen waktu sistem aktif dan siap digunakan tanpa gangguan",
   ),
   "index.numbers.metric7.metric": e(
     "Response time",
-    "Waktu respons",
+    "Waktu Respons",
   ),
   "index.numbers.metric7.tells": e(
     "How quickly support requests are answered",
-    "Seberapa cepat permintaan dukungan dijawab",
+    "Seberapa cepat permintaan bantuan (support) ditanggapi",
   ),
   "index.numbers.metric8.metric": e(
     "Transfer readiness",
-    "Kesiapan alih kelola",
+    "Kesipan Serah Terima",
   ),
   "index.numbers.metric8.tells": e(
     "How complete the documentation and transfer checklist are",
-    "Seberapa lengkap dokumentasi dan daftar periksa serah terima",
+    "Seberapa lengkap dokumentasi dan daftar periksa serah terima proyek",
   ),
   "index.numbers.title": e(
     "Eight numbers that prove progress.",
-    "Delapan angka yang membuktikan kemajuan.",
+    "Delapan hal pembuktian hasil.",
   ),
   "index.problem.lede": e(
     "Many agencies deliver a system and leave. The business is left with code nobody in-house can fix when something breaks.",
-    "Banyak agensi mengirim sistem lalu pergi. Bisnis tertinggal dengan kode yang tidak bisa diperbaiki siapa pun di internal saat ada masalah.",
+    "Banyak agensi mengirim sistem lalu pergi. Perusahaan Anda ditinggal dengan kode yang tidak dapat diperbaiki oleh internal saat ada masalah.",
   ),
   "index.problem.problem1.body": e(
     "Builds it, bills it, leaves.",
-    "Membangunnya, menagihnya, lalu pergi.",
+    "Bangun, tagih, lalu menghilang.",
   ),
   "index.problem.problem1.title": e(
     "The disappearing agency",
-    "Agensi yang menghilang",
+    "Agensi hilang",
   ),
   "index.problem.problem2.body": e(
     "Extra developers fill the gap for a while, but when the contract ends, the knowledge walks out with them.",
-    "Developer tambahan mengisi kekosongan untuk sementara, tetapi saat kontrak berakhir, pengetahuan ikut pergi bersama mereka.",
+    "Developer tambahan menutup lubang untuk sementara, tapi disaat kontrak habis, semua menghilang.",
   ),
   "index.problem.problem2.title": e(
     "Short-term contractors",
@@ -1147,7 +1143,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.problem.problem3.body": e(
     "Trendy tools added before the basics are in place, so they cost more than they deliver.",
-    "Tools trendi dipasang sebelum fondasinya beres, sehingga biayanya lebih besar daripada manfaatnya.",
+    "Tools kekinian dipasang sebelum pondasinya benar, jadi biayanya membengkak daripada manfaat.",
   ),
   "index.problem.problem3.title": e(
     "Tech for the sake of it",
@@ -1155,15 +1151,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.problem.problem4.body": e(
     "The code is passed over, but nobody explains how it works or how to fix it.",
-    "Kodenya diserahkan, tetapi tidak ada yang menjelaskan cara kerjanya atau cara memperbaikinya.",
+    "Kodenya diserahkan, tapi tidak menjelaskan cara kerja atau cara memperbaiki.",
   ),
   "index.problem.problem4.title": e(
     "Handover in name only",
-    "Serah terima sekadar nama",
+    "Serah terima hanyalah nama",
   ),
   "index.problem.title": e(
     "Getting software built is easy. Keeping it running is the hard part.",
-    "Membangun perangkat lunak itu mudah. Menjaganya tetap berjalan itulah bagian tersulit.",
+    "Bikin software itu mudah. Yang rumit menjaganya tetap berjalan.",
   ),
   "index.video.close": e(
     "ESC / Close",
@@ -1183,23 +1179,23 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "meta.about.description": e(
     "Meet NewCo's founders. We build and run robust business systems, transferring complete engineering capability to your team.",
-    "Kenali para pendiri NewCo. Kami membangun dan menjalankan sistem bisnis yang andal, serta mengalihkan kapabilitas rekayasa secara menyeluruh kepada tim Anda.",
+    "Kenalan dengan founder NewCo. Kami membangun dan menjalankan sistem bisnis yang andal, sekaligus mengalihkan kemampuan engineering sepenuhnya ke tim Anda.",
   ),
   "meta.about.title": e(
     "About NewCo · Engineering Leadership & Governance",
-    "Tentang NewCo · Kepemimpinan & Tata Kelola Rekayasa",
+    "Tentang NewCo · Kepemimpinan & Tata Kelola Engineering",
   ),
   "meta.contact.description": e(
     "Contact NewCo's founders to discuss your business systems, technical constraints, and path to full engineering independence.",
-    "Hubungi para pendiri NewCo untuk mendiskusikan sistem bisnis, kendala teknis, dan langkah menuju kemandirian rekayasa penuh.",
+    "Hubungi founder NewCo untuk mendiskusikan sistem bisnis, kendala teknis, dan jalan menuju kemandirian engineering.",
   ),
   "meta.contact.title": e(
     "Contact NewCo · Discuss Systems & Engineering Handover",
-    "Hubungi NewCo · Diskusi Sistem & Alih Kelola Rekayasa",
+    "Hubungi NewCo · Diskusi Sistem & Serah Terima Engineering",
   ),
   "meta.howwework.description": e(
     "Our 4-stage engineering model transfers full system ownership to your team, from Discovery through autonomous operations.",
-    "Model rekayasa 4 tahap kami mengalihkan kepemilikan sistem penuh kepada tim Anda, dari Discovery hingga operasi mandiri.",
+    "Model engineering 4 tahap kami mengalihkan kepemilikan sistem penuh ke tim Anda, dari Discovery sampai operasi mandiri.",
   ),
   "meta.howwework.title": e(
     "How We Work · 4-Stage Engineering Transfer | NewCo",
@@ -1207,19 +1203,15 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "meta.index.description": e(
     "We design, build, and support business systems, then transfer full ownership. Zero vendor lock-in, zero hidden dependencies.",
-    "Kami merancang, membangun, dan mendukung sistem bisnis, lalu mengalihkan kepemilikan penuh. Tanpa vendor lock-in, tanpa ketergantungan tersembunyi.",
+    "Kami merancang, membangun, dan menjaga sistem bisnis, lalu menyerahkan kepemilikan penuh. Tanpa vendor lock-in, tanpa ketergantungan tersembunyi.",
   ),
   "meta.index.title": e(
     "Technology built for independence · NewCo",
-    "Teknologi yang dibangun untuk kemandirian · NewCo",
+    "Teknologi yang kemandirian · NewCo",
   ),
   "meta.privacy.description": e(
     "How NewCo handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data.",
-    "Cara NewCo menangani data formulir kontak, menjaga kerahasiaan arsitektur klien, mengatur tata kelola AI atas aset klien, dan menyimpan data.",
-  ),
-  "meta.privacy.title": e(
-    "Privacy Policy · How NewCo Protects Client Data",
-    "Kebijakan Privasi · Cara NewCo Melindungi Data Klien",
+    "Cara NewCo menangani data formulir kontak, menjaga kerahasiaan arsitektur klien, mengatur pemakaian AI atas aset klien, dan menyimpan data.",
   ),
   "nav.about": e(
     "About",
@@ -1235,7 +1227,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "nav.how-we-work": e(
     "How we work",
-    "Cara kerja kami",
+    "Cara kami bekerja",
   ),
   "privacy.footer.link": e(
     "Contact us",
@@ -1247,11 +1239,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "privacy.footer.text": e(
     "Questions about this policy?",
-    "Ada pertanyaan tentang kebijakan ini?",
+    "Ada pertanyaan soal kebijakan ini?",
   ),
   "privacy.hero.lede": e(
     "NewCo works inside our clients' systems, so confidentiality is part of how we operate, not a footnote. This policy explains what we collect, how we protect it, and what we will never do with it.",
-    "NewCo bekerja di dalam sistem klien kami, sehingga kerahasiaan adalah bagian dari cara kami beroperasi, bukan sekadar catatan kaki. Kebijakan ini menjelaskan apa yang kami kumpulkan, cara kami melindunginya, dan apa yang tidak akan pernah kami lakukan dengannya.",
+    "NewCo kerja di dalam sistem klien, jadi kerahasiaan itu bagian dari cara kami kerja, bukan sekadar catatan kaki. Kebijakan ini menjelaskan apa yang kami kumpulkan, cara kami melindunginya, dan apa yang tidak akan pernah kami lakukan dengannya.",
   ),
   "privacy.hero.title": e(
     "Privacy Policy",
@@ -1263,27 +1255,27 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "privacy.sections.ai.body-1": e(
     "Where we use AI-assisted tooling in our work, the following rules apply to every engagement:",
-    "Bila kami menggunakan perkakas berbantuan AI dalam pekerjaan kami, aturan berikut berlaku untuk setiap penugasan:",
+    "Kalau kami memakai tools berbantuan AI dalam kerjaan kami, aturan berikut berlaku untuk setiap proyek:",
   ),
   "privacy.sections.ai.list-1": e(
     "Your code and data stay private. Client source code, documentation, datasets and system information are never published or shared with other clients.",
-    "Kode dan data Anda tetap privat. Kode sumber, dokumentasi, dataset, dan informasi sistem klien tidak pernah dipublikasikan atau dibagikan ke klien lain.",
+    "Kode dan data Anda tetap privat. Source code, dokumentasi, dataset, dan info sistem klien tidak pernah dipublikasikan atau dibagikan ke klien lain.",
   ),
   "privacy.sections.ai.list-2": e(
     "No model training on client assets. We do not use your code, data or documents to train or fine-tune any AI model, ours or a third party's, without your explicit written consent.",
-    "Tanpa pelatihan model atas aset klien. Kami tidak menggunakan kode, data, atau dokumen Anda untuk melatih atau menyempurnakan model AI apa pun, milik kami maupun pihak ketiga, tanpa persetujuan tertulis dari Anda.",
+    "Tidak ada training model dari aset klien. Kami tidak memakai kode, data, atau dokumen Anda untuk melatih atau fine-tune model AI mana pun — milik kami maupun pihak ketiga — tanpa persetujuan tertulis dari Anda.",
   ),
   "privacy.sections.ai.list-3": e(
     "Approved tooling only. Client material is processed only with tools and providers whose terms exclude training on submitted content and that meet the confidentiality commitments we have made to you.",
-    "Hanya perkakas yang disetujui. Materi klien hanya diproses dengan tools dan penyedia yang ketentuannya mengecualikan pelatihan atas konten yang dikirim dan yang memenuhi komitmen kerahasiaan kami kepada Anda.",
+    "Hanya tools yang disetujui. Materi klien hanya diproses dengan tools dan penyedia yang ketentuannya melarang training dari konten yang dikirim, dan yang memenuhi komitmen kerahasiaan kami ke Anda.",
   ),
   "privacy.sections.ai.list-4": e(
     "Scoped access. AI tools see only what is necessary for the task, and never production credentials or secrets.",
-    "Akses terbatas. Tools AI hanya melihat yang diperlukan untuk tugasnya, dan tidak pernah kredensial atau rahasia produksi.",
+    "Akses dibatasi. Tools AI hanya melihat yang diperlukan untuk tugasnya, dan tidak pernah menyentuh kredensial atau rahasia production.",
   ),
   "privacy.sections.ai.list-5": e(
     "Your say. Clients may restrict or prohibit AI-assisted tooling on their assets, and we will honour that in the engagement terms.",
-    "Keputusan di tangan Anda. Klien boleh membatasi atau melarang perkakas berbantuan AI atas asetnya, dan kami akan menghormatinya dalam ketentuan penugasan.",
+    "Anda yang menentukan. Klien boleh membatasi atau melarang pemakaian tools AI atas asetnya, dan kami akan menghormatinya di ketentuan kerja sama.",
   ),
   "privacy.sections.ai.title": e(
     "AI data privacy governance",
@@ -1291,11 +1283,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "privacy.sections.architecture.body-1": e(
     "Details you share about your systems, infrastructure, architecture, vendors, security posture or operating model are treated as confidential from the first conversation. We use them only to scope and deliver the work you have asked us to consider.",
-    "Detail yang Anda bagikan tentang sistem, infrastruktur, arsitektur, vendor, postur keamanan, atau model operasi Anda diperlakukan sebagai rahasia sejak percakapan pertama. Kami menggunakannya hanya untuk menilai dan melaksanakan pekerjaan yang Anda minta untuk kami pertimbangkan.",
+    "Detail yang Anda bagikan soal sistem, infrastruktur, arsitektur, vendor, postur keamanan, atau model operasi Anda kami anggap rahasia sejak obrolan pertama. Kami pakai hanya untuk menilai dan mengerjakan yang Anda minta.",
   ),
   "privacy.sections.architecture.body-2": e(
     "Access is limited to the people at NewCo who need it for your engagement. We do not publish, reference or reuse your architecture information, including in case studies or marketing, without your written permission. We are glad to sign a mutual non-disclosure agreement before any detailed technical discussion.",
-    "Akses dibatasi pada orang-orang di NewCo yang membutuhkannya untuk penugasan Anda. Kami tidak mempublikasikan, merujuk, atau menggunakan ulang informasi arsitektur Anda, termasuk dalam studi kasus atau pemasaran, tanpa izin tertulis dari Anda. Kami bersedia menandatangani perjanjian kerahasiaan (NDA) timbal balik sebelum diskusi teknis yang mendetail.",
+    "Akses dibatasi hanya untuk orang NewCo yang membutuhkannya untuk proyek Anda. Kami tidak mempublikasikan, menyebut, atau memakai ulang info arsitektur Anda — termasuk untuk studi kasus atau marketing — tanpa izin tertulis dari Anda. Kami bersedia tanda tangan NDA dua arah sebelum diskusi teknis yang detail.",
   ),
   "privacy.sections.architecture.title": e(
     "Non-disclosure of architecture data",
@@ -1303,35 +1295,35 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "privacy.sections.changes.body-1": e(
     "We will update this page when our practices change and revise the date above. Material changes that affect an active engagement will be communicated to you directly.",
-    "Kami akan memperbarui halaman ini saat praktik kami berubah dan merevisi tanggal di atas. Perubahan material yang memengaruhi penugasan aktif akan kami sampaikan langsung kepada Anda.",
+    "Halaman ini kami update kalau praktik kami berubah, dan tanggal di atas kami revisi. Perubahan penting yang memengaruhi proyek berjalan akan kami sampaikan langsung ke Anda.",
   ),
   "privacy.sections.changes.title": e(
     "Changes to this policy",
-    "Perubahan atas kebijakan ini",
+    "Perubahan kebijakan ini",
   ),
   "privacy.sections.contact-form.body-1": e(
     "When you write to us, we collect the details you choose to provide: your name, company, role, email address, country or region, how many locations or branches, what you would like help with, and how you prefer us to follow up. Optional fields, such as project type, IT contact or main decision-maker, are collected only if you complete them.",
-    "Saat Anda menulis kepada kami, kami mengumpulkan detail yang Anda pilih untuk diberikan: nama, perusahaan, peran, alamat email, negara atau wilayah, jumlah lokasi atau cabang, bantuan yang dibutuhkan, dan cara tindak lanjut yang Anda inginkan. Kolom opsional, seperti jenis proyek, kontak IT, atau pengambil keputusan utama, hanya dikumpulkan bila Anda mengisinya.",
+    "Saat Anda menulis ke kami, kami mengumpulkan detail yang Anda isi sendiri: nama, perusahaan, peran, alamat email, negara atau wilayah, jumlah lokasi atau cabang, bantuan yang dibutuhkan, dan cara follow-up yang Anda mau. Kolom opsional — seperti jenis proyek, kontak IT, atau pengambil keputusan utama — hanya kami simpan kalau Anda mengisinya.",
   ),
   "privacy.sections.contact-form.body-2": e(
     "We use this information for one purpose: to assess your enquiry against our fit criteria and reply with a recommended next step. We do not use it for unrelated marketing, and we do not sell, rent or trade it.",
-    "Kami menggunakan informasi ini untuk satu tujuan: menilai pengajuan Anda terhadap kriteria kecocokan kami dan membalas dengan langkah yang disarankan. Kami tidak menggunakannya untuk pemasaran yang tidak terkait, dan kami tidak menjual, menyewakan, atau memperdagangkannya.",
+    "Info ini kami pakai untuk satu tujuan: menilai pengajuan Anda dengan kriteria kami dan membalas dengan langkah yang disarankan. Kami tidak memakainya untuk marketing yang tidak terkait, dan tidak menjual, menyewakan, atau memperdagangkannya.",
   ),
   "privacy.sections.contact-form.body-3": e(
     "Please do not include credentials, access keys, personal data about your customers or any other sensitive material in the form. We will never ask for them through a web enquiry.",
-    "Mohon tidak mencantumkan kredensial, kunci akses, data pribadi pelanggan Anda, atau materi sensitif lain dalam formulir. Kami tidak akan pernah memintanya melalui pengajuan web.",
+    "Tolong jangan cantumkan kredensial, access key, data pribadi pelanggan Anda, atau materi sensitif lain di formulir. Kami tidak akan pernah memintanya lewat formulir web.",
   ),
   "privacy.sections.contact-form.title": e(
     "Information you submit through the contact form",
-    "Informasi yang Anda sampaikan melalui formulir kontak",
+    "Info yang Anda kirim lewat formulir kontak",
   ),
   "privacy.sections.retention.body-1": e(
     "Contact form enquiries that do not lead to an engagement are kept for up to twelve months so that we can respond and follow up, and are then deleted.",
-    "Pengajuan formulir kontak yang tidak berlanjut ke penugasan disimpan hingga dua belas bulan agar kami bisa merespons dan menindaklanjuti, lalu dihapus.",
+    "Pengajuan formulir kontak yang tidak berlanjut ke proyek kami simpan maksimal dua belas bulan agar bisa kami respons dan follow-up, lalu dihapus.",
   ),
   "privacy.sections.retention.body-2": e(
     "For active engagements, we keep project material only for the duration of the work and a short handover period agreed with you. At the end of the engagement, we return or securely delete client code, data and architecture information as the contract specifies, except where the law requires us to keep records, such as invoices and contracts.",
-    "Untuk penugasan aktif, kami menyimpan materi proyek hanya selama pekerjaan berlangsung dan masa serah terima singkat yang disepakati dengan Anda. Di akhir penugasan, kami mengembalikan atau menghapus secara aman kode, data, dan informasi arsitektur klien sebagaimana diatur kontrak, kecuali diwajibkan hukum untuk menyimpan arsip, seperti faktur dan kontrak.",
+    "Untuk proyek berjalan, materi proyek kami simpan hanya selama kerjaan berlangsung plus masa serah terima singkat yang disepakati dengan Anda. Di akhir proyek, kode, data, dan info arsitektur klien kami kembalikan atau hapus secara aman sesuai kontrak, kecuali hukum mewajibkan kami menyimpan arsip seperti faktur dan kontrak.",
   ),
   "privacy.sections.retention.title": e(
     "Data retention",
@@ -1339,11 +1331,11 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "privacy.sections.rights.body-1": e(
     "You may ask us at any time to confirm what personal information we hold about you, correct it, or delete it. You may also withdraw any consent you have given, including consent relating to AI use of your assets.",
-    "Anda dapat kapan saja meminta kami mengonfirmasi informasi pribadi apa yang kami simpan tentang Anda, mengoreksinya, atau menghapusnya. Anda juga dapat menarik persetujuan yang telah diberikan, termasuk persetujuan terkait penggunaan AI atas aset Anda.",
+    "Anda bisa kapan saja minta kami mengonfirmasi data pribadi apa yang kami simpan tentang Anda, mengoreksinya, atau menghapusnya. Anda juga bisa menarik persetujuan yang sudah diberikan, termasuk persetujuan soal pemakaian AI atas aset Anda.",
   ),
   "privacy.sections.rights.body-2": e(
     "To make a request, contact us through the contact page and mark your message \"Privacy request\". We will confirm receipt and respond within a reasonable period, and in any case within the time required by applicable law, including Indonesian data protection regulation.",
-    "Untuk mengajukan permintaan, hubungi kami melalui halaman kontak dan tandai pesan Anda \"Permintaan privasi\". Kami akan mengonfirmasi penerimaan dan merespons dalam waktu yang wajar, dan dalam hal apa pun dalam batas waktu yang diwajibkan hukum yang berlaku, termasuk regulasi pelindungan data Indonesia.",
+    "Untuk mengajukan permintaan, hubungi kami lewat halaman kontak dan tandai pesan Anda \"Permintaan privasi\". Kami akan mengonfirmasi penerimaan dan merespons dalam waktu yang wajar, dan dalam hal apa pun sesuai batas waktu hukum yang berlaku, termasuk regulasi pelindungan data Indonesia.",
   ),
   "privacy.sections.rights.title": e(
     "Your rights and privacy requests",

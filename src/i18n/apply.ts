@@ -31,10 +31,12 @@ export function applyLang(lang: Lang): void {
   if (descEl && descEntry) descEl.content = descEntry[lang];
 
   document.documentElement.lang = lang === "id" ? "id" : "en";
+  document.querySelectorAll<HTMLElement>("[data-lang-indicator]").forEach((el) => {
+    el.style.transform = lang === "id" ? "translateX(100%)" : "translateX(0%)";
+  });
   document.querySelectorAll<HTMLButtonElement>("[data-lang-toggle]").forEach((btn) => {
     const active = btn.dataset.lang === lang;
     btn.setAttribute("aria-pressed", String(active));
-    btn.classList.toggle("bg-mist", active);
     btn.classList.toggle("text-navy", active);
     btn.classList.toggle("text-grey", !active);
   });

@@ -891,55 +891,55 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.gets.gets1.body": e(
     "We don't leave at launch. We monitor the system, fix issues fast and keep improving it until it runs smoothly.",
-    "Kami tidak pergi begitu saja. Sistemnya kami pantau, masalahnya kami bereskan dengan cepat, dan terus kami perbaiki sampai stabil.",
+    "Kami tidak langsung pergi begitu sistem diluncurkan. Kami terus memantau, menyelesaikan kendala dengan cepat, dan melakukan penyempurnaan hingga semuanya berjalan mulus.",
   ),
   "index.gets.gets1.proof": e(
     "How we prove it: service recovery time, tracked from day one.",
-    "Bukti: waktu pemulihan layanan, kami catat sejak hari pertama.",
+    "Bukti nyata dari kami: Waktu pemulihan layanan (service recovery time) yang dipantau sejak hari pertama.",
   ),
   "index.gets.gets1.title": e(
     "We stay until it runs smoothly",
-    "Kami bertahan sampai sistemnya stabil",
+    "Kami mendampingi hingga sistem berjalan lancar",
   ),
   "index.gets.gets2.body": e(
     "Every system comes with clear documentation and guides, so the know-how belongs to the business, not to any one person.",
-    "Setiap sistem dilengkapi dokumentasi dan panduan yang jelas, tetap milik perusahaan Anda, bukan milik perorangan.",
+    "Setiap sistem dilengkapi dokumentasi dan panduan yang jelas, sehingga seluruh pemahaman teknis (know-how) menjadi milik bisnis Anda seutuhnya, bukan bergantung pada satu orang saja.",
   ),
   "index.gets.gets2.proof": e(
     "How we prove it: documentation is reviewed and signed off at every stage.",
-    "Bukti: dokumentasi dicek dan disahkan di setiap tahap.",
+    "Bukti nyata dari kami: Dokumentasi ditinjau dan disetujui bersama (signed off) di setiap tahapan.",
   ),
   "index.gets.gets2.title": e(
     "Knowledge that stays with the business",
-    "Pengetahuan tetap milik perusahaan Anda",
+    "Pengetahuan yang tetap menjadi aset bisnis Anda",
   ),
   "index.gets.gets3.body": e(
     "We recommend what the business actually needs. Often the simplest option is the best value, and we'll say so. New technology comes in only when it clearly pays for itself.",
-    "Kami merekomendasi berdasarkan apa yang dibutuhkan perusahaan Anda. Sering kali opsi paling sederhana justru yang paling menguntungkan, dan kami akan bilang begitu. Teknologi baru hanya masuk jika jelas sepadan.",
+    "Kami merekomendasikan apa yang benar-benar dibutuhkan oleh bisnis Anda. Sering kali pilihan yang paling sederhana justru memberi nilai terbaik, dan kami akan menyatakannya secara jujur. Teknologi baru hanya kami gunakan jika terbukti memberikan imbal hasil yang jelas.",
   ),
   "index.gets.gets3.proof": e(
     "How we prove it: every recommendation comes with its cost and expected return.",
-    "Bukti: setiap rekomendasi disertai biaya dan hasil yang diharapkan.",
+    "Bukti nyata dari kami: Setiap rekomendasi selalu disertai estimasi biaya dan proyeksi hasil yang nyata.",
   ),
   "index.gets.gets3.title": e(
     "The right tools, not the trendy ones",
-    "Tools yang tepat, bukan yang sekedar tren",
+    "Solusi yang tepat guna, bukan sekadar ikut tren",
   ),
   "index.gets.gets4.body": e(
     "Before we sign off, whoever takes over, in-house staff or another provider, is walked through running, fixing and updating the system.",
-    "Sebelum kami lepas, siapa pun penerusnya — tim internal atau vendor lain — kami pandu langsung cara menjalankan, memperbaiki, dan meng-update sistemnya.",
+    "Sebelum persetujuan akhir (sign-off), siapa pun yang akan mengambil alih—baik tim internal maupun vendor lain—akan dipandu langsung cara mengoperasikan, memperbaiki, hingga memperbarui sistem.",
   ),
   "index.gets.gets4.proof": e(
     "How we prove it: a transfer checklist, agreed in the contract.",
-    "Bukti: daftar serah terima, disepakati di kontrak.",
+    "Bukti nyata dari kami: Daftar periksa serah terima (transfer checklist) yang disepakati langsung di dalam kontrak.",
   ),
   "index.gets.gets4.title": e(
     "A transfer that actually works",
-    "Serah terima yang berjalan",
+    "Proses serah terima yang benar-benar efektif",
   ),
   "index.gets.title": e(
     "What the business gets instead.",
-    "Yang Anda dapatkan.",
+    "Sebaliknya, inilah yang didapatkan bisnis Anda.",
   ),
   "index.hero.cta": e(
     "Talk to us",
@@ -991,7 +991,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.howwework.lede": e(
     "Four clear stages take each project from the first conversation to a system the business fully owns.",
-    "Empat tahap yang jelas membawa tiap proyek dari obrolan pertama sampai sistem yang sepenuhnya milik Anda.",
+    "Empat tahapan terarah membawa setiap proyek dari percakapan pertama hingga menjadi sistem yang sepenuhnya milik bisnis Anda.",
   ),
   "index.howwework.link": e(
     "See how it works →",
@@ -999,7 +999,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.howwework.note": e(
     "Day-to-day control shifts to the business, stage by stage. Ongoing support is a choice, never a requirement.",
-    "Kendali harian beralih ke Anda, tahap demi tahap. Dukungan lanjutan itu pilihan, bukan kewajiban.",
+    "Kendali operasional harian dialihkan ke bisnis Anda tahap demi tahap. Dukungan berkelanjutan adalah sebuah pilihan, bukan keharusan.",
   ),
   "index.howwework.stage1.label": e(
     "Discovery",
@@ -1035,7 +1035,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.howwework.title": e(
     "How a project comes together.",
-    "Cara sebuah proyek terwujud.",
+    "Bagaimana sebuah proyek diwujudkan.",
   ),
   "index.numbers.col-metric": e(
     "Metric",
@@ -1123,19 +1123,19 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.problem.lede": e(
     "Many agencies deliver a system and leave. The business is left with code nobody in-house can fix when something breaks.",
-    "Banyak agensi mengirim sistem lalu pergi. Perusahaan Anda ditinggal dengan kode yang tidak dapat diperbaiki oleh internal saat ada masalah.",
+    "Banyak agensi menyerahkan sistem lalu pergi begitu saja. Bisnis Anda pun ditinggalkan dengan tumpukan kode yang tidak bisa diperbaiki oleh siapa pun di tim internal saat terjadi masalah.",
   ),
   "index.problem.problem1.body": e(
     "Builds it, bills it, leaves.",
-    "Bangun, tagih, lalu menghilang.",
+    "Bangun sistemnya, kirim tagihan, lalu pergi.",
   ),
   "index.problem.problem1.title": e(
     "The disappearing agency",
-    "Agensi hilang",
+    "Agensi yang lepas tangan",
   ),
   "index.problem.problem2.body": e(
     "Extra developers fill the gap for a while, but when the contract ends, the knowledge walks out with them.",
-    "Developer tambahan menutup lubang untuk sementara, tapi disaat kontrak habis, semua menghilang.",
+    "Tambahan developer memang menutup celah untuk sementara waktu, tetapi begitu kontrak berakhir, pemahaman teknisnya ikut hilang bersama mereka.",
   ),
   "index.problem.problem2.title": e(
     "Short-term contractors",
@@ -1143,23 +1143,23 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "index.problem.problem3.body": e(
     "Trendy tools added before the basics are in place, so they cost more than they deliver.",
-    "Tools kekinian dipasang sebelum pondasinya benar, jadi biayanya membengkak daripada manfaat.",
+    "Memaksakan alat-alat yang lagi tren sebelum fondasi dasarnya matang, alhasil biayanya jauh lebih besar daripada manfaat yang didapat.",
   ),
   "index.problem.problem3.title": e(
     "Tech for the sake of it",
-    "Teknologi demi gengsi",
+    "Teknologi yang sekadar ikut tren",
   ),
   "index.problem.problem4.body": e(
     "The code is passed over, but nobody explains how it works or how to fix it.",
-    "Kodenya diserahkan, tapi tidak menjelaskan cara kerja atau cara memperbaiki.",
+    "Kodenya memang diserahkan, tetapi tidak ada yang menjelaskan cara kerjanya atau bagaimana memperbaikinya saat terjadi kendala.",
   ),
   "index.problem.problem4.title": e(
     "Handover in name only",
-    "Serah terima hanyalah nama",
+    "Serah terima sebatas formalitas",
   ),
   "index.problem.title": e(
     "Getting software built is easy. Keeping it running is the hard part.",
-    "Bikin software itu mudah. Yang rumit menjaganya tetap berjalan.",
+    "Membangun perangkat lunak itu mudah. Menjaganya tetap berjalan, itu tantangan sebenarnya.",
   ),
   "index.video.close": e(
     "ESC / Close",

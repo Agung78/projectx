@@ -8,42 +8,54 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 const stages = [
   {
     name: "Discovery",
+    nameKey: "howwework.stages.discovery.name",
     body: "We learn how the business runs, map its current systems and agree the plan together.",
+    bodyKey: "howwework.stages.discovery.body",
     gets: "a technical roadmap with architecture, milestones and estimated costs.",
+    getsKey: "howwework.stages.discovery.gets",
   },
   {
     name: "Development",
+    nameKey: "howwework.stages.development.name",
     body: "We design and build the system, with regular check-ins and demos so the business can see and test it as it takes shape.",
+    bodyKey: "howwework.stages.development.body",
     gets: "a working system, tested and ready for real use.",
+    getsKey: "howwework.stages.development.gets",
   },
   {
     name: "Operations and Support",
+    nameKey: "howwework.stages.operations.name",
     body: "After launch, we monitor the system, fix issues, and keep it secure and up to date until it runs smoothly.",
+    bodyKey: "howwework.stages.operations.body",
     gets: "a stable system with agreed response times.",
+    getsKey: "howwework.stages.operations.gets",
   },
   {
     name: "Ownership Transfer",
+    nameKey: "howwework.stages.transfer.name",
     body: "We transfer everything needed to run the system independently, to in-house staff, a new hire or another provider.",
+    bodyKey: "howwework.stages.transfer.body",
     gets: "full ownership, with no dependence on us.",
+    getsKey: "howwework.stages.transfer.gets",
   },
 ];
 
 const howWeWorkStages = [
-  { label: "Discovery", newco: 90, client: 10, pager: 100, milestone: "Baseline Diagnostic" },
-  { label: "Development", newco: 70, client: 35, pager: 75, milestone: "Joint Engineering" },
-  { label: "Operations and Support", newco: 40, client: 65, pager: 40, milestone: "Shared Operations" },
-  { label: "Ownership Transfer", newco: 10, client: 90, pager: 0, milestone: "Autonomous Ownership" },
+  { label: "Discovery", labelKey: "howwework.curve.discovery.label", newco: 90, client: 10, pager: 100, milestone: "Baseline Diagnostic", milestoneKey: "howwework.curve.discovery.milestone" },
+  { label: "Development", labelKey: "howwework.curve.development.label", newco: 70, client: 35, pager: 75, milestone: "Joint Engineering", milestoneKey: "howwework.curve.development.milestone" },
+  { label: "Operations and Support", labelKey: "howwework.curve.operations.label", newco: 40, client: 65, pager: 40, milestone: "Shared Operations", milestoneKey: "howwework.curve.operations.milestone" },
+  { label: "Ownership Transfer", labelKey: "howwework.curve.transfer.label", newco: 10, client: 90, pager: 0, milestone: "Autonomous Ownership", milestoneKey: "howwework.curve.transfer.milestone" },
 ];
 
 const handover = [
-  { item: "Source code", included: "Every line, stored in the business's own account" },
-  { item: "Documentation", included: "How the system works, written in plain language" },
-  { item: "Accounts and access", included: "Hosting, domains and services in the business's name" },
-  { item: "Running guides", included: "Step-by-step instructions for everyday tasks and updates" },
-  { item: "Recovery plan", included: "How to restore the system from backup if something goes wrong" },
-  { item: "Security review", included: "Passwords changed and access checked before sign-off" },
-  { item: "Live walkthrough", included: "A guided session with whoever takes over" },
-  { item: "Ongoing support", included: "Available from us if the business wants it, never required" },
+  { item: "Source code", itemKey: "howwework.handover.source-code.item", included: "Every line, stored in the business's own account", includedKey: "howwework.handover.source-code.included" },
+  { item: "Documentation", itemKey: "howwework.handover.documentation.item", included: "How the system works, written in plain language", includedKey: "howwework.handover.documentation.included" },
+  { item: "Accounts and access", itemKey: "howwework.handover.accounts.item", included: "Hosting, domains and services in the business's name", includedKey: "howwework.handover.accounts.included" },
+  { item: "Running guides", itemKey: "howwework.handover.guides.item", included: "Step-by-step instructions for everyday tasks and updates", includedKey: "howwework.handover.guides.included" },
+  { item: "Recovery plan", itemKey: "howwework.handover.recovery.item", included: "How to restore the system from backup if something goes wrong", includedKey: "howwework.handover.recovery.included" },
+  { item: "Security review", itemKey: "howwework.handover.security.item", included: "Passwords changed and access checked before sign-off", includedKey: "howwework.handover.security.included" },
+  { item: "Live walkthrough", itemKey: "howwework.handover.walkthrough.item", included: "A guided session with whoever takes over", includedKey: "howwework.handover.walkthrough.included" },
+  { item: "Ongoing support", itemKey: "howwework.handover.support.item", included: "Available from us if the business wants it, never required", includedKey: "howwework.handover.support.included" },
 ];
 
 const technologies = [
@@ -178,15 +190,15 @@ const marqueeRows = [
 ---
 
 <Layout
-  title="How We Work · 4-Stage Engineering Transfer | NewCo"
-  description="Our 4-stage engineering model transfers full system ownership to your team, from Discovery through autonomous operations."
+  titleKey="meta.howwework.title"
+  descKey="meta.howwework.description"
 >
   <section class="bg-white">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <span class="mono text-blue">// METHODOLOGY &amp; PROCESS</span>
+      <span class="mono text-blue" data-i18n="howwework.hero.eyebrow">// METHODOLOGY &amp; PROCESS</span>
       <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
-        <h1 class="text-h1 text-navy text-balance tracking-tight lg:col-span-7">One clear process, start to finish.</h1>
-        <p class="text-body-lg text-slate text-pretty lg:col-span-5 lg:pt-2">
+        <h1 class="text-h1 text-navy text-balance tracking-tight lg:col-span-7" data-i18n="howwework.hero.title">One clear process, start to finish.</h1>
+        <p class="text-body-lg text-slate text-pretty lg:col-span-5 lg:pt-2" data-i18n="howwework.hero.lede">
           We work alongside the business at every stage, and it always has the final say. Every decision is explained in
           plain language, with no jargon.
         </p>
@@ -196,36 +208,37 @@ const marqueeRows = [
 
   <section class="border-t border-line bg-mist py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-navy text-balance">Four stages, one direction.</h2>
+      <h2 class="text-h2 text-navy text-balance" data-i18n="howwework.stages.heading">Four stages, one direction.</h2>
       <div class="mt-12 grid grid-cols-1 overflow-hidden rounded-xl border border-line bg-white md:grid-cols-2 lg:grid-cols-4">
         {
           stages.map((stage, i) => (
             <div class="flex flex-col justify-between border-t border-line p-6 first:border-t-0 md:nth-2:border-t-0 md:odd:border-r md:p-8 lg:border-t-0 lg:border-r lg:last:border-r-0">
               <div>
-                <span class="mono text-blue">{`STEP // ${pad(i)}`}</span>
+                <span class="mono text-blue"><span data-i18n="howwework.stages.step-prefix">STEP //</span> {pad(i)}</span>
                 <p class="mt-4 text-[2.5rem] font-semibold leading-none text-navy/15" aria-hidden="true">{pad(i)}</p>
-                <h3 class="mt-4 text-h3 text-navy">{stage.name}</h3>
-                <p class="mt-3 text-grey">{stage.body}</p>
+                <h3 class="mt-4 text-h3 text-navy" data-i18n={stage.nameKey}>{stage.name}</h3>
+                <p class="mt-3 text-grey" data-i18n={stage.bodyKey}>{stage.body}</p>
               </div>
               <p class="mt-6 border border-line bg-mist px-3 py-2 text-sm text-navy">
-                <span class="font-semibold">The business gets:</span> {stage.gets}
+                <span class="font-semibold" data-i18n="howwework.stages.gets-label">The business gets:</span> <span data-i18n={stage.getsKey}>{stage.gets}</span>
               </p>
             </div>
           ))
         }
       </div>
-      <p class="mt-8 text-sm text-grey">
+      <p class="mt-8 text-sm text-grey" data-i18n="howwework.stages.note">
         How long each stage takes depends on the project. We agree the timeline during Discovery.
       </p>
       <div class="mt-16">
         <div class="corners rounded-xl border border-line bg-white p-3 md:p-6">
           <div class="mb-4 flex items-center justify-between border-b border-line pb-3">
-            <span class="mono text-grey">// FIG. 01</span>
-            <span class="mono text-grey">OWNERSHIP CURVE</span>
+            <span class="mono text-grey" data-i18n="howwework.curve.fig">// FIG. 01</span>
+            <span class="mono text-grey" data-i18n="howwework.curve.title">OWNERSHIP CURVE</span>
           </div>
           <CapabilityCurve
             phases={howWeWorkStages}
             caption="By the final stage, the business runs its technology on its own terms."
+            captionKey="howwework.curve.caption"
           />
         </div>
       </div>
@@ -236,9 +249,9 @@ const marqueeRows = [
     <div class={shell}>
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-          <span class="mono text-grey">// HANDOVER CHECKLIST</span>
-          <h2 class="mt-4 text-h2 text-navy text-balance">Everything handed over, nothing held back.</h2>
-          <p class="text-body-lg text-slate max-w-[68ch] mt-4">
+          <span class="mono text-grey" data-i18n="howwework.handover.eyebrow">// HANDOVER CHECKLIST</span>
+          <h2 class="mt-4 text-h2 text-navy text-balance" data-i18n="howwework.handover.heading">Everything handed over, nothing held back.</h2>
+          <p class="text-body-lg text-slate max-w-[68ch] mt-4" data-i18n="howwework.handover.lede">
             Before we sign off, each item below is delivered and walked through with whoever will run the system. The
             checklist is agreed in the contract.
           </p>
@@ -248,8 +261,8 @@ const marqueeRows = [
           <table class="w-full text-left border-collapse">
             <thead>
               <tr class="border-b border-line bg-mist">
-                <th scope="col" class="mono px-4 py-4 text-navy md:px-6">Item</th>
-                <th scope="col" class="mono px-4 py-4 text-navy md:px-6">What's included</th>
+                <th scope="col" class="mono px-4 py-4 text-navy md:px-6" data-i18n="howwework.handover.col-item">Item</th>
+                <th scope="col" class="mono px-4 py-4 text-navy md:px-6" data-i18n="howwework.handover.col-included">What's included</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-line">
@@ -257,9 +270,9 @@ const marqueeRows = [
                 handover.map((row, i) => (
                   <tr>
                     <th scope="row" class="px-4 py-4 align-top font-bold text-navy md:px-6">
-                      <span class="mono mr-2 text-blue">{pad(i)}</span>{row.item}
+                      <span class="mono mr-2 text-blue">{pad(i)}</span><span data-i18n={row.itemKey}>{row.item}</span>
                     </th>
-                    <td class="px-4 py-4 text-slate md:px-6">{row.included}</td>
+                    <td class="px-4 py-4 text-slate md:px-6" data-i18n={row.includedKey}>{row.included}</td>
                   </tr>
                 ))
               }
@@ -272,9 +285,9 @@ const marqueeRows = [
 
   <section class="border-t border-line bg-mist py-16 md:py-20">
     <div class={shell}>
-      <p class="mono mb-8 text-grey">// Built on proven, widely used technology.</p>
+      <p class="mono mb-8 text-grey" data-i18n="howwework.tech.note">// Built on proven, widely used technology.</p>
     </div>
-    <div class="marquee" aria-label="Technologies we build with">
+    <div class="marquee" aria-label="Technologies we build with" data-i18n-attr="aria-label:howwework.tech.aria">
       {
         marqueeRows.map((row, r) => (
           <ul class={`marquee-track marquee-track-${row.direction}`}>

@@ -3,36 +3,33 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 ---
 
-<Layout
-  title="Contact NewCo · Discuss Systems & Engineering Handover"
-  description="Contact NewCo's founders to discuss your business systems, technical constraints, and path to full engineering independence."
->
+<Layout titleKey="meta.contact.title" descKey="meta.contact.description">
   <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-16 md:py-24">
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
       <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-        <span class="mono text-blue">// ENGAGEMENT BRIEF</span>
-        <h1 class="mt-6 text-h1 text-navy text-balance tracking-tight">Tell us what the business needs.</h1>
-        <p class="text-body-lg text-slate max-w-[68ch] mt-6">
+        <span class="mono text-blue" data-i18n="contact.intro.eyebrow">// ENGAGEMENT BRIEF</span>
+        <h1 class="mt-6 text-h1 text-navy text-balance tracking-tight" data-i18n="contact.intro.title">Tell us what the business needs.</h1>
+        <p class="text-body-lg text-slate max-w-[68ch] mt-6" data-i18n="contact.intro.lede">
           Share a few details and we'll reply with a clear next step. No obligation, and we'll never ask for passwords or system access here.
         </p>
 
         <div class="mt-8 border-t border-line pt-6">
-          <h2 class="text-sm font-semibold tracking-wide text-navy uppercase mono">// Direct Founder Review</h2>
-          <p class="mt-2 text-body text-slate">Every enquiry is reviewed directly by our founders, with a guaranteed 24-hour response.</p>
-          <h3 class="text-sm font-semibold tracking-wide text-navy uppercase mono mt-6">// What to expect</h3>
+          <h2 class="text-sm font-semibold tracking-wide text-navy uppercase mono" data-i18n="contact.intro.review-title">// Direct Founder Review</h2>
+          <p class="mt-2 text-body text-slate" data-i18n="contact.intro.review-body">Every enquiry is reviewed directly by our founders, with a guaranteed 24-hour response.</p>
+          <h3 class="text-sm font-semibold tracking-wide text-navy uppercase mono mt-6" data-i18n="contact.intro.expect-title">// What to expect</h3>
           <ul class="mt-3 flex flex-col gap-3 text-sm text-slate list-disc pl-4">
-            <li>An initial 30-minute scoping call to understand your systems and constraints.</li>
-            <li>Clear technical recommendations and capability baseline assessment.</li>
-            <li>Honest fit evaluation: we only take on engagements where we can ensure complete handover.</li>
+            <li data-i18n="contact.intro.expect-1">An initial 30-minute scoping call to understand your systems and constraints.</li>
+            <li data-i18n="contact.intro.expect-2">Clear technical recommendations and capability baseline assessment.</li>
+            <li data-i18n="contact.intro.expect-3">Honest fit evaluation: we only take on engagements where we can ensure complete handover.</li>
           </ul>
         </div>
 
-        <p class="mt-6 text-sm text-grey">We respect your privacy. See our <a href="/privacy" class="underline hover:text-navy">Privacy Policy</a>.</p>
+        <p class="mt-6 text-sm text-grey"><span data-i18n="contact.intro.privacy-prefix">We respect your privacy. See our</span> <a href="/privacy" class="underline hover:text-navy" data-i18n="contact.intro.privacy-link">Privacy Policy</a><span data-i18n="contact.intro.privacy-suffix">.</span></p>
       </div>
 
       <div class="lg:col-span-7">
       <div class="rounded-xl border border-line bg-white p-6 shadow-sm md:p-8">
-        <p class="mono mb-6 border-b border-line pb-4 text-grey">// INTAKE CONSOLE</p>
+        <p class="mono mb-6 border-b border-line pb-4 text-grey" data-i18n="contact.form.console">// INTAKE CONSOLE</p>
       <form
         id="contact-form"
         method="post"
@@ -42,42 +39,42 @@ import Button from "../components/Button.astro";
       >
         <div class="grid gap-6 md:grid-cols-2">
             <div class="flex flex-col gap-2">
-                <label for="name" class="text-sm font-semibold text-slate">Your name<span aria-hidden="true"> *</span></label>
+                <label for="name" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.name-label">Your name</span><span aria-hidden="true"> *</span></label>
                 <input id="name" name="name" type="text" required autocomplete="name"
                   class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="name-error" />
                 <p id="name-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="company" class="text-sm font-semibold text-slate">Company<span aria-hidden="true"> *</span></label>
+                <label for="company" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.company-label">Company</span><span aria-hidden="true"> *</span></label>
                 <input id="company" name="company" type="text" required autocomplete="organization"
                   class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="company-error" />
                 <p id="company-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="role" class="text-sm font-semibold text-slate">Your role<span aria-hidden="true"> *</span></label>
+                <label for="role" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.role-label">Your role</span><span aria-hidden="true"> *</span></label>
                 <input id="role" name="role" type="text" required autocomplete="organization-title"
                   class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="role-error" />
                 <p id="role-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="email" class="text-sm font-semibold text-slate">Email<span aria-hidden="true"> *</span></label>
+                <label for="email" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.email-label">Email</span><span aria-hidden="true"> *</span></label>
                 <input id="email" name="email" type="email" required autocomplete="email"
                   class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="email-error" />
                 <p id="email-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="region" class="text-sm font-semibold text-slate">Country or region<span aria-hidden="true"> *</span></label>
+                <label for="region" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.region-label">Country or region</span><span aria-hidden="true"> *</span></label>
                 <input id="region" name="region" type="text" required autocomplete="country-name"
                   class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="region-error" />
                 <p id="region-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
-                <label for="locations" class="text-sm font-semibold text-slate">How many locations or branches?<span aria-hidden="true"> *</span></label>
+                <label for="locations" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.locations-label">How many locations or branches?</span><span aria-hidden="true"> *</span></label>
                 <input id="locations" name="locations" type="text" required
                   class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                   aria-describedby="locations-error" />
@@ -86,7 +83,7 @@ import Button from "../components/Button.astro";
         </div>
 
         <div class="flex flex-col gap-2">
-          <label for="help" class="text-sm font-semibold text-slate">What would you like help with?<span aria-hidden="true"> *</span></label>
+          <label for="help" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.help-label">What would you like help with?</span><span aria-hidden="true"> *</span></label>
           <textarea id="help" name="help" required rows="4"
             class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
             aria-describedby="help-error"></textarea>
@@ -94,13 +91,13 @@ import Button from "../components/Button.astro";
         </div>
 
         <fieldset class="flex flex-col gap-2" aria-describedby="follow_up-error">
-          <legend class="text-sm font-semibold text-slate">How should we follow up?<span aria-hidden="true"> *</span></legend>
+          <legend class="text-sm font-semibold text-slate"><span data-i18n="contact.form.followup-label">How should we follow up?</span><span aria-hidden="true"> *</span></legend>
           <div class="flex flex-col gap-2 md:flex-row md:gap-6">
             {
-              ["Email", "Phone", "Video call"].map((option) => (
+              ["Email", "Phone", "Video call"].map((option, idx) => (
                 <label class="flex cursor-pointer items-center gap-2 rounded-full border border-field bg-white px-4 py-2 text-body text-navy has-[:checked]:border-blue has-[:checked]:bg-mist has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-blue">
                   <input type="radio" name="follow_up" value={option} required class="accent-blue" />
-                  {option}
+                  <span data-i18n={["contact.form.followup-email", "contact.form.followup-phone", "contact.form.followup-videocall"][idx]}>{option}</span>
                 </label>
               ))
             }
@@ -109,24 +106,24 @@ import Button from "../components/Button.astro";
         </fieldset>
 
         <details class="rounded-lg border border-line bg-mist p-4" data-accordion>
-          <summary class="cursor-pointer text-sm font-semibold text-navy">A bit more (optional)</summary>
+          <summary class="cursor-pointer text-sm font-semibold text-navy" data-i18n="contact.form.more-title">A bit more (optional)</summary>
           <div class="mt-4 grid gap-6 md:grid-cols-2" data-accordion-content>
               <div class="flex flex-col gap-2">
-                <label for="project_type" class="text-sm font-semibold text-slate">What best describes the project?</label>
+                <label for="project_type" class="text-sm font-semibold text-slate" data-i18n="contact.form.project-label">What best describes the project?</label>
                 <select id="project_type" name="project_type" class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
-                  <option value="">Select one</option>
-                  <option value="New system">New system</option>
-                  <option value="Improve an existing system">Improve an existing system</option>
-                  <option value="Not sure yet">Not sure yet</option>
+                  <option value="" data-i18n="contact.form.project-placeholder">Select one</option>
+                  <option value="New system" data-i18n="contact.form.project-new">New system</option>
+                  <option value="Improve an existing system" data-i18n="contact.form.project-improve">Improve an existing system</option>
+                  <option value="Not sure yet" data-i18n="contact.form.project-unsure">Not sure yet</option>
                 </select>
               </div>
               <div class="flex flex-col gap-2">
-              <label for="decision_maker" class="text-sm font-semibold text-slate">Who's the main decision-maker?</label>
+              <label for="decision_maker" class="text-sm font-semibold text-slate" data-i18n="contact.form.decision-label">Who's the main decision-maker?</label>
               <input id="decision_maker" name="decision_maker" type="text"
                 class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
               </div>
               <div class="flex flex-col gap-2">
-              <label for="it_contact" class="text-sm font-semibold text-slate">Is there an IT contact or provider we should speak with?</label>
+              <label for="it_contact" class="text-sm font-semibold text-slate" data-i18n="contact.form.it-label">Is there an IT contact or provider we should speak with?</label>
               <input id="it_contact" name="it_contact" type="text"
                 class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
               </div>
@@ -134,7 +131,7 @@ import Button from "../components/Button.astro";
         </details>
 
         <Button type="submit" variant="primary" class="mt-2 w-fit justify-center md:whitespace-nowrap" data-submit-button>
-          <span data-button-label>Send</span>
+          <span data-button-label data-i18n="contact.form.submit">Send</span>
         </Button>
 
       </form>
@@ -146,6 +143,35 @@ import Button from "../components/Button.astro";
 </Layout>
 
 <script>
+  import { STRINGS } from "../i18n/dictionary";
+
+  type Lang = "en" | "id";
+  function getLang(): Lang {
+    return (localStorage.getItem("newco-lang") === "id" ? "id" : "en");
+  }
+  function t(key: string): string {
+    const lang = getLang();
+    return STRINGS[key]?.[lang] ?? STRINGS[key]?.en ?? key;
+  }
+  function revalidateVisibleErrors(form: HTMLFormElement) {
+    const invalid = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[aria-invalid='true']"));
+    invalid.forEach((field) => {
+      const errorEl = document.getElementById(field.getAttribute("aria-describedby") ?? "");
+      if (!errorEl || errorEl.classList.contains("hidden")) return;
+      const key = errorEl.dataset.i18n;
+      if (key) errorEl.textContent = t(key);
+    });
+    const radioError = document.getElementById("follow_up-error");
+    if (radioError && !radioError.classList.contains("hidden") && radioError.dataset.i18n) {
+      radioError.textContent = t(radioError.dataset.i18n);
+    }
+    const status = document.querySelector<HTMLElement>("[data-form-status]");
+    if (status && !status.classList.contains("hidden") && status.dataset.i18n) {
+      status.textContent = t(status.dataset.i18n);
+    }
+    const sendingLabel = form.querySelector<HTMLElement>("[data-button-label]");
+    if (sendingLabel?.dataset.i18n) sendingLabel.textContent = t(sendingLabel.dataset.i18n);
+  }
   function initContactForm() {
   const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
   if (form) {
@@ -157,22 +183,23 @@ import Button from "../components/Button.astro";
       form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]")
     );
 
-    const messages: Record<string, string> = {
-      name: "Please enter your name",
-      company: "Please add your company",
-      role: "Please add your role",
-      email: "Please add your email",
-      region: "Please add your country or region",
-      locations: "Please add how many locations or branches",
-      help: "Please tell us what you'd like help with",
+    const messageKeys: Record<string, string> = {
+      name: "contact.form.err-name",
+      company: "contact.form.err-company",
+      role: "contact.form.err-role",
+      email: "contact.form.err-email",
+      region: "contact.form.err-region",
+      locations: "contact.form.err-locations",
+      help: "contact.form.err-help",
     };
 
-    function showError(field: HTMLInputElement | HTMLTextAreaElement, message: string) {
+    function showError(field: HTMLInputElement | HTMLTextAreaElement, key: string) {
       const errorId = field.getAttribute("aria-describedby");
       if (!errorId) return;
       const errorEl = document.getElementById(errorId);
       if (errorEl) {
-        errorEl.textContent = message;
+        errorEl.dataset.i18n = key;
+        errorEl.textContent = t(key);
         errorEl.classList.remove("hidden");
       }
       field.setAttribute("aria-invalid", "true");
@@ -185,6 +212,7 @@ import Button from "../components/Button.astro";
       if (errorEl) {
         errorEl.textContent = "";
         errorEl.classList.add("hidden");
+        delete errorEl.dataset.i18n;
       }
       field.removeAttribute("aria-invalid");
     }
@@ -193,10 +221,12 @@ import Button from "../components/Button.astro";
       const checked = form?.querySelector<HTMLInputElement>('input[name="follow_up"]:checked');
       const errorEl = document.getElementById("follow_up-error");
       if (!checked && errorEl) {
-        errorEl.textContent = "Please choose how we should follow up";
+        errorEl.dataset.i18n = "contact.form.err-followup";
+        errorEl.textContent = t("contact.form.err-followup");
         errorEl.classList.remove("hidden");
         return false;
       }
+      if (errorEl) delete errorEl.dataset.i18n;
       errorEl?.classList.add("hidden");
       return true;
     }
@@ -208,10 +238,10 @@ import Button from "../components/Button.astro";
       requiredFields.forEach((field) => {
         if (field.type === "radio") return;
         if (!field.value.trim()) {
-          showError(field, messages[field.name] ?? "This field is required");
+          showError(field, messageKeys[field.name] ?? "contact.form.err-required");
           valid = false;
         } else if (field.type === "email" && !/^\S+@\S+\.\S+$/.test(field.value)) {
-          showError(field, "Please enter a valid email address");
+          showError(field, "contact.form.err-email-invalid");
           valid = false;
         } else {
           clearError(field);
@@ -227,15 +257,16 @@ import Button from "../components/Button.astro";
 
       if (submitButton && buttonLabel && status) {
         submitButton.disabled = true;
-        buttonLabel.textContent = "Sending…";
+        buttonLabel.dataset.i18n = "contact.form.sending";
+        buttonLabel.textContent = t("contact.form.sending");
         status.classList.add("hidden");
 
         await new Promise((resolve) => setTimeout(resolve, 600));
 
         form.hidden = true;
         status.classList.remove("hidden");
-        status.innerHTML =
-          "Thanks, we've got it. We'll reply within 24 hours with a clear next step.";
+        status.dataset.i18n = "contact.form.success";
+        status.textContent = t("contact.form.success");
         status.classList.add("text-green", "text-body-lg", "font-semibold");
         requestAnimationFrame(() => {
           status.dataset.visible = "true";
@@ -325,4 +356,8 @@ import Button from "../components/Button.astro";
 
   document.addEventListener("astro:page-load", initContactForm);
   document.addEventListener("astro:page-load", initAccordions);
+  document.addEventListener("newco:lang-change", () => {
+    const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
+    if (form) revalidateVisibleErrors(form);
+  });
 </script>

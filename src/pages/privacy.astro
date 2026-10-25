@@ -1,27 +1,40 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const sections = [
+const sections: { title: string; titleKey: string; body: string[]; bodyKeys: string[]; list?: string[]; listKeys?: string[] }[] = [
   {
     title: "Information you submit through the contact form",
+    titleKey: "privacy.sections.contact-form.title",
     body: [
       "When you write to us, we collect the details you choose to provide: your name, company, role, email address, country or region, how many locations or branches, what you would like help with, and how you prefer us to follow up. Optional fields, such as project type, IT contact or main decision-maker, are collected only if you complete them.",
       "We use this information for one purpose: to assess your enquiry against our fit criteria and reply with a recommended next step. We do not use it for unrelated marketing, and we do not sell, rent or trade it.",
       "Please do not include credentials, access keys, personal data about your customers or any other sensitive material in the form. We will never ask for them through a web enquiry.",
     ],
+    bodyKeys: [
+      "privacy.sections.contact-form.body-1",
+      "privacy.sections.contact-form.body-2",
+      "privacy.sections.contact-form.body-3",
+    ],
   },
   {
     title: "Non-disclosure of architecture data",
+    titleKey: "privacy.sections.architecture.title",
     body: [
       "Details you share about your systems, infrastructure, architecture, vendors, security posture or operating model are treated as confidential from the first conversation. We use them only to scope and deliver the work you have asked us to consider.",
       "Access is limited to the people at NewCo who need it for your engagement. We do not publish, reference or reuse your architecture information, including in case studies or marketing, without your written permission. We are glad to sign a mutual non-disclosure agreement before any detailed technical discussion.",
     ],
+    bodyKeys: [
+      "privacy.sections.architecture.body-1",
+      "privacy.sections.architecture.body-2",
+    ],
   },
   {
     title: "AI data privacy governance",
+    titleKey: "privacy.sections.ai.title",
     body: [
       "Where we use AI-assisted tooling in our work, the following rules apply to every engagement:",
     ],
+    bodyKeys: ["privacy.sections.ai.body-1"],
     list: [
       "Your code and data stay private. Client source code, documentation, datasets and system information are never published or shared with other clients.",
       "No model training on client assets. We do not use your code, data or documents to train or fine-tune any AI model, ours or a third party's, without your explicit written consent.",
@@ -29,55 +42,74 @@ const sections = [
       "Scoped access. AI tools see only what is necessary for the task, and never production credentials or secrets.",
       "Your say. Clients may restrict or prohibit AI-assisted tooling on their assets, and we will honour that in the engagement terms.",
     ],
+    listKeys: [
+      "privacy.sections.ai.list-1",
+      "privacy.sections.ai.list-2",
+      "privacy.sections.ai.list-3",
+      "privacy.sections.ai.list-4",
+      "privacy.sections.ai.list-5",
+    ],
   },
   {
     title: "Data retention",
+    titleKey: "privacy.sections.retention.title",
     body: [
       "Contact form enquiries that do not lead to an engagement are kept for up to twelve months so that we can respond and follow up, and are then deleted.",
       "For active engagements, we keep project material only for the duration of the work and a short handover period agreed with you. At the end of the engagement, we return or securely delete client code, data and architecture information as the contract specifies, except where the law requires us to keep records, such as invoices and contracts.",
     ],
+    bodyKeys: [
+      "privacy.sections.retention.body-1",
+      "privacy.sections.retention.body-2",
+    ],
   },
   {
     title: "Your rights and privacy requests",
+    titleKey: "privacy.sections.rights.title",
     body: [
       "You may ask us at any time to confirm what personal information we hold about you, correct it, or delete it. You may also withdraw any consent you have given, including consent relating to AI use of your assets.",
       "To make a request, contact us through the contact page and mark your message \"Privacy request\". We will confirm receipt and respond within a reasonable period, and in any case within the time required by applicable law, including Indonesian data protection regulation.",
     ],
+    bodyKeys: [
+      "privacy.sections.rights.body-1",
+      "privacy.sections.rights.body-2",
+    ],
   },
   {
     title: "Changes to this policy",
+    titleKey: "privacy.sections.changes.title",
     body: [
       "We will update this page when our practices change and revise the date above. Material changes that affect an active engagement will be communicated to you directly.",
     ],
+    bodyKeys: ["privacy.sections.changes.body-1"],
   },
 ];
 ---
 
 <Layout
-  title="Privacy Policy · How NewCo Protects Client Data"
-  description="How NewCo handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data."
+  titleKey="meta.privacy.title"
+  descKey="meta.privacy.description"
 >
   <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-16 md:py-24">
-    <h1 class="text-h1 text-navy text-balance tracking-tight">Privacy Policy</h1>
-    <p class="mt-8 measure text-body-lg text-slate">
+    <h1 class="text-h1 text-navy text-balance tracking-tight" data-i18n="privacy.hero.title">Privacy Policy</h1>
+    <p class="mt-8 measure text-body-lg text-slate" data-i18n="privacy.hero.lede">
       NewCo works inside our clients' systems, so confidentiality is part of how we operate, not a footnote. This
       policy explains what we collect, how we protect it, and what we will never do with it.
     </p>
-    <p class="mt-4 text-xs text-grey">LAST UPDATED: OCTOBER 2026</p>
+    <p class="mt-4 text-xs text-grey" data-i18n="privacy.hero.updated">LAST UPDATED: OCTOBER 2026</p>
 
     <div class="mt-16 flex flex-col gap-12 border-t border-line pt-16">
       {
         sections.map((section) => (
           <div class="grid gap-6 md:grid-cols-12">
-            <h2 class="text-h3 text-navy md:col-span-4">{section.title}</h2>
+            <h2 class="text-h3 text-navy md:col-span-4" data-i18n={section.titleKey}>{section.title}</h2>
             <div class="md:col-span-8">
               {section.body.map((paragraph, i) => (
-                <p class:list={["measure text-body text-slate", i > 0 && "mt-4"]}>{paragraph}</p>
+                <p class:list={["measure text-body text-slate", i > 0 && "mt-4"]} data-i18n={section.bodyKeys[i]}>{paragraph}</p>
               ))}
-              {section.list && (
+              {section.list && section.listKeys && (
                 <ul class="mt-4 measure list-disc pl-5 text-body text-slate">
-                  {section.list.map((item) => (
-                    <li class="mt-2">{item}</li>
+                  {section.list.map((item, j) => (
+                    <li class="mt-2" data-i18n={section.listKeys![j]}>{item}</li>
                   ))}
                 </ul>
               )}
@@ -89,7 +121,7 @@ const sections = [
 
     <div class="mt-16 border-t border-line pt-8">
       <p class="measure text-body text-slate">
-        Questions about this policy? <a href="/contact" class="text-navy underline underline-offset-4 hover:text-blue">Contact us</a>.
+        <span data-i18n="privacy.footer.text">Questions about this policy?</span> <a href="/contact" class="text-navy underline underline-offset-4 hover:text-blue" data-i18n="privacy.footer.link">Contact us</a><span data-i18n="privacy.footer.period">.</span>
       </p>
     </div>
   </section>

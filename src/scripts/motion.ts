@@ -1,4 +1,5 @@
 import { gsap } from "gsap";
+import { STRINGS } from "../i18n/dictionary";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomEase } from "gsap/CustomEase";
 import Lenis from "lenis";
@@ -146,12 +147,24 @@ function initTaglineReveal() {
     scrollTrigger: { trigger: block, start: "top 80%", once: true },
   });
 }
-
 interface PhaseTelemetry {
   label: string;
   client: number;
   pager: number;
   milestone: string;
+  labelKey?: string;
+  milestoneKey?: string;
+  liveKey?: string;
+}
+
+type Lang = "en" | "id";
+function telemetryLang(): Lang {
+  return (localStorage.getItem("newco-lang") === "id" ? "id" : "en");
+}
+function telemetryT(key: string | undefined, fallback: string): string {
+  if (!key) return fallback;
+  const lang = telemetryLang();
+  return STRINGS[key]?.[lang] ?? STRINGS[key]?.en ?? fallback;
 }
 
 /** Step 5: the capability curve becomes a readout. Hovering, focusing or
@@ -189,8 +202,8 @@ function initPhaseTelemetry(): () => void {
       const duration = first ? 0 : 0.45;
 
       readout("index").textContent = String(i + 1).padStart(2, "0");
-      readout("label").textContent = phase.label;
-      readout("milestone").textContent = phase.milestone;
+      readout("label").textContent = telemetryT(phase.labelKey, phase.label);
+      readout("milestone").textContent = telemetryT(phase.milestoneKey, phase.milestone);
 
       readout("client").textContent = `${phase.client}%`;
       readout("pager").textContent = `${phase.pager}%`;
@@ -213,7 +226,7 @@ function initPhaseTelemetry(): () => void {
       triggers.forEach((button) => button.setAttribute("aria-pressed", String(indexOf(button) === i)));
       show(i);
       const phase = phases[i];
-      live.textContent = `${phase.label}: client ownership ${phase.client} percent, NewCo pager share ${phase.pager} percent. ${phase.milestone}.`;
+      live.textContent = telemetryT(phase.liveKey, `${phase.label}: client ownership ${phase.client} percent, NewCo pager share ${phase.pager} percent. ${phase.milestone}.`);
     }
 
     targets.forEach((el) => {
@@ -236,6 +249,14 @@ function initPhaseTelemetry(): () => void {
     triggers.forEach((button) => {
       button.disabled = false;
     });
+    const rerender = () => {
+      shown = -1;
+      show(selected);
+      select(selected);
+      live.textContent = "";
+    };
+    document.addEventListener("astro:page-load", rerender, { signal });
+    document.addEventListener("newco:lang-change", rerender, { signal });
     select(0);
     live.textContent = "";
 

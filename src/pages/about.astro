@@ -4,22 +4,26 @@ import Button from "../components/Button.astro";
 import { Icon } from "astro-icon/components";
 
 const founders = [
-  { name: "Vanezza", role: "Chief Executive Officer", image: "/images/ceo.webp" },
-  { name: "Agung Denisa", role: "Chief Technology Officer", image: "/images/cto.webp" },
+  { name: "Vanezza", role: "Chief Executive Officer", roleKey: "about.team.role-ceo", alt: "Vanezza, Chief Executive Officer", altKey: "about.team.alt-ceo", image: "/images/ceo.webp" },
+  { name: "Agung Denisa", role: "Chief Technology Officer", roleKey: "about.team.role-cto", alt: "Agung Denisa, Chief Technology Officer", altKey: "about.team.alt-cto", image: "/images/cto.webp" },
 ];
 
 const commitments = [
-  { icon: "solar:chat-round-dots-linear", title: "Plain-language updates.", description: "No jargon, no surprises." },
-  { icon: "solar:tag-price-linear", title: "Clear pricing.", description: "Agreed upfront, before work begins." },
+  { icon: "solar:chat-round-dots-linear", title: "Plain-language updates.", titleKey: "about.commitments.plain-title", description: "No jargon, no surprises.", descKey: "about.commitments.plain-desc" },
+  { icon: "solar:tag-price-linear", title: "Clear pricing.", titleKey: "about.commitments.pricing-title", description: "Agreed upfront, before work begins.", descKey: "about.commitments.pricing-desc" },
   {
     icon: "solar:user-speak-linear",
     title: "A real person to talk to.",
+    titleKey: "about.commitments.contact-title",
     description: "A named contact and agreed response times.",
+    descKey: "about.commitments.contact-desc",
   },
   {
     icon: "solar:shield-check-linear",
     title: "Honest advice.",
+    titleKey: "about.commitments.honest-title",
     description: "We recommend what's right for the business, not what costs the most.",
+    descKey: "about.commitments.honest-desc",
   },
 ];
 
@@ -27,16 +31,13 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
 const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 ---
 
-<Layout
-  title="About NewCo · Engineering Leadership & Governance"
-  description="Meet NewCo's founders. We build and run robust business systems, transferring complete engineering capability to your team."
->
+<Layout titleKey="meta.about.title" descKey="meta.about.description">
   <section class="bg-white">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <span class="mono text-blue">// LEADERSHIP &amp; COMMITMENTS</span>
+      <span class="mono text-blue" data-i18n="about.hero.eyebrow">// LEADERSHIP &amp; COMMITMENTS</span>
       <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
-        <h1 class="text-h1 text-navy text-balance tracking-tight lg:col-span-7">Built on trust, delivered with care.</h1>
-        <p class="text-body-lg text-slate lg:col-span-5 lg:pt-2">
+        <h1 class="text-h1 text-navy text-balance tracking-tight lg:col-span-7" data-i18n="about.hero.title">Built on trust, delivered with care.</h1>
+        <p class="text-body-lg text-slate lg:col-span-5 lg:pt-2" data-i18n="about.hero.lede">
           Your technology partner, start to finish. We design, build and support the systems businesses rely on every day.
         </p>
       </div>
@@ -46,8 +47,8 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
   <section class="border-t border-line bg-mist py-16 md:py-24">
     <div class={shell}>
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12">
-        <h2 class="text-h2 text-navy text-balance lg:col-span-5">The team behind NewCo.</h2>
-        <p class="text-body-lg text-slate lg:col-span-7">
+        <h2 class="text-h2 text-navy text-balance lg:col-span-5" data-i18n="about.team.title">The team behind NewCo.</h2>
+        <p class="text-body-lg text-slate lg:col-span-7" data-i18n="about.team.lede">
           Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.
         </p>
       </div>
@@ -57,7 +58,8 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
             <figure>
               <img
                 src={f.image}
-                alt={`${f.name}, ${f.role}`}
+                alt={f.alt}
+                data-i18n-attr={"alt:" + f.altKey}
                 width="400"
                 height="500"
                 style="max-width: 100%; height: auto;"
@@ -69,7 +71,7 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
               <figcaption class="mt-4 flex items-start justify-between gap-4 border-t border-navy pt-4">
                 <div>
                   <h3 class="text-h3 font-semibold text-navy">{f.name}</h3>
-                  <p class="text-sm text-grey mt-1">{f.role}</p>
+                  <p class="text-sm text-grey mt-1" data-i18n={f.roleKey}>{f.role}</p>
                 </div>
                 <span class="mono text-blue">{pad(i)}</span>
               </figcaption>
@@ -82,7 +84,7 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 
   <section class="bg-white py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-navy text-balance">What every client can count on.</h2>
+      <h2 class="text-h2 text-navy text-balance" data-i18n="about.commitments.title">What every client can count on.</h2>
       <ul class="mt-12 grid grid-cols-1 overflow-hidden rounded-xl border border-line bg-white md:grid-cols-2">
         {
           commitments.map((item, i) => (
@@ -90,18 +92,18 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
               <Icon name={item.icon} class="h-8 w-8 shrink-0 text-navy" aria-hidden="true" />
               <div>
                 <span class="mono text-blue">{pad(i)}</span>
-                <h3 class="text-h3 font-semibold text-navy mt-2">{item.title}</h3>
-                <p class="text-body text-slate mt-1">{item.description}</p>
+                <h3 class="text-h3 font-semibold text-navy mt-2" data-i18n={item.titleKey}>{item.title}</h3>
+                <p class="text-body text-slate mt-1" data-i18n={item.descKey}>{item.description}</p>
               </div>
             </li>
           ))
         }
       </ul>
       <div class="mt-16 border-t border-line pt-12">
-        <h3 class="text-h3 font-semibold text-navy">How we work with your leadership</h3>
+        <h3 class="text-h3 font-semibold text-navy" data-i18n="about.commitments.work-title">How we work with your leadership</h3>
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 text-body text-slate">
-          <p>We work directly alongside your existing engineers, technical leads, and founders. Rather than operating in an isolated agency silo, our engineers join your sprints, review pull requests with your team, and establish shared coding standards from day one.</p>
-          <p>Every architecture decision, infrastructure deployment, and operational runbook is documented directly in your repositories. When our engagement concludes, your business holds complete, autonomous ownership of the code, systems, and deployment pipelines.</p>
+          <p data-i18n="about.commitments.work-p1">We work directly alongside your existing engineers, technical leads, and founders. Rather than operating in an isolated agency silo, our engineers join your sprints, review pull requests with your team, and establish shared coding standards from day one.</p>
+          <p data-i18n="about.commitments.work-p2">Every architecture decision, infrastructure deployment, and operational runbook is documented directly in your repositories. When our engagement concludes, your business holds complete, autonomous ownership of the code, systems, and deployment pipelines.</p>
         </div>
       </div>
     </div>
@@ -112,15 +114,15 @@ const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
       <div class="corners rounded-xl border border-line bg-white p-8 md:p-16">
         <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-12 lg:gap-12">
           <div class="lg:col-span-8">
-            <h2 class="max-w-[22ch] text-h2 text-navy text-balance">
+            <h2 class="max-w-[22ch] text-h2 text-navy text-balance" data-i18n="about.cta.title">
               If this is how you want to work, tell us where things stand.
             </h2>
-            <p class="mt-6 max-w-[68ch] text-body text-slate text-pretty">
+            <p class="mt-6 max-w-[68ch] text-body text-slate text-pretty" data-i18n="about.cta.body">
               We'll look at your systems, constraints and goals, then give you an honest recommendation on the best way forward.
             </p>
           </div>
           <div class="lg:col-span-4 lg:justify-self-end">
-            <Button href="/contact" variant="primary" class="md:whitespace-nowrap">Talk to us</Button>
+            <Button href="/contact" variant="primary" class="md:whitespace-nowrap"><span data-i18n="about.cta.button">Talk to us</span></Button>
           </div>
         </div>
       </div>

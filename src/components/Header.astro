@@ -1,8 +1,8 @@
 ---
 const navLinks = [
-  { href: "/how-we-work", label: "How we work" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/how-we-work", label: "How we work", key: "nav.how-we-work" },
+  { href: "/about", label: "About", key: "nav.about" },
+  { href: "/contact", label: "Contact", key: "nav.contact" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname;
       NewCo
     </a>
 
-    <div class="flex items-center justify-end gap-8">
+    <div class="flex items-center justify-end gap-4 md:gap-6">
       <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
         {
           navLinks.map((link) => (
@@ -26,12 +26,18 @@ const currentPath = Astro.url.pathname;
               href={link.href}
               class="nav-link relative text-body text-grey transition-colors hover:text-navy aria-[current=page]:text-navy aria-[current=page]:font-semibold"
               aria-current={currentPath === link.href ? "page" : undefined}
+              data-i18n={link.key}
             >
               {link.label}
             </a>
           ))
         }
       </nav>
+
+      <div class="hidden items-center rounded-sm border border-line text-sm font-semibold md:flex" role="group" aria-label="Language">
+        <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="rounded-sm bg-mist px-2.5 py-1.5 text-navy">EN</button>
+        <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="rounded-sm px-2.5 py-1.5 text-grey hover:text-navy">ID</button>
+      </div>
 
       <button
         type="button"
@@ -56,11 +62,16 @@ const currentPath = Astro.url.pathname;
             href={link.href}
             class="rounded-sm px-2 py-3 text-body-lg text-navy"
             aria-current={currentPath === link.href ? "page" : undefined}
+            data-i18n={link.key}
           >
             {link.label}
           </a>
         ))
       }
+      <div class="flex items-center gap-2 px-2 py-3" role="group" aria-label="Language">
+        <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="rounded-sm border border-line bg-mist px-3 py-1.5 text-sm font-semibold text-navy">EN</button>
+        <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="rounded-sm px-3 py-1.5 text-sm font-semibold text-grey hover:text-navy">ID</button>
+      </div>
     </nav>
   </div>
 </header>

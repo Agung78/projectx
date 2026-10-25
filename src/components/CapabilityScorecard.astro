@@ -3,25 +3,26 @@
  * §7 Capability-Transfer Scorecard. One source for the eight capabilities and
  * four checkpoints so the home page and /how-we-work never drift apart.
  */
-interface Props {
-  tone?: "dark" | "light";
-}
-
 const { tone = "light" } = Astro.props;
 const dark = tone === "dark";
 
 const scorecard = [
-  { capability: "Architecture", evidence: "Explains the major components, constraints, and trade-offs." },
-  { capability: "Delivery", evidence: "Ships a production change through the normal controls." },
-  { capability: "Operations", evidence: "Responds to an incident using logs, metrics, traces, and runbooks." },
-  { capability: "Recovery", evidence: "Executes rollback and recovery procedures." },
-  { capability: "Data", evidence: "Validates freshness, quality, lineage, and permissions." },
-  { capability: "Security", evidence: "Remediates a dependency or access-control issue." },
-  { capability: "Decision-making", evidence: "Authors and defends an architecture decision record." },
-  { capability: "Planning", evidence: "Prioritises and delivers the next iteration without us." },
+  { key: "row1", capability: "Architecture", evidence: "Explains the major components, constraints, and trade-offs." },
+  { key: "row2", capability: "Delivery", evidence: "Ships a production change through the normal controls." },
+  { key: "row3", capability: "Operations", evidence: "Responds to an incident using logs, metrics, traces, and runbooks." },
+  { key: "row4", capability: "Recovery", evidence: "Executes rollback and recovery procedures." },
+  { key: "row5", capability: "Data", evidence: "Validates freshness, quality, lineage, and permissions." },
+  { key: "row6", capability: "Security", evidence: "Remediates a dependency or access-control issue." },
+  { key: "row7", capability: "Decision-making", evidence: "Authors and defends an architecture decision record." },
+  { key: "row8", capability: "Planning", evidence: "Prioritises and delivers the next iteration without us." },
 ];
 
-const checkpoints = ["Baseline", "Build With", "Before shared ops", "Handover"];
+const checkpoints = [
+  { key: "check1", label: "Baseline" },
+  { key: "check2", label: "Build With" },
+  { key: "check3", label: "Before shared ops" },
+  { key: "check4", label: "Handover" },
+];
 
 const c = dark
   ? { head: "text-white/60", rule: "border-white/30", row: "border-white/15", name: "text-white", body: "text-white/80", dot: "border-white/40" }
@@ -29,17 +30,17 @@ const c = dark
 ---
 
 <table class="w-full border-collapse text-left">
-  <caption class="sr-only">
+  <caption class="sr-only" data-i18n="capabilityscorecard.caption">
     Capability-transfer scorecard: each capability, its handover evidence, and the four assessment checkpoints.
   </caption>
   <thead class="hidden md:table-header-group">
     <tr class:list={["border-b", c.rule]}>
-      <th scope="col" class:list={["label w-[22%] py-4 pr-6", c.head]}>Capability</th>
-      <th scope="col" class:list={["label py-4 pr-6", c.head]}>Evidence at handover</th>
+      <th scope="col" class:list={["label w-[22%] py-4 pr-6", c.head]} data-i18n="capabilityscorecard.col-capability">Capability</th>
+      <th scope="col" class:list={["label py-4 pr-6", c.head]} data-i18n="capabilityscorecard.col-evidence">Evidence at handover</th>
       {
         checkpoints.map((checkpoint) => (
-          <th scope="col" class:list={["label w-[9%] px-2 py-4 text-center", c.head]}>
-            {checkpoint}
+          <th scope="col" class:list={["label w-[9%] px-2 py-4 text-center", c.head]} data-i18n={`capabilityscorecard.${checkpoint.key}`}>
+            {checkpoint.label}
           </th>
         ))
       }
@@ -49,19 +50,19 @@ const c = dark
     {
       scorecard.map((row) => (
         <tr class:list={["flex flex-col gap-1 border-b py-5 md:table-row md:py-0", c.row]}>
-          <th scope="row" class:list={["text-h3 font-semibold md:py-6 md:pr-6", c.name]}>
+          <th scope="row" class:list={["text-h3 font-semibold md:py-6 md:pr-6", c.name]} data-i18n={`capabilityscorecard.${row.key}.capability`}>
             {row.capability}
           </th>
-          <td class:list={["text-body-lg md:py-6 md:pr-6", c.body]}>{row.evidence}</td>
-          {checkpoints.map((checkpoint, i) => (
+          <td class:list={["text-body-lg md:py-6 md:pr-6", c.body]} data-i18n={`capabilityscorecard.${row.key}.evidence`}>{row.evidence}</td>
+          {checkpoints.map((checkpoint, j) => (
             <td class="hidden px-2 text-center md:table-cell">
               <span
                 class:list={[
                   "inline-block h-4 w-4 rounded-full border",
-                  i === checkpoints.length - 1 ? "border-2 border-blue" : c.dot,
+                  j === checkpoints.length - 1 ? "border-2 border-blue" : c.dot,
                 ]}
               />
-              <span class="sr-only">{checkpoint}: assessed</span>
+              <span class="sr-only" data-i18n={`capabilityscorecard.${checkpoint.key}-assessed`}>{checkpoint.label}: assessed</span>
             </td>
           ))}
         </tr>

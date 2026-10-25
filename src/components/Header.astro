@@ -1,8 +1,8 @@
 ---
 const navLinks = [
-  { href: "/how-we-work", label: "How we work" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/how-we-work", label: "How we work", key: "nav.how-we-work" },
+  { href: "/about", label: "About", key: "nav.about" },
+  { href: "/contact", label: "Contact", key: "nav.contact" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname;
       NewCo
     </a>
 
-    <div class="flex items-center justify-end gap-8">
+    <div class="flex items-center justify-end gap-4 md:gap-6">
       <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
         {
           navLinks.map((link) => (
@@ -26,12 +26,24 @@ const currentPath = Astro.url.pathname;
               href={link.href}
               class="nav-link relative text-body text-grey transition-colors hover:text-navy aria-[current=page]:text-navy aria-[current=page]:font-semibold"
               aria-current={currentPath === link.href ? "page" : undefined}
+              data-i18n={link.key}
             >
               {link.label}
             </a>
           ))
         }
       </nav>
+
+      <div class="relative hidden items-center rounded-sm border border-line p-0.5 text-sm font-semibold md:inline-flex" role="group" aria-label="Language">
+        <span
+          class="pointer-events-none absolute inset-y-0.5 left-0.5 w-[calc(50%-2px)] rounded-xs bg-mist transition-transform duration-200 ease-out motion-reduce:transition-none"
+          style="transform: translateX(0%)"
+          data-lang-indicator
+          aria-hidden="true"
+        />
+        <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-navy cursor-pointer motion-reduce:transition-none">EN</button>
+        <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-grey hover:text-navy cursor-pointer motion-reduce:transition-none">ID</button>
+      </div>
 
       <button
         type="button"
@@ -56,11 +68,24 @@ const currentPath = Astro.url.pathname;
             href={link.href}
             class="rounded-sm px-2 py-3 text-body-lg text-navy"
             aria-current={currentPath === link.href ? "page" : undefined}
+            data-i18n={link.key}
           >
             {link.label}
           </a>
         ))
       }
+      <div class="px-2 py-3">
+        <div class="relative inline-flex items-center rounded-sm border border-line p-0.5 text-sm font-semibold" role="group" aria-label="Language">
+          <span
+            class="pointer-events-none absolute inset-y-0.5 left-0.5 w-[calc(50%-2px)] rounded-xs bg-mist transition-transform duration-200 ease-out motion-reduce:transition-none"
+            style="transform: translateX(0%)"
+            data-lang-indicator
+            aria-hidden="true"
+          />
+          <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-navy cursor-pointer motion-reduce:transition-none">EN</button>
+          <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-grey hover:text-navy cursor-pointer motion-reduce:transition-none">ID</button>
+        </div>
+      </div>
     </nav>
   </div>
 </header>

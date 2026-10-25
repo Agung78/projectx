@@ -5,11 +5,20 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
+  titleKey?: string;
+  descKey?: string;
 }
 
-const { title, description } = Astro.props;
+const { titleKey, descKey } = Astro.props;
+let { title = "", description = "" } = Astro.props;
+if (titleKey || descKey) {
+  const { STRINGS } = await import("../i18n/dictionary");
+  if (titleKey && STRINGS[titleKey]) title = STRINGS[titleKey].en;
+  if (descKey && STRINGS[descKey]) description = STRINGS[descKey].en;
+}
+
 const pageTitle = title.includes("NewCo") ? title : `${title} | NewCo`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("/og-image.png", Astro.site);
@@ -74,8 +83,8 @@ const structuredData = {
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="llms" href="/llms.txt" />
-    <title>{pageTitle}</title>
-    <meta name="description" content={description} />
+    <title data-title-key={titleKey}>{pageTitle}</title>
+    <meta name="description" content={description} data-desc-key={descKey} />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
@@ -94,6 +103,9 @@ const structuredData = {
 
     <script>
       import "../scripts/motion.ts";
+    </script>
+    <script>
+      import "../i18n/apply.ts";
     </script>
     <ClientRouter />
   </head>

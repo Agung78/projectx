@@ -882,8 +882,8 @@ export const STRINGS: Record<string, Entry> = {
     "LANGKAH // 03",
   ),
   "index.discovery.step3.title": e(
-    "Plan",
-    "Merencanakan",
+    "Delivery plan",
+    "Rencana induk",
   ),
   "index.discovery.title": e(
     "Every project starts with a clear picture.",

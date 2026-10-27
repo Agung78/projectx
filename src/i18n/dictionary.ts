@@ -81,6 +81,14 @@ export const STRINGS: Record<string, Entry> = {
     "Built on trust, delivered with care.",
     "Dibangun atas dasar kepercayaan, dihadirkan dengan sepenuh hati.",
   ),
+  "about.overview.body": e(
+    "See how NewCo works, what we deliver, and how ownership transfers to your business.",
+    "Pelajari cara kerja NewCo, apa yang kami hadirkan, dan bagaimana kepemilikan dialihkan ke bisnis Anda.",
+  ),
+  "about.overview.title": e(
+    "Want a quick overview?",
+    "Ingin ringkasan singkat?",
+  ),
   "about.team.alt-ceo": e(
     "Vanezza, Chief Executive Officer",
     "Vanezza, Chief Executive Officer",
@@ -833,6 +841,10 @@ export const STRINGS: Record<string, Entry> = {
     "Talk to us",
     "Hubungi kami",
   ),
+  "index.cta.overview": e(
+    "Prefer to review first?",
+    "Ingin tinjau dulu?",
+  ),
   "index.cta.title": e(
     "Own the technology your business runs on.",
     "Miliki kendali penuh atas teknologi yang menggerakkan bisnis Anda.",
@@ -1228,6 +1240,14 @@ export const STRINGS: Record<string, Entry> = {
   "nav.how-we-work": e(
     "How we work",
     "Cara kami bekerja",
+  ),
+  "overview.href": e(
+    "/downloads/newco-company-overview-en.pdf",
+    "/downloads/newco-company-overview-id.pdf",
+  ),
+  "overview.link": e(
+    "View company overview (PDF)",
+    "Lihat profil perusahaan (PDF)",
   ),
   "privacy.footer.link": e(
     "Contact us",

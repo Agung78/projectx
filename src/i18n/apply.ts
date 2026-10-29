@@ -40,10 +40,11 @@ function swapText(lang: Lang): void {
 
 function rewriteLinks(lang: Lang): void {
   document.querySelectorAll<HTMLAnchorElement>('a[href^="/"]').forEach((a) => {
+    if (a.dataset.i18nAttr?.includes("href:")) return;
     const href = a.getAttribute("href");
     if (!href || href.startsWith("//")) return;
     const m = href.match(/^(\/[^?#]*)([?#].*)?$/);
-    if (!m) return;
+    if (!m || /\.[a-z0-9]+$/i.test(m[1])) return;
     const base = m[1].replace(ID_PREFIX, "") || "/";
     a.setAttribute("href", (lang === "id" ? `/id${base === "/" ? "/" : base}` : base) + (m[2] ?? ""));
   });

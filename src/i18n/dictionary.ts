@@ -1363,6 +1363,3 @@ export const STRINGS: Record<string, Entry> = {
   ),
 };
 
-export function t(key: string, lang: Lang): string {
-  return STRINGS[key]?.[lang] ?? STRINGS[key]?.en ?? key;
-}

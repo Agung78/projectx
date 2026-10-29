@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import { Icon } from "astro-icon/components";
+import { pad, shell } from "../lib/ui";
 
 const founders = [
   { name: "Vanezza", role: "Chief Executive Officer", roleKey: "about.team.role-ceo", alt: "Vanezza, Chief Executive Officer", altKey: "about.team.alt-ceo", image: "/images/ceo.webp" },
@@ -26,9 +27,6 @@ const commitments = [
     descKey: "about.commitments.honest-desc",
   },
 ];
-
-const pad = (i: number) => String(i + 1).padStart(2, "0");
-const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 ---
 
 <Layout titleKey="meta.about.title" descKey="meta.about.description">

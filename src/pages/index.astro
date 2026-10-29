@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import CapabilityCurve from "../components/CapabilityCurve.astro";
-
+import { pad, shell } from "../lib/ui";
 
 const problemCards = [
   { key: "problem1", title: "The disappearing agency", body: "Builds it, bills it, leaves." },
@@ -81,8 +81,6 @@ const metrics = [
   { key: "metric8", metric: "Transfer readiness", tells: "How complete the documentation and transfer checklist are" },
 ];
 
-const pad = (i: number) => String(i + 1).padStart(2, "0");
-const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
 // Buttons hold one line on desktop; they may wrap only in narrow mobile columns.
 const btn = "md:whitespace-nowrap";
 ---

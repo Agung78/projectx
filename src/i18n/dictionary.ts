@@ -551,7 +551,7 @@ export const STRINGS: Record<string, Entry> = {
   ),
   "contact.faq.q1-body": e(
     "Within 24 business hours, our founders review your details and send a direct response. If there is mutual alignment, we schedule a 30-minute discovery conversation to discuss architecture, timeline, and goals.",
-    "Dalam waktu 24 jam kerja, pendiri kami meninjau detail Anda dan mengirimkan balasan langsung. Jika terdapat keselarasan, kami menjadwalkan diskusi penelaahan selama 30 menit.",
+    "Dalam waktu 24 jam kerja, founder meninjau detail Anda dan mengirimkan balasan langsung. Jika terdapat keselarasan, kami menjadwalkan diskusi penelaahan selama 30 menit.",
   ),
   "contact.faq.q2-title": e(
     "Do you sign non-disclosure agreements?",

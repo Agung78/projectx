@@ -14,9 +14,11 @@ const site = process.env.VERCEL_PROJECT_PRODUCTION_URL
 export default defineConfig({
   site,
   integrations: [icon(),
-    sitemap(),
+    sitemap({ i18n: { defaultLocale: "en", locales: { en: "en", id: "id" } } }),
   ],
   vite: {
     plugins: [tailwindcss()],
+    // Emit every script as a file so CSP can drop script-src 'unsafe-inline'.
+    build: { assetsInlineLimit: 0 },
   },
 });

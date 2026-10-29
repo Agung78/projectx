@@ -1,0 +1,9 @@
+# Contact NewCo
+
+Initiate an engagement discussion with our founders.
+
+- **Founder Review:** Every inquiry is directly evaluated by Vanezza and Agung Denisa.
+- **SLA:** Guaranteed response within 24 business hours.
+- **Initial Discussion:** 30-minute scoping call to map systems, constraints, and objectives.
+- **Mutual NDA:** Standard mutual non-disclosure agreement executed prior to technical architecture reviews.
+- **Online Intake:** [https://projectx-gold.vercel.app/contact](https://projectx-gold.vercel.app/contact)

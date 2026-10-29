@@ -89,6 +89,50 @@ export const STRINGS: Record<string, Entry> = {
     "Want a quick overview?",
     "Ingin ringkasan singkat?",
   ),
+  "about.philosophy.eyebrow": e(
+    "// OUR PHILOSOPHY",
+    "// FILOSOFI KAMI",
+  ),
+  "about.philosophy.heading": e(
+    "Engineering principles that outlast our engagement.",
+    "Prinsip rekayasa yang bertahan melampaui kerja sama kami.",
+  ),
+  "about.philosophy.lede": e(
+    "We believe technology should serve business growth without creating perpetual vendor dependence. These four commitments govern how we architect and build.",
+    "Kami meyakini teknologi harus mendorong pertumbuhan bisnis tanpa menciptakan ketergantungan abadi pada vendor. Empat komitmen ini menjadi landasan arsitektur dan pembangunan kami.",
+  ),
+  "about.philosophy.p1-title": e(
+    "Zero lock-in architecture",
+    "Arsitektur Tanpa Keterikatan (Zero Lock-In)",
+  ),
+  "about.philosophy.p1-body": e(
+    "Every architectural decision prioritizes open standards, clean API boundaries, and mainstream cloud primitives. Your team can run, modify, or migrate your systems anywhere without proprietary hurdles.",
+    "Setiap keputusan arsitektur memprioritaskan standar terbuka, batasan API yang bersih, dan primitif cloud standar. Tim Anda dapat menjalankan, memodifikasi, atau memigrasikan sistem ke mana saja tanpa hambatan.",
+  ),
+  "about.philosophy.p2-title": e(
+    "Continuous documentation",
+    "Dokumentasi Berkelanjutan",
+  ),
+  "about.philosophy.p2-body": e(
+    "Architecture decision records, deployment runbooks, and schema maps live directly in version control alongside application source code, ensuring knowledge is never lost to employee turnover.",
+    "Catatan keputusan arsitektur (ADR), panduan operasional (runbooks), dan peta skema tersimpan langsung di kontrol versi bersama kode sumber, memastikan pengetahuan tidak hilang saat terjadi pergantian staf.",
+  ),
+  "about.philosophy.p3-title": e(
+    "Shared code ownership",
+    "Kepemilikan Kode Bersama",
+  ),
+  "about.philosophy.p3-body": e(
+    "We write software for the engineers who will maintain it years down the road. Strict typing, automated linters, and end-to-end integration tests prevent regressions and maintain velocity.",
+    "Kami menulis perangkat lunak untuk para engineer yang akan memeliharanya di masa mendatang. Pengetikan ketat, linter otomatis, dan pengujian integrasi menyeluruh mencegah regresi dan menjaga kecepatan pengembangan.",
+  ),
+  "about.philosophy.p4-title": e(
+    "Pragmatic innovation",
+    "Inovasi Pragmatis",
+  ),
+  "about.philosophy.p4-body": e(
+    "New tools and frameworks are evaluated against maintenance burden and measurable business return before adoption. We recommend boring, reliable solutions whenever they deliver equal or superior value.",
+    "Teknologi dan kerangka kerja baru dievaluasi berdasarkan beban pemeliharaan dan dampak bisnis nyata sebelum diadopsi. Kami menyarankan solusi yang terbukti andal bilamana memberikan nilai yang setara atau lebih baik.",
+  ),
   "about.team.alt-ceo": e(
     "Vanezza, Chief Executive Officer",
     "Vanezza, Chief Executive Officer",
@@ -97,9 +141,21 @@ export const STRINGS: Record<string, Entry> = {
     "Agung Denisa, Chief Technology Officer",
     "Agung Denisa, Chief Technology Officer",
   ),
+  "about.team.bio-ceo": e(
+    "Vanezza leads client strategy and operations. She translates business goals into clear technical scope and ensures every engagement delivers measurable value.",
+    "Vanezza memimpin strategi dan operasi klien. Dia menerjemahkan tujuan bisnis ke ruang lingkup teknis yang jelas dan memastikan setiap kerja sama menghasilkan nilai yang terukur.",
+  ),
+  "about.team.bio-cto": e(
+    "Agung architects the systems NewCo builds and owns the technical standards. He reviews every proposal for feasibility, maintainability, and security.",
+    "Agung merancang sistem yang NewCo bangun dan memiliki standar teknis. Dia meninjau setiap proposal untuk kelayakan, maintainability, dan keamanan.",
+  ),
   "about.team.lede": e(
     "Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.",
     "Setiap proposal ditinjau langsung oleh kedua pendiri—satu dari sisi bisnis dan satu dari sisi teknis—sehingga apa yang kami janjikan selalu dapat kami wujudkan.",
+  ),
+  "about.team.linkedin": e(
+    "LinkedIn",
+    "LinkedIn",
   ),
   "about.team.role-ceo": e(
     "Chief Executive Officer",
@@ -477,6 +533,66 @@ export const STRINGS: Record<string, Entry> = {
     "Thanks, we've got it. We'll reply within 24 hours with a clear next step.",
     "Terima kasih, sudah kami terima. Kami balas dalam 24 jam dengan langkah berikutnya yang jelas.",
   ),
+  "contact.faq.eyebrow": e(
+    "// ENGAGEMENT FAQ",
+    "// TANYA JAWAB KERJA SAMA",
+  ),
+  "contact.faq.heading": e(
+    "Common questions before reaching out.",
+    "Pertanyaan umum sebelum memulai kerja sama.",
+  ),
+  "contact.faq.lede": e(
+    "Here is what working with NewCo looks like from initial conversation to contractual handover.",
+    "Inilah gambaran bermitra dengan NewCo, mulai dari percakapan awal hingga serah terima kontrak.",
+  ),
+  "contact.faq.q1-title": e(
+    "What happens after submitting the form?",
+    "Apa yang terjadi setelah mengirimkan formulir?",
+  ),
+  "contact.faq.q1-body": e(
+    "Within 24 business hours, our founders review your details and send a direct response. If there is mutual alignment, we schedule a 30-minute discovery conversation to discuss architecture, timeline, and goals.",
+    "Dalam waktu 24 jam kerja, pendiri kami meninjau detail Anda dan mengirimkan balasan langsung. Jika terdapat keselarasan, kami menjadwalkan diskusi penelaahan selama 30 menit.",
+  ),
+  "contact.faq.q2-title": e(
+    "Do you sign non-disclosure agreements?",
+    "Apakah Anda menandatangani perjanjian kerahasiaan (NDA)?",
+  ),
+  "contact.faq.q2-body": e(
+    "Yes. We routinely execute mutual NDAs prior to reviewing proprietary source code, infrastructure credentials, or sensitive business logic. Your intellectual property remains strictly yours.",
+    "Ya. Kami secara rutin menandatangani NDA dua arah sebelum meninjau kode sumber eksklusif, kredensial infrastruktur, atau logika bisnis sensitif.",
+  ),
+  "contact.faq.q3-title": e(
+    "What types of projects do you take on?",
+    "Jenis proyek apa saja yang Anda tangani?",
+  ),
+  "contact.faq.q3-body": e(
+    "We partner on core web platforms, enterprise distributed systems, cloud migrations, performance overhauls, and modernization of legacy codebases where client teams require long-term independence.",
+    "Kami bermitra untuk platform web inti, sistem terdistribusi skala enterprise, migrasi cloud, optimalisasi performa, dan modernisasi kode lama agar tim klien mandiri jangka panjang.",
+  ),
+  "contact.faq.q4-title": e(
+    "How does pricing and billing work?",
+    "Bagaimana sistem penetapan harga dan penagihan?",
+  ),
+  "contact.faq.q4-body": e(
+    "Engagements are scoped with fixed, transparent milestones or predictable monthly retainers. You receive clear deliverables with no unexpected billing or hidden maintenance fees.",
+    "Kerja sama dirancang dengan pencapaian bertahap yang transparan atau retainer bulanan yang dapat diprediksi. Anda menerima hasil kerja nyata tanpa biaya tak terduga.",
+  ),
+  "contact.faq.q5-title": e(
+    "Can we start with a pilot engagement?",
+    "Bisakah kami memulai dengan proyek percontohan (pilot)?",
+  ),
+  "contact.faq.q5-body": e(
+    "Yes. Many clients begin with a two-week baseline diagnostic or targeted architecture audit. This gives your team a clear, actionable roadmap and proof of collaboration before committing to full-scale build sprints.",
+    "Bisa. Banyak klien memulai dengan diagnostik dasar dua minggu atau audit arsitektur terarah. Ini memberi tim Anda peta jalan yang jelas dan bukti kerja sama sebelum memulai sprint pembangunan penuh.",
+  ),
+  "contact.faq.q6-title": e(
+    "How do you collaborate with our team?",
+    "Bagaimana Anda berkolaborasi dengan tim kami?",
+  ),
+  "contact.faq.q6-body": e(
+    "We integrate directly into your existing communication tools, participate in sprint rituals, and submit changes through pull requests. Knowledge transfer happens continuously through daily code reviews.",
+    "Kami terhubung langsung ke sarana komunikasi Anda, mengikuti ritme sprint harian, dan mengajukan perubahan lewat pull request. Transfer pengetahuan terjadi terus-menerus melalui tinjauan kode harian.",
+  ),
   "contact.intro.expect-1": e(
     "An initial 30-minute scoping call to understand your systems and constraints.",
     "Sesi diskusi awal (scoping call) selama 30 menit untuk memahami sistem dan batasan Anda.",
@@ -528,6 +644,10 @@ export const STRINGS: Record<string, Entry> = {
   "footer.company": e(
     "Company",
     "Perusahaan",
+  ),
+  "footer.connect": e(
+    "Connect",
+    "Terhubung",
   ),
   "footer.cta": e(
     "Start a conversation",
@@ -637,6 +757,14 @@ export const STRINGS: Record<string, Entry> = {
     "Before we sign off, each item below is delivered and walked through with whoever will run the system. The checklist is agreed in the contract.",
     "Sebelum persetujuan akhir, setiap poin di bawah ini diserahkan dan dipandu langsung bersama siapa pun yang akan mengelola sistem Anda. Daftar periksa ini telah disepakati di dalam kontrak.",
   ),
+  "howwework.handover.verification-1": e(
+    "Handover is not a ZIP file sent on the final afternoon. Throughout the transition phase, your in-house engineers or designated vendors shadow our architects, execute staging deployments, and lead production hotfixes under our supervision.",
+    "Serah terima bukanlah file ZIP yang dikirim di sore hari terakhir. Sepanjang fase transisi, para engineer internal atau vendor yang Anda tunjuk mendampingi arsitek kami, menjalankan rilis staging, dan memimpin perbaikan produksi di bawah bimbingan kami.",
+  ),
+  "howwework.handover.verification-2": e(
+    "Every deliverable is verified against contractual acceptance criteria. Access credentials, deployment tokens, and cloud infrastructure billing accounts are transferred into your organization's legal name before sign-off.",
+    "Setiap deliverable diverifikasi berdasarkan kriteria penerimaan kontrak. Kredensial akses, token penerapan, dan akun penagihan infrastruktur cloud dialihkan resmi atas nama hukum organisasi Anda sebelum tanda tangan akhir.",
+  ),
   "howwework.handover.recovery.included": e(
     "How to restore the system from backup if something goes wrong",
     "Cara memulihkan sistem dari salinan cadangan (backup) jika terjadi kendala",
@@ -676,6 +804,46 @@ export const STRINGS: Record<string, Entry> = {
   "howwework.handover.walkthrough.item": e(
     "Live walkthrough",
     "Sesi Panduan Langsung",
+  ),
+  "howwework.handover.caption": e(
+    "Detailed technical handover deliverables, source repository ownership, and transition milestones",
+    "Kelengkapan serah terima teknis, kepemilikan repositori kode sumber, dan tonggak transisi",
+  ),
+  "howwework.governance.eyebrow": e(
+    "// ENGINEERING GOVERNANCE",
+    "// TATA KELOLA REKAYASA",
+  ),
+  "howwework.governance.heading": e(
+    "Reliable systems need shared standards, not secret knowledge.",
+    "Sistem yang andal membutuhkan standar bersama, bukan rahasia perorangan.",
+  ),
+  "howwework.governance.lede": e(
+    "When engineering teams depend on heroics or tribal memory, software degrades with every release. We build repeatable processes into the codebase itself.",
+    "Ketika tim rekayasa bergantung pada hafalan atau keahlian pribadi, kualitas perangkat lunak menurun di tiap rilis. Kami membangun proses yang dapat diulang langsung ke dalam repositori kode.",
+  ),
+  "howwework.governance.test-title": e(
+    "Automated testing & CI/CD",
+    "Pengujian Otomatis & CI/CD",
+  ),
+  "howwework.governance.test-body": e(
+    "Every pull request triggers automated unit, integration, and security checks before merging. Deployments run through reproducible, automated pipelines with zero downtime and rollback triggers.",
+    "Setiap pull request menjalankan pengujian unit, integrasi, dan pemeriksaan keamanan otomatis sebelum digabungkan. Penerapan kode berjalan lewat alur otomatis yang dapat direproduksi dengan zero downtime.",
+  ),
+  "howwework.governance.obs-title": e(
+    "Observability & runbooks",
+    "Observabilitas & Panduan Operasional",
+  ),
+  "howwework.governance.obs-body": e(
+    "Structured logging, metrics, and actionable alerts mean issues are spotted before users notice them. Every critical alert links directly to a plain-language operational runbook.",
+    "Pencatatan terstruktur, metrik, dan peringatan dini memastikan kendala terdeteksi sebelum pengguna menyadarinya. Setiap peringatan penting terhubung langsung ke panduan operasional.",
+  ),
+  "howwework.governance.infra-title": e(
+    "Infrastructure as code",
+    "Infrastruktur sebagai Kode",
+  ),
+  "howwework.governance.infra-body": e(
+    "Cloud resources, databases, networking, and access policies are defined declaratively in version control. Staging mirrors production, eliminating surprise deployment discrepancies.",
+    "Sumber daya cloud, basis data, jaringan, dan kebijakan akses didefinisikan secara deklaratif di sistem kontrol versi. Lingkungan uji coba mencerminkan produksi sepenuhnya.",
   ),
   "howwework.hero.eyebrow": e(
     "// METHODOLOGY & PROCESS",
@@ -721,6 +889,10 @@ export const STRINGS: Record<string, Entry> = {
     "Four stages, one direction.",
     "Empat tahap, satu arah yang jelas.",
   ),
+  "howwework.stages.intro-p1": e(
+    "Every partnership is structured for complete operational independence from the very first week. Rather than creating proprietary dependencies or isolated agency silos, we embed directly with your engineers, establish automated standards in your repositories, and ensure your team holds full technical confidence.",
+    "Setiap kemitraan dirancang untuk mencapai kemandirian operasional penuh sejak minggu pertama. Alih-alih menciptakan ketergantungan atau bekerja secara terisolasi, kami berkolaborasi langsung dengan para engineer Anda, menerapkan standar otomatis di repositori Anda, dan memastikan tim Anda memiliki kepercayaan diri teknis seutuhnya.",
+  ),
   "howwework.stages.note": e(
     "How long each stage takes depends on the project. We agree the timeline during Discovery.",
     "Durasi setiap tahapan disesuaikan dengan skala proyek. Garis waktu (timeline) akan disepakati bersama pada tahap Discovery.",
@@ -760,6 +932,10 @@ export const STRINGS: Record<string, Entry> = {
   "howwework.tech.note": e(
     "// Built on proven, widely used technology.",
     "// Dibangun di atas teknologi yang terbukti dan dipakai luas.",
+  ),
+  "howwework.tech.lede": e(
+    "We deliberately select battle-tested, widely adopted open-source technologies with robust global communities. This ensures any qualified software engineer can comfortably inspect, maintain, and expand your systems without specialized proprietary training.",
+    "Kami secara cermat memilih teknologi open-source yang teruji keandalannya dan didukung komunitas global yang kuat. Hal ini menjamin bahwa setiap engineer yang kompeten dapat dengan mudah memeriksa, memelihara, dan mengembangkan sistem Anda tanpa pelatihan khusus.",
   ),
   "index.ai.eyebrow": e(
     "// Optional service",
@@ -1225,6 +1401,10 @@ export const STRINGS: Record<string, Entry> = {
     "How NewCo handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data.",
     "Cara NewCo menangani data formulir kontak, menjaga kerahasiaan arsitektur klien, mengatur pemakaian AI atas aset klien, dan menyimpan data.",
   ),
+  "meta.privacy.title": e(
+    "Privacy Policy | NewCo",
+    "Kebijakan Privasi | NewCo",
+  ),
   "nav.about": e(
     "About",
     "Tentang",
@@ -1248,6 +1428,10 @@ export const STRINGS: Record<string, Entry> = {
   "overview.link": e(
     "View company overview (PDF)",
     "Lihat profil perusahaan (PDF)",
+  ),
+  "privacy.disclaimer": e(
+    "Disclaimer: This policy is published for informational purposes only and does not constitute formal legal advice. For specific regulatory compliance, consult qualified legal counsel.",
+    "Penafian: Kebijakan ini dipublikasikan hanya untuk tujuan informasi dan bukan merupakan nasihat hukum formal. Untuk kepatuhan regulasi tertentu, konsultasikan dengan penasihat hukum yang berkualifikasi.",
   ),
   "privacy.footer.link": e(
     "Contact us",

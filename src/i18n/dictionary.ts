@@ -757,14 +757,6 @@ export const STRINGS: Record<string, Entry> = {
     "Before we sign off, each item below is delivered and walked through with whoever will run the system. The checklist is agreed in the contract.",
     "Sebelum persetujuan akhir, setiap poin di bawah ini diserahkan dan dipandu langsung bersama siapa pun yang akan mengelola sistem Anda. Daftar periksa ini telah disepakati di dalam kontrak.",
   ),
-  "howwework.handover.verification-1": e(
-    "Handover is not a ZIP file sent on the final afternoon. Throughout the transition phase, your in-house engineers or designated vendors shadow our architects, execute staging deployments, and lead production hotfixes under our supervision.",
-    "Serah terima bukanlah file ZIP yang dikirim di sore hari terakhir. Sepanjang fase transisi, para engineer internal atau vendor yang Anda tunjuk mendampingi arsitek kami, menjalankan rilis staging, dan memimpin perbaikan produksi di bawah bimbingan kami.",
-  ),
-  "howwework.handover.verification-2": e(
-    "Every deliverable is verified against contractual acceptance criteria. Access credentials, deployment tokens, and cloud infrastructure billing accounts are transferred into your organization's legal name before sign-off.",
-    "Setiap deliverable diverifikasi berdasarkan kriteria penerimaan kontrak. Kredensial akses, token penerapan, dan akun penagihan infrastruktur cloud dialihkan resmi atas nama hukum organisasi Anda sebelum tanda tangan akhir.",
-  ),
   "howwework.handover.recovery.included": e(
     "How to restore the system from backup if something goes wrong",
     "Cara memulihkan sistem dari salinan cadangan (backup) jika terjadi kendala",
@@ -888,10 +880,6 @@ export const STRINGS: Record<string, Entry> = {
   "howwework.stages.heading": e(
     "Four stages, one direction.",
     "Empat tahap, satu arah yang jelas.",
-  ),
-  "howwework.stages.intro-p1": e(
-    "Every partnership is structured for complete operational independence from the very first week. Rather than creating proprietary dependencies or isolated agency silos, we embed directly with your engineers, establish automated standards in your repositories, and ensure your team holds full technical confidence.",
-    "Setiap kemitraan dirancang untuk mencapai kemandirian operasional penuh sejak minggu pertama. Alih-alih menciptakan ketergantungan atau bekerja secara terisolasi, kami berkolaborasi langsung dengan para engineer Anda, menerapkan standar otomatis di repositori Anda, dan memastikan tim Anda memiliki kepercayaan diri teknis seutuhnya.",
   ),
   "howwework.stages.note": e(
     "How long each stage takes depends on the project. We agree the timeline during Discovery.",

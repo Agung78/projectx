@@ -1,9 +1,10 @@
 {
+  "trailingSlash": true,
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'self';" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data: https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; require-trusted-types-for 'script';" },
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
@@ -14,7 +15,7 @@
     }
   ],
   "redirects": [
-    { "source": "/approach", "destination": "/how-we-work", "statusCode": 301 },
-    { "source": "/diagnostic", "destination": "/how-we-work", "statusCode": 301 }
+    { "source": "/approach", "destination": "/how-we-work/", "statusCode": 301 },
+    { "source": "/diagnostic", "destination": "/how-we-work/", "statusCode": 301 }
   ]
 }

@@ -140,6 +140,63 @@ import Button from "../components/Button.astro";
       </div>
     </div>
   </section>
+
+  <section class="border-t border-line bg-mist py-16 md:py-24">
+    <div class="mx-auto max-w-[1200px] px-4 md:px-6">
+      <div class="max-w-[68ch]">
+        <span class="mono text-blue" data-i18n="contact.faq.eyebrow">// ENGAGEMENT FAQ</span>
+        <h2 class="mt-4 text-h2 text-navy text-balance" data-i18n="contact.faq.heading">Common questions before reaching out.</h2>
+        <p class="mt-4 text-body-lg text-slate" data-i18n="contact.faq.lede">
+          Here is what working with NewCo looks like from initial conversation to contractual handover.
+        </p>
+      </div>
+
+      <ol class="mt-12 border-t border-navy">
+        <li class="grid grid-cols-1 gap-3 border-b border-line py-8 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8">
+          <span class="mono text-blue md:text-base">01</span>
+          <h3 class="text-h3 font-semibold text-navy text-balance" data-i18n="contact.faq.q1-title">What happens after submitting the form?</h3>
+          <p class="text-body text-slate" data-i18n="contact.faq.q1-body">
+            Within 24 business hours, our founders review your details and send a direct response. If there is mutual alignment, we schedule a 30-minute discovery conversation to discuss architecture, timeline, and goals.
+          </p>
+        </li>
+        <li class="grid grid-cols-1 gap-3 border-b border-line py-8 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8">
+          <span class="mono text-blue md:text-base">02</span>
+          <h3 class="text-h3 font-semibold text-navy text-balance" data-i18n="contact.faq.q2-title">Do you sign non-disclosure agreements?</h3>
+          <p class="text-body text-slate" data-i18n="contact.faq.q2-body">
+            Yes. We routinely execute mutual NDAs prior to reviewing proprietary source code, infrastructure credentials, or sensitive business logic. Your intellectual property remains strictly yours.
+          </p>
+        </li>
+        <li class="grid grid-cols-1 gap-3 border-b border-line py-8 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8">
+          <span class="mono text-blue md:text-base">03</span>
+          <h3 class="text-h3 font-semibold text-navy text-balance" data-i18n="contact.faq.q3-title">What types of projects do you take on?</h3>
+          <p class="text-body text-slate" data-i18n="contact.faq.q3-body">
+            We partner on core web platforms, enterprise distributed systems, cloud migrations, performance overhauls, and modernization of legacy codebases where client teams require long-term independence.
+          </p>
+        </li>
+        <li class="grid grid-cols-1 gap-3 border-b border-line py-8 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8">
+          <span class="mono text-blue md:text-base">04</span>
+          <h3 class="text-h3 font-semibold text-navy text-balance" data-i18n="contact.faq.q4-title">How does pricing and billing work?</h3>
+          <p class="text-body text-slate" data-i18n="contact.faq.q4-body">
+            Engagements are scoped with fixed, transparent milestones or predictable monthly retainers. You receive clear deliverables with no unexpected billing or hidden maintenance fees.
+          </p>
+        </li>
+        <li class="grid grid-cols-1 gap-3 border-b border-line py-8 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8">
+          <span class="mono text-blue md:text-base">05</span>
+          <h3 class="text-h3 font-semibold text-navy text-balance" data-i18n="contact.faq.q5-title">Can we start with a pilot engagement?</h3>
+          <p class="text-body text-slate" data-i18n="contact.faq.q5-body">
+            Yes. Many clients begin with a two-week baseline diagnostic or targeted architecture audit. This gives your team a clear, actionable roadmap and proof of collaboration before committing to full-scale build sprints.
+          </p>
+        </li>
+        <li class="grid grid-cols-1 gap-3 border-b border-line py-8 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8">
+          <span class="mono text-blue md:text-base">06</span>
+          <h3 class="text-h3 font-semibold text-navy text-balance" data-i18n="contact.faq.q6-title">How do you collaborate with our team?</h3>
+          <p class="text-body text-slate" data-i18n="contact.faq.q6-body">
+            We integrate directly into your existing communication tools, participate in sprint rituals, and submit changes through pull requests. Knowledge transfer happens continuously through daily code reviews.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
 </Layout>
 
 <script>
@@ -147,7 +204,7 @@ import Button from "../components/Button.astro";
 
   type Lang = "en" | "id";
   function getLang(): Lang {
-    return (localStorage.getItem("newco-lang") === "id" ? "id" : "en");
+    return (document.documentElement.lang === "id" ? "id" : "en");
   }
   function t(key: string): string {
     const lang = getLang();

@@ -9,19 +9,25 @@ interface Props {
   description?: string;
   titleKey?: string;
   descKey?: string;
+  lcpImage?: string;
 }
 
-const { titleKey, descKey } = Astro.props;
+const { titleKey, descKey, lcpImage } = Astro.props;
+const isId = /^\/id(\/|$)/.test(Astro.url.pathname);
+const lang = isId ? "id" : "en";
 let { title = "", description = "" } = Astro.props;
 if (titleKey || descKey) {
   const { STRINGS } = await import("../i18n/dictionary");
-  if (titleKey && STRINGS[titleKey]) title = STRINGS[titleKey].en;
-  if (descKey && STRINGS[descKey]) description = STRINGS[descKey].en;
+  if (titleKey && STRINGS[titleKey]) title = STRINGS[titleKey][lang];
+  if (descKey && STRINGS[descKey]) description = STRINGS[descKey][lang];
 }
 
 const pageTitle = title.includes("NewCo") ? title : `${title} | NewCo`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("/og-image.png", Astro.site);
+const enPath = Astro.url.pathname.replace(/^\/id(?=\/|$)/, "") || "/";
+const idPath = `/id${enPath === "/" ? "/" : enPath}`;
+const alternates = [["en", enPath], ["id", idPath], ["x-default", enPath]];
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 const structuredData = {
   "@context": "https://schema.org",
@@ -39,6 +45,15 @@ const structuredData = {
         contactType: "customer support",
         url: new URL("/contact", Astro.site).href,
       },
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "ID",
+      },
+      sameAs: [
+        "https://github.com/newco",
+        "https://linkedin.com/company/newco",
+        "https://twitter.com/newco",
+      ],
     },
     {
       "@type": "WebSite",
@@ -46,6 +61,14 @@ const structuredData = {
       url: new URL("/", Astro.site).href,
       name: "NewCo",
       publisher: { "@id": new URL("/#organization", Astro.site).href },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: new URL("/?q={search_term_string}", Astro.site).href,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
     ...(isHome
       ? []
@@ -73,15 +96,18 @@ const structuredData = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" crossorigin="anonymous" />
+    {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
     <link rel="canonical" href={canonicalURL} />
+    {alternates.map(([hreflang, path]) => <link rel="alternate" hreflang={hreflang} href={new URL(path, Astro.site)} />)}
     <link rel="llms" href="/llms.txt" />
     <title data-title-key={titleKey}>{pageTitle}</title>
     <meta name="description" content={description} data-desc-key={descKey} />
@@ -89,6 +115,7 @@ const structuredData = {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
+    <meta property="og:locale" content={isId ? "id_ID" : "en_US"} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:width" content="1200" />

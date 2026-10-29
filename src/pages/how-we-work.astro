@@ -1,9 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CapabilityCurve from "../components/CapabilityCurve.astro";
-
-const pad = (i: number) => String(i + 1).padStart(2, "0");
-const shell = "mx-auto max-w-[1200px] px-4 md:px-6";
+import { Icon } from "astro-icon/components";
+import { pad, shell } from "../lib/ui";
 
 const stages = [
   {
@@ -192,6 +191,7 @@ const marqueeRows = [
 <Layout
   titleKey="meta.howwework.title"
   descKey="meta.howwework.description"
+  lcpImage="/images/tech/astro.svg"
 >
   <section class="bg-white">
     <div class:list={[shell, "py-16 md:py-24"]}>
@@ -259,6 +259,7 @@ const marqueeRows = [
 
         <div class="corners overflow-hidden rounded-xl border border-line bg-white lg:col-span-7">
           <table class="w-full text-left border-collapse">
+            <caption class="sr-only" data-i18n="howwework.handover.caption">Detailed technical handover deliverables, source repository ownership, and transition milestones</caption>
             <thead>
               <tr class="border-b border-line bg-mist">
                 <th scope="col" class="mono px-4 py-4 text-navy md:px-6" data-i18n="howwework.handover.col-item">Item</th>
@@ -283,24 +284,30 @@ const marqueeRows = [
     </div>
   </section>
 
-  <section class="border-t border-line bg-mist py-16 md:py-20">
+  <section class="bg-mist py-16 md:py-20" aria-labelledby="tech-note">
     <div class={shell}>
-      <p class="mono mb-8 text-grey" data-i18n="howwework.tech.note">// Built on proven, widely used technology.</p>
+      <p id="tech-note" class="mono text-grey" data-i18n="howwework.tech.note">// Built on proven, widely used technology.</p>
+      <p class="mt-3 max-w-[70ch] text-body text-slate" data-i18n="howwework.tech.lede">
+        We deliberately select battle-tested, widely adopted open-source technologies with robust global communities. This ensures any qualified software engineer can comfortably inspect, maintain, and expand your systems without specialized proprietary training.
+      </p>
     </div>
-    <div class="marquee" aria-label="Technologies we build with" data-i18n-attr="aria-label:howwework.tech.aria">
+    <div class="marquee mt-10 md:mt-12" aria-label="Technologies we build with" data-i18n-attr="aria-label:howwework.tech.aria">
       {
         marqueeRows.map((row, r) => (
           <ul class={`marquee-track marquee-track-${row.direction}`}>
             {[...row.items, ...row.items].map((tech, i) => (
               <li
                 aria-hidden={i >= row.items.length ? "true" : undefined}
-                class="inline-flex shrink-0 items-center gap-3.5 rounded-xl border border-line/90 bg-white px-5 py-3 text-base font-semibold tracking-tight text-navy shadow-xs transition-all duration-150 hover:border-blue/50 hover:shadow-sm"
+                class="marquee-badge"
               >
                 <img
                   src={tech.icon}
                   alt={tech.wordmark ? tech.name : ""}
-                  class:list={["shrink-0 object-contain", tech.wordmark ? "h-5.5 w-auto" : "h-6 w-6"]}
+                  width="24"
+                  height="24"
+                  class="h-6 w-auto shrink-0 object-contain"
                   loading={r === 0 && i < 4 ? "eager" : "lazy"}
+                  fetchpriority={r === 0 && i === 0 ? "high" : "auto"}
                   decoding="async"
                 />
                 {!tech.wordmark && <span>{tech.name}</span>}
@@ -311,6 +318,46 @@ const marqueeRows = [
       }
     </div>
   </section>
+
+  <section class="border-t border-line bg-white py-16 md:py-24">
+    <div class={shell}>
+      <div class="max-w-[72ch]">
+        <span class="mono text-blue" data-i18n="howwework.governance.eyebrow">// ENGINEERING GOVERNANCE</span>
+        <h2 class="mt-4 text-h2 text-navy text-balance" data-i18n="howwework.governance.heading">Reliable systems need shared standards, not secret knowledge.</h2>
+        <p class="mt-4 text-body-lg text-slate" data-i18n="howwework.governance.lede">
+          When engineering teams depend on heroics or tribal memory, software degrades with every release. We build repeatable processes into the codebase itself.
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
+        <div class="corners flex h-full flex-col rounded-xl border border-line bg-mist p-6 transition-colors duration-200 hover:border-navy/30 hover:bg-white md:p-8">
+          <Icon name="solar:checklist-minimalistic-linear" class="h-9 w-9 text-blue" aria-hidden="true" />
+          <p class="mono mt-6 text-grey" aria-hidden="true">01</p>
+          <h3 class="mt-2 text-h3 font-semibold text-navy" data-i18n="howwework.governance.test-title">Automated testing &amp; CI/CD</h3>
+          <p class="mt-3 text-body text-slate" data-i18n="howwework.governance.test-body">
+            Every pull request triggers automated unit, integration, and security checks before merging. Deployments run through reproducible, automated pipelines with zero downtime and rollback triggers.
+          </p>
+        </div>
+        <div class="corners flex h-full flex-col rounded-xl border border-line bg-mist p-6 transition-colors duration-200 hover:border-navy/30 hover:bg-white md:p-8">
+          <Icon name="solar:chart-linear" class="h-9 w-9 text-blue" aria-hidden="true" />
+          <p class="mono mt-6 text-grey" aria-hidden="true">02</p>
+          <h3 class="mt-2 text-h3 font-semibold text-navy" data-i18n="howwework.governance.obs-title">Observability &amp; runbooks</h3>
+          <p class="mt-3 text-body text-slate" data-i18n="howwework.governance.obs-body">
+            Structured logging, metrics, and actionable alerts mean issues are spotted before users notice them. Every critical alert links directly to a plain-language operational runbook.
+          </p>
+        </div>
+        <div class="corners flex h-full flex-col rounded-xl border border-line bg-mist p-6 transition-colors duration-200 hover:border-navy/30 hover:bg-white md:p-8 md:col-span-2 lg:col-span-1">
+          <Icon name="solar:cloud-file-linear" class="h-9 w-9 text-blue" aria-hidden="true" />
+          <p class="mono mt-6 text-grey" aria-hidden="true">03</p>
+          <h3 class="mt-2 text-h3 font-semibold text-navy" data-i18n="howwework.governance.infra-title">Infrastructure as code</h3>
+          <p class="mt-3 text-body text-slate" data-i18n="howwework.governance.infra-body">
+            Cloud resources, databases, networking, and access policies are defined declaratively in version control. Staging mirrors production, eliminating surprise deployment discrepancies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
 <style>
@@ -322,17 +369,44 @@ const marqueeRows = [
     -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
     mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
   }
+  .marquee-badge {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-line);
+    background-color: #fff;
+    padding: 0.625rem 1rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    color: var(--color-navy);
+    box-shadow: 0 1px 2px 0 rgb(15 23 42 / 0.06);
+    transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  }
+  .marquee-badge:hover {
+    border-color: rgba(37, 99, 235, 0.5);
+    box-shadow: 0 4px 12px -4px rgb(15 23 42 / 0.15);
+    transform: translateY(-1px);
+  }
   .marquee-track {
     display: flex;
     width: max-content;
-    gap: 1rem;
-    padding: 0.35rem 1rem;
+    max-width: max-content;
+    gap: 0;
+    padding: 0.35rem 0;
+    padding-right: 1rem;
+  }
+  .marquee-track > .marquee-badge {
+    margin-right: 1rem;
   }
   .marquee-track-left {
-    animation: marquee-left 36s linear infinite;
+    animation: marquee-left 40s linear infinite;
   }
   .marquee-track-right {
-    animation: marquee-right 36s linear infinite;
+    animation: marquee-right 46s linear infinite;
   }
   .marquee:hover .marquee-track {
     animation-play-state: paused;
@@ -354,8 +428,16 @@ const marqueeRows = [
     }
   }
   @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      mask-image: none;
+      -webkit-mask-image: none;
+      overflow-x: auto;
+    }
     .marquee-track {
       animation: none;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 100%;
     }
   }
 </style>

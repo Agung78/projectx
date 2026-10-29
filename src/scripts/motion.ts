@@ -165,7 +165,7 @@ interface PhaseTelemetry {
 
 type Lang = "en" | "id";
 function telemetryLang(): Lang {
-  return (localStorage.getItem("newco-lang") === "id" ? "id" : "en");
+  return (document.documentElement.lang === "id" ? "id" : "en");
 }
 function telemetryT(key: string | undefined, fallback: string): string {
   if (!key) return fallback;

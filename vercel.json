@@ -16,6 +16,7 @@
   ],
   "redirects": [
     { "source": "/approach", "destination": "/how-we-work/", "statusCode": 301 },
-    { "source": "/diagnostic", "destination": "/how-we-work/", "statusCode": 301 }
+    { "source": "/diagnostic", "destination": "/how-we-work/", "statusCode": 301 },
+    { "source": "/id/downloads/(.*)", "destination": "/downloads/$1", "statusCode": 301 }
   ]
 }

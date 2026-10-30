@@ -315,34 +315,12 @@ Operating guardrails:
 
 ## 14. Entity and Brand Identity — Established
 
-Corporate Entity:
-
-- **Company Name:** PT [Company Name] Teknologi Indonesia
-- **Registered Office:** One Pacific Place, Level 11, SCBD, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan 12190, Indonesia
-- **Company Registration / NIB:** `0120202688192`
-
 Brand Identity & Taglines:
 
 1. **Primary Headline:** *Technology built for independence.*
 2. **Operating Principle:** *We build · We teach · You own.*
 3. **Supporting Positioning:** *We engineer systems to a high standard, then transfer full ownership to the business: the code, the documentation and the know-how. No vendor lock-in. No hidden dependencies.*
 4. **Public Site Architecture:** Static Astro site at `projectx-gold.vercel.app` with routes `/`, `/how-we-work`, `/about`, `/contact`, `/privacy`.
----
-
-## 15. Status of Governance Decisions
-
-### Resolved
-1. **Legal structure & jurisdiction:** Established as PT [Company Name] Teknologi Indonesia, One Pacific Place Level 11, SCBD, Jakarta Selatan (NIB: `0120202688192`).
-2. **Founding Leadership:** Vanezza (Chief Executive Officer) and Agung Denisa (Chief Technology Officer).
-3. **Brand & Public Presence:** Live marketing site (`projectx-gold.vercel.app`) with 4-stage transfer model, clear client commitments, and interactive capability curve.
-4. **Public AI Governance:** Formalized on `/privacy` (zero model training on client assets, scoped access, approved tooling only).
-
-### Ongoing / Operational
-1. **First hire:** Delivery engineer versus delivery/PM as capacity triggers dictate.
-2. **Bench and risk reserve:** Minimum cash reserve and shared support-capacity funding.
-3. **First client engagements:** Score strictly against qualification criteria; maintain 24-hour response SLA on direct founder reviews.
-4. **Contract pack:** MSA, diagnostic/discovery SOW, Build With SOW, Run With/SLO schedule, IP schedule.
-5. **Evidence baseline:** Continue tracking DORA and operational metrics (lead time, change-failure rate, MTTR, recovery time, rework, transfer readiness).
 ---
 
 ## 16. First 90 Days

@@ -1,6 +1,6 @@
-# About NewCo — Leadership & Values
+# About Kyron Engineering — Leadership & Values
 
-NewCo is an engineering consultancy focused on sustainable software delivery and full client independence.
+Kyron Engineering is an engineering consultancy focused on sustainable software delivery and full client independence.
 
 ## Founders
 

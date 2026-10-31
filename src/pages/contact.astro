@@ -147,7 +147,7 @@ import Button from "../components/Button.astro";
         <span class="mono text-blue" data-i18n="contact.faq.eyebrow">// ENGAGEMENT FAQ</span>
         <h2 class="mt-4 text-h2 text-navy text-balance" data-i18n="contact.faq.heading">Common questions before reaching out.</h2>
         <p class="mt-4 text-body-lg text-slate" data-i18n="contact.faq.lede">
-          Here is what working with NewCo looks like from initial conversation to contractual handover.
+          Here is what working with Kyron Engineering looks like from initial conversation to contractual handover.
         </p>
       </div>
 
@@ -413,7 +413,7 @@ import Button from "../components/Button.astro";
 
   document.addEventListener("astro:page-load", initContactForm);
   document.addEventListener("astro:page-load", initAccordions);
-  document.addEventListener("newco:lang-change", () => {
+  document.addEventListener("kyron:lang-change", () => {
     const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
     if (form) revalidateVisibleErrors(form);
   });

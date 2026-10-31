@@ -232,7 +232,7 @@ function initPhaseTelemetry(): () => void {
       triggers.forEach((button) => button.setAttribute("aria-pressed", String(indexOf(button) === i)));
       show(i);
       const phase = phases[i];
-      live.textContent = telemetryT(phase.liveKey, `${phase.label}: client ownership ${phase.client} percent, NewCo pager share ${phase.pager} percent. ${phase.milestone}.`);
+      live.textContent = telemetryT(phase.liveKey, `${phase.label}: client ownership ${phase.client} percent, Kyron Engineering pager share ${phase.pager} percent. ${phase.milestone}.`);
     }
 
     targets.forEach((el) => {
@@ -262,7 +262,7 @@ function initPhaseTelemetry(): () => void {
       live.textContent = "";
     };
     document.addEventListener("astro:page-load", rerender, { signal });
-    document.addEventListener("newco:lang-change", rerender, { signal });
+    document.addEventListener("kyron:lang-change", rerender, { signal });
     select(0);
     live.textContent = "";
 

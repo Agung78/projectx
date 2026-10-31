@@ -1,8 +1,8 @@
-# NewCo — Engineering Independence
+# Kyron Engineering — Engineering Independence
 
 > Systems built properly, documented fully, and owned by the business.
 
-NewCo partners with your team to design, build, and operate core technology systems. We do not operate as an isolated agency; our engineers join your sprints, establish shared standards, and transfer complete operational ownership before engagement conclusion.
+Kyron Engineering partners with your team to design, build, and operate core technology systems. We do not operate as an isolated agency; our engineers join your sprints, establish shared standards, and transfer complete operational ownership before engagement conclusion.
 
 ## Core Commitments
 
@@ -16,4 +16,4 @@ NewCo partners with your team to design, build, and operate core technology syst
 
 - **Vanezza**, Chief Executive Officer
 - **Agung Denisa**, Chief Technology Officer
-- Email / Inquiries: [Contact NewCo](https://projectx-gold.vercel.app/contact)
+- Email / Inquiries: [Contact Kyron Engineering](https://projectx-gold.vercel.app/contact)

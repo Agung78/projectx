@@ -194,8 +194,8 @@ export const STRINGS: Record<string, Entry> = {
     "Porsi kerja harian",
   ),
   "capabilitycurve.note": e(
-    "Illustrative",
-    "Ilustrasi",
+    "For illustration only. Actual levels vary by project.",
+    "Hanya untuk ilustrasi. Tingkat sebenarnya bervariasi menurut proyek.",
   ),
   "capabilitycurve.phase1.label": e(
     "Diagnose",
@@ -666,8 +666,8 @@ export const STRINGS: Record<string, Entry> = {
     "DIBANGUN DENGAN TEPAT. TERDOKUMENTASI LENGKAP. MILIK ANDA SEUTUHNYA.",
   ),
   "howwework.curve.caption": e(
-    "By the final stage, the business runs its technology on its own terms.",
-    "Pada tahap akhir, bisnis menjalankan teknologinya dengan kendali penuh secara mandiri.",
+    "By the final stage, you run your technology on your own terms.",
+    "Pada tahap akhir, Anda menjalankan teknologi Anda dengan kendali penuh secara mandiri.",
   ),
   "howwework.curve.development.label": e(
     "Development",
@@ -710,8 +710,8 @@ export const STRINGS: Record<string, Entry> = {
     "Mandiri Penuh",
   ),
   "howwework.handover.accounts.included": e(
-    "Hosting, domains and services in the business's name",
-    "Hosting, domain, dan seluruh layanan terdaftar resmi atas nama bisnis Anda",
+    "Hosting, domains and services in your name",
+    "Hosting, domain, dan seluruh layanan terdaftar resmi atas nama Anda",
   ),
   "howwework.handover.accounts.item": e(
     "Accounts and access",
@@ -726,8 +726,8 @@ export const STRINGS: Record<string, Entry> = {
     "POIN / ITEM",
   ),
   "howwework.handover.documentation.included": e(
-    "How the system works, written in plain language",
-    "Cara kerja sistem yang ditulis dengan bahasa lugas dan mudah dipahami",
+    "How the system works, written so anyone can follow it",
+    "Cara kerja sistem, ditulis agar siapa pun dapat mengikutinya",
   ),
   "howwework.handover.documentation.item": e(
     "Documentation",
@@ -742,8 +742,8 @@ export const STRINGS: Record<string, Entry> = {
     "Panduan langkah demi langkah untuk tugas harian serta pembaruan sistem",
   ),
   "howwework.handover.guides.item": e(
-    "Running guides",
-    "Panduan Operasional",
+    "How-to guides",
+    "Panduan Penggunaan",
   ),
   "howwework.handover.heading": e(
     "Everything handed over, nothing held back.",
@@ -770,16 +770,16 @@ export const STRINGS: Record<string, Entry> = {
     "Pemeriksaan Keamanan",
   ),
   "howwework.handover.source-code.included": e(
-    "Every line, stored in the business's own account",
-    "Setiap baris kode, tersimpan langsung di akun milik bisnis Anda sendiri",
+    "Every line, stored in your own account",
+    "Setiap baris kode, tersimpan langsung di akun milik Anda sendiri",
   ),
   "howwework.handover.source-code.item": e(
     "Source code",
     "Kode Sumber",
   ),
   "howwework.handover.support.included": e(
-    "Available from us if the business wants it, never required",
-    "Selalu tersedia jika bisnis Anda menginginkannya, tanpa kewajiban yang mengikat",
+    "Available if you want it, never required",
+    "Tersedia jika Anda menginginkannya, tanpa kewajiban yang mengikat",
   ),
   "howwework.handover.support.item": e(
     "Ongoing support",
@@ -846,7 +846,7 @@ export const STRINGS: Record<string, Entry> = {
     "Terencana bersama. Menjadi milik Anda seutuhnya.",
   ),
   "howwework.stages.development.body": e(
-    "We design and build the system, with regular check-ins and demos so the business can see and test it as it takes shape.",
+    "We design and build the system, with regular check-ins and demos so you can test it as it takes shape.",
     "Kami merancang dan membangun sistem, lengkap dengan sesi evaluasi rutin dan demo berkala agar Anda dapat melihat langsung serta menguji perkembangannya.",
   ),
   "howwework.stages.development.gets": e(
@@ -858,7 +858,7 @@ export const STRINGS: Record<string, Entry> = {
     "Pengembangan",
   ),
   "howwework.stages.discovery.body": e(
-    "We learn how the business runs, map its current systems and agree the plan together.",
+    "We learn how your business runs, map your current systems and agree on the plan together.",
     "Kami mempelajari alur bisnis Anda, memetakan sistem yang saat ini berjalan, dan menyepakati rencana bersama.",
   ),
   "howwework.stages.discovery.gets": e(
@@ -870,20 +870,20 @@ export const STRINGS: Record<string, Entry> = {
     "Analisis Kebutuhan",
   ),
   "howwework.stages.gets-label": e(
-    "The business gets:",
-    "Yang diperoleh bisnis Anda:",
+    "You get:",
+    "Yang Anda peroleh:",
   ),
   "howwework.stages.heading": e(
     "Four stages, one direction.",
     "Empat tahap, satu arah yang jelas.",
   ),
   "howwework.stages.note": e(
-    "How long each stage takes depends on the project. We agree the timeline during Discovery.",
+    "How long each stage takes depends on the project. We agree on the timeline during Discovery.",
     "Durasi setiap tahapan disesuaikan dengan skala proyek. Garis waktu (timeline) akan disepakati bersama pada tahap Discovery.",
   ),
   "howwework.stages.operations.body": e(
-    "After launch, we monitor the system, fix issues, and keep it secure and up to date until it runs smoothly.",
-    "Setelah peluncuran, kami memantau sistem, menangani kendala, serta menjaganya tetap aman dan terbarui hingga dapat berjalan dengan lancar.",
+    "After launch, we monitor the system, fix issues and keep it secure while your team gets comfortable running it.",
+    "Setelah peluncuran, kami memantau sistem, menangani kendala, serta menjaganya tetap aman selagi tim Anda terbiasa menjalankannya.",
   ),
   "howwework.stages.operations.gets": e(
     "a stable system with agreed response times.",
@@ -898,8 +898,8 @@ export const STRINGS: Record<string, Entry> = {
     "TAHAP //",
   ),
   "howwework.stages.transfer.body": e(
-    "We transfer everything needed to run the system independently, to in-house staff, a new hire or another provider.",
-    "Kami menyerahkan segala hal yang dibutuhkan agar sistem dapat dikelola secara mandiri—baik oleh tim internal Anda, karyawan baru, maupun vendor lain.",
+    "We hand over everything needed to run the system without us, to your own staff, a new hire or another provider.",
+    "Kami menyerahkan segala hal yang dibutuhkan agar sistem dapat dijalankan tanpa kami—baik oleh tim internal Anda, karyawan baru, maupun vendor lain.",
   ),
   "howwework.stages.transfer.gets": e(
     "full ownership, with no dependence on us.",

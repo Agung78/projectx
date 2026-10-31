@@ -8,7 +8,7 @@ const stages = [
   {
     name: "Discovery",
     nameKey: "howwework.stages.discovery.name",
-    body: "We learn how the business runs, map its current systems and agree the plan together.",
+    body: "We learn how your business runs, map your current systems and agree on the plan together.",
     bodyKey: "howwework.stages.discovery.body",
     gets: "a technical roadmap with architecture, milestones and estimated costs.",
     getsKey: "howwework.stages.discovery.gets",
@@ -16,7 +16,7 @@ const stages = [
   {
     name: "Development",
     nameKey: "howwework.stages.development.name",
-    body: "We design and build the system, with regular check-ins and demos so the business can see and test it as it takes shape.",
+    body: "We design and build the system, with regular check-ins and demos so you can test it as it takes shape.",
     bodyKey: "howwework.stages.development.body",
     gets: "a working system, tested and ready for real use.",
     getsKey: "howwework.stages.development.gets",
@@ -24,7 +24,7 @@ const stages = [
   {
     name: "Operations and Support",
     nameKey: "howwework.stages.operations.name",
-    body: "After launch, we monitor the system, fix issues, and keep it secure and up to date until it runs smoothly.",
+    body: "After launch, we monitor the system, fix issues and keep it secure while your team gets comfortable running it.",
     bodyKey: "howwework.stages.operations.body",
     gets: "a stable system with agreed response times.",
     getsKey: "howwework.stages.operations.gets",
@@ -32,7 +32,7 @@ const stages = [
   {
     name: "Ownership Transfer",
     nameKey: "howwework.stages.transfer.name",
-    body: "We transfer everything needed to run the system independently, to in-house staff, a new hire or another provider.",
+    body: "We hand over everything needed to run the system without us, to your own staff, a new hire or another provider.",
     bodyKey: "howwework.stages.transfer.body",
     gets: "full ownership, with no dependence on us.",
     getsKey: "howwework.stages.transfer.gets",
@@ -47,14 +47,14 @@ const howWeWorkStages = [
 ];
 
 const handover = [
-  { item: "Source code", itemKey: "howwework.handover.source-code.item", included: "Every line, stored in the business's own account", includedKey: "howwework.handover.source-code.included" },
-  { item: "Documentation", itemKey: "howwework.handover.documentation.item", included: "How the system works, written in plain language", includedKey: "howwework.handover.documentation.included" },
-  { item: "Accounts and access", itemKey: "howwework.handover.accounts.item", included: "Hosting, domains and services in the business's name", includedKey: "howwework.handover.accounts.included" },
-  { item: "Running guides", itemKey: "howwework.handover.guides.item", included: "Step-by-step instructions for everyday tasks and updates", includedKey: "howwework.handover.guides.included" },
+  { item: "Source code", itemKey: "howwework.handover.source-code.item", included: "Every line, stored in your own account", includedKey: "howwework.handover.source-code.included" },
+  { item: "Documentation", itemKey: "howwework.handover.documentation.item", included: "How the system works, written so anyone can follow it", includedKey: "howwework.handover.documentation.included" },
+  { item: "Accounts and access", itemKey: "howwework.handover.accounts.item", included: "Hosting, domains and services in your name", includedKey: "howwework.handover.accounts.included" },
+  { item: "How-to guides", itemKey: "howwework.handover.guides.item", included: "Step-by-step instructions for everyday tasks and updates", includedKey: "howwework.handover.guides.included" },
   { item: "Recovery plan", itemKey: "howwework.handover.recovery.item", included: "How to restore the system from backup if something goes wrong", includedKey: "howwework.handover.recovery.included" },
   { item: "Security review", itemKey: "howwework.handover.security.item", included: "Passwords changed and access checked before sign-off", includedKey: "howwework.handover.security.included" },
   { item: "Live walkthrough", itemKey: "howwework.handover.walkthrough.item", included: "A guided session with whoever takes over", includedKey: "howwework.handover.walkthrough.included" },
-  { item: "Ongoing support", itemKey: "howwework.handover.support.item", included: "Available from us if the business wants it, never required", includedKey: "howwework.handover.support.included" },
+  { item: "Ongoing support", itemKey: "howwework.handover.support.item", included: "Available if you want it, never required", includedKey: "howwework.handover.support.included" },
 ];
 
 const technologies = [
@@ -218,14 +218,14 @@ const marqueeRows = [
                 <p class="mt-3 text-grey" data-i18n={stage.bodyKey}>{stage.body}</p>
               </div>
               <p class="mt-6 border border-line bg-mist px-3 py-2 text-sm text-navy">
-                <span class="font-semibold" data-i18n="howwework.stages.gets-label">The business gets:</span> <span data-i18n={stage.getsKey}>{stage.gets}</span>
+                <span class="font-semibold" data-i18n="howwework.stages.gets-label">You get:</span> <span data-i18n={stage.getsKey}>{stage.gets}</span>
               </p>
             </div>
           ))
         }
       </div>
       <p class="mt-8 text-sm text-grey" data-i18n="howwework.stages.note">
-        How long each stage takes depends on the project. We agree the timeline during Discovery.
+        How long each stage takes depends on the project. We agree on the timeline during Discovery.
       </p>
       <div class="mt-16">
         <div class="corners rounded-xl border border-line bg-white p-3 md:p-6">
@@ -235,7 +235,7 @@ const marqueeRows = [
           </div>
           <CapabilityCurve
             phases={howWeWorkStages}
-            caption="By the final stage, the business runs its technology on its own terms."
+            caption="By the final stage, you run your technology on your own terms."
             captionKey="howwework.curve.caption"
           />
         </div>

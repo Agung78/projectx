@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 import { pad, shell } from "../lib/ui";
 
 const founders = [
-  { name: "Vanezza", role: "Chief Executive Officer", roleKey: "about.team.role-ceo", alt: "Vanezza, Chief Executive Officer", altKey: "about.team.alt-ceo", image: "/images/ceo.webp", bio: "Vanezza leads client strategy and operations. She translates business goals into clear technical scope and ensures every engagement delivers measurable value.", bioKey: "about.team.bio-ceo", linkedin: "https://www.linkedin.com/in/vanezza-angelica/" },
+  { name: "Vanezza", role: "Chief Executive Officer", roleKey: "about.team.role-ceo", alt: "Vanezza, Chief Executive Officer", altKey: "about.team.alt-ceo", image: "/images/ceo.webp", bio: "Vanezza leads client strategy and operations. She translates business goals into clear technical scope and ensures every engagement delivers measurable value.", bioKey: "about.team.bio-ceo" },
   { name: "Agung Denisa", role: "Chief Technology Officer", roleKey: "about.team.role-cto", alt: "Agung Denisa, Chief Technology Officer", altKey: "about.team.alt-cto", image: "/images/cto.webp", bio: "Agung architects the systems Kyron Engineering builds and owns the technical standards. He reviews every proposal for feasibility, maintainability, and security.", bioKey: "about.team.bio-cto", linkedin: "https://www.linkedin.com/in/agung78/" },
 ];
 
@@ -71,7 +71,9 @@ const commitments = [
                   <h3 class="text-h3 font-semibold text-navy" itemprop="name">{f.name}</h3>
                   <p class="text-sm text-grey mt-1" data-i18n={f.roleKey} itemprop="jobTitle">{f.role}</p>
                   <p class="text-body text-slate mt-2" data-i18n={f.bioKey} itemprop="description">{f.bio}</p>
-                  <a href={f.linkedin} class="text-sm text-blue underline mt-2 inline-block" target="_blank" rel="noopener" itemprop="sameAs" aria-label={`${f.name} on LinkedIn`}>LinkedIn</a>
+                  {f.linkedin && (
+                    <a href={f.linkedin} class="text-sm text-blue underline mt-2 inline-block" target="_blank" rel="noopener" itemprop="sameAs" aria-label={`${f.name} on LinkedIn`}>LinkedIn</a>
+                  )}
                 </div>
                 <span class="mono text-blue">{pad(i)}</span>
               </figcaption>

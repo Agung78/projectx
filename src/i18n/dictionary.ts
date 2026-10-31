@@ -806,32 +806,32 @@ export const STRINGS: Record<string, Entry> = {
     "Sistem yang andal membutuhkan standar bersama, bukan rahasia perorangan.",
   ),
   "howwework.governance.lede": e(
-    "When engineering teams depend on heroics or tribal memory, software degrades with every release. We build repeatable processes into the codebase itself.",
-    "Ketika tim rekayasa bergantung pada hafalan atau keahlian pribadi, kualitas perangkat lunak menurun di tiap rilis. Kami membangun proses yang dapat diulang langsung ke dalam repositori kode.",
+    "When a system depends on one person’s memory, it gets harder to change with every release. We build the process into the code instead.",
+    "Ketika sistem bergantung pada ingatan satu orang, perubahannya menjadi semakin sulit di setiap rilis. Kami membangun proses langsung ke dalam kode.",
   ),
   "howwework.governance.test-title": e(
     "Automated testing & CI/CD",
     "Pengujian Otomatis & CI/CD",
   ),
   "howwework.governance.test-body": e(
-    "Every pull request triggers automated unit, integration, and security checks before merging. Deployments run through reproducible, automated pipelines with zero downtime and rollback triggers.",
-    "Setiap pull request menjalankan pengujian unit, integrasi, dan pemeriksaan keamanan otomatis sebelum digabungkan. Penerapan kode berjalan lewat alur otomatis yang dapat direproduksi dengan zero downtime.",
+    "Every pull request runs unit, integration and security tests before it’s merged. Deployments are automated and can be rolled back in one step.",
+    "Setiap pull request menjalankan pengujian unit, integrasi, dan keamanan sebelum digabungkan. Penerapan dilakukan secara otomatis dan dapat dibatalkan dalam satu langkah.",
   ),
   "howwework.governance.obs-title": e(
     "Observability & runbooks",
     "Observabilitas & Panduan Operasional",
   ),
   "howwework.governance.obs-body": e(
-    "Structured logging, metrics, and actionable alerts mean issues are spotted before users notice them. Every critical alert links directly to a plain-language operational runbook.",
-    "Pencatatan terstruktur, metrik, dan peringatan dini memastikan kendala terdeteksi sebelum pengguna menyadarinya. Setiap peringatan penting terhubung langsung ke panduan operasional.",
+    "Logs, metrics and alerts catch problems before users do. Every critical alert links to a runbook explaining what to do.",
+    "Log, metrik, dan peringatan mendeteksi kendala sebelum pengguna menyadarinya. Setiap peringatan penting terhubung ke panduan operasional yang menjelaskan langkah yang harus diambil.",
   ),
   "howwework.governance.infra-title": e(
     "Infrastructure as code",
     "Infrastruktur sebagai Kode",
   ),
   "howwework.governance.infra-body": e(
-    "Cloud resources, databases, networking, and access policies are defined declaratively in version control. Staging mirrors production, eliminating surprise deployment discrepancies.",
-    "Sumber daya cloud, basis data, jaringan, dan kebijakan akses didefinisikan secara deklaratif di sistem kontrol versi. Lingkungan uji coba mencerminkan produksi sepenuhnya.",
+    "Servers, databases, networking and access rules are all defined in code and tracked in version control. Staging matches production, so releases behave the way they did in testing.",
+    "Server, basis data, jaringan, dan aturan akses semuanya didefinisikan dalam kode dan dilacak di kontrol versi. Lingkungan staging sesuai dengan produksi, sehingga rilis berjalan sama seperti saat pengujian.",
   ),
   "howwework.hero.eyebrow": e(
     "// METHODOLOGY & PROCESS",

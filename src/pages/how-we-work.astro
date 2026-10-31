@@ -295,11 +295,8 @@ const marqueeRows = [
       {
         marqueeRows.map((row, r) => (
           <ul class={`marquee-track marquee-track-${row.direction}`}>
-            {[...row.items, ...row.items].map((tech, i) => (
-              <li
-                aria-hidden={i >= row.items.length ? "true" : undefined}
-                class="marquee-badge"
-              >
+            {row.items.map((tech, i) => (
+              <li class="marquee-badge">
                 <img
                   src={tech.icon}
                   alt={tech.wordmark ? tech.name : ""}
@@ -402,10 +399,10 @@ const marqueeRows = [
   .marquee-track > .marquee-badge {
     margin-right: 1rem;
   }
-  .marquee-track-left {
+  .marquee-track-left[data-cloned] {
     animation: marquee-left 40s linear infinite;
   }
-  .marquee-track-right {
+  .marquee-track-right[data-cloned] {
     animation: marquee-right 46s linear infinite;
   }
   .marquee:hover .marquee-track {
@@ -441,3 +438,19 @@ const marqueeRows = [
     }
   }
 </style>
+
+<script>
+  // Seamless loop needs a second copy of each track; clone client-side so the
+  // SSR HTML carries each badge once (text/HTML ratio, crawl weight).
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLElement>(".marquee-track:not([data-cloned])").forEach((track) => {
+      track.dataset.cloned = "";
+      [...track.children].forEach((li) => {
+        const copy = li.cloneNode(true) as HTMLElement;
+        copy.setAttribute("aria-hidden", "true");
+        copy.querySelectorAll("img").forEach((img) => (img.loading = "lazy"));
+        track.append(copy);
+      });
+    });
+  });
+</script>

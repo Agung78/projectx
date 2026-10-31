@@ -1,4 +1,4 @@
-# NewCo — Embedded Engineering Capability Partner
+# [Company Name] — Embedded Engineering Capability Partner
 
 > Working draft v1.0 · 2026-10-17 · Authors: Vanezza (CEO) + Agung Denisa (CTO)
 
@@ -6,7 +6,7 @@
 
 ## 1. Executive Position
 
-NewCo helps operationally complex businesses build and internalise the engineering capability required to own their technology.
+[Company Name] helps operationally complex businesses build and internalise the engineering capability required to own their technology.
 
 > **We build with your team, operate the system with you, and measure progress toward your independence.**
 
@@ -74,7 +74,7 @@ The gap is not cheaper delivery. It is a credible route for companies that want 
 
 ---
 
-## 5. What AI-First Means at NewCo
+## 5. What AI-First Means at [Company Name]
 
 ### 5.1 AI-enabled delivery
 
@@ -137,7 +137,7 @@ The client owns the diagnostic outputs and can take them to any vendor. The diag
 
 **Typical duration:** 3–9 months; retainer plus outcome-based milestones.
 
-We build the platform with the client's named counterpart(s) in the same planning, review, repository, and release process. The deliverable is the working system plus demonstrable client capability—not a codebase that only NewCo understands.
+We build the platform with the client's named counterpart(s) in the same planning, review, repository, and release process. The deliverable is the working system plus demonstrable client capability—not a codebase that only [Company Name] understands.
 
 ### Phase 2 — Run With
 
@@ -149,7 +149,7 @@ We share production responsibility with the client. The agreement defines covera
 
 Handover is complete when the agreed client team independently performs the required delivery and operations activities for the defined observation period. At minimum, this normally includes production deployment, rollback, incident response, dependency remediation, data-pipeline validation, and an architecture change review.
 
-NewCo moves to an advisory retainer. Handover is a success metric and a source of referrals, not a hidden failure condition.
+[Company Name] moves to an advisory retainer. Handover is a success metric and a source of referrals, not a hidden failure condition.
 
 ### Phase 4 — Advisory / Standing CTO
 
@@ -172,7 +172,7 @@ Each counterpart is assessed at baseline, during Build With, before shared opera
 | Data | Validates freshness, quality, lineage, and permissions |
 | Security | Remediates a dependency or access-control issue |
 | Decision-making | Authors and defends an ADR |
-| Planning | Prioritises and delivers the next iteration without NewCo ownership |
+| Planning | Prioritises and delivers the next iteration without [Company Name] ownership |
 
 The specific threshold, evidence, and observation period are written into the SOW or operating agreement. Certification is evidence-based; attendance at training is not certification.
 
@@ -215,7 +215,7 @@ Each engagement should improve reuse, reliability, or delivery speed. Platform w
 
 ## 9. Security, Privacy, and Operational Baseline
 
-NewCo applies a baseline to its own systems and adapts it to each client:
+[Company Name] applies a baseline to its own systems and adapts it to each client:
 
 - MFA, password management, least privilege, and separate client credentials
 - No shared production accounts; quarterly access review; immediate offboarding
@@ -236,12 +236,12 @@ SAST, DAST, dependency scanning, and AI review are controls—not proof of compl
 
 Every contract distinguishes:
 
-1. **NewCo background IP:** platform code, templates, methods, tooling, and pre-existing assets.
+1. **[Company Name] background IP:** platform code, templates, methods, tooling, and pre-existing assets.
 2. **Client background IP:** client data, brands, existing code, processes, and proprietary content.
 3. **Engagement deliverables:** client-specific code, configuration, documentation, schemas, dashboards, and models.
 4. **Third-party materials:** open-source and provider assets subject to their licenses.
 
-NewCo retains reusable background IP. The client receives ownership or a perpetual, transferable, operationally sufficient licence to the client-specific deliverables, as agreed in the MSA. The client must be able to operate, maintain, export, replace, or extend its system without being trapped by NewCo.
+[Company Name] retains reusable background IP. The client receives ownership or a perpetual, transferable, operationally sufficient licence to the client-specific deliverables, as agreed in the MSA. The client must be able to operate, maintain, export, replace, or extend its system without being trapped by [Company Name].
 
 The agreement covers open-source notices, model prompts and evaluation sets, embeddings and fine-tuning artifacts, confidentiality, data deletion, subcontractors, termination assistance, and rights after termination. The exact allocation is reviewed by qualified counsel in the relevant jurisdiction.
 
@@ -299,7 +299,7 @@ Pre-revenue startups seeking a cheap MVP; clients unwilling to change an incumbe
 | Advisory / Fractional CTO | Monthly retainer | High-value governance and continuity |
 | Platform licence | Later; only for genuinely productised assets | Reusable long-term revenue |
 
-We price on the capability and risk managed, not on hours spent. Delivery efficiency improves NewCo's margin and the client's speed; it does not automatically reduce the price.
+We price on the capability and risk managed, not on hours spent. Delivery efficiency improves [Company Name]'s margin and the client's speed; it does not automatically reduce the price.
 
 Before accepting work, we model delivery effort, support load, cloud and third-party cost, gross margin, payment terms, founder capacity, client concentration, and termination risk. On-call, emergency work, third-party costs, travel, and material scope changes are explicit commercial items.
 
@@ -315,34 +315,12 @@ Operating guardrails:
 
 ## 14. Entity and Brand Identity — Established
 
-Corporate Entity:
-
-- **Company Name:** PT NewCo Teknologi Indonesia
-- **Registered Office:** One Pacific Place, Level 11, SCBD, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan 12190, Indonesia
-- **Company Registration / NIB:** `0120202688192`
-
 Brand Identity & Taglines:
 
 1. **Primary Headline:** *Technology built for independence.*
 2. **Operating Principle:** *We build · We teach · You own.*
 3. **Supporting Positioning:** *We engineer systems to a high standard, then transfer full ownership to the business: the code, the documentation and the know-how. No vendor lock-in. No hidden dependencies.*
 4. **Public Site Architecture:** Static Astro site at `projectx-gold.vercel.app` with routes `/`, `/how-we-work`, `/about`, `/contact`, `/privacy`.
----
-
-## 15. Status of Governance Decisions
-
-### Resolved
-1. **Legal structure & jurisdiction:** Established as PT NewCo Teknologi Indonesia, One Pacific Place Level 11, SCBD, Jakarta Selatan (NIB: `0120202688192`).
-2. **Founding Leadership:** Vanezza (Chief Executive Officer) and Agung Denisa (Chief Technology Officer).
-3. **Brand & Public Presence:** Live marketing site (`projectx-gold.vercel.app`) with 4-stage transfer model, clear client commitments, and interactive capability curve.
-4. **Public AI Governance:** Formalized on `/privacy` (zero model training on client assets, scoped access, approved tooling only).
-
-### Ongoing / Operational
-1. **First hire:** Delivery engineer versus delivery/PM as capacity triggers dictate.
-2. **Bench and risk reserve:** Minimum cash reserve and shared support-capacity funding.
-3. **First client engagements:** Score strictly against qualification criteria; maintain 24-hour response SLA on direct founder reviews.
-4. **Contract pack:** MSA, diagnostic/discovery SOW, Build With SOW, Run With/SLO schedule, IP schedule.
-5. **Evidence baseline:** Continue tracking DORA and operational metrics (lead time, change-failure rate, MTTR, recovery time, rework, transfer readiness).
 ---
 
 ## 16. First 90 Days

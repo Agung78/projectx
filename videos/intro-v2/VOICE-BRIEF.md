@@ -1,6 +1,6 @@
 # Voiceover Brief — intro-v2
 
-**Project:** NewCo intro video (HyperFrames composition `videos/intro-v2/`)
+**Project:** Kyron Engineering intro video (HyperFrames composition `videos/intro-v2/`)
 **Duration:** 53s composition; four VO takes (vo-s1…vo-s4), one per scene
 **Audio starts:** 0.3s / 14.5s / 28s / 42.5s (composition `index.html`)
 **Output:** `assets/voiceover.mp3` — MP3, 44.1kHz, mono

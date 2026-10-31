@@ -1,6 +1,6 @@
-# NewCo
+# Kyron Engineering
 
-> NewCo is an engineering partner that builds with your team, operates systems together, and measures progress toward your complete engineering independence. Every engagement is planned for handover from the first week.
+> Kyron Engineering is an engineering partner that builds with your team, operates systems together, and measures progress toward your complete engineering independence. Every engagement is planned for handover from the first week.
 
 ## Key pages
 
@@ -8,4 +8,4 @@
 - [How We Work](https://projectx-gold.vercel.app/how-we-work): Four clear stages, from Discovery to full ownership transfer.
 - [About](https://projectx-gold.vercel.app/about): Meet the founders, our governance model, and client commitments.
 - [Contact](https://projectx-gold.vercel.app/contact): Direct founder review with a guaranteed 24-hour response SLA.
-- [Privacy Policy](https://projectx-gold.vercel.app/privacy): How NewCo protects client data and system confidentiality.
+- [Privacy Policy](https://projectx-gold.vercel.app/privacy): How Kyron Engineering protects client data and system confidentiality.

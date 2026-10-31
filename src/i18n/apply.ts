@@ -55,7 +55,7 @@ function syncMeta(lang: Lang): void {
   const titleKey = titleEl?.dataset.titleKey;
   if (titleEl && titleKey && STRINGS[titleKey]) {
     const t = STRINGS[titleKey][lang];
-    titleEl.textContent = t.includes("NewCo") ? t : `${t} | NewCo`;
+    titleEl.textContent = t.includes("Kyron Engineering") ? t : `${t} | Kyron Engineering`;
     document.title = titleEl.textContent ?? document.title;
   }
   const descKey = document.querySelector<HTMLMetaElement>("meta[data-desc-key]")?.dataset.descKey;
@@ -98,7 +98,7 @@ function setLang(lang: Lang, push: boolean): void {
   syncActiveLinks();
   syncToggles();
   // Telemetry readouts + form errors re-render off this (motion.ts, contact).
-  document.dispatchEvent(new CustomEvent("newco:lang-change"));
+  document.dispatchEvent(new CustomEvent("kyron:lang-change"));
 }
 
 document.addEventListener("click", (event) => {

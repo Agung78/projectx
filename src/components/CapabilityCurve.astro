@@ -80,7 +80,7 @@ function pathFor(key: "newco" | "client") {
 const newcoPath = pathFor("newco");
 const clientPath = pathFor("client");
 
-const descText = `A line chart across ${phases.length} phases (${phases.map((p) => p.label).join(", ")}) showing NewCo's day to day ownership decreasing from high to low while the client's ownership increases from low to high.`;
+const descText = `A line chart across ${phases.length} phases (${phases.map((p) => p.label).join(", ")}) showing Kyron Engineering's day to day ownership decreasing from high to low while the client's ownership increases from low to high.`;
 ---
 
 <div
@@ -155,7 +155,7 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
         <div class="mt-4 flex items-center gap-6 label text-grey">
           <span class="flex items-center gap-2">
             <span class="h-2 w-2 rounded-full bg-navy" aria-hidden="true" />
-            <span data-i18n="capabilitycurve.legend.newco">NewCo day to day ownership</span>
+            <span data-i18n="capabilitycurve.legend.newco">Kyron Engineering day to day ownership</span>
           </span>
           <span class="flex items-center gap-2">
             <span class="h-2 w-2 rounded-full bg-green" aria-hidden="true" />
@@ -187,7 +187,7 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
     <p class="label flex flex-wrap items-center gap-x-6 gap-y-2 text-grey">
       <span class="flex items-center gap-2">
         <span class="h-2 w-2 rounded-full bg-navy" aria-hidden="true"></span>
-        <span data-i18n="capabilitycurve.legend.newco-short">NewCo</span>
+        <span data-i18n="capabilitycurve.legend.newco-short">Kyron Engineering</span>
       </span>
       <span class="flex items-center gap-2">
         <span class="h-2 w-2 rounded-full bg-green" aria-hidden="true"></span>
@@ -239,7 +239,7 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
                 </div>
               </div>
               <span class="sr-only" data-i18n={phase.srKey ?? `capabilitycurve.phase${i + 1}.sr`}>
-                Illustrative: NewCo ownership about {phase.newco} percent, client ownership about {phase.client} percent.
+                Illustrative: Kyron Engineering ownership about {phase.newco} percent, client ownership about {phase.client} percent.
               </span>
             </div>
           </li>
@@ -259,7 +259,7 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
       {
         [
           { key: "client", label: "Client Ownership", labelKey: "capabilitycurve.telemetry.client", color: "bg-green", value: phases[0].client },
-          { key: "pager", label: "NewCo Pager Share", labelKey: "capabilitycurve.telemetry.pager", color: "bg-navy", value: phases[0].pager },
+          { key: "pager", label: "Kyron Engineering Pager Share", labelKey: "capabilitycurve.telemetry.pager", color: "bg-navy", value: phases[0].pager },
         ].map((m) => (
           <div>
             <dt class="text-xs text-grey" data-i18n={m.labelKey}>{m.label}</dt>

@@ -1,10 +1,10 @@
-# NewCo — Agent Overview
+# Kyron Engineering — Agent Overview
 
-NewCo is an engineering partner that builds with your team, operates systems together, and measures progress toward complete engineering independence. Every engagement is planned for handover from the first week.
+Kyron Engineering is an engineering partner that builds with your team, operates systems together, and measures progress toward complete engineering independence. Every engagement is planned for handover from the first week.
 
 ## Services
 
-- Embedded engineering: NewCo engineers build alongside the client team.
+- Embedded engineering: Kyron Engineering engineers build alongside the client team.
 - Joint operations: systems are run together until the client team operates them autonomously.
 - Ownership transfer: documentation, access, and capability are handed over in full.
 - Delivery follows four stages, from Discovery to full ownership transfer (see How We Work).
@@ -21,7 +21,7 @@ NewCo is an engineering partner that builds with your team, operates systems tog
 - [How We Work](https://projectx-gold.vercel.app/how-we-work): Four clear stages, from Discovery to full ownership transfer.
 - [About](https://projectx-gold.vercel.app/about): Founders, governance model, and client commitments.
 - [Contact](https://projectx-gold.vercel.app/contact): Direct founder review with a guaranteed 24-hour response SLA.
-- [Privacy Policy](https://projectx-gold.vercel.app/privacy): How NewCo protects client data and system confidentiality.
+- [Privacy Policy](https://projectx-gold.vercel.app/privacy): How Kyron Engineering protects client data and system confidentiality.
 
 ## Machine-Readable Resources
 
@@ -31,4 +31,4 @@ NewCo is an engineering partner that builds with your team, operates systems tog
 ## Notes for Agents
 
 - Legacy paths `/approach` and `/diagnostic` redirect to `/how-we-work`.
-- To engage NewCo, use the Contact page; do not infer pricing or availability not stated on the site.
+- To engage Kyron Engineering, use the Contact page; do not infer pricing or availability not stated on the site.

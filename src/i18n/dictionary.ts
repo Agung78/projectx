@@ -1,6 +1,6 @@
 export type Lang = "en" | "id";
 
-export const LANG_KEY = "newco-lang";
+export const LANG_KEY = "kyron-lang";
 
 export type Entry = { en: string; id: string };
 
@@ -82,8 +82,8 @@ export const STRINGS: Record<string, Entry> = {
     "Dibangun atas dasar kepercayaan, dihadirkan dengan sepenuh hati.",
   ),
   "about.overview.body": e(
-    "See how NewCo works, what we deliver, and how ownership transfers to your business.",
-    "Pelajari cara kerja NewCo, apa yang kami hadirkan, dan bagaimana kepemilikan dialihkan ke bisnis Anda.",
+    "See how Kyron Engineering works, what we deliver, and how ownership transfers to your business.",
+    "Pelajari cara kerja Kyron Engineering, apa yang kami hadirkan, dan bagaimana kepemilikan dialihkan ke bisnis Anda.",
   ),
   "about.overview.title": e(
     "Want a quick overview?",
@@ -146,16 +146,12 @@ export const STRINGS: Record<string, Entry> = {
     "Vanezza memimpin strategi dan operasi klien. Dia menerjemahkan tujuan bisnis ke ruang lingkup teknis yang jelas dan memastikan setiap kerja sama menghasilkan nilai yang terukur.",
   ),
   "about.team.bio-cto": e(
-    "Agung architects the systems NewCo builds and owns the technical standards. He reviews every proposal for feasibility, maintainability, and security.",
-    "Agung merancang sistem yang NewCo bangun dan memiliki standar teknis. Dia meninjau setiap proposal untuk kelayakan, maintainability, dan keamanan.",
+    "Agung architects the systems Kyron Engineering builds and owns the technical standards. He reviews every proposal for feasibility, maintainability, and security.",
+    "Agung merancang sistem yang Kyron Engineering bangun dan memiliki standar teknis. Dia meninjau setiap proposal untuk kelayakan, maintainability, dan keamanan.",
   ),
   "about.team.lede": e(
     "Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.",
     "Setiap proposal ditinjau langsung oleh kedua pendiri—satu dari sisi bisnis dan satu dari sisi teknis—sehingga apa yang kami janjikan selalu dapat kami wujudkan.",
-  ),
-  "about.team.linkedin": e(
-    "LinkedIn",
-    "LinkedIn",
   ),
   "about.team.role-ceo": e(
     "Chief Executive Officer",
@@ -166,16 +162,16 @@ export const STRINGS: Record<string, Entry> = {
     "Chief Technology Officer",
   ),
   "about.team.title": e(
-    "The team behind NewCo.",
-    "Tim di balik NewCo.",
+    "The team behind Kyron Engineering.",
+    "Tim di balik Kyron Engineering.",
   ),
   "capabilitycurve.caption": e(
     "Handover is a success metric, not a hidden failure condition.",
     "Serah terima itu tolok ukur keberhasilan, bukan sumber masalah tersembunyi.",
   ),
   "capabilitycurve.desc": e(
-    "A line chart across 5 phases (Diagnose, Build With, Run With, Hand Over, Advise) showing NewCo's day to day ownership decreasing from high to low while the client's ownership increases from low to high.",
-    "Grafik garis lima tahap (Diagnosis, Bangun Bareng, Jalan Bareng, Serah Terima, Pendampingan) yang nunjukin porsi kerja harian NewCo turun dari besar ke kecil, sementara porsi klien naik dari kecil ke besar.",
+    "A line chart across 5 phases (Diagnose, Build With, Run With, Hand Over, Advise) showing Kyron Engineering's day to day ownership decreasing from high to low while the client's ownership increases from low to high.",
+    "Grafik garis lima tahap (Diagnosis, Bangun Bareng, Jalan Bareng, Serah Terima, Pendampingan) yang nunjukin porsi kerja harian Kyron Engineering turun dari besar ke kecil, sementara porsi klien naik dari kecil ke besar.",
   ),
   "capabilitycurve.legend.client": e(
     "Client ownership",
@@ -186,12 +182,12 @@ export const STRINGS: Record<string, Entry> = {
     "Klien",
   ),
   "capabilitycurve.legend.newco": e(
-    "NewCo day to day ownership",
-    "Porsi harian NewCo",
+    "Kyron Engineering day to day ownership",
+    "Porsi harian Kyron Engineering",
   ),
   "capabilitycurve.legend.newco-short": e(
-    "NewCo",
-    "NewCo",
+    "Kyron Engineering",
+    "Kyron Engineering",
   ),
   "capabilitycurve.legend.ownership": e(
     "Day to day ownership",
@@ -206,80 +202,80 @@ export const STRINGS: Record<string, Entry> = {
     "Diagnosis",
   ),
   "capabilitycurve.phase1.live": e(
-    "Diagnose: client ownership 8 percent, NewCo pager share 100 percent. Baseline Diagnostic.",
-    "Diagnosis: porsi klien 8 persen, piket NewCo 100 persen. Diagnosis Awal.",
+    "Diagnose: client ownership 8 percent, Kyron Engineering pager share 100 percent. Baseline Diagnostic.",
+    "Diagnosis: porsi klien 8 persen, piket Kyron Engineering 100 persen. Diagnosis Awal.",
   ),
   "capabilitycurve.phase1.milestone": e(
     "Baseline Diagnostic",
     "Diagnosis Awal",
   ),
   "capabilitycurve.phase1.sr": e(
-    "Illustrative: NewCo ownership about 92 percent, client ownership about 8 percent.",
-    "Ilustrasi: porsi NewCo sekitar 92 persen, porsi klien sekitar 8 persen.",
+    "Illustrative: Kyron Engineering ownership about 92 percent, client ownership about 8 percent.",
+    "Ilustrasi: porsi Kyron Engineering sekitar 92 persen, porsi klien sekitar 8 persen.",
   ),
   "capabilitycurve.phase2.label": e(
     "Build With",
     "Bangun Bareng",
   ),
   "capabilitycurve.phase2.live": e(
-    "Build With: client ownership 30 percent, NewCo pager share 75 percent. Joint Delivery.",
-    "Bangun Bareng: porsi klien 30 persen, piket NewCo 75 persen. Delivery Bareng.",
+    "Build With: client ownership 30 percent, Kyron Engineering pager share 75 percent. Joint Delivery.",
+    "Bangun Bareng: porsi klien 30 persen, piket Kyron Engineering 75 persen. Delivery Bareng.",
   ),
   "capabilitycurve.phase2.milestone": e(
     "Joint Delivery",
     "Delivery Bareng",
   ),
   "capabilitycurve.phase2.sr": e(
-    "Illustrative: NewCo ownership about 74 percent, client ownership about 30 percent.",
-    "Ilustrasi: porsi NewCo sekitar 74 persen, porsi klien sekitar 30 persen.",
+    "Illustrative: Kyron Engineering ownership about 74 percent, client ownership about 30 percent.",
+    "Ilustrasi: porsi Kyron Engineering sekitar 74 persen, porsi klien sekitar 30 persen.",
   ),
   "capabilitycurve.phase3.label": e(
     "Run With",
     "Jalan Bareng",
   ),
   "capabilitycurve.phase3.live": e(
-    "Run With: client ownership 58 percent, NewCo pager share 50 percent. Shared Pager.",
-    "Jalan Bareng: porsi klien 58 persen, piket NewCo 50 persen. Piket Bareng.",
+    "Run With: client ownership 58 percent, Kyron Engineering pager share 50 percent. Shared Pager.",
+    "Jalan Bareng: porsi klien 58 persen, piket Kyron Engineering 50 persen. Piket Bareng.",
   ),
   "capabilitycurve.phase3.milestone": e(
     "Shared Pager",
     "Piket Bareng",
   ),
   "capabilitycurve.phase3.sr": e(
-    "Illustrative: NewCo ownership about 48 percent, client ownership about 58 percent.",
-    "Ilustrasi: porsi NewCo sekitar 48 persen, porsi klien sekitar 58 persen.",
+    "Illustrative: Kyron Engineering ownership about 48 percent, client ownership about 58 percent.",
+    "Ilustrasi: porsi Kyron Engineering sekitar 48 persen, porsi klien sekitar 58 persen.",
   ),
   "capabilitycurve.phase4.label": e(
     "Hand Over",
     "Serah Terima",
   ),
   "capabilitycurve.phase4.live": e(
-    "Hand Over: client ownership 82 percent, NewCo pager share 15 percent. Autonomous Handover.",
-    "Serah Terima: porsi klien 82 persen, piket NewCo 15 persen. Lepas Mandiri.",
+    "Hand Over: client ownership 82 percent, Kyron Engineering pager share 15 percent. Autonomous Handover.",
+    "Serah Terima: porsi klien 82 persen, piket Kyron Engineering 15 persen. Lepas Mandiri.",
   ),
   "capabilitycurve.phase4.milestone": e(
     "Autonomous Handover",
     "Lepas Mandiri",
   ),
   "capabilitycurve.phase4.sr": e(
-    "Illustrative: NewCo ownership about 22 percent, client ownership about 82 percent.",
-    "Ilustrasi: porsi NewCo sekitar 22 persen, porsi klien sekitar 82 persen.",
+    "Illustrative: Kyron Engineering ownership about 22 percent, client ownership about 82 percent.",
+    "Ilustrasi: porsi Kyron Engineering sekitar 22 persen, porsi klien sekitar 82 persen.",
   ),
   "capabilitycurve.phase5.label": e(
     "Advise",
     "Pendampingan",
   ),
   "capabilitycurve.phase5.live": e(
-    "Advise: client ownership 94 percent, NewCo pager share 0 percent. Advisory Governance.",
-    "Pendampingan: porsi klien 94 persen, piket NewCo 0 persen. Tata Kelola Pendamping.",
+    "Advise: client ownership 94 percent, Kyron Engineering pager share 0 percent. Advisory Governance.",
+    "Pendampingan: porsi klien 94 persen, piket Kyron Engineering 0 persen. Tata Kelola Pendamping.",
   ),
   "capabilitycurve.phase5.milestone": e(
     "Advisory Governance",
     "Tata Kelola Pendamping",
   ),
   "capabilitycurve.phase5.sr": e(
-    "Illustrative: NewCo ownership about 10 percent, client ownership about 94 percent.",
-    "Ilustrasi: porsi NewCo sekitar 10 persen, porsi klien sekitar 94 persen.",
+    "Illustrative: Kyron Engineering ownership about 10 percent, client ownership about 94 percent.",
+    "Ilustrasi: porsi Kyron Engineering sekitar 10 persen, porsi klien sekitar 94 persen.",
   ),
   "capabilitycurve.phasegroup": e(
     "Select a phase",
@@ -290,8 +286,8 @@ export const STRINGS: Record<string, Entry> = {
     "Porsi Klien",
   ),
   "capabilitycurve.telemetry.pager": e(
-    "NewCo Pager Share",
-    "Piket NewCo",
+    "Kyron Engineering Pager Share",
+    "Piket Kyron Engineering",
   ),
   "capabilitycurve.telemetry.phase": e(
     "Phase",
@@ -542,8 +538,8 @@ export const STRINGS: Record<string, Entry> = {
     "Pertanyaan umum sebelum memulai kerja sama.",
   ),
   "contact.faq.lede": e(
-    "Here is what working with NewCo looks like from initial conversation to contractual handover.",
-    "Inilah gambaran bermitra dengan NewCo, mulai dari percakapan awal hingga serah terima kontrak.",
+    "Here is what working with Kyron Engineering looks like from initial conversation to contractual handover.",
+    "Inilah gambaran bermitra dengan Kyron Engineering, mulai dari percakapan awal hingga serah terima kontrak.",
   ),
   "contact.faq.q1-title": e(
     "What happens after submitting the form?",
@@ -1354,44 +1350,44 @@ export const STRINGS: Record<string, Entry> = {
     "Intro Singkat · 1 menit",
   ),
   "meta.about.description": e(
-    "Meet NewCo's founders. We build and run robust business systems, transferring complete engineering capability to your team.",
-    "Kenalan dengan founder NewCo. Kami membangun dan menjalankan sistem bisnis yang andal, sekaligus mengalihkan kemampuan engineering sepenuhnya ke tim Anda.",
+    "Meet Kyron Engineering's founders. We build and run robust business systems, transferring complete engineering capability to your team.",
+    "Kenalan dengan founder Kyron Engineering. Kami membangun dan menjalankan sistem bisnis yang andal, sekaligus mengalihkan kemampuan engineering sepenuhnya ke tim Anda.",
   ),
   "meta.about.title": e(
-    "About NewCo · Engineering Leadership & Governance",
-    "Tentang NewCo · Kepemimpinan & Tata Kelola Engineering",
+    "About Kyron Engineering · Engineering Leadership & Governance",
+    "Tentang Kyron Engineering · Kepemimpinan & Tata Kelola Engineering",
   ),
   "meta.contact.description": e(
-    "Contact NewCo's founders to discuss your business systems, technical constraints, and path to full engineering independence.",
-    "Hubungi founder NewCo untuk mendiskusikan sistem bisnis, kendala teknis, dan jalan menuju kemandirian engineering.",
+    "Contact Kyron Engineering's founders to discuss your business systems, technical constraints, and path to full engineering independence.",
+    "Hubungi founder Kyron Engineering untuk mendiskusikan sistem bisnis, kendala teknis, dan jalan menuju kemandirian engineering.",
   ),
   "meta.contact.title": e(
-    "Contact NewCo · Discuss Systems & Engineering Handover",
-    "Hubungi NewCo · Diskusi Sistem & Serah Terima Engineering",
+    "Contact Kyron Engineering · Discuss Systems & Engineering Handover",
+    "Hubungi Kyron Engineering · Diskusi Sistem & Serah Terima Engineering",
   ),
   "meta.howwework.description": e(
     "Our 4-stage engineering model transfers full system ownership to your team, from Discovery through autonomous operations.",
     "Model engineering 4 tahap kami mengalihkan kepemilikan sistem penuh ke tim Anda, dari Discovery sampai operasi mandiri.",
   ),
   "meta.howwework.title": e(
-    "How We Work · 4-Stage Engineering Transfer | NewCo",
-    "Cara Kerja Kami · Alih Teknologi 4 Tahap | NewCo",
+    "How We Work · 4-Stage Engineering Transfer | Kyron Engineering",
+    "Cara Kerja Kami · Alih Teknologi 4 Tahap | Kyron Engineering",
   ),
   "meta.index.description": e(
     "We design, build, and support business systems, then transfer full ownership. Zero vendor lock-in, zero hidden dependencies.",
     "Kami merancang, membangun, dan menjaga sistem bisnis, lalu menyerahkan kepemilikan penuh. Tanpa vendor lock-in, tanpa ketergantungan tersembunyi.",
   ),
   "meta.index.title": e(
-    "Technology built for independence · NewCo",
-    "Teknologi yang kemandirian · NewCo",
+    "Technology built for independence · Kyron Engineering",
+    "Teknologi yang kemandirian · Kyron Engineering",
   ),
   "meta.privacy.description": e(
-    "How NewCo handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data.",
-    "Cara NewCo menangani data formulir kontak, menjaga kerahasiaan arsitektur klien, mengatur pemakaian AI atas aset klien, dan menyimpan data.",
+    "How Kyron Engineering handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data.",
+    "Cara Kyron Engineering menangani data formulir kontak, menjaga kerahasiaan arsitektur klien, mengatur pemakaian AI atas aset klien, dan menyimpan data.",
   ),
   "meta.privacy.title": e(
-    "Privacy Policy | NewCo",
-    "Kebijakan Privasi | NewCo",
+    "Privacy Policy | Kyron Engineering",
+    "Kebijakan Privasi | Kyron Engineering",
   ),
   "nav.about": e(
     "About",
@@ -1410,8 +1406,8 @@ export const STRINGS: Record<string, Entry> = {
     "Cara kami bekerja",
   ),
   "overview.href": e(
-    "/downloads/newco-company-overview-en.pdf",
-    "/downloads/newco-company-overview-id.pdf",
+    "/downloads/kyron-engineering-company-overview-en.pdf",
+    "/downloads/kyron-engineering-company-overview-id.pdf",
   ),
   "overview.link": e(
     "View company overview (PDF)",
@@ -1434,8 +1430,8 @@ export const STRINGS: Record<string, Entry> = {
     "Ada pertanyaan soal kebijakan ini?",
   ),
   "privacy.hero.lede": e(
-    "NewCo works inside our clients' systems, so confidentiality is part of how we operate, not a footnote. This policy explains what we collect, how we protect it, and what we will never do with it.",
-    "NewCo kerja di dalam sistem klien, jadi kerahasiaan itu bagian dari cara kami kerja, bukan sekadar catatan kaki. Kebijakan ini menjelaskan apa yang kami kumpulkan, cara kami melindunginya, dan apa yang tidak akan pernah kami lakukan dengannya.",
+    "Kyron Engineering works inside our clients' systems, so confidentiality is part of how we operate, not a footnote. This policy explains what we collect, how we protect it, and what we will never do with it.",
+    "Kyron Engineering kerja di dalam sistem klien, jadi kerahasiaan itu bagian dari cara kami kerja, bukan sekadar catatan kaki. Kebijakan ini menjelaskan apa yang kami kumpulkan, cara kami melindunginya, dan apa yang tidak akan pernah kami lakukan dengannya.",
   ),
   "privacy.hero.title": e(
     "Privacy Policy",
@@ -1478,8 +1474,8 @@ export const STRINGS: Record<string, Entry> = {
     "Detail yang Anda bagikan soal sistem, infrastruktur, arsitektur, vendor, postur keamanan, atau model operasi Anda kami anggap rahasia sejak obrolan pertama. Kami pakai hanya untuk menilai dan mengerjakan yang Anda minta.",
   ),
   "privacy.sections.architecture.body-2": e(
-    "Access is limited to the people at NewCo who need it for your engagement. We do not publish, reference or reuse your architecture information, including in case studies or marketing, without your written permission. We are glad to sign a mutual non-disclosure agreement before any detailed technical discussion.",
-    "Akses dibatasi hanya untuk orang NewCo yang membutuhkannya untuk proyek Anda. Kami tidak mempublikasikan, menyebut, atau memakai ulang info arsitektur Anda — termasuk untuk studi kasus atau marketing — tanpa izin tertulis dari Anda. Kami bersedia tanda tangan NDA dua arah sebelum diskusi teknis yang detail.",
+    "Access is limited to the people at Kyron Engineering who need it for your engagement. We do not publish, reference or reuse your architecture information, including in case studies or marketing, without your written permission. We are glad to sign a mutual non-disclosure agreement before any detailed technical discussion.",
+    "Akses dibatasi hanya untuk orang Kyron Engineering yang membutuhkannya untuk proyek Anda. Kami tidak mempublikasikan, menyebut, atau memakai ulang info arsitektur Anda — termasuk untuk studi kasus atau marketing — tanpa izin tertulis dari Anda. Kami bersedia tanda tangan NDA dua arah sebelum diskusi teknis yang detail.",
   ),
   "privacy.sections.architecture.title": e(
     "Non-disclosure of architecture data",

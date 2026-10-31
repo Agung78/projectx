@@ -22,7 +22,7 @@ if (titleKey || descKey) {
   if (descKey && STRINGS[descKey]) description = STRINGS[descKey][lang];
 }
 
-const pageTitle = title.includes("NewCo") ? title : `${title} | NewCo`;
+const pageTitle = title.includes("Kyron Engineering") ? title : `${title} | Kyron Engineering`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("/og-image.png", Astro.site);
 const enPath = Astro.url.pathname.replace(/^\/id(?=\/|$)/, "") || "/";
@@ -35,11 +35,11 @@ const structuredData = {
     {
       "@type": "Organization",
       "@id": new URL("/#organization", Astro.site).href,
-      name: "NewCo",
+      name: "Kyron Engineering",
       url: new URL("/", Astro.site).href,
       logo: new URL("/favicon.svg", Astro.site).href,
       description:
-        "NewCo builds with your team, operates systems together, and measures progress toward your engineering independence.",
+        "Kyron Engineering builds with your team, operates systems together, and measures progress toward your engineering independence.",
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
@@ -50,16 +50,16 @@ const structuredData = {
         addressCountry: "ID",
       },
       sameAs: [
-        "https://github.com/newco",
-        "https://linkedin.com/company/newco",
-        "https://twitter.com/newco",
+        "https://github.com/kyronengineering",
+        "https://linkedin.com/company/kyronengineering",
+        "https://twitter.com/kyronengineering",
       ],
     },
     {
       "@type": "WebSite",
       "@id": new URL("/#website", Astro.site).href,
       url: new URL("/", Astro.site).href,
-      name: "NewCo",
+      name: "Kyron Engineering",
       publisher: { "@id": new URL("/#organization", Astro.site).href },
       potentialAction: {
         "@type": "SearchAction",

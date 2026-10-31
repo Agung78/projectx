@@ -202,8 +202,8 @@ export const STRINGS: Record<string, Entry> = {
     "Diagnosis",
   ),
   "capabilitycurve.phase1.live": e(
-    "Diagnose: client ownership 8 percent, Kyron Engineering pager share 100 percent. Baseline Diagnostic.",
-    "Diagnosis: porsi klien 8 persen, piket Kyron Engineering 100 persen. Diagnosis Awal.",
+    "Diagnose: client ownership 8 percent, Kyron Engineering stewardship 100 percent. Baseline Diagnostic.",
+    "Diagnosis: porsi klien 8 persen, stewardship Kyron Engineering 100 persen. Diagnosis Awal.",
   ),
   "capabilitycurve.phase1.milestone": e(
     "Baseline Diagnostic",
@@ -218,8 +218,8 @@ export const STRINGS: Record<string, Entry> = {
     "Bangun Bareng",
   ),
   "capabilitycurve.phase2.live": e(
-    "Build With: client ownership 30 percent, Kyron Engineering pager share 75 percent. Joint Delivery.",
-    "Bangun Bareng: porsi klien 30 persen, piket Kyron Engineering 75 persen. Delivery Bareng.",
+    "Build With: client ownership 30 percent, Kyron Engineering stewardship 75 percent. Joint Delivery.",
+    "Bangun Bareng: porsi klien 30 persen, stewardship Kyron Engineering 75 persen. Delivery Bareng.",
   ),
   "capabilitycurve.phase2.milestone": e(
     "Joint Delivery",
@@ -234,8 +234,8 @@ export const STRINGS: Record<string, Entry> = {
     "Jalan Bareng",
   ),
   "capabilitycurve.phase3.live": e(
-    "Run With: client ownership 58 percent, Kyron Engineering pager share 50 percent. Shared Pager.",
-    "Jalan Bareng: porsi klien 58 persen, piket Kyron Engineering 50 persen. Piket Bareng.",
+    "Run With: client ownership 58 percent, Kyron Engineering stewardship 50 percent. Shared Pager.",
+    "Jalan Bareng: porsi klien 58 persen, stewardship Kyron Engineering 50 persen. Piket Bareng.",
   ),
   "capabilitycurve.phase3.milestone": e(
     "Shared Pager",
@@ -250,8 +250,8 @@ export const STRINGS: Record<string, Entry> = {
     "Serah Terima",
   ),
   "capabilitycurve.phase4.live": e(
-    "Hand Over: client ownership 82 percent, Kyron Engineering pager share 15 percent. Autonomous Handover.",
-    "Serah Terima: porsi klien 82 persen, piket Kyron Engineering 15 persen. Lepas Mandiri.",
+    "Hand Over: client ownership 82 percent, Kyron Engineering stewardship 15 percent. Autonomous Handover.",
+    "Serah Terima: porsi klien 82 persen, stewardship Kyron Engineering 15 persen. Lepas Mandiri.",
   ),
   "capabilitycurve.phase4.milestone": e(
     "Autonomous Handover",
@@ -266,8 +266,8 @@ export const STRINGS: Record<string, Entry> = {
     "Pendampingan",
   ),
   "capabilitycurve.phase5.live": e(
-    "Advise: client ownership 94 percent, Kyron Engineering pager share 0 percent. Advisory Governance.",
-    "Pendampingan: porsi klien 94 persen, piket Kyron Engineering 0 persen. Tata Kelola Pendamping.",
+    "Advise: client ownership 94 percent, Kyron Engineering stewardship 0 percent. Advisory Governance.",
+    "Pendampingan: porsi klien 94 persen, stewardship Kyron Engineering 0 persen. Tata Kelola Pendamping.",
   ),
   "capabilitycurve.phase5.milestone": e(
     "Advisory Governance",
@@ -286,8 +286,8 @@ export const STRINGS: Record<string, Entry> = {
     "Porsi Klien",
   ),
   "capabilitycurve.telemetry.pager": e(
-    "Kyron Engineering Pager Share",
-    "Piket Kyron Engineering",
+    "Kyron Engineering Stewardship",
+    "Porsi Kyron Engineering",
   ),
   "capabilitycurve.telemetry.phase": e(
     "Phase",
@@ -838,8 +838,8 @@ export const STRINGS: Record<string, Entry> = {
     "// METODOLOGI & PROSES",
   ),
   "howwework.hero.lede": e(
-    "We work alongside the business at every stage, and it always has the final say. Every decision is explained in plain language, with no jargon.",
-    "Kami mendampingi bisnis Anda di setiap tahapan, dan keputusan akhir selalu berada di tangan Anda. Setiap keputusan dijelaskan dengan bahasa yang lugas, tanpa istilah teknis yang rumit.",
+    "Your system, your decisions. We work alongside you at every stage and hand it back when you’re ready.",
+    "Sistem Anda, keputusan Anda. Kami bekerja bersama Anda di setiap tahapan dan akan menyerahkan kembali saat Anda siap.",
   ),
   "howwework.hero.title": e(
     "One clear process, start to finish.",

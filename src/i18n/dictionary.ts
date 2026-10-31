@@ -662,8 +662,8 @@ export const STRINGS: Record<string, Entry> = {
     "Hak cipta dilindungi undang-undang.",
   ),
   "footer.tagline": e(
-    "Systems built properly, documented fully, and owned by the business.",
-    "Sistem yang dibangun dengan tepat, terdokumentasi lengkap, dan sepenuhnya milik bisnis Anda.",
+    "BUILT RIGHT. DOCUMENTED FULLY. YOURS TO KEEP.",
+    "DIBANGUN DENGAN TEPAT. TERDOKUMENTASI LENGKAP. MILIK ANDA SEUTUHNYA.",
   ),
   "howwework.curve.caption": e(
     "By the final stage, the business runs its technology on its own terms.",
@@ -750,8 +750,8 @@ export const STRINGS: Record<string, Entry> = {
     "Semua diserahkan tuntas, tanpa ada yang ditahan.",
   ),
   "howwework.handover.lede": e(
-    "Before we sign off, each item below is delivered and walked through with whoever will run the system. The checklist is agreed in the contract.",
-    "Sebelum persetujuan akhir, setiap poin di bawah ini diserahkan dan dipandu langsung bersama siapa pun yang akan mengelola sistem Anda. Daftar periksa ini telah disepakati di dalam kontrak.",
+    "Before we sign off, we deliver every item below and walk your team through it. The checklist is written into the contract.",
+    "Sebelum serah terima resmi, kami akan menyerahkan setiap poin di bawah ini sekaligus memberikan panduan langsung kepada tim Anda. Daftar periksa ini sudah tercantum jelas di dalam kontrak.",
   ),
   "howwework.handover.recovery.included": e(
     "How to restore the system from backup if something goes wrong",
@@ -842,8 +842,8 @@ export const STRINGS: Record<string, Entry> = {
     "Sistem Anda, keputusan Anda. Kami bekerja bersama Anda di setiap tahapan dan akan menyerahkan kembali saat Anda siap.",
   ),
   "howwework.hero.title": e(
-    "One clear process, start to finish.",
-    "Satu proses yang jelas, dari awal hingga tuntas.",
+    "Mapped out together. Owned by you.",
+    "Terencana bersama. Menjadi milik Anda seutuhnya.",
   ),
   "howwework.stages.development.body": e(
     "We design and build the system, with regular check-ins and demos so the business can see and test it as it takes shape.",
@@ -918,8 +918,8 @@ export const STRINGS: Record<string, Entry> = {
     "// Dibangun di atas teknologi yang terbukti dan dipakai luas.",
   ),
   "howwework.tech.lede": e(
-    "We deliberately select battle-tested, widely adopted open-source technologies with robust global communities. This ensures any qualified software engineer can comfortably inspect, maintain, and expand your systems without specialized proprietary training.",
-    "Kami secara cermat memilih teknologi open-source yang teruji keandalannya dan didukung komunitas global yang kuat. Hal ini menjamin bahwa setiap engineer yang kompeten dapat dengan mudah memeriksa, memelihara, dan mengembangkan sistem Anda tanpa pelatihan khusus.",
+    "We use established open-source tools with large global communities, so any qualified engineer can maintain and extend your systems. No proprietary lock-in.",
+    "Kami memanfaatkan perangkat lunak open-source terkemuka dengan komunitas global yang besar, sehingga setiap engineer yang kompeten dapat memelihara dan mengembangkan sistem Anda tanpa terikat pada teknologi tertentu.",
   ),
   "index.ai.eyebrow": e(
     "// Optional service",

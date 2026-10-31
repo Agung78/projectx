@@ -207,14 +207,13 @@ const marqueeRows = [
 
   <section class="border-t border-line bg-mist py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-navy text-balance" data-i18n="howwework.stages.heading">Four stages, one direction.</h2>
+      <h2 class="text-h2 uppercase text-navy text-balance" data-i18n="howwework.stages.heading">Four stages, one direction.</h2>
       <div class="mt-12 grid grid-cols-1 overflow-hidden rounded-xl border border-line bg-white md:grid-cols-2 lg:grid-cols-4">
         {
           stages.map((stage, i) => (
             <div class="flex flex-col justify-between border-t border-line p-6 first:border-t-0 md:nth-2:border-t-0 md:odd:border-r md:p-8 lg:border-t-0 lg:border-r lg:last:border-r-0">
               <div>
                 <span class="mono text-blue"><span data-i18n="howwework.stages.step-prefix">STEP //</span> {pad(i)}</span>
-                <p class="mt-4 text-[2.5rem] font-semibold leading-none text-navy/15" aria-hidden="true">{pad(i)}</p>
                 <h3 class="mt-4 text-h3 text-navy" data-i18n={stage.nameKey}>{stage.name}</h3>
                 <p class="mt-3 text-grey" data-i18n={stage.bodyKey}>{stage.body}</p>
               </div>

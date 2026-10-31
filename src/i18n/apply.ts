@@ -12,9 +12,14 @@ function syncToggles(): void {
   document.querySelectorAll<HTMLElement>("[data-lang-indicator]").forEach((el) => {
     el.style.transform = lang === "id" ? "translateX(100%)" : "translateX(0%)";
   });
-  document.querySelectorAll<HTMLButtonElement>("[data-lang-toggle]").forEach((btn) => {
+  const { pathname, search, hash } = window.location;
+  const base = pathname.replace(ID_PREFIX, "") || "/";
+  document.querySelectorAll<HTMLAnchorElement>("[data-lang-toggle]").forEach((btn) => {
     const active = btn.dataset.lang === lang;
-    btn.setAttribute("aria-pressed", String(active));
+    // Header persists across navigations; keep the crawlable hrefs current.
+    btn.href = (btn.dataset.lang === "id" ? `/id${base === "/" ? "/" : base}` : base) + search + hash;
+    if (active) btn.setAttribute("aria-current", "true");
+    else btn.removeAttribute("aria-current");
     btn.classList.toggle("text-navy", active);
     btn.classList.toggle("text-grey", !active);
   });
@@ -40,7 +45,7 @@ function swapText(lang: Lang): void {
 
 function rewriteLinks(lang: Lang): void {
   document.querySelectorAll<HTMLAnchorElement>('a[href^="/"]').forEach((a) => {
-    if (a.dataset.i18nAttr?.includes("href:")) return;
+    if (a.dataset.i18nAttr?.includes("href:") || a.hasAttribute("data-lang-toggle")) return;
     const href = a.getAttribute("href");
     if (!href || href.startsWith("//")) return;
     const m = href.match(/^(\/[^?#]*)([?#].*)?$/);
@@ -104,6 +109,7 @@ function setLang(lang: Lang, push: boolean): void {
 document.addEventListener("click", (event) => {
   const btn = (event.target as HTMLElement).closest<HTMLElement>("[data-lang-toggle]");
   if (!btn || !btn.dataset.lang) return;
+  event.preventDefault();
   const next: Lang = btn.dataset.lang === "id" ? "id" : "en";
   if (next === document.documentElement.lang) return;
   setLang(next, true);

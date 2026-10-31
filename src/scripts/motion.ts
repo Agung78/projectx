@@ -232,7 +232,7 @@ function initPhaseTelemetry(): () => void {
       triggers.forEach((button) => button.setAttribute("aria-pressed", String(indexOf(button) === i)));
       show(i);
       const phase = phases[i];
-      live.textContent = telemetryT(phase.liveKey, `${phase.label}: client ownership ${phase.client} percent, Kyron Engineering pager share ${phase.pager} percent. ${phase.milestone}.`);
+      live.textContent = telemetryT(phase.liveKey, `${phase.label}: client ownership ${phase.client} percent, Kyron Engineering stewardship ${phase.pager} percent. ${phase.milestone}.`);
     }
 
     targets.forEach((el) => {

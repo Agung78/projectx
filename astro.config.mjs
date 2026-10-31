@@ -14,7 +14,10 @@ const site = process.env.VERCEL_PROJECT_PRODUCTION_URL
 export default defineConfig({
   site,
   integrations: [icon(),
-    sitemap({ i18n: { defaultLocale: "en", locales: { en: "en", id: "id" } } }),
+    sitemap({
+      i18n: { defaultLocale: "en", locales: { en: "en", id: "id" } },
+      serialize: (item) => ({ ...item, lastmod: new Date().toISOString() }),
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],

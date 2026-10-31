@@ -6,6 +6,12 @@ const navLinks = [
 ];
 
 const currentPath = Astro.url.pathname;
+const enPath = currentPath.replace(/^\/id(?=\/|$)/, "") || "/";
+// Absolute hrefs: middleware only rewrites root-relative ones, so these stay put.
+const langHref = {
+  en: new URL(enPath, Astro.site).href,
+  id: new URL(`/id${enPath === "/" ? "/" : enPath}`, Astro.site).href,
+};
 ---
 
 <header
@@ -41,8 +47,8 @@ const currentPath = Astro.url.pathname;
           data-lang-indicator
           aria-hidden="true"
         />
-        <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-navy cursor-pointer motion-reduce:transition-none">EN</button>
-        <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-grey hover:text-navy cursor-pointer motion-reduce:transition-none">ID</button>
+        <a href={langHref.en} hreflang="en" data-astro-reload data-lang-toggle data-lang="en" aria-current={currentPath.startsWith("/id") === (false) ? "true" : undefined} class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-navy cursor-pointer motion-reduce:transition-none">EN</a>
+        <a href={langHref.id} hreflang="id" data-astro-reload data-lang-toggle data-lang="id" aria-current={currentPath.startsWith("/id") === (true) ? "true" : undefined} class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-grey hover:text-navy cursor-pointer motion-reduce:transition-none">ID</a>
       </div>
 
       <button
@@ -82,8 +88,8 @@ const currentPath = Astro.url.pathname;
             data-lang-indicator
             aria-hidden="true"
           />
-          <button type="button" data-lang-toggle data-lang="en" aria-pressed="true" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-navy cursor-pointer motion-reduce:transition-none">EN</button>
-          <button type="button" data-lang-toggle data-lang="id" aria-pressed="false" class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-grey hover:text-navy cursor-pointer motion-reduce:transition-none">ID</button>
+          <a href={langHref.en} hreflang="en" data-astro-reload data-lang-toggle data-lang="en" aria-current={currentPath.startsWith("/id") === (false) ? "true" : undefined} class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-navy cursor-pointer motion-reduce:transition-none">EN</a>
+          <a href={langHref.id} hreflang="id" data-astro-reload data-lang-toggle data-lang="id" aria-current={currentPath.startsWith("/id") === (true) ? "true" : undefined} class="relative z-10 w-9 py-1 text-center transition-colors duration-150 text-grey hover:text-navy cursor-pointer motion-reduce:transition-none">ID</a>
         </div>
       </div>
     </nav>

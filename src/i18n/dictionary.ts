@@ -194,16 +194,16 @@ export const STRINGS: Record<string, Entry> = {
     "Porsi kerja harian",
   ),
   "capabilitycurve.note": e(
-    "Illustrative",
-    "Ilustrasi",
+    "For illustration only. Actual levels vary by project.",
+    "Hanya untuk ilustrasi. Tingkat sebenarnya bervariasi menurut proyek.",
   ),
   "capabilitycurve.phase1.label": e(
     "Diagnose",
     "Diagnosis",
   ),
   "capabilitycurve.phase1.live": e(
-    "Diagnose: client ownership 8 percent, Kyron Engineering pager share 100 percent. Baseline Diagnostic.",
-    "Diagnosis: porsi klien 8 persen, piket Kyron Engineering 100 persen. Diagnosis Awal.",
+    "Diagnose: client ownership 8 percent, Kyron Engineering stewardship 100 percent. Baseline Diagnostic.",
+    "Diagnosis: porsi klien 8 persen, stewardship Kyron Engineering 100 persen. Diagnosis Awal.",
   ),
   "capabilitycurve.phase1.milestone": e(
     "Baseline Diagnostic",
@@ -218,8 +218,8 @@ export const STRINGS: Record<string, Entry> = {
     "Bangun Bareng",
   ),
   "capabilitycurve.phase2.live": e(
-    "Build With: client ownership 30 percent, Kyron Engineering pager share 75 percent. Joint Delivery.",
-    "Bangun Bareng: porsi klien 30 persen, piket Kyron Engineering 75 persen. Delivery Bareng.",
+    "Build With: client ownership 30 percent, Kyron Engineering stewardship 75 percent. Joint Delivery.",
+    "Bangun Bareng: porsi klien 30 persen, stewardship Kyron Engineering 75 persen. Delivery Bareng.",
   ),
   "capabilitycurve.phase2.milestone": e(
     "Joint Delivery",
@@ -234,8 +234,8 @@ export const STRINGS: Record<string, Entry> = {
     "Jalan Bareng",
   ),
   "capabilitycurve.phase3.live": e(
-    "Run With: client ownership 58 percent, Kyron Engineering pager share 50 percent. Shared Pager.",
-    "Jalan Bareng: porsi klien 58 persen, piket Kyron Engineering 50 persen. Piket Bareng.",
+    "Run With: client ownership 58 percent, Kyron Engineering stewardship 50 percent. Shared Pager.",
+    "Jalan Bareng: porsi klien 58 persen, stewardship Kyron Engineering 50 persen. Piket Bareng.",
   ),
   "capabilitycurve.phase3.milestone": e(
     "Shared Pager",
@@ -250,8 +250,8 @@ export const STRINGS: Record<string, Entry> = {
     "Serah Terima",
   ),
   "capabilitycurve.phase4.live": e(
-    "Hand Over: client ownership 82 percent, Kyron Engineering pager share 15 percent. Autonomous Handover.",
-    "Serah Terima: porsi klien 82 persen, piket Kyron Engineering 15 persen. Lepas Mandiri.",
+    "Hand Over: client ownership 82 percent, Kyron Engineering stewardship 15 percent. Autonomous Handover.",
+    "Serah Terima: porsi klien 82 persen, stewardship Kyron Engineering 15 persen. Lepas Mandiri.",
   ),
   "capabilitycurve.phase4.milestone": e(
     "Autonomous Handover",
@@ -266,8 +266,8 @@ export const STRINGS: Record<string, Entry> = {
     "Pendampingan",
   ),
   "capabilitycurve.phase5.live": e(
-    "Advise: client ownership 94 percent, Kyron Engineering pager share 0 percent. Advisory Governance.",
-    "Pendampingan: porsi klien 94 persen, piket Kyron Engineering 0 persen. Tata Kelola Pendamping.",
+    "Advise: client ownership 94 percent, Kyron Engineering stewardship 0 percent. Advisory Governance.",
+    "Pendampingan: porsi klien 94 persen, stewardship Kyron Engineering 0 persen. Tata Kelola Pendamping.",
   ),
   "capabilitycurve.phase5.milestone": e(
     "Advisory Governance",
@@ -286,8 +286,8 @@ export const STRINGS: Record<string, Entry> = {
     "Porsi Klien",
   ),
   "capabilitycurve.telemetry.pager": e(
-    "Kyron Engineering Pager Share",
-    "Piket Kyron Engineering",
+    "Kyron Engineering Stewardship",
+    "Porsi Kyron Engineering",
   ),
   "capabilitycurve.telemetry.phase": e(
     "Phase",
@@ -662,12 +662,12 @@ export const STRINGS: Record<string, Entry> = {
     "Hak cipta dilindungi undang-undang.",
   ),
   "footer.tagline": e(
-    "Systems built properly, documented fully, and owned by the business.",
-    "Sistem yang dibangun dengan tepat, terdokumentasi lengkap, dan sepenuhnya milik bisnis Anda.",
+    "BUILT RIGHT. DOCUMENTED FULLY. YOURS TO KEEP.",
+    "DIBANGUN DENGAN TEPAT. TERDOKUMENTASI LENGKAP. MILIK ANDA SEUTUHNYA.",
   ),
   "howwework.curve.caption": e(
-    "By the final stage, the business runs its technology on its own terms.",
-    "Pada tahap akhir, bisnis menjalankan teknologinya dengan kendali penuh secara mandiri.",
+    "By the final stage, you run your technology on your own terms.",
+    "Pada tahap akhir, Anda menjalankan teknologi Anda dengan kendali penuh secara mandiri.",
   ),
   "howwework.curve.development.label": e(
     "Development",
@@ -710,8 +710,8 @@ export const STRINGS: Record<string, Entry> = {
     "Mandiri Penuh",
   ),
   "howwework.handover.accounts.included": e(
-    "Hosting, domains and services in the business's name",
-    "Hosting, domain, dan seluruh layanan terdaftar resmi atas nama bisnis Anda",
+    "Hosting, domains and services in your name",
+    "Hosting, domain, dan seluruh layanan terdaftar resmi atas nama Anda",
   ),
   "howwework.handover.accounts.item": e(
     "Accounts and access",
@@ -726,8 +726,8 @@ export const STRINGS: Record<string, Entry> = {
     "POIN / ITEM",
   ),
   "howwework.handover.documentation.included": e(
-    "How the system works, written in plain language",
-    "Cara kerja sistem yang ditulis dengan bahasa lugas dan mudah dipahami",
+    "How the system works, written so anyone can follow it",
+    "Cara kerja sistem, ditulis agar siapa pun dapat mengikutinya",
   ),
   "howwework.handover.documentation.item": e(
     "Documentation",
@@ -742,16 +742,16 @@ export const STRINGS: Record<string, Entry> = {
     "Panduan langkah demi langkah untuk tugas harian serta pembaruan sistem",
   ),
   "howwework.handover.guides.item": e(
-    "Running guides",
-    "Panduan Operasional",
+    "How-to guides",
+    "Panduan Penggunaan",
   ),
   "howwework.handover.heading": e(
     "Everything handed over, nothing held back.",
     "Semua diserahkan tuntas, tanpa ada yang ditahan.",
   ),
   "howwework.handover.lede": e(
-    "Before we sign off, each item below is delivered and walked through with whoever will run the system. The checklist is agreed in the contract.",
-    "Sebelum persetujuan akhir, setiap poin di bawah ini diserahkan dan dipandu langsung bersama siapa pun yang akan mengelola sistem Anda. Daftar periksa ini telah disepakati di dalam kontrak.",
+    "Before we sign off, we deliver every item below and walk your team through it. The checklist is written into the contract.",
+    "Sebelum serah terima resmi, kami akan menyerahkan setiap poin di bawah ini sekaligus memberikan panduan langsung kepada tim Anda. Daftar periksa ini sudah tercantum jelas di dalam kontrak.",
   ),
   "howwework.handover.recovery.included": e(
     "How to restore the system from backup if something goes wrong",
@@ -770,16 +770,16 @@ export const STRINGS: Record<string, Entry> = {
     "Pemeriksaan Keamanan",
   ),
   "howwework.handover.source-code.included": e(
-    "Every line, stored in the business's own account",
-    "Setiap baris kode, tersimpan langsung di akun milik bisnis Anda sendiri",
+    "Every line, stored in your own account",
+    "Setiap baris kode, tersimpan langsung di akun milik Anda sendiri",
   ),
   "howwework.handover.source-code.item": e(
     "Source code",
     "Kode Sumber",
   ),
   "howwework.handover.support.included": e(
-    "Available from us if the business wants it, never required",
-    "Selalu tersedia jika bisnis Anda menginginkannya, tanpa kewajiban yang mengikat",
+    "Available if you want it, never required",
+    "Tersedia jika Anda menginginkannya, tanpa kewajiban yang mengikat",
   ),
   "howwework.handover.support.item": e(
     "Ongoing support",
@@ -806,47 +806,47 @@ export const STRINGS: Record<string, Entry> = {
     "Sistem yang andal membutuhkan standar bersama, bukan rahasia perorangan.",
   ),
   "howwework.governance.lede": e(
-    "When engineering teams depend on heroics or tribal memory, software degrades with every release. We build repeatable processes into the codebase itself.",
-    "Ketika tim rekayasa bergantung pada hafalan atau keahlian pribadi, kualitas perangkat lunak menurun di tiap rilis. Kami membangun proses yang dapat diulang langsung ke dalam repositori kode.",
+    "When a system depends on one person’s memory, it gets harder to change with every release. We build the process into the code instead.",
+    "Ketika sistem bergantung pada ingatan satu orang, perubahannya menjadi semakin sulit di setiap rilis. Kami membangun proses langsung ke dalam kode.",
   ),
   "howwework.governance.test-title": e(
     "Automated testing & CI/CD",
     "Pengujian Otomatis & CI/CD",
   ),
   "howwework.governance.test-body": e(
-    "Every pull request triggers automated unit, integration, and security checks before merging. Deployments run through reproducible, automated pipelines with zero downtime and rollback triggers.",
-    "Setiap pull request menjalankan pengujian unit, integrasi, dan pemeriksaan keamanan otomatis sebelum digabungkan. Penerapan kode berjalan lewat alur otomatis yang dapat direproduksi dengan zero downtime.",
+    "Every pull request runs unit, integration and security tests before it’s merged. Deployments are automated and can be rolled back in one step.",
+    "Setiap pull request menjalankan pengujian unit, integrasi, dan keamanan sebelum digabungkan. Penerapan dilakukan secara otomatis dan dapat dibatalkan dalam satu langkah.",
   ),
   "howwework.governance.obs-title": e(
     "Observability & runbooks",
     "Observabilitas & Panduan Operasional",
   ),
   "howwework.governance.obs-body": e(
-    "Structured logging, metrics, and actionable alerts mean issues are spotted before users notice them. Every critical alert links directly to a plain-language operational runbook.",
-    "Pencatatan terstruktur, metrik, dan peringatan dini memastikan kendala terdeteksi sebelum pengguna menyadarinya. Setiap peringatan penting terhubung langsung ke panduan operasional.",
+    "Logs, metrics and alerts catch problems before users do. Every critical alert links to a runbook explaining what to do.",
+    "Log, metrik, dan peringatan mendeteksi kendala sebelum pengguna menyadarinya. Setiap peringatan penting terhubung ke panduan operasional yang menjelaskan langkah yang harus diambil.",
   ),
   "howwework.governance.infra-title": e(
     "Infrastructure as code",
     "Infrastruktur sebagai Kode",
   ),
   "howwework.governance.infra-body": e(
-    "Cloud resources, databases, networking, and access policies are defined declaratively in version control. Staging mirrors production, eliminating surprise deployment discrepancies.",
-    "Sumber daya cloud, basis data, jaringan, dan kebijakan akses didefinisikan secara deklaratif di sistem kontrol versi. Lingkungan uji coba mencerminkan produksi sepenuhnya.",
+    "Servers, databases, networking and access rules are all defined in code and tracked in version control. Staging matches production, so releases behave the way they did in testing.",
+    "Server, basis data, jaringan, dan aturan akses semuanya didefinisikan dalam kode dan dilacak di kontrol versi. Lingkungan staging sesuai dengan produksi, sehingga rilis berjalan sama seperti saat pengujian.",
   ),
   "howwework.hero.eyebrow": e(
     "// METHODOLOGY & PROCESS",
     "// METODOLOGI & PROSES",
   ),
   "howwework.hero.lede": e(
-    "We work alongside the business at every stage, and it always has the final say. Every decision is explained in plain language, with no jargon.",
-    "Kami mendampingi bisnis Anda di setiap tahapan, dan keputusan akhir selalu berada di tangan Anda. Setiap keputusan dijelaskan dengan bahasa yang lugas, tanpa istilah teknis yang rumit.",
+    "Your system, your decisions. We work alongside you at every stage and hand it back when you’re ready.",
+    "Sistem Anda, keputusan Anda. Kami bekerja bersama Anda di setiap tahapan dan akan menyerahkan kembali saat Anda siap.",
   ),
   "howwework.hero.title": e(
-    "One clear process, start to finish.",
-    "Satu proses yang jelas, dari awal hingga tuntas.",
+    "Mapped out together. Owned by you.",
+    "Terencana bersama. Menjadi milik Anda seutuhnya.",
   ),
   "howwework.stages.development.body": e(
-    "We design and build the system, with regular check-ins and demos so the business can see and test it as it takes shape.",
+    "We design and build the system, with regular check-ins and demos so you can test it as it takes shape.",
     "Kami merancang dan membangun sistem, lengkap dengan sesi evaluasi rutin dan demo berkala agar Anda dapat melihat langsung serta menguji perkembangannya.",
   ),
   "howwework.stages.development.gets": e(
@@ -858,7 +858,7 @@ export const STRINGS: Record<string, Entry> = {
     "Pengembangan",
   ),
   "howwework.stages.discovery.body": e(
-    "We learn how the business runs, map its current systems and agree the plan together.",
+    "We learn how your business runs, map your current systems and agree on the plan together.",
     "Kami mempelajari alur bisnis Anda, memetakan sistem yang saat ini berjalan, dan menyepakati rencana bersama.",
   ),
   "howwework.stages.discovery.gets": e(
@@ -870,20 +870,20 @@ export const STRINGS: Record<string, Entry> = {
     "Analisis Kebutuhan",
   ),
   "howwework.stages.gets-label": e(
-    "The business gets:",
-    "Yang diperoleh bisnis Anda:",
+    "You get:",
+    "Yang Anda peroleh:",
   ),
   "howwework.stages.heading": e(
     "Four stages, one direction.",
     "Empat tahap, satu arah yang jelas.",
   ),
   "howwework.stages.note": e(
-    "How long each stage takes depends on the project. We agree the timeline during Discovery.",
+    "How long each stage takes depends on the project. We agree on the timeline during Discovery.",
     "Durasi setiap tahapan disesuaikan dengan skala proyek. Garis waktu (timeline) akan disepakati bersama pada tahap Discovery.",
   ),
   "howwework.stages.operations.body": e(
-    "After launch, we monitor the system, fix issues, and keep it secure and up to date until it runs smoothly.",
-    "Setelah peluncuran, kami memantau sistem, menangani kendala, serta menjaganya tetap aman dan terbarui hingga dapat berjalan dengan lancar.",
+    "After launch, we monitor the system, fix issues and keep it secure while your team gets comfortable running it.",
+    "Setelah peluncuran, kami memantau sistem, menangani kendala, serta menjaganya tetap aman selagi tim Anda terbiasa menjalankannya.",
   ),
   "howwework.stages.operations.gets": e(
     "a stable system with agreed response times.",
@@ -898,8 +898,8 @@ export const STRINGS: Record<string, Entry> = {
     "TAHAP //",
   ),
   "howwework.stages.transfer.body": e(
-    "We transfer everything needed to run the system independently, to in-house staff, a new hire or another provider.",
-    "Kami menyerahkan segala hal yang dibutuhkan agar sistem dapat dikelola secara mandiri—baik oleh tim internal Anda, karyawan baru, maupun vendor lain.",
+    "We hand over everything needed to run the system without us, to your own staff, a new hire or another provider.",
+    "Kami menyerahkan segala hal yang dibutuhkan agar sistem dapat dijalankan tanpa kami—baik oleh tim internal Anda, karyawan baru, maupun vendor lain.",
   ),
   "howwework.stages.transfer.gets": e(
     "full ownership, with no dependence on us.",
@@ -918,8 +918,8 @@ export const STRINGS: Record<string, Entry> = {
     "// Dibangun di atas teknologi yang terbukti dan dipakai luas.",
   ),
   "howwework.tech.lede": e(
-    "We deliberately select battle-tested, widely adopted open-source technologies with robust global communities. This ensures any qualified software engineer can comfortably inspect, maintain, and expand your systems without specialized proprietary training.",
-    "Kami secara cermat memilih teknologi open-source yang teruji keandalannya dan didukung komunitas global yang kuat. Hal ini menjamin bahwa setiap engineer yang kompeten dapat dengan mudah memeriksa, memelihara, dan mengembangkan sistem Anda tanpa pelatihan khusus.",
+    "We use established open-source tools with large global communities, so any qualified engineer can maintain and extend your systems. No proprietary lock-in.",
+    "Kami memanfaatkan perangkat lunak open-source terkemuka dengan komunitas global yang besar, sehingga setiap engineer yang kompeten dapat memelihara dan mengembangkan sistem Anda tanpa terikat pada teknologi tertentu.",
   ),
   "index.ai.eyebrow": e(
     "// Optional service",
@@ -1350,19 +1350,19 @@ export const STRINGS: Record<string, Entry> = {
     "Intro Singkat · 1 menit",
   ),
   "meta.about.description": e(
-    "Meet Kyron Engineering's founders. We build and run robust business systems, transferring complete engineering capability to your team.",
+    "Meet Kyron Engineering's founders. We build, run, and transfer complete software and system capabilities to your team.",
     "Kenalan dengan founder Kyron Engineering. Kami membangun dan menjalankan sistem bisnis yang andal, sekaligus mengalihkan kemampuan engineering sepenuhnya ke tim Anda.",
   ),
   "meta.about.title": e(
-    "About Kyron Engineering · Engineering Leadership & Governance",
+    "About Kyron Engineering · Leadership & Governance",
     "Tentang Kyron Engineering · Kepemimpinan & Tata Kelola Engineering",
   ),
   "meta.contact.description": e(
-    "Contact Kyron Engineering's founders to discuss your business systems, technical constraints, and path to full engineering independence.",
+    "Discuss your business systems, technical constraints, and path to full engineering independence with Kyron's founders.",
     "Hubungi founder Kyron Engineering untuk mendiskusikan sistem bisnis, kendala teknis, dan jalan menuju kemandirian engineering.",
   ),
   "meta.contact.title": e(
-    "Contact Kyron Engineering · Discuss Systems & Engineering Handover",
+    "Contact Kyron Engineering · Systems & Handover",
     "Hubungi Kyron Engineering · Diskusi Sistem & Serah Terima Engineering",
   ),
   "meta.howwework.description": e(
@@ -1382,7 +1382,7 @@ export const STRINGS: Record<string, Entry> = {
     "Teknologi yang kemandirian · Kyron Engineering",
   ),
   "meta.privacy.description": e(
-    "How Kyron Engineering handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data.",
+    "How Kyron Engineering handles inquiries, client confidentiality, code IP governance, and data retention.",
     "Cara Kyron Engineering menangani data formulir kontak, menjaga kerahasiaan arsitektur klien, mengatur pemakaian AI atas aset klien, dan menyimpan data.",
   ),
   "meta.privacy.title": e(

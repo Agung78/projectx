@@ -1,4 +1,5 @@
 ---
+const site = new URL("/", Astro.site).href;
 const links = [
   { href: "/", label: "Home", key: "nav.home" },
   { href: "/how-we-work", label: "How we work", key: "nav.how-we-work" },
@@ -12,8 +13,8 @@ const links = [
     <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
       <div class="max-w-measure">
         <p class="text-h3 font-semibold text-white">Kyron Engineering</p>
-        <p class="mt-4 text-body text-white/70" data-i18n="footer.tagline">
-          Systems built properly, documented fully, and owned by the business.
+        <p class="mt-4 text-body uppercase text-white/70" data-i18n="footer.tagline">
+          BUILT RIGHT. DOCUMENTED FULLY. YOURS TO KEEP.
         </p>
         <a
           href="/contact"
@@ -60,11 +61,11 @@ const links = [
         <div class="mt-6 flex flex-col gap-2 share-buttons" aria-label="Share">
           <p class="text-xs uppercase tracking-wider text-white/50">Share</p>
           <div class="flex items-center gap-3">
-            <a href="https://twitter.com/intent/tweet?text=Kyron%20Engineering%20-%20Engineering%20Partnership&url=https://projectx-gold.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on X">X</a>
+            <a href={`https://twitter.com/intent/tweet?text=Kyron%20Engineering%20-%20Engineering%20Partnership&url=${site}`} target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on X">X</a>
             <span class="text-white/20">&bull;</span>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://projectx-gold.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on LinkedIn">LinkedIn</a>
+            <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${site}`} target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on LinkedIn">LinkedIn</a>
             <span class="text-white/20">&bull;</span>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://projectx-gold.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on Facebook">Facebook</a>
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${site}`} target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on Facebook">Facebook</a>
           </div>
         </div>
       </address>

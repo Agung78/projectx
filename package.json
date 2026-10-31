@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "@iconify-json/solar": "^1.2.12",
+    "@vercel/analytics": "^2.0.1",
     "astro": "^7.3.3",
     "astro-icon": "^1.2.0",
     "gsap": "^3.15.0",

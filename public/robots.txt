@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://projectx-gold.vercel.app/sitemap-index.xml
+Sitemap: https://www.kyronengineering.com/sitemap-index.xml

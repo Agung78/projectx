@@ -1350,40 +1350,40 @@ export const STRINGS: Record<string, Entry> = {
     "Intro Singkat · 1 menit",
   ),
   "meta.about.description": e(
-    "Meet Kyron Engineering's founders. We build, run, and transfer complete software and system capabilities to your team.",
-    "Kenalan dengan founder Kyron Engineering. Kami membangun dan menjalankan sistem bisnis yang andal, sekaligus mengalihkan kemampuan engineering sepenuhnya ke tim Anda.",
+    "Meet Kyron Engineering's founders. We build, run, and transfer complete software and system capabilities to your team, with no lock-in.",
+    "Kenalan dengan founder Kyron Engineering. Kami membangun dan menjalankan sistem bisnis, lalu mengalihkan kemampuan engineering ke tim Anda.",
   ),
   "meta.about.title": e(
     "About Kyron Engineering · Leadership & Governance",
-    "Tentang Kyron Engineering · Kepemimpinan & Tata Kelola Engineering",
+    "Tentang Kyron Engineering · Kepemimpinan & Tata Kelola",
   ),
   "meta.contact.description": e(
-    "Discuss your business systems, technical constraints, and path to full engineering independence with Kyron's founders.",
+    "Discuss your business systems, technical constraints, and path to full engineering independence directly with Kyron Engineering's founders.",
     "Hubungi founder Kyron Engineering untuk mendiskusikan sistem bisnis, kendala teknis, dan jalan menuju kemandirian engineering.",
   ),
   "meta.contact.title": e(
     "Contact Kyron Engineering · Systems & Handover",
-    "Hubungi Kyron Engineering · Diskusi Sistem & Serah Terima Engineering",
+    "Hubungi Kyron Engineering · Diskusi Sistem & Serah Terima",
   ),
   "meta.howwework.description": e(
     "Our 4-stage engineering model transfers full system ownership to your team, from Discovery through autonomous operations.",
-    "Model engineering 4 tahap kami mengalihkan kepemilikan sistem penuh ke tim Anda, dari Discovery sampai operasi mandiri.",
+    "Model engineering 4 tahap kami mengalihkan kepemilikan sistem penuh ke tim Anda, dari Discovery sampai operasi mandiri oleh tim Anda sendiri.",
   ),
   "meta.howwework.title": e(
-    "How We Work · 4-Stage Engineering Transfer | Kyron Engineering",
+    "How We Work · 4-Stage Handover | Kyron Engineering",
     "Cara Kerja Kami · Alih Teknologi 4 Tahap | Kyron Engineering",
   ),
   "meta.index.description": e(
     "We design, build, and support business systems, then transfer full ownership. Zero vendor lock-in, zero hidden dependencies.",
-    "Kami merancang, membangun, dan menjaga sistem bisnis, lalu menyerahkan kepemilikan penuh. Tanpa vendor lock-in, tanpa ketergantungan tersembunyi.",
+    "Kami merancang, membangun, dan menjaga sistem bisnis, lalu menyerahkan kepemilikan penuh. Tanpa vendor lock-in, tanpa ketergantungan.",
   ),
   "meta.index.title": e(
     "Technology built for independence · Kyron Engineering",
-    "Teknologi yang kemandirian · Kyron Engineering",
+    "Teknologi untuk kemandirian · Kyron Engineering",
   ),
   "meta.privacy.description": e(
-    "How Kyron Engineering handles inquiries, client confidentiality, code IP governance, and data retention.",
-    "Cara Kyron Engineering menangani data formulir kontak, menjaga kerahasiaan arsitektur klien, mengatur pemakaian AI atas aset klien, dan menyimpan data.",
+    "How Kyron Engineering handles contact inquiries, client confidentiality, code IP governance, AI use on client assets, and data retention.",
+    "Cara Kyron Engineering menangani data formulir, kerahasiaan arsitektur klien, penggunaan AI atas aset klien, dan penyimpanan data.",
   ),
   "meta.privacy.title": e(
     "Privacy Policy | Kyron Engineering",

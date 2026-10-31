@@ -4,8 +4,8 @@
 
 ## Key pages
 
-- [Home](https://projectx-gold.vercel.app/): Technology built for engineering independence.
-- [How We Work](https://projectx-gold.vercel.app/how-we-work): Four clear stages, from Discovery to full ownership transfer.
-- [About](https://projectx-gold.vercel.app/about): Meet the founders, our governance model, and client commitments.
-- [Contact](https://projectx-gold.vercel.app/contact): Direct founder review with a guaranteed 24-hour response SLA.
-- [Privacy Policy](https://projectx-gold.vercel.app/privacy): How Kyron Engineering protects client data and system confidentiality.
+- [Home](https://www.kyronengineering.com/): Technology built for engineering independence.
+- [How We Work](https://www.kyronengineering.com/how-we-work): Four clear stages, from Discovery to full ownership transfer.
+- [About](https://www.kyronengineering.com/about): Meet the founders, our governance model, and client commitments.
+- [Contact](https://www.kyronengineering.com/contact): Direct founder review with a guaranteed 24-hour response SLA.
+- [Privacy Policy](https://www.kyronengineering.com/privacy): How Kyron Engineering protects client data and system confidentiality.

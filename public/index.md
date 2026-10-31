@@ -16,4 +16,4 @@ Kyron Engineering partners with your team to design, build, and operate core tec
 
 - **Vanezza**, Chief Executive Officer
 - **Agung Denisa**, Chief Technology Officer
-- Email / Inquiries: [Contact Kyron Engineering](https://projectx-gold.vercel.app/contact)
+- Email / Inquiries: [Contact Kyron Engineering](https://www.kyronengineering.com/contact)

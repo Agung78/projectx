@@ -16,7 +16,6 @@ export default defineConfig({
   integrations: [icon(),
     sitemap({
       i18n: { defaultLocale: "en", locales: { en: "en", id: "id" } },
-      serialize: (item) => ({ ...item, lastmod: new Date().toISOString() }),
     }),
   ],
   vite: {

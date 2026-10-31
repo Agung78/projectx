@@ -44,17 +44,12 @@ const structuredData = {
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
-        url: new URL("/contact", Astro.site).href,
+        url: new URL("/contact/", Astro.site).href,
       },
       address: {
         "@type": "PostalAddress",
         addressCountry: "ID",
       },
-      sameAs: [
-        "https://github.com/kyronengineering",
-        "https://linkedin.com/company/kyronengineering",
-        "https://twitter.com/kyronengineering",
-      ],
     },
     {
       "@type": "WebSite",
@@ -62,14 +57,6 @@ const structuredData = {
       url: new URL("/", Astro.site).href,
       name: "Kyron Engineering",
       publisher: { "@id": new URL("/#organization", Astro.site).href },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: new URL("/?q={search_term_string}", Astro.site).href,
-        },
-        "query-input": "required name=search_term_string",
-      },
     },
     ...(isHome
       ? []
@@ -102,10 +89,7 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yygg_vb.woff2" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/jakarta-latin.woff2" crossorigin />
     {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
     <link rel="canonical" href={canonicalURL} />
     {alternates.map(([hreflang, path]) => <link rel="alternate" hreflang={hreflang} href={new URL(path, Astro.site)} />)}

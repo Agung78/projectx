@@ -17,16 +17,16 @@ Kyron Engineering is an engineering partner that builds with your team, operates
 
 ## Site Structure
 
-- [Home](https://projectx-gold.vercel.app/): Technology built for engineering independence.
-- [How We Work](https://projectx-gold.vercel.app/how-we-work): Four clear stages, from Discovery to full ownership transfer.
-- [About](https://projectx-gold.vercel.app/about): Founders, governance model, and client commitments.
-- [Contact](https://projectx-gold.vercel.app/contact): Direct founder review with a guaranteed 24-hour response SLA.
-- [Privacy Policy](https://projectx-gold.vercel.app/privacy): How Kyron Engineering protects client data and system confidentiality.
+- [Home](https://www.kyronengineering.com/): Technology built for engineering independence.
+- [How We Work](https://www.kyronengineering.com/how-we-work): Four clear stages, from Discovery to full ownership transfer.
+- [About](https://www.kyronengineering.com/about): Founders, governance model, and client commitments.
+- [Contact](https://www.kyronengineering.com/contact): Direct founder review with a guaranteed 24-hour response SLA.
+- [Privacy Policy](https://www.kyronengineering.com/privacy): How Kyron Engineering protects client data and system confidentiality.
 
 ## Machine-Readable Resources
 
-- [llms.txt](https://projectx-gold.vercel.app/llms.txt): Short site summary for LLMs.
-- [Sitemap](https://projectx-gold.vercel.app/sitemap-index.xml): Full list of indexable pages.
+- [llms.txt](https://www.kyronengineering.com/llms.txt): Short site summary for LLMs.
+- [Sitemap](https://www.kyronengineering.com/sitemap-index.xml): Full list of indexable pages.
 
 ## Notes for Agents
 

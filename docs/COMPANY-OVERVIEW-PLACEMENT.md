@@ -27,9 +27,8 @@
 ### About page
 Insert a compact card between "How we work with your leadership" (`about.astro:103`) and "If this is how you want to work…" (`about.astro:118`).
 
-```text
 Want a quick overview?
-See how NewCo works, what we deliver, and how ownership transfers to your business.
+See how Kyron Engineering works, what we deliver, and how ownership transfers to your business.
 [View company overview (PDF)]
 ```
 
@@ -42,9 +41,8 @@ Prefer to review first? View our company overview (PDF).
 
 ## Files
 
-```text
-public/downloads/newco-company-overview-en.pdf
-public/downloads/newco-company-overview-id.pdf
+public/downloads/kyron-engineering-company-overview-en.pdf
+public/downloads/kyron-engineering-company-overview-id.pdf
 ```
 
 - Export each deck from Google Slides with **File → Download → PDF document**.
@@ -53,10 +51,9 @@ public/downloads/newco-company-overview-id.pdf
 
 ## Implementation
 
-```astro
-<a href="/downloads/newco-company-overview-en.pdf"
-   data-i18n-attr="href:overview.href"
-   target="_blank" rel="noopener">
+<a href="/downloads/kyron-engineering-company-overview-en.pdf"
+  data-i18n-attr="href:overview.href"
+  target="_blank" rel="noopener">
   <span data-i18n="overview.link">View company overview (PDF)</span>
 </a>
 ```
@@ -64,8 +61,8 @@ public/downloads/newco-company-overview-id.pdf
 ```ts
 // src/i18n/dictionary.ts
 "overview.href": {
-  en: "/downloads/newco-company-overview-en.pdf",
-  id: "/downloads/newco-company-overview-id.pdf",
+  en: "/downloads/kyron-engineering-company-overview-en.pdf",
+  id: "/downloads/kyron-engineering-company-overview-id.pdf",
 },
 // + overview.link, about.overview.title, about.overview.body, index.cta.overview (EN + ID)
 ```

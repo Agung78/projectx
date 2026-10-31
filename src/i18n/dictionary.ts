@@ -153,10 +153,6 @@ export const STRINGS: Record<string, Entry> = {
     "Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.",
     "Setiap proposal ditinjau langsung oleh kedua pendiri—satu dari sisi bisnis dan satu dari sisi teknis—sehingga apa yang kami janjikan selalu dapat kami wujudkan.",
   ),
-  "about.team.linkedin": e(
-    "LinkedIn",
-    "LinkedIn",
-  ),
   "about.team.role-ceo": e(
     "Chief Executive Officer",
     "Chief Executive Officer",

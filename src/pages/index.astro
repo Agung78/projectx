@@ -381,7 +381,19 @@ const btn = "md:whitespace-nowrap";
       const video = document.getElementById("intro-video") as HTMLVideoElement | null;
       if (dialog && video) {
         document.querySelectorAll(".open-video-trigger").forEach((el) =>
-          el.addEventListener("click", () => dialog.showModal()),
+          el.addEventListener("click", () => {
+            const lang = document.documentElement.lang === "id" ? "id" : "en";
+            if (video.dataset.lang !== lang) {
+              const sfx = lang === "id" ? "-id" : "";
+              video.dataset.lang = lang;
+              video.poster = lang === "id" ? "/images/intro-poster-id.webp" : "/images/intro-poster.webp";
+              video.querySelector("source")?.setAttribute("src", `/videos/intro${sfx}.mp4`);
+              video.querySelector("track")?.setAttribute("src", `/videos/intro${sfx}.vtt`);
+              video.querySelector("track")?.setAttribute("srclang", lang);
+              video.load();
+            }
+            dialog.showModal();
+          }),
         );
         dialog.querySelector(".close-video-trigger")?.addEventListener("click", () => dialog.close());
         dialog.addEventListener("close", () => video.pause());

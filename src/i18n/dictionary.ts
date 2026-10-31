@@ -1350,19 +1350,19 @@ export const STRINGS: Record<string, Entry> = {
     "Intro Singkat · 1 menit",
   ),
   "meta.about.description": e(
-    "Meet Kyron Engineering's founders. We build and run robust business systems, transferring complete engineering capability to your team.",
+    "Meet Kyron Engineering's founders. We build, run, and transfer complete software and system capabilities to your team.",
     "Kenalan dengan founder Kyron Engineering. Kami membangun dan menjalankan sistem bisnis yang andal, sekaligus mengalihkan kemampuan engineering sepenuhnya ke tim Anda.",
   ),
   "meta.about.title": e(
-    "About Kyron Engineering · Engineering Leadership & Governance",
+    "About Kyron Engineering · Leadership & Governance",
     "Tentang Kyron Engineering · Kepemimpinan & Tata Kelola Engineering",
   ),
   "meta.contact.description": e(
-    "Contact Kyron Engineering's founders to discuss your business systems, technical constraints, and path to full engineering independence.",
+    "Discuss your business systems, technical constraints, and path to full engineering independence with Kyron's founders.",
     "Hubungi founder Kyron Engineering untuk mendiskusikan sistem bisnis, kendala teknis, dan jalan menuju kemandirian engineering.",
   ),
   "meta.contact.title": e(
-    "Contact Kyron Engineering · Discuss Systems & Engineering Handover",
+    "Contact Kyron Engineering · Systems & Handover",
     "Hubungi Kyron Engineering · Diskusi Sistem & Serah Terima Engineering",
   ),
   "meta.howwework.description": e(
@@ -1382,7 +1382,7 @@ export const STRINGS: Record<string, Entry> = {
     "Teknologi yang kemandirian · Kyron Engineering",
   ),
   "meta.privacy.description": e(
-    "How Kyron Engineering handles contact form data, keeps client architecture confidential, governs AI use of client assets, and retains data.",
+    "How Kyron Engineering handles inquiries, client confidentiality, code IP governance, and data retention.",
     "Cara Kyron Engineering menangani data formulir kontak, menjaga kerahasiaan arsitektur klien, mengatur pemakaian AI atas aset klien, dan menyimpan data.",
   ),
   "meta.privacy.title": e(

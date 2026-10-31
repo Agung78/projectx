@@ -60,7 +60,6 @@ const commitments = [
                 data-i18n-attr={"alt:" + f.altKey}
                 width="400"
                 height="500"
-                style="max-width: 100%; height: auto;"
                 loading="eager"
                 fetchpriority={i === 0 ? "high" : "auto"}
                 decoding="async"
@@ -72,7 +71,7 @@ const commitments = [
                   <h3 class="text-h3 font-semibold text-navy" itemprop="name">{f.name}</h3>
                   <p class="text-sm text-grey mt-1" data-i18n={f.roleKey} itemprop="jobTitle">{f.role}</p>
                   <p class="text-body text-slate mt-2" data-i18n={f.bioKey} itemprop="description">{f.bio}</p>
-                  <a href={f.linkedin} class="text-sm text-blue underline mt-2 inline-block" target="_blank" rel="noopener" itemprop="sameAs">LinkedIn</a>
+                  <a href={f.linkedin} class="text-sm text-blue underline mt-2 inline-block" target="_blank" rel="noopener" itemprop="sameAs" aria-label={`${f.name} on LinkedIn`}>LinkedIn</a>
                 </div>
                 <span class="mono text-blue">{pad(i)}</span>
               </figcaption>

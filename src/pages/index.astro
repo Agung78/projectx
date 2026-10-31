@@ -85,7 +85,7 @@ const metrics = [
 const btn = "md:whitespace-nowrap";
 ---
 
-<Layout titleKey="meta.index.title" descKey="meta.index.description">
+<Layout titleKey="meta.index.title" descKey="meta.index.description" lcpImage="/images/intro-poster.webp">
   <!-- 1. Hero -->
   <section class="bg-white">
     <div class:list={[shell, "py-12 md:py-20"]}>
@@ -368,7 +368,7 @@ const btn = "md:whitespace-nowrap";
       <h2 id="video-dialog-title" class="text-sm font-semibold tracking-wide text-navy" data-i18n="index.video.title">Intro Brief · 1 minute</h2>
       <button type="button" class="close-video-trigger -my-2 -mr-2 min-h-[44px] px-2 text-sm font-semibold text-grey hover:text-navy" data-i18n-attr="aria-label:index.video.close-aria" aria-label="ESC / Close video dialog"><span data-i18n="index.video.close">ESC / Close</span></button>
     </div>
-    <video id="intro-video" controls playsinline preload="metadata" poster="/images/intro-poster.webp" class="h-full w-full object-contain">
+    <video id="intro-video" controls playsinline preload="none" poster="/images/intro-poster.webp" class="h-full w-full object-contain">
       <source src="/videos/intro.mp4" type="video/mp4" />
       <track kind="captions" src="/videos/intro.vtt" srclang="en" label="English" />
       <span data-i18n="index.video.fallback">Your browser does not support the video tag.</span>

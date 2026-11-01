@@ -1,5 +1,4 @@
 ---
-const site = new URL("/", Astro.site).href;
 const links = [
   { href: "/", label: "Home", key: "nav.home" },
   { href: "/how-we-work", label: "How we work", key: "nav.how-we-work" },
@@ -44,30 +43,21 @@ const links = [
         <p class="text-sm font-semibold uppercase tracking-wider text-white/50" data-i18n="footer.connect">Connect</p>
         <ul class="mt-4 flex flex-col gap-3">
           <li>
-            <span class="text-body text-white/80">GitHub</span>
-          </li>
-          <li>
-            <span class="text-body text-white/80">LinkedIn</span>
-          </li>
-          <li>
-            <span class="text-body text-white/80">X (Twitter)</span>
+            <a
+              href="https://www.linkedin.com/company/kyron-engineering/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-body text-white/80 hover:text-white"
+            >
+              LinkedIn
+            </a>
           </li>
         </ul>
       </div>
 
       <address class="not-italic">
         <p class="text-sm font-semibold uppercase tracking-wider text-white/50" data-i18n="footer.office-label">Registered office</p>
-        <p class="mt-4 text-sm text-white/70">Jakarta, Indonesia</p>
-        <div class="mt-6 flex flex-col gap-2 share-buttons" aria-label="Share">
-          <p class="text-xs uppercase tracking-wider text-white/50">Share</p>
-          <div class="flex items-center gap-3">
-            <a href={`https://twitter.com/intent/tweet?text=Kyron%20Engineering%20-%20Engineering%20Partnership&url=${site}`} target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on X">X</a>
-            <span class="text-white/20">&bull;</span>
-            <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${site}`} target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on LinkedIn">LinkedIn</a>
-            <span class="text-white/20">&bull;</span>
-            <a href={`https://www.facebook.com/sharer/sharer.php?u=${site}`} target="_blank" rel="noopener noreferrer" class="text-xs text-white/70 hover:text-white" aria-label="Share on Facebook">Facebook</a>
-          </div>
-        </div>
+        <p class="mt-4 text-sm text-white/70">Bali, Indonesia</p>
       </address>
     </div>
     <div class="mt-16 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-white/60 sm:flex-row sm:justify-between">

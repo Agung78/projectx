@@ -5,10 +5,16 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const ID_PATH = /^\/id(\/|$)/;
 
 function setAttr(tag: string, name: string, value: string): string {
-  const escRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const v = `${name}="${esc(value).replace(/"/g, "&quot;")}"`;
-  const re = new RegExp(`\\s${escRegExp(name)}="[^"]*"`);
-  return re.test(tag) ? tag.replace(re, ` ${v}`) : tag.replace(/\s*\/?>$/, (end) => ` ${v}${end}`);
+  let replaced = false;
+  const res = tag.replace(/\s+([a-zA-Z0-9:_-]+)="[^"]*"/g, (match, attrName) => {
+    if (attrName === name) {
+      replaced = true;
+      return ` ${v}`;
+    }
+    return match;
+  });
+  return replaced ? res : tag.replace(/\s*\/?>$/, (end) => ` ${v}${end}`);
 }
 
 // Build-time render: every internal link gets a trailing slash (matches the

@@ -238,3 +238,56 @@ All 11 direct packages were checked against the OSV.dev vulnerability database.
 The `projectx` repository exhibits a **Low** aggregate security risk profile. Direct production dependencies are fully up to date with zero known CVEs. The repository benefits from strong HTTP security response headers configured in `vercel.json` (strict `Content-Security-Policy` with `script-src 'self'`, `X-Frame-Options: SAMEORIGIN`, `X-Content-Type-Options: nosniff`, and HSTS preloading enabled).
 
 The four Semgrep static findings represent low-risk patterns: dynamic regex generation in middleware operates exclusively over trusted developer-authored HTML templates, and the missing SRI attributes exist in standalone video composition templates rather than visitor-facing production pages. Transitive dependency vulnerabilities in `undici` and `fast-uri` do not impact the live site because `projectx` compiles into static assets deployed to Vercel without a persistent Node.js server. Applying the suggested `pnpm.overrides` for `undici` and `fast-uri` will bring the dependency tree to full compliance.
+
+
+## 8. Strix
+```
+strix -t https://www.kyronengineering.com --scan-mode quick \
+  --instruction "Perform a black-box DAST pentest on https://www.kyronengineering.com. Crawl the Astro static site
+starting at /, /about/, /how-we-work/, /contact/, /privacy/, and the /id/ locale equivalents. Test for DOM XSS in
+client scripts and the /contact/ intake form, verify CSP and HSTS security header enforcement, check for open
+redirects on /approach, /diagnostic, and locale trailing-slash rewrites, probe for sourcemap (.map) or build artifact
+leakage in /_astro/, and test for Vercel edge cache poisoning."
+## 9. Executive Summary
+
+The black-box assessment of https://www.kyronengineering.com found no confirmed security vulnerabilities across the requested public routes and assets. The site is a Vercel-hosted Astro static marketing site with English and Indonesian locales, restrictive browser security headers, same-origin URL normalization, and no observed server-side contact intake. No DOM XSS, open redirect, source-map/build-artifact leakage, CSP/HSTS failure, or Vercel edge cache poisoning was demonstrated.
+
+Overall risk posture: Low based on the tested unauthenticated attack surface.
+
+The contact form currently presents a local success state without transmitting or storing submitted data. This is a product/functional concern rather than a demonstrated security issue and should be addressed if real intake is intended.
+
+### Technical Analysis
+
+Result: No vulnerability reports were filed because no test produced an unauthorized security consequence.
+
+DOM XSS: English and Indonesian pages, contact fields, query strings, fragments, and loaded /_astro/ bundles were tested. No attacker-controlled value reached an executable DOM sink; form values were not persisted or reflected.
+Contact form: Submission is intercepted client-side with no POST, fetch, XHR, email, CRM, or persistent backend operation. CSRF, downstream injection, mass assignment, and server-side abuse scenarios are not applicable to the deployed behavior.
+Open redirects: /approach, /diagnostic, locale variants, query parameters, encoded URLs, protocol-relative forms, userinfo-like forms, and backslashes remained same-origin or returned 404; only expected trailing-slash normalization occurred.
+Artifact leakage: Discovered .map files and guessed manifests/config/build artifacts returned 404. Public bundles contained no source-map references or secret-like material.
+CSP/HSTS: Public HTML responses consistently exposed restrictive CSP and HSTS preload policy, alongside X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy, and COOP. An initial homepage HSTS discrepancy was reproduced as a Vercel checkpoint artifact and resolved by independent browser validation.
+Vercel cache poisoning: Query and spoofed forwarding-header variations returned canonical static bodies and matching validators; attacker-controlled host reflection or poisoned cached content was not observed.
+Chaining assessment: No meaningful attack chain was available because the tested site exposes no authenticated or state-changing backend surface, and none of the client-side or edge candidates produced a usable primitive.
+
+### Methodology
+
+Conducted an external, unauthenticated black-box DAST assessment using an OWASP WSTG- and PTES-aligned workflow.
+
+Scope: https://www.kyronengineering.com, including /, /about/, /how-we-work/, /contact/, /privacy/, Indonesian /id/ equivalents, /approach, /diagnostic, /_astro/ assets, downloadable PDFs, and /llms.txt.
+
+Activities: reconnaissance and route mapping; browser-assisted crawling through the Vercel edge checkpoint; client-bundle and DOM sink/source review; contact-form input testing; redirect and trailing-slash canonicalization testing; source-map and build-artifact enumeration; CSP, HSTS, and related header verification; cache-key and forwarded-header variation testing for edge-cache poisoning. Both positive and negative controls were used where applicable, and coverage was recorded for each requested surface.
+
+### Recommendations
+
+Immediate
+
+Preserve the current restrictive CSP, HSTS preload configuration, frame-ancestors/X-Frame-Options, MIME sniffing, referrer, permissions, and COOP controls across every deployment response, including redirects and edge-generated errors where operationally feasible.
+Keep Vercel cache keys and canonical URL handling under regression testing whenever middleware, rewrites, or edge configuration changes.
+Short-term
+
+If the contact form is intended to collect inquiries, implement a real server-side intake endpoint with server-side validation, CSRF or strict origin protections, rate limiting, abuse monitoring, and context-appropriate output encoding before displaying submitted values.
+Add automated checks that assert .map files, deployment manifests, environment/config artifacts, and unintended debug files are excluded from production output.
+Medium-term
+
+Add security regression tests for query/fragment handling in client scripts and for external redirect payloads on all future route aliases.
+Periodically revalidate headers from multiple edge regions and through both canonical and redirecting hostnames.
+Retest guidance: Re-run the route crawl, browser DOM-XSS checks, redirect corpus, artifact probes, header assertions, and cache-variation tests after any Astro, Vercel, middleware, routing, or contact-form implementation change.

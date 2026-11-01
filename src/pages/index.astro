@@ -368,7 +368,7 @@ const btn = "md:whitespace-nowrap";
       <h2 id="video-dialog-title" class="text-sm font-semibold tracking-wide text-navy" data-i18n="index.video.title">Intro Brief · 1 minute</h2>
       <button type="button" class="close-video-trigger -my-2 -mr-2 min-h-[44px] px-2 text-sm font-semibold text-grey hover:text-navy" data-i18n-attr="aria-label:index.video.close-aria" aria-label="ESC / Close video dialog"><span data-i18n="index.video.close">ESC / Close</span></button>
     </div>
-    <video id="intro-video" controls playsinline preload="none" poster="/images/intro-poster.webp" class="h-full w-full object-contain">
+    <video id="intro-video" controls playsinline preload="none" poster="/images/intro-poster.webp" class="aspect-video w-full object-contain">
       <source src="/videos/intro.mp4" type="video/mp4" />
       <track kind="captions" src="/videos/intro.vtt" srclang="en" label="English" />
       <span data-i18n="index.video.fallback">Your browser does not support the video tag.</span>
@@ -385,9 +385,11 @@ const btn = "md:whitespace-nowrap";
             const lang = document.documentElement.lang === "id" ? "id" : "en";
             if (video.dataset.lang !== lang) {
               const sfx = lang === "id" ? "-id" : "";
+              const src = `/videos/intro${sfx}.mp4`;
               video.dataset.lang = lang;
               video.poster = lang === "id" ? "/images/intro-poster-id.webp" : "/images/intro-poster.webp";
-              video.querySelector("source")?.setAttribute("src", `/videos/intro${sfx}.mp4`);
+              video.src = src;
+              video.querySelector("source")?.setAttribute("src", src);
               video.querySelector("track")?.setAttribute("src", `/videos/intro${sfx}.vtt`);
               video.querySelector("track")?.setAttribute("srclang", lang);
               video.load();

@@ -5,8 +5,9 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const ID_PATH = /^\/id(\/|$)/;
 
 function setAttr(tag: string, name: string, value: string): string {
+  const escRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const v = `${name}="${esc(value).replace(/"/g, "&quot;")}"`;
-  const re = new RegExp(`\\s${name}="[^"]*"`);
+  const re = new RegExp(`\\s${escRegExp(name)}="[^"]*"`);
   return re.test(tag) ? tag.replace(re, ` ${v}`) : tag.replace(/\s*\/?>$/, (end) => ` ${v}${end}`);
 }
 

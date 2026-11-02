@@ -42,6 +42,10 @@ import Button from "../components/Button.astro";
             class="flex flex-col gap-7"
             data-contact-form
           >
+          <div class="absolute -left-[9999px] opacity-0 pointer-events-none" aria-hidden="true" tabindex="-1">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            <input type="hidden" name="_ts" value="" />
+          </div>
             <div class="grid gap-6 md:grid-cols-2">
               <div class="flex flex-col gap-2">
                 <label for="name" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.name-label">Your name</span><span aria-hidden="true"> *</span></label>
@@ -239,7 +243,9 @@ import Button from "../components/Button.astro";
   if (form) {
     const submitButton = form.querySelector<HTMLButtonElement>("[data-submit-button]");
     const buttonLabel = form.querySelector<HTMLElement>("[data-button-label]");
-    const status = document.querySelector<HTMLElement>("[data-form-status]");
+     const status = document.querySelector<HTMLElement>("[data-form-status]");
+    const tsInput = form.querySelector<HTMLInputElement>('input[name="_ts"]');
+    if (tsInput) tsInput.value = Date.now().toString();
 
     const requiredFields = Array.from(
       form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]")

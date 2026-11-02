@@ -19,7 +19,15 @@ export async function POST({ request }: APIContext) {
     return Response.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const { email, name, company, ...rest } = payload;
+  const { email, name, company, _gotcha, _ts, ...rest } = payload;
+
+  // Anti-bot: honeypot filled or submission time abnormal (< 1.5s or future/stale timestamp)
+  const elapsedMs = _ts ? Date.now() - Number(_ts) : 0;
+  if (_gotcha || (_ts && (elapsedMs < 1500 || elapsedMs > 86400000))) {
+    // Return fake success so automated scrapers don't retry, without calling Brevo
+    return Response.json({ ok: true, created: false, emailSent: false });
+  }
+
   if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
     return Response.json({ error: "A valid email is required" }, { status: 400 });
   }

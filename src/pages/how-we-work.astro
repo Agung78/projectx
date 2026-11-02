@@ -196,10 +196,10 @@ const marqueeRows = [
 >
   <section class="bg-white">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <span class="mono text-blue" data-i18n="howwework.hero.eyebrow">// METHODOLOGY &amp; PROCESS</span>
+      <span class="mono text-blue" data-hero-item data-i18n="howwework.hero.eyebrow">// METHODOLOGY &amp; PROCESS</span>
       <div class="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
-        <h1 class="text-h1 uppercase text-navy text-balance tracking-tight lg:col-span-7" data-i18n="howwework.hero.title">Mapped out together. Owned by you.</h1>
-        <p class="text-body-lg text-slate text-pretty lg:col-span-5 lg:pt-2" data-i18n="howwework.hero.lede">
+        <h1 class="text-h1 uppercase text-navy text-balance tracking-tight lg:col-span-7 text-reveal" data-i18n="howwework.hero.title">Mapped out together. Owned by you.</h1>
+        <p class="text-body-lg text-slate text-pretty lg:col-span-5 lg:pt-2" data-hero-item data-i18n="howwework.hero.lede">
           Your system, your decisions. We work alongside you at every stage and hand it back when you’re ready.
         </p>
       </div>
@@ -208,11 +208,11 @@ const marqueeRows = [
 
   <section class="border-t border-line bg-mist py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 uppercase text-navy text-balance tracking-tight" data-i18n="howwework.stages.heading">Four stages, one direction.</h2>
-      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <h2 class="text-h2 uppercase text-navy text-balance tracking-tight text-reveal" data-i18n="howwework.stages.heading">Four stages, one direction.</h2>
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4" data-reveal-group>
         {
           stages.map((stage, i) => (
-            <div class="group flex flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs transition-all duration-200 hover:border-blue/40 hover:shadow-sm md:p-8">
+            <div class="group flex flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
               <div>
                 <span class="mono text-xs font-semibold text-blue"><span data-i18n="howwework.stages.step-prefix">STEP //</span> {pad(i)}</span>
                 <h3 class="mt-4 text-h3 text-navy tracking-tight" data-i18n={stage.nameKey}>{stage.name}</h3>
@@ -249,7 +249,7 @@ const marqueeRows = [
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
           <span class="mono text-grey" data-i18n="howwework.handover.eyebrow">// HANDOVER CHECKLIST</span>
-          <h2 class="mt-4 text-h2 text-navy text-balance" data-i18n="howwework.handover.heading">Everything handed over, nothing held back.</h2>
+          <h2 class="mt-4 text-h2 text-navy text-balance text-reveal" data-i18n="howwework.handover.heading">Everything handed over, nothing held back.</h2>
           <p class="text-body-lg text-slate max-w-[68ch] mt-4" data-i18n="howwework.handover.lede">
             Before we sign off, we deliver every item below and walk your team through it. The checklist is written into the contract.
           </p>
@@ -264,10 +264,10 @@ const marqueeRows = [
                 <th scope="col" class="mono px-4 py-4 text-xs font-semibold tracking-wider uppercase text-navy md:px-6" data-i18n="howwework.handover.col-included">What's included</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-line">
+            <tbody class="divide-y divide-line" data-reveal-group>
               {
                 handover.map((row, i) => (
-                  <tr class="transition-colors hover:bg-mist/40">
+                  <tr class="transition-colors hover:bg-mist/40" data-reveal-item>
                     <th scope="row" class="px-4 py-4.5 align-top font-semibold text-navy md:px-6">
                       <span class="mono mr-2 text-xs text-blue">{pad(i)}</span><span data-i18n={row.itemKey}>{row.item}</span>
                     </th>
@@ -318,14 +318,14 @@ const marqueeRows = [
     <div class={shell}>
       <div class="max-w-[72ch]">
         <span class="mono text-blue" data-i18n="howwework.governance.eyebrow">// ENGINEERING GOVERNANCE</span>
-        <h2 class="mt-4 text-h2 text-navy text-balance" data-i18n="howwework.governance.heading">Reliable systems need shared standards, not secret knowledge.</h2>
+        <h2 class="mt-4 text-h2 text-navy text-balance text-reveal" data-i18n="howwework.governance.heading">Reliable systems need shared standards, not secret knowledge.</h2>
         <p class="mt-4 text-body-lg text-slate" data-i18n="howwework.governance.lede">
           When a system depends on one person’s memory, it gets harder to change with every release. We build the process into the code instead.
         </p>
       </div>
 
-      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
-        <div class="group flex h-full flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs transition-all duration-200 hover:border-blue/40 hover:shadow-sm md:p-8">
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch" data-reveal-group>
+        <div class="group flex h-full flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
           <div>
             <div class="flex items-center justify-between">
               <Icon name="solar:checklist-minimalistic-linear" class="h-9 w-9 text-blue transition-transform group-hover:scale-105" aria-hidden="true" />
@@ -337,7 +337,7 @@ const marqueeRows = [
             </p>
           </div>
         </div>
-        <div class="group flex h-full flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs transition-all duration-200 hover:border-blue/40 hover:shadow-sm md:p-8">
+        <div class="group flex h-full flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
           <div>
             <div class="flex items-center justify-between">
               <Icon name="solar:chart-linear" class="h-9 w-9 text-blue transition-transform group-hover:scale-105" aria-hidden="true" />
@@ -349,7 +349,7 @@ const marqueeRows = [
             </p>
           </div>
         </div>
-        <div class="group flex h-full flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs transition-all duration-200 hover:border-blue/40 hover:shadow-sm md:p-8 md:col-span-2 lg:col-span-1">
+        <div class="group flex h-full flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8 md:col-span-2 lg:col-span-1" data-reveal-item>
           <div>
             <div class="flex items-center justify-between">
               <Icon name="solar:cloud-file-linear" class="h-9 w-9 text-blue transition-transform group-hover:scale-105" aria-hidden="true" />

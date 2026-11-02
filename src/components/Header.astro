@@ -16,10 +16,13 @@ const langHref = {
 
 <header
   transition:persist
-  class="group/header sticky top-0 z-50 bg-white border-b border-transparent data-[stuck=true]:border-line transition-[background-color,border-color] duration-200"
+  class="group/header sticky top-0 z-50 pointer-events-none p-2.5 md:p-4 w-full transition-all duration-300"
   data-site-header
 >
-  <div class="mx-auto flex max-w-[1200px] items-center justify-between px-4 md:px-6 py-4">
+  <div
+    class="pointer-events-auto mx-auto flex w-full max-w-full items-center justify-between px-4 md:px-6 py-2.5 md:py-3 rounded-xl border border-line bg-white/85 backdrop-blur-md shadow-xs group-data-[stuck=true]/header:max-w-[840px] group-data-[stuck=true]/header:bg-white/95 group-data-[stuck=true]/header:shadow-md"
+    style="transition: max-width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, box-shadow 0.3s ease;"
+  >
     <a href="/" class="text-h3 font-semibold tracking-tight text-navy" aria-label="Kyron Engineering, home">
       Kyron Engineering
     </a>
@@ -66,7 +69,7 @@ const langHref = {
     </div>
   </div>
 
-  <div id="mobile-nav" hidden class="border-t border-line bg-white md:hidden" data-mobile-nav data-open="false">
+  <div id="mobile-nav" hidden class="pointer-events-auto mx-auto mt-2 w-full max-w-full overflow-hidden rounded-xl border border-line bg-white shadow-lg md:hidden group-data-[stuck=true]/header:max-w-[840px]" data-mobile-nav data-open="false">
     <nav class="flex flex-col gap-1 px-4 md:px-6 py-4" aria-label="Primary">
       {
         navLinks.map((link) => (
@@ -179,7 +182,7 @@ const langHref = {
     observer?.disconnect();
     const sentinel = document.createElement("div");
     sentinel.setAttribute("aria-hidden", "true");
-    sentinel.style.cssText = "position:absolute;top:0;left:0;height:4px;width:1px;pointer-events:none;";
+    sentinel.style.cssText = "position:absolute;top:0;left:0;height:30px;width:1px;pointer-events:none;";
     document.body.prepend(sentinel);
 
     observer = new IntersectionObserver(

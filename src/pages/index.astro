@@ -96,7 +96,7 @@ const btn = "md:whitespace-nowrap";
 
       <div class="mt-12 grid grid-cols-1 items-start gap-12 md:mt-16 lg:grid-cols-12 lg:gap-10">
         <div class="lg:col-span-7">
-          <h1 class="text-h1 uppercase text-navy text-balance tracking-tight lg:max-w-[16ch] lg:text-[clamp(3rem,4.6vw,4.5rem)]" data-i18n="index.hero.title">Technology built for independence.</h1>
+          <h1 class="text-h1 uppercase text-navy text-balance tracking-tight lg:max-w-[16ch] lg:text-[clamp(3rem,4.6vw,4.5rem)] text-reveal" data-i18n="index.hero.title">Technology built for independence.</h1>
           <p class="corners mono mt-8 inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-md border border-line bg-mist px-4 py-2.5 text-sm text-navy shadow-xs" data-hero-item>
             <span data-i18n="index.hero.tag1">We build</span><span aria-hidden="true" class="text-blue">·</span><span data-i18n="index.hero.tag2">We teach</span><span aria-hidden="true" class="text-blue">·</span><span data-i18n="index.hero.tag3">You own.</span>
           </p>
@@ -125,7 +125,7 @@ const btn = "md:whitespace-nowrap";
   <section class="border-t border-line bg-mist" aria-labelledby="problem-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
-        <h2 id="problem-title" class="max-w-[24ch] text-h2 text-navy text-balance lg:col-span-7" data-i18n="index.problem.title">
+        <h2 id="problem-title" class="max-w-[24ch] text-h2 text-navy text-balance lg:col-span-7 text-reveal" data-i18n="index.problem.title">
           Getting software built is easy. Keeping it running is the hard part.
         </h2>
         <p class="max-w-[68ch] text-body-lg text-slate lg:col-span-5 lg:pt-1" data-i18n="index.problem.lede">
@@ -133,10 +133,10 @@ const btn = "md:whitespace-nowrap";
         </p>
       </div>
 
-      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" data-reveal-group>
         {
           problemCards.map((card, i) => (
-            <div class="group rounded-xl border border-line bg-white p-7 shadow-xs transition-all duration-200 hover:border-navy/30 hover:shadow-sm md:p-8">
+            <div class="group rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
               <span class="mono text-xs font-semibold text-blue">{pad(i)}</span>
               <h3 class="mt-4 text-h3 text-navy tracking-tight" data-i18n={`index.problem.${card.key}.title`}>{card.title}</h3>
               <p class="mt-3 text-body text-slate leading-relaxed" data-i18n={`index.problem.${card.key}.body`}>{card.body}</p>
@@ -150,12 +150,12 @@ const btn = "md:whitespace-nowrap";
   <!-- 3.3 What the business gets -->
   <section class="bg-white" aria-labelledby="business-gets-title">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <h2 id="business-gets-title" class="text-h2 text-navy text-balance" data-i18n="index.gets.title">What the business gets instead.</h2>
+      <h2 id="business-gets-title" class="text-h2 text-navy text-balance text-reveal" data-i18n="index.gets.title">What the business gets instead.</h2>
 
-      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" data-reveal-group>
         {
           businessGets.map((card, i) => (
-            <div class="group flex flex-col justify-between rounded-xl border border-line bg-mist/60 p-7 shadow-xs transition-all duration-200 hover:border-blue/40 hover:bg-white hover:shadow-sm md:p-8">
+            <div class="group flex flex-col justify-between rounded-xl border border-line bg-mist/60 p-7 shadow-xs card-hover md:p-8" data-reveal-item>
               <div>
                 <span class="mono text-xs text-grey">{`// ${pad(i)}`}</span>
                 <h3 class="mt-3 text-h3 text-navy tracking-tight" data-i18n={`index.gets.${card.key}.title`}>{card.title}</h3>
@@ -175,7 +175,7 @@ const btn = "md:whitespace-nowrap";
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:col-span-4">
           <span class="mono text-grey" data-i18n="index.howwework.eyebrow">// PROCESS</span>
-          <h2 class="mt-4 text-h2 text-navy text-balance" data-i18n="index.howwework.title">How a project comes together.</h2>
+          <h2 class="mt-4 text-h2 text-navy text-balance text-reveal" data-i18n="index.howwework.title">How a project comes together.</h2>
           <p class="mt-4 text-body-lg text-slate" data-i18n="index.howwework.lede">
             Four clear stages take each project from the first conversation to a system the business fully owns.
           </p>
@@ -203,13 +203,13 @@ const btn = "md:whitespace-nowrap";
     <div class:list={[shell, "py-16 md:py-24"]}>
       <div class="corners corners-light rounded-xl border border-white/15 p-8 md:p-12">
         <span class="mono text-white/60" data-i18n="index.discovery.eyebrow">// DISCOVERY</span>
-        <h2 id="discovery-title" class="mt-4 text-h2 text-white text-balance" data-i18n="index.discovery.title">Every project starts with a clear picture.</h2>
+        <h2 id="discovery-title" class="mt-4 text-h2 text-white text-balance text-reveal" data-i18n="index.discovery.title">Every project starts with a clear picture.</h2>
         <p class="text-body-lg text-white/80 max-w-[68ch] mt-4" data-i18n="index.discovery.lede">
           Before anything is built, we take a close look at how the business runs today. In three steps, that becomes a plan the business keeps, whether it continues with us or not.
         </p>
 
-        <div class="mt-12 grid grid-cols-1 divide-y divide-white/15 border-y border-white/15 md:grid-cols-3 md:divide-x md:divide-y-0">
-          <div class="py-8 md:px-8 md:py-10 md:first:pl-0">
+        <div class="mt-12 grid grid-cols-1 divide-y divide-white/15 border-y border-white/15 md:grid-cols-3 md:divide-x md:divide-y-0" data-reveal-group>
+          <div class="py-8 md:px-8 md:py-10 md:first:pl-0" data-reveal-item>
             <span class="mono text-white/60" data-i18n="index.discovery.step1.num">STEP // 01</span>
             <svg class="mt-6 h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="6.5" />
@@ -219,7 +219,7 @@ const btn = "md:whitespace-nowrap";
             <h3 class="text-h3 font-semibold text-white mt-4" data-i18n="index.discovery.step1.title">Understand</h3>
             <p class="text-body text-white/70 mt-2" data-i18n="index.discovery.step1.body">We map current systems, data flows and integrations, and pinpoint the bottlenecks.</p>
           </div>
-          <div class="py-8 md:px-8 md:py-10">
+          <div class="py-8 md:px-8 md:py-10" data-reveal-item>
             <span class="mono text-white/60" data-i18n="index.discovery.step2.num">STEP // 02</span>
             <svg class="mt-6 h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 6h16M4 12h11M4 18h6" />
@@ -228,7 +228,7 @@ const btn = "md:whitespace-nowrap";
             <h3 class="text-h3 font-semibold text-white mt-4" data-i18n="index.discovery.step2.title">Prioritise</h3>
             <p class="text-body text-white/70 mt-2" data-i18n="index.discovery.step2.body">We rank the risks, such as security gaps and single points of failure, and decide what to build, upgrade or leave as is.</p>
           </div>
-          <div class="py-8 md:px-8 md:py-10 md:last:pr-0">
+          <div class="py-8 md:px-8 md:py-10 md:last:pr-0" data-reveal-item>
             <span class="mono text-white/60" data-i18n="index.discovery.step3.num">STEP // 03</span>
             <svg class="mt-6 h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="5" cy="18" r="2" />
@@ -254,13 +254,13 @@ const btn = "md:whitespace-nowrap";
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
           <span class="mono text-grey" data-i18n="index.build.eyebrow">// PRINCIPLES</span>
-          <h2 class="mt-4 text-h2 text-navy text-balance" data-i18n="index.build.title">Simple, honest engineering.</h2>
+          <h2 class="mt-4 text-h2 text-navy text-balance text-reveal" data-i18n="index.build.title">Simple, honest engineering.</h2>
         </div>
 
-        <ol class="border-t border-navy lg:col-span-8">
+        <ol class="border-t border-navy lg:col-span-8" data-reveal-group>
           {
             buildPrinciples.map((item, i) => (
-              <li class="grid grid-cols-[3.5rem_1fr] gap-4 border-b border-line py-6 md:grid-cols-[5rem_1fr]">
+              <li class="grid grid-cols-[3.5rem_1fr] gap-4 border-b border-line py-6 md:grid-cols-[5rem_1fr]" data-reveal-item>
                 <span class="mono text-blue md:text-base">{pad(i)}</span>
                 <p class="text-body text-slate">
                   <strong class="font-semibold text-navy" data-i18n={`index.build.${item.key}.title`}>{item.title}</strong> <span data-i18n={`index.build.${item.key}.body`}>{item.body}</span>
@@ -278,15 +278,15 @@ const btn = "md:whitespace-nowrap";
     <div class:list={[shell, "pb-16 md:pb-24"]}>
       <div class="rounded-xl border border-line bg-mist p-6 md:p-12">
         <p class="mono text-grey" data-i18n="index.ai.eyebrow">// Optional service</p>
-        <h2 id="ai-adoption-title" class="mt-3 text-h2 text-navy text-balance" data-i18n="index.ai.title">Want to bring AI into the business? We can help.</h2>
+        <h2 id="ai-adoption-title" class="mt-3 text-h2 text-navy text-balance text-reveal" data-i18n="index.ai.title">Want to bring AI into the business? We can help.</h2>
         <p class="text-body-lg text-slate max-w-[68ch] mt-4" data-i18n="index.ai.lede">
           Our systems are engineered by people, not generated by AI. When a business wants to use AI, we help it adopt it properly: reliable data first, then AI only where it clearly pays off.
         </p>
 
-        <ol class="mt-12 grid grid-cols-1 overflow-hidden rounded-lg border border-line bg-white md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-line">
+        <ol class="mt-12 grid grid-cols-1 overflow-hidden rounded-lg border border-line bg-white md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-line" data-reveal-group>
           {
             adoptionSteps.map((step, i) => (
-              <li class="relative p-6">
+              <li class="relative p-6 card-hover" data-reveal-item>
                 <span class="mono text-blue">{pad(i)}</span>
                 <p class="mt-6 text-body-lg font-semibold text-navy" data-i18n={`index.ai.${step.key}`}>{step.label}</p>
                 {i < adoptionSteps.length - 1 && (
@@ -306,7 +306,7 @@ const btn = "md:whitespace-nowrap";
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
           <span class="mono text-grey" data-i18n="index.numbers.eyebrow">// METRICS</span>
-          <h2 id="numbers-title" class="mt-4 text-h2 text-navy text-balance" data-i18n="index.numbers.title">Eight numbers that prove progress.</h2>
+          <h2 id="numbers-title" class="mt-4 text-h2 text-navy text-balance text-reveal" data-i18n="index.numbers.title">Eight numbers that prove progress.</h2>
           <p class="text-body-lg text-slate max-w-[68ch] mt-4" data-i18n="index.numbers.lede">
             No vague status reports. We measure these on every project and report them in plain language. The first four are the industry-standard DORA metrics used by top engineering teams.
           </p>
@@ -321,10 +321,10 @@ const btn = "md:whitespace-nowrap";
                 <th scope="col" class="mono px-4 py-4 text-xs font-semibold tracking-wider uppercase text-navy md:px-6" data-i18n="index.numbers.col-tells">What it tells you</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-line">
+            <tbody class="divide-y divide-line" data-reveal-group>
               {
                 metrics.map((row, i) => (
-                  <tr class="transition-colors hover:bg-mist/40">
+                  <tr class="transition-colors hover:bg-mist/40" data-reveal-item>
                     <th scope="row" class="px-4 py-4.5 align-top text-left font-semibold text-navy md:px-6">
                       <span class="mono mr-2 text-xs text-blue">{pad(i)}</span><span data-i18n={`index.numbers.${row.key}.metric`}>{row.metric}</span>
                     </th>
@@ -342,10 +342,10 @@ const btn = "md:whitespace-nowrap";
   <!-- 3.9 Final CTA -->
   <section class="bg-mist">
     <div class:list={[shell, "py-16 md:py-24"]}>
-      <div class="corners rounded-xl border border-line bg-white p-8 shadow-xs md:p-14">
+      <div class="corners rounded-xl border border-line bg-white p-8 shadow-xs md:p-14" data-tagline-reveal>
         <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
           <div class="lg:col-span-7">
-            <h2 class="max-w-[24ch] text-h2 text-navy text-balance tracking-tight" data-i18n="index.cta.title">Own the technology your business runs on.</h2>
+            <h2 class="max-w-[24ch] text-h2 text-navy text-balance tracking-tight text-reveal" data-i18n="index.cta.title">Own the technology your business runs on.</h2>
             <p class="mt-4 max-w-[68ch] text-body-lg text-slate text-pretty" data-i18n="index.cta.body">Whether it's a brand-new system or improving one already in place, tell us what's slowing the business down and we'll suggest the best place to start.</p>
           </div>
           <div class="flex flex-col items-start gap-4 lg:col-span-5 lg:items-end lg:justify-self-end">

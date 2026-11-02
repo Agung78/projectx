@@ -7,7 +7,7 @@ const links = [
 ];
 ---
 
-<footer class="border-t border-white/10 bg-navy text-white">
+<footer class="relative overflow-hidden border-t border-white/10 bg-navy text-white">
   <div class="mx-auto max-w-[1200px] px-4 md:px-6 pt-16 pb-8">
     <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
       <div class="max-w-measure">
@@ -71,4 +71,51 @@ const links = [
       <a href="/privacy" class="hover:text-white" data-i18n="footer.privacy">Privacy</a>
     </div>
   </div>
+  <div id="footer-torch" class="pointer-events-none relative mx-auto max-w-[1200px] px-4 md:px-6 pb-4 select-none" aria-hidden="true">
+    <svg width="0" height="0" class="absolute">
+      <symbol id="kyron-watermark" viewBox="0 0 314 80">
+        <g transform="translate(0, 5) scale(0.7)">
+          <path d="M9.13 6.2 L30.87 6.2 L30.87 66.41 L0 97.5 L9.13 81.2Z M30.65 84.24 L30.65 97.5 L19.78 97.5Z M30.43 43.8 L64.35 6.2 L90.87 6.2 L30.43 66.85Z M73.48 33.59 L62.17 53.8 L95 97.5 L68.04 97.5 L44.78 66.41Z" fill="#FFFFFF"/>
+          <polygon points="100,2.28 19.78,97.72 4.57,97.72" fill="#00C49F"/>
+        </g>
+        <text x="82" y="50" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="28" font-weight="600" fill="#FFFFFF" letter-spacing="-0.02em">Kyron <tspan font-weight="400">Engineering</tspan></text>
+      </symbol>
+    </svg>
+    <svg class="block w-full opacity-[0.07]" viewBox="0 0 314 80"><use href="#kyron-watermark" /></svg>
+    <svg class="torch absolute inset-x-0 top-0 mx-auto block w-full max-w-[1200px] px-4 md:px-6 opacity-0 transition-opacity duration-300" viewBox="0 0 314 80"><use href="#kyron-watermark" /></svg>
+  </div>
 </footer>
+
+<style>
+  #footer-torch .torch {
+    -webkit-mask-image: radial-gradient(circle 220px at var(--x, 50%) var(--y, 50%), #000 0%, transparent 100%);
+    mask-image: radial-gradient(circle 220px at var(--x, 50%) var(--y, 50%), #000 0%, transparent 100%);
+  }
+  footer:hover #footer-torch .torch { opacity: 0.6; }
+  @media (hover: none) { #footer-torch .torch { display: none; } }
+  @media (prefers-reduced-motion: reduce) { #footer-torch .torch { transition: none; } }
+</style>
+
+<script>
+  const wm = document.getElementById("footer-torch");
+  const torch = wm?.querySelector<SVGElement>(".torch");
+  const footer = wm?.closest("footer");
+  if (torch && footer) {
+    let tx = 0, ty = 0, x = 0, y = 0, raf = 0, ready = false;
+    const tick = () => {
+      x += (tx - x) * 0.08; // ponytail: 0.08 = lag; lower = lazier
+      y += (ty - y) * 0.08;
+      torch.style.setProperty("--x", `${x}px`);
+      torch.style.setProperty("--y", `${y}px`);
+      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(tick) : 0;
+    };
+    footer.addEventListener("pointermove", (e) => {
+      const r = torch.getBoundingClientRect();
+      tx = e.clientX - r.left;
+      ty = e.clientY - r.top;
+      if (!ready) { x = tx; y = ty; ready = true; }
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+    footer.addEventListener("pointerleave", () => { ready = false; });
+  }
+</script>

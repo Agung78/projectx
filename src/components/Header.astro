@@ -24,9 +24,11 @@ const langHref = {
     style="transition: max-width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, box-shadow 0.3s ease;"
   >
     <a href="/" class="flex items-center gap-2.5 text-h3 tracking-tight text-navy" aria-label="Kyron Engineering, home">
-      <svg class="h-7 w-7 shrink-0" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M8.9 2.76H31.29L31.6 42.33L66.26 2.76H93.25L0 97.85L8.9 81.6Z M73.4 33.74L97.85 98.16H70.25L46.03 66.56Z M30.98 85.28V98.16H20.25Z" fill="currentColor"/>
-        <polygon points="100.0,1.84 19.94,97.85 5.52,97.85" fill="#00C49F"/>
+      <svg class="kmark h-7 w-7 shrink-0" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path class="kp kp-stem" d="M9.13 6.2 L30.87 6.2 L30.87 66.41 L0 97.5 L9.13 81.2Z  M30.65 84.24 L30.65 97.5 L19.78 97.5Z " fill="currentColor"/>
+        <path class="kp kp-arm-u" d="M30.43 43.8 L64.35 6.2 L90.87 6.2 L30.43 66.85Z " fill="currentColor"/>
+        <path class="kp kp-arm-l" d="M73.48 33.59 L62.17 53.8 L95 97.5 L68.04 97.5 L44.78 66.41Z" fill="currentColor"/>
+        <polygon class="kp kp-swoosh" points="100,2.28 19.78,97.72 4.57,97.72" fill="#00C49F"/>
       </svg>
       <span class="font-semibold">Kyron <span class="font-normal text-slate">Engineering</span></span>
     </a>
@@ -200,3 +202,15 @@ const langHref = {
 
   document.addEventListener("astro:page-load", initHeader);
 </script>
+
+<style>
+  /* Kyron mark intro: swoosh leads, then stem, arms (from pixel2motion/kyron/motion.css, ~0.45x of the demo, ~2s) */
+  .kmark .kp { transform-box: fill-box; transform-origin: center; animation: kp-in 620ms cubic-bezier(0, 0, 0.2, 1) both; }
+  .kmark .kp-swoosh { transform-origin: right top; animation: kp-swoosh 840ms cubic-bezier(0, 0, 0.2, 1) 270ms both; }
+  .kmark .kp-stem { animation-delay: 355ms; }
+  .kmark .kp-arm-u { animation-delay: 670ms; }
+  .kmark .kp-arm-l { animation-delay: 980ms; }
+  @keyframes kp-in { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+  @keyframes kp-swoosh { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+  @media (prefers-reduced-motion: reduce) { .kmark .kp { animation: none; } }
+</style>

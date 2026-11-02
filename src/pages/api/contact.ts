@@ -29,6 +29,7 @@ export async function POST({ request }: APIContext) {
     if (value) attributes[key.toUpperCase()] = value;
   }
 
+  let created = false;
   try {
     const response = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
@@ -46,18 +47,85 @@ export async function POST({ request }: APIContext) {
 
     const result = await response.json().catch(() => ({}));
 
-    if (response.ok) {
-      return Response.json({ ok: true, created: response.status === 201 });
-    }
-
-    return Response.json(
-      { error: result.message ?? `Brevo returned ${response.status}` },
-      { status: 400 },
-    );
+    created = response.status === 201;
   } catch (error) {
     return Response.json(
       { error: error instanceof Error ? error.message : "Brevo request failed" },
       { status: 502 },
     );
   }
+
+  // Notify the site owners by email (best-effort; never blocks the submission).
+  // Requires: CONTACT_FROM_EMAIL (a verified Brevo sender).
+  // Recipients: CONTACT_NOTIFY_EMAIL (comma-separated), defaults to agung@ and vanezza@.
+  const fromEmail = import.meta.env.CONTACT_FROM_EMAIL;
+  const notifyEmails = (import.meta.env.CONTACT_NOTIFY_EMAIL ?? "")
+    .split(/[,;]\s*/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (notifyEmails.length === 0) {
+    notifyEmails.push("agung@kyronengineering.com", "vanezza@kyronengineering.com");
+  }
+  let emailSent = false;
+  if (fromEmail && notifyEmails.length > 0) {
+    try {
+      await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+          "api-key": apiKey,
+        },
+        body: JSON.stringify({
+          sender: { name: "Kyron Engineering", email: fromEmail },
+          to: notifyEmails.map((email) => ({ email, name: "Kyron Engineering" })),
+          subject: `New contact form submission from ${name ?? email}`,
+          htmlContent: contactEmailHtml({
+            name,
+            email,
+            company,
+            role: rest.role,
+            region: rest.region,
+            locations: rest.locations,
+            help: rest.help,
+            followUp: rest.follow_up,
+          }),
+        }),
+      });
+      emailSent = true;
+    } catch {
+      // Email delivery is best-effort; the submission is already recorded in Brevo.
+    }
+  }
+
+  return Response.json({ ok: true, created, emailSent });
+}
+
+function contactEmailHtml(fields: {
+  name?: string;
+  email?: string;
+  company?: string;
+  role?: string;
+  region?: string;
+  locations?: string;
+  help?: string;
+  followUp?: string;
+}) {
+  const esc = (s?: string) =>
+    String(s ?? "").replace(/[&<>"']/g, (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!)
+    );
+  return `
+    <h2>New enquiry</h2>
+    <table border="0" cellpadding="4" style="border-collapse:collapse;font-family:sans-serif;">
+      <tr><td style="font-weight:bold;">Name</td><td>${esc(fields.name)}</td></tr>
+      <tr><td style="font-weight:bold;">Email</td><td>${esc(fields.email)}</td></tr>
+      <tr><td style="font-weight:bold;">Company</td><td>${esc(fields.company)}</td></tr>
+      <tr><td style="font-weight:bold;">Role</td><td>${esc(fields.role)}</td></tr>
+      <tr><td style="font-weight:bold;">Country or region</td><td>${esc(fields.region)}</td></tr>
+      <tr><td style="font-weight:bold;">Locations or branches</td><td>${esc(fields.locations)}</td></tr>
+      <tr><td style="font-weight:bold;">Follow up</td><td>${esc(fields.followUp)}</td></tr>
+      <tr><td style="font-weight:bold;">Help with</td><td>${esc(fields.help)}</td></tr>
+    </table>
+  `;
 }

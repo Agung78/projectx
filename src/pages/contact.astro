@@ -7,9 +7,9 @@ import Button from "../components/Button.astro";
   <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-14 md:py-24">
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
       <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-        <div class="rounded-2xl border border-line bg-white p-7 shadow-xs md:p-9">
+        <div class="rounded-2xl border border-line bg-white p-7 shadow-xs md:p-9" data-hero-item>
           <span class="mono text-xs font-semibold text-blue" data-i18n="contact.intro.eyebrow">// ENGAGEMENT BRIEF</span>
-          <h1 class="mt-4 text-h1 uppercase text-navy text-balance tracking-tight" data-i18n="contact.intro.title">Tell us what the business needs.</h1>
+          <h1 class="mt-4 text-h1 uppercase text-navy text-balance tracking-tight text-reveal" data-i18n="contact.intro.title">Tell us what the business needs.</h1>
           <p class="text-body text-slate max-w-[68ch] mt-4 leading-relaxed" data-i18n="contact.intro.lede">
             Share a few details and we'll reply with a clear next step. No obligation, and we'll never ask for passwords or system access here.
           </p>
@@ -30,7 +30,7 @@ import Button from "../components/Button.astro";
       </div>
 
       <div class="lg:col-span-7">
-        <div class="rounded-2xl border border-line bg-white p-6 shadow-xs md:p-10">
+        <div class="rounded-2xl border border-line bg-white p-6 shadow-xs md:p-10" data-hero-item>
           <div class="mb-6 flex items-center justify-between border-b border-line pb-4">
             <span class="mono text-xs font-semibold text-grey" data-i18n="contact.form.console">// INTAKE CONSOLE</span>
             <span class="mono text-xs text-blue" aria-hidden="true">ENQUIRY FORM</span>
@@ -323,17 +323,44 @@ import Button from "../components/Button.astro";
         buttonLabel.textContent = t("contact.form.sending");
         status.classList.add("hidden");
 
-        await new Promise((resolve) => setTimeout(resolve, 600));
+        const formData = Object.fromEntries(new FormData(form).entries());
 
-        form.hidden = true;
-        status.classList.remove("hidden");
-        status.dataset.i18n = "contact.form.success";
-        status.textContent = t("contact.form.success");
-        status.classList.add("text-green", "text-body-lg", "font-semibold");
-        requestAnimationFrame(() => {
-          status.dataset.visible = "true";
-          status.focus();
-        });
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+
+          const result = await response.json().catch(() => ({}));
+
+          if (response.ok) {
+            form.hidden = true;
+            status.classList.remove("hidden");
+            status.dataset.i18n = "contact.form.success";
+            status.textContent = t("contact.form.success");
+            status.classList.add("text-green", "text-body-lg", "font-semibold");
+            requestAnimationFrame(() => {
+              status.dataset.visible = "true";
+              status.focus();
+            });
+          } else {
+            throw new Error(result.error ?? `Request failed (${response.status})`);
+          }
+        } catch (error) {
+          status.classList.remove("hidden");
+          status.textContent =
+            error instanceof Error ? error.message : "Something went wrong. Please try again.";
+          status.classList.add("text-red", "text-body-lg", "font-semibold");
+          requestAnimationFrame(() => {
+            status.dataset.visible = "true";
+            status.focus();
+          });
+        } finally {
+          submitButton.disabled = false;
+          buttonLabel.dataset.i18n = "contact.form.submit";
+          buttonLabel.textContent = t("contact.form.submit");
+        }
       }
     });
 

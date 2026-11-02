@@ -92,10 +92,11 @@
     scroll-behavior: auto;
     color-scheme: light;
     /* Motion tokens — single source of truth, mirrored in src/scripts/motion.ts */
-    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
     --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
-
+    --ease-curtain: cubic-bezier(0.835, 0.015, 0.245, 0.995);
+    --ease-roll: cubic-bezier(0.165, 0.84, 0.44, 1);
     --duration-press: 140ms;
     --duration-hover: 180ms;
     --duration-popover: 200ms;
@@ -394,5 +395,117 @@
       linear-gradient(to right, var(--color-line) 1px, transparent 1px),
       linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
     background-size: 32px 32px;
+  }
+  /* Masked text reveal: words rise from behind baseline clipping mask (DALCO style) */
+  .text-reveal {
+    overflow: clip;
+  }
+  .text-reveal .word {
+    display: inline-block;
+    overflow: clip;
+    vertical-align: bottom;
+    margin-bottom: -0.16em;
+    padding-bottom: 0.16em;
+  }
+  .text-reveal .word-inner {
+    display: inline-block;
+    transform: translateY(115%);
+    transition: transform 0.75s var(--ease-out);
+    transition-delay: calc(var(--word-i, 0) * 45ms);
+    will-change: transform;
+  }
+  .text-reveal.visible .word-inner,
+  .text-reveal[data-revealed="true"].visible .word-inner {
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .text-reveal .word-inner {
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Character roll on hover for navigation links & interactive elements */
+  .text-roll {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: inherit;
+  }
+  .text-roll-line {
+    display: block;
+    white-space: nowrap;
+    transition: transform 0.28s var(--ease-roll);
+    will-change: transform;
+  }
+  .text-roll-line:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100%);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    a:hover .text-roll-line:first-child,
+    button:hover .text-roll-line:first-child,
+    .is-text-roll:hover .text-roll-line:first-child {
+      transform: translateY(-100%);
+    }
+    a:hover .text-roll-line:last-child,
+    button:hover .text-roll-line:last-child,
+    .is-text-roll:hover .text-roll-line:last-child {
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .text-roll-line {
+      transition: none !important;
+      transform: none !important;
+    }
+    .text-roll-line:last-child {
+      display: none !important;
+    }
+  }
+
+  /* Curtain wipe reveal for imagery and media panels */
+  .image-animation {
+    position: relative;
+    overflow: hidden;
+  }
+  .image-animation::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background-color: var(--color-white, #FFFFFF);
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform 0.75s var(--ease-curtain);
+    pointer-events: none;
+  }
+  .image-animation.animate::before {
+    transform: scaleX(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .image-animation::before {
+      display: none !important;
+    }
+  }
+
+  /* Subtle interactive card lift */
+  .card-hover {
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px -10px rgba(15, 42, 74, 0.08);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-hover:hover {
+      transform: none !important;
+    }
   }
 }

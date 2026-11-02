@@ -19,20 +19,20 @@ ScrollTrigger.config({ ignoreMobileResize: true });
  * Motion follows WEBSITE-DESIGN-STANDARD §9.2: hero entrance, capability
  * curve draw, evidence reveal, tagline reveal. Everything else renders as authored.
  */
-CustomEase.create("site-out", "0.23, 1, 0.32, 1");
+CustomEase.create("site-out", "0.22, 1, 0.36, 1");
 
 const EASE_OUT = "site-out";
 
 const DURATION = {
-  reveal: 0.45,
+  reveal: 0.72,
 } as const;
 
 const STAGGER = {
-  hero: 0.06,
-  item: 0.07,
+  hero: 0.08,
+  item: 0.08,
 } as const;
 
-const REVEAL_OFFSET = 8;
+const REVEAL_OFFSET = 24;
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -133,7 +133,7 @@ function initRevealGroups() {
       ease: EASE_OUT,
       stagger: STAGGER.item,
       clearProps: "transform,opacity,visibility",
-      scrollTrigger: { trigger: group, start: "top 85%", once: true, invalidateOnRefresh: true, fastScrollEnd: true },
+      scrollTrigger: { trigger: group, start: "top 88%", once: true, invalidateOnRefresh: true, fastScrollEnd: true },
     });
   });
 }
@@ -150,7 +150,60 @@ function initTaglineReveal() {
     duration: DURATION.reveal,
     ease: EASE_OUT,
     clearProps: "transform,opacity,visibility",
-    scrollTrigger: { trigger: block, start: "top 80%", once: true },
+    scrollTrigger: { trigger: block, start: "top 85%", once: true },
+  });
+}
+
+/** Step 5: masked word-by-word reveal for display headings (DALCO style). */
+function initTextReveal() {
+  document.querySelectorAll<HTMLElement>(".text-reveal, [data-text-reveal]").forEach((el) => {
+    if (el.dataset.revealed === "true") return;
+    const raw = el.textContent?.trim() || "";
+    if (!raw) return;
+    el.dataset.revealed = "true";
+
+    const words = raw.split(/\s+/);
+    el.innerHTML = words
+      .map(
+        (word, idx) =>
+          `<span class="word"><span class="word-inner" style="--word-i: ${idx}">${word}</span></span>`,
+      )
+      .join(" ");
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: "top 92%",
+      once: true,
+      onEnter: () => el.classList.add("visible"),
+    });
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) {
+      el.classList.add("visible");
+    }
+  });
+}
+
+/** Step 6: interactive character roll on hover for header navigation links. */
+function initTextRoll() {
+  if (prefersReducedMotion()) return;
+  document.querySelectorAll<HTMLAnchorElement>("header nav a").forEach((a) => {
+    const existing = a.querySelector<HTMLElement>(".text-roll-line");
+    const text = existing ? existing.textContent?.trim() : a.textContent?.trim();
+    if (!text) return;
+    a.innerHTML = `<span class="text-roll"><span class="text-roll-line">${text}</span><span class="text-roll-line" aria-hidden="true">${text}</span></span>`;
+  });
+}
+
+/** Step 7: curtain wipe reveal for media panels and founder portraits. */
+function initImageAnimations() {
+  gsap.utils.toArray<HTMLElement>(".image-animation").forEach((el) => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: "top 88%",
+      once: true,
+      onEnter: () => el.classList.add("animate"),
+    });
   });
 }
 interface PhaseTelemetry {
@@ -290,7 +343,11 @@ let cleanupTelemetry: (() => void) | undefined;
  * scroll event and Lenis is advanced from GSAP's ticker (one RAF loop).
  */
 function initLenis() {
-  lenis = new Lenis();
+  lenis = new Lenis({
+    lerp: 0.09,
+    wheelMultiplier: 1,
+    smoothWheel: true,
+  });
   lenis.on("scroll", ScrollTrigger.update);
   lenisTick = (time) => lenis?.raf(time * 1000);
   gsap.ticker.add(lenisTick);
@@ -343,6 +400,9 @@ function init() {
       cleanupTelemetry = initPhaseTelemetry();
       initRevealGroups();
       initTaglineReveal();
+      initTextReveal();
+      initTextRoll();
+      initImageAnimations();
     });
     ScrollTrigger.refresh();
     requestAnimationFrame(() => ScrollTrigger.refresh());
@@ -358,3 +418,11 @@ document.addEventListener("astro:page-load", init);
 reduceMotionQuery.addEventListener("change", init);
 
 document.addEventListener("astro:before-swap", teardown);
+
+document.addEventListener("kyron:lang-change", () => {
+  document.querySelectorAll<HTMLElement>("[data-revealed='true']").forEach((el) => {
+    el.dataset.revealed = "";
+  });
+  initTextReveal();
+  initTextRoll();
+});

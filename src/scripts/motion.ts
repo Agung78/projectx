@@ -133,7 +133,7 @@ function initRevealGroups() {
       ease: EASE_OUT,
       stagger: STAGGER.item,
       clearProps: "transform,opacity,visibility",
-      scrollTrigger: { trigger: group, start: "top 88%", once: true, invalidateOnRefresh: true, fastScrollEnd: true },
+      scrollTrigger: { trigger: group, start: "top 88%", once: true },
     });
   });
 }
@@ -186,12 +186,41 @@ function initTextReveal() {
 
 /** Step 6: interactive character roll on hover for header navigation links. */
 function initTextRoll() {
-  if (prefersReducedMotion()) return;
-  document.querySelectorAll<HTMLAnchorElement>("header nav a").forEach((a) => {
-    const existing = a.querySelector<HTMLElement>(".text-roll-line");
-    const text = existing ? existing.textContent?.trim() : a.textContent?.trim();
+  if (prefersReducedMotion()) {
+    document.querySelectorAll<HTMLAnchorElement>("header nav a.nav-link").forEach((a) => {
+      const text = a.querySelector<HTMLElement>(".sr-only")?.textContent?.trim();
+      if (text) a.textContent = text;
+    });
+    return;
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>("header nav a.nav-link").forEach((a) => {
+    const text =
+      a.querySelector<HTMLElement>(".sr-only")?.textContent?.trim() ||
+      a.querySelector<HTMLElement>(".text-roll-line")?.textContent?.trim() ||
+      a.textContent?.trim();
     if (!text) return;
-    a.innerHTML = `<span class="text-roll"><span class="text-roll-line">${text}</span><span class="text-roll-line" aria-hidden="true">${text}</span></span>`;
+
+    if (a.querySelector(".text-roll-wrapper") && a.querySelector(".sr-only")?.textContent?.trim() === text) {
+      return;
+    }
+
+    let charIndex = 0;
+    const words = text.split(" ");
+    const wordsHtml = words
+      .map((word) => {
+        const charsHtml = Array.from(word)
+          .map((char) => {
+            const idx = charIndex++;
+            return `<span class="text-roll" style="--char-i: ${idx}"><span class="text-roll-line">${char}</span><span class="text-roll-line" aria-hidden="true">${char}</span></span>`;
+          })
+          .join("");
+        charIndex++;
+        return `<span class="text-roll-word">${charsHtml}</span>`;
+      })
+      .join('<span class="text-roll-space">&nbsp;</span>');
+
+    a.innerHTML = `<span class="sr-only">${text}</span><span aria-hidden="true" class="text-roll-wrapper">${wordsHtml}</span>`;
   });
 }
 

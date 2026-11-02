@@ -426,6 +426,19 @@
   }
 
   /* Character roll on hover for navigation links & interactive elements */
+  .text-roll-wrapper {
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .text-roll-word {
+    display: inline-flex;
+    align-items: baseline;
+    white-space: nowrap;
+  }
+  .text-roll-space {
+    display: inline-block;
+    white-space: pre;
+  }
   .text-roll {
     display: inline-block;
     position: relative;
@@ -436,7 +449,8 @@
   .text-roll-line {
     display: block;
     white-space: nowrap;
-    transition: transform 0.28s var(--ease-roll);
+    transition: transform 0.24s var(--ease-roll);
+    transition-delay: calc(var(--char-i, 0) * 15ms);
     will-change: transform;
   }
   .text-roll-line:last-child {
@@ -447,6 +461,12 @@
     transform: translateY(100%);
   }
   @media (hover: hover) and (pointer: fine) {
+    a:hover .text-roll-line,
+    button:hover .text-roll-line,
+    .is-text-roll:hover .text-roll-line {
+      transition-duration: 0.28s;
+      transition-delay: calc(var(--char-i, 0) * 20ms);
+    }
     a:hover .text-roll-line:first-child,
     button:hover .text-roll-line:first-child,
     .is-text-roll:hover .text-roll-line:first-child {

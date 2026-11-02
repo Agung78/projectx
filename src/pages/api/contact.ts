@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import type { APIContext } from "astro";
 
 // Server-only endpoint: forwards enquiry form submissions to Brevo.
@@ -5,7 +7,7 @@ import type { APIContext } from "astro";
 // Brevo contact attribute names (FIRSTNAME, COMPANY, ...) must exist in
 // your Brevo account under Contacts > Manage attributes, or Brevo rejects them.
 export async function POST({ request }: APIContext) {
-  const apiKey = import.meta.env.BREVO_API_KEY;
+  const apiKey = process.env.BREVO_API_KEY ?? import.meta.env.BREVO_API_KEY;
   if (!apiKey) {
     return Response.json({ error: "Brevo is not configured" }, { status: 500 });
   }
@@ -30,8 +32,9 @@ export async function POST({ request }: APIContext) {
   }
 
   let created = false;
+  let contactError: string | undefined;
   try {
-    const response = await fetch("https://api.brevo.com/v3/contacts", {
+    let response = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,21 +48,42 @@ export async function POST({ request }: APIContext) {
       }),
     });
 
-    const result = await response.json().catch(() => ({}));
+    if (!response.ok && Object.keys(attributes).length > 0) {
+      // If Brevo rejects because custom attributes are not configured, fallback to FIRSTNAME or email-only
+      const fallback = await fetch("https://api.brevo.com/v3/contacts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+          "api-key": apiKey,
+        },
+        body: JSON.stringify({
+          email,
+          ...(name ? { attributes: { FIRSTNAME: name } } : {}),
+          updateEnabled: true,
+        }),
+      });
+      if (fallback.ok) {
+        response = fallback;
+      }
+    }
 
-    created = response.status === 201;
+    if (response.ok) {
+      created = response.status === 201 || response.status === 204;
+    } else {
+      const errData = (await response.json().catch(() => ({}))) as { message?: string };
+      contactError = errData.message;
+    }
   } catch (error) {
-    return Response.json(
-      { error: error instanceof Error ? error.message : "Brevo request failed" },
-      { status: 502 },
-    );
+    contactError = error instanceof Error ? error.message : "Brevo contact request failed";
   }
 
   // Notify the site owners by email (best-effort; never blocks the submission).
   // Requires: CONTACT_FROM_EMAIL (a verified Brevo sender).
   // Recipients: CONTACT_NOTIFY_EMAIL (comma-separated), defaults to agung@ and vanezza@.
-  const fromEmail = import.meta.env.CONTACT_FROM_EMAIL;
-  const notifyEmails = (import.meta.env.CONTACT_NOTIFY_EMAIL ?? "")
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? import.meta.env.CONTACT_FROM_EMAIL;
+  const rawNotify = String(process.env.CONTACT_NOTIFY_EMAIL ?? import.meta.env.CONTACT_NOTIFY_EMAIL ?? "");
+  const notifyEmails: string[] = rawNotify
     .split(/[,;]\s*/)
     .map((s) => s.trim())
     .filter(Boolean);
@@ -67,9 +91,10 @@ export async function POST({ request }: APIContext) {
     notifyEmails.push("agung@kyronengineering.com", "vanezza@kyronengineering.com");
   }
   let emailSent = false;
+  let emailError: string | undefined;
   if (fromEmail && notifyEmails.length > 0) {
     try {
-      await fetch("https://api.brevo.com/v3/smtp/email", {
+      const emailRes = await fetch("https://api.brevo.com/v3/smtp/email", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -79,6 +104,7 @@ export async function POST({ request }: APIContext) {
         body: JSON.stringify({
           sender: { name: "Kyron Engineering", email: fromEmail },
           to: notifyEmails.map((email) => ({ email, name: "Kyron Engineering" })),
+          replyTo: { email, name: name ?? email },
           subject: `New contact form submission from ${name ?? email}`,
           htmlContent: contactEmailHtml({
             name,
@@ -89,16 +115,31 @@ export async function POST({ request }: APIContext) {
             locations: rest.locations,
             help: rest.help,
             followUp: rest.follow_up,
+            projectType: rest.project_type,
+            decisionMaker: rest.decision_maker,
+            itContact: rest.it_contact,
           }),
         }),
       });
-      emailSent = true;
-    } catch {
-      // Email delivery is best-effort; the submission is already recorded in Brevo.
+      emailSent = emailRes.ok;
+      if (!emailRes.ok) {
+        const errData = (await emailRes.json().catch(() => ({}))) as { message?: string };
+        emailError = errData.message;
+      }
+    } catch (error) {
+      emailError = error instanceof Error ? error.message : "Brevo SMTP request failed";
     }
   }
 
+  if (!created && !emailSent) {
+    return Response.json(
+      { error: emailError ?? contactError ?? "Brevo rejected the request" },
+      { status: 502 },
+    );
+  }
+
   return Response.json({ ok: true, created, emailSent });
+
 }
 
 function contactEmailHtml(fields: {
@@ -110,22 +151,105 @@ function contactEmailHtml(fields: {
   locations?: string;
   help?: string;
   followUp?: string;
+  projectType?: string;
+  decisionMaker?: string;
+  itContact?: string;
 }) {
   const esc = (s?: string) =>
     String(s ?? "").replace(/[&<>"']/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!)
     );
+
+  const detailRows = [
+    ["Email", fields.email ? `<a href="mailto:${esc(fields.email)}" style="color: #1D5FD1; text-decoration: none;">${esc(fields.email)}</a>` : undefined],
+    ["Company", fields.company ? esc(fields.company) : undefined],
+    ["Role", fields.role ? esc(fields.role) : undefined],
+    ["Country or Region", fields.region ? esc(fields.region) : undefined],
+    ["Locations / Branches", fields.locations ? esc(fields.locations) : undefined],
+    ["Preferred Follow-up", fields.followUp ? esc(fields.followUp) : undefined],
+    ["Project Type", fields.projectType ? esc(fields.projectType) : undefined],
+    ["Decision Maker", fields.decisionMaker ? esc(fields.decisionMaker) : undefined],
+    ["IT Contact", fields.itContact ? esc(fields.itContact) : undefined],
+  ].filter(([, val]) => Boolean(val));
+
+  const tableRowsHtml = detailRows
+    .map(
+      ([label, val]) => `
+        <tr>
+          <td style="padding: 10px 14px; font-size: 13px; color: #5B6878; font-weight: 500; border-bottom: 1px solid #EEF2F6; width: 36%; vertical-align: top;">
+            ${label}
+          </td>
+          <td style="padding: 10px 14px; font-size: 13px; color: #0F2A4A; font-weight: 600; border-bottom: 1px solid #EEF2F6; vertical-align: top;">
+            ${val}
+          </td>
+        </tr>`
+    )
+    .join("");
+
+  const helpBlock = fields.help
+    ? `
+      <div style="margin: 20px 0; padding: 14px 16px; background-color: #F8FAFC; border-left: 3px solid #1D5FD1; border-radius: 4px;">
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #5B6878; margin-bottom: 6px;">
+          Enquiry &amp; Scope Needs
+        </div>
+        <div style="font-size: 14px; line-height: 1.6; color: #0F2A4A; white-space: pre-wrap;">${esc(fields.help)}</div>
+      </div>`
+    : "";
+
   return `
-    <h2>New enquiry</h2>
-    <table border="0" cellpadding="4" style="border-collapse:collapse;font-family:sans-serif;">
-      <tr><td style="font-weight:bold;">Name</td><td>${esc(fields.name)}</td></tr>
-      <tr><td style="font-weight:bold;">Email</td><td>${esc(fields.email)}</td></tr>
-      <tr><td style="font-weight:bold;">Company</td><td>${esc(fields.company)}</td></tr>
-      <tr><td style="font-weight:bold;">Role</td><td>${esc(fields.role)}</td></tr>
-      <tr><td style="font-weight:bold;">Country or region</td><td>${esc(fields.region)}</td></tr>
-      <tr><td style="font-weight:bold;">Locations or branches</td><td>${esc(fields.locations)}</td></tr>
-      <tr><td style="font-weight:bold;">Follow up</td><td>${esc(fields.followUp)}</td></tr>
-      <tr><td style="font-weight:bold;">Help with</td><td>${esc(fields.help)}</td></tr>
-    </table>
-  `;
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New enquiry</title>
+</head>
+<body style="margin: 0; padding: 24px 12px; background-color: #F4F6FA; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 580px; margin: 0 auto; background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(15, 42, 74, 0.04);">
+    <!-- Header -->
+    <tr>
+      <td style="padding: 24px 28px 20px; background-color: #0F2A4A; border-bottom: 2px solid #1D5FD1;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8795A8; margin-bottom: 6px;">
+          // INTAKE CONSOLE &middot; KYRON ENGINEERING
+        </div>
+        <div style="font-size: 20px; font-weight: 700; color: #FFFFFF; line-height: 1.3;">
+          New Client Enquiry
+        </div>
+        <div style="font-size: 13px; color: #CBD5E1; margin-top: 4px;">
+          From <strong>${esc(fields.name || "Anonymous")}</strong>${fields.company ? ` &middot; ${esc(fields.company)}` : ""}
+        </div>
+      </td>
+    </tr>
+
+    <!-- Body -->
+    <tr>
+      <td style="padding: 24px 28px;">
+        ${helpBlock}
+
+        <!-- Details Table -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; margin-top: 8px; border: 1px solid #EEF2F6; border-radius: 6px; overflow: hidden;">
+          ${tableRowsHtml}
+        </table>
+
+        <!-- Quick Reply CTA -->
+        ${fields.email ? `
+        <div style="margin-top: 24px; text-align: left;">
+          <a href="mailto:${esc(fields.email)}?subject=Re:%20Kyron%20Engineering%20Enquiry"
+             style="display: inline-block; background-color: #1D5FD1; color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 6px; text-decoration: none;">
+            Reply to ${esc(fields.name || fields.email)} &rarr;
+          </a>
+        </div>` : ""}
+      </td>
+    </tr>
+
+    <!-- Footer -->
+    <tr>
+      <td style="padding: 16px 28px; background-color: #F8FAFC; border-top: 1px solid #EEF2F6; font-size: 11px; color: #8795A8; line-height: 1.5;">
+        Direct founder review &middot; SCBD Jakarta &middot; 24h response SLA
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `.trim();
 }

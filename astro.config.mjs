@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 const site = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
@@ -13,14 +15,18 @@ const site = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 export default defineConfig({
   site,
+
   integrations: [icon(),
     sitemap({
       i18n: { defaultLocale: "en", locales: { en: "en", id: "id" } },
     }),
   ],
+
   vite: {
     plugins: [tailwindcss()],
     // Emit every script as a file so CSP can drop script-src 'unsafe-inline'.
     build: { assetsInlineLimit: 0 },
   },
+
+  adapter: vercel(),
 });

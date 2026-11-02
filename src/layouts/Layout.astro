@@ -38,7 +38,7 @@ const structuredData = {
       "@id": new URL("/#organization", Astro.site).href,
       name: "Kyron Engineering",
       url: new URL("/", Astro.site).href,
-      logo: new URL("/favicon.svg", Astro.site).href,
+      logo: new URL("/logo.svg", Astro.site).href,
       description:
         "Kyron Engineering builds with your team, operates systems together, and measures progress toward your engineering independence.",
       contactPoint: {
@@ -89,6 +89,8 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/jakarta-latin.woff2" crossorigin />
     {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
     <link rel="canonical" href={canonicalURL} />

@@ -89,6 +89,14 @@ export const STRINGS: Record<string, Entry> = {
     "Want a quick overview?",
     "Ingin ringkasan singkat?",
   ),
+  "about.philosophy.col-how": e(
+    "How we apply it",
+    "Penerapannya",
+  ),
+  "about.philosophy.col-principle": e(
+    "Principle",
+    "Prinsip",
+  ),
   "about.philosophy.eyebrow": e(
     "// OUR PHILOSOPHY",
     "// FILOSOFI KAMI",
@@ -640,6 +648,10 @@ export const STRINGS: Record<string, Entry> = {
   "footer.company": e(
     "Company",
     "Perusahaan",
+  ),
+  "footer.contact": e(
+    "Get in touch",
+    "Hubungi kami",
   ),
   "footer.connect": e(
     "Connect",

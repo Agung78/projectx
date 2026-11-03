@@ -76,16 +76,26 @@ import Button from "../components/Button.astro";
               </div>
               <div class="flex flex-col gap-2">
                 <label for="region" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.region-label">Country or region</span><span aria-hidden="true"> *</span></label>
-                <input id="region" name="region" type="text" required autocomplete="country-name"
-                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
-                  aria-describedby="region-error" />
+                <div class="country-combo relative" data-country-combo>
+                  <span class="country-flag pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-xl leading-none" data-country-flag aria-hidden="true"></span>
+                  <input id="region" name="region" type="text" required autocomplete="off" role="combobox"
+                    aria-autocomplete="list" aria-expanded="false" aria-controls="region-list" spellcheck="false"
+                    class="w-full rounded-[8px] border border-field bg-white py-3 pl-4 pr-11 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
+                    aria-describedby="region-error" />
+                  <svg class="country-chevron pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
+                  <ul id="region-list" role="listbox" class="country-list" data-country-list data-lenis-prevent hidden></ul>
+                </div>
                 <p id="region-error" class="hidden text-body text-red" role="alert"></p>
               </div>
               <div class="flex flex-col gap-2">
                 <label for="locations" class="text-sm font-semibold text-slate"><span data-i18n="contact.form.locations-label">How many locations or branches?</span><span aria-hidden="true"> *</span></label>
-                <input id="locations" name="locations" type="text" required
-                  class="rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
-                  aria-describedby="locations-error" />
+                <div class="country-combo relative" data-select-combo>
+                  <input id="locations" name="locations" type="text" required readonly autocomplete="off" role="combobox"
+                    aria-expanded="false" aria-controls="locations-list" aria-describedby="locations-error"
+                    class="w-full cursor-pointer rounded-[8px] border border-field bg-white py-3 pl-4 pr-11 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
+                  <svg class="country-chevron pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
+                  <ul id="locations-list" role="listbox" class="country-list" data-select-list data-lenis-prevent hidden></ul>
+                </div>
                 <p id="locations-error" class="hidden text-body text-red" role="alert"></p>
               </div>
         </div>
@@ -307,6 +317,9 @@ import Button from "../components/Button.astro";
         if (!field.value.trim()) {
           showError(field, messageKeys[field.name] ?? "contact.form.err-required");
           valid = false;
+        } else if (field.name === "region" && field.dataset.noMatch === "1") {
+          showError(field, "contact.form.err-region-invalid");
+          valid = false;
         } else if (field.type === "email" && !/^\S+@\S+\.\S+$/.test(field.value)) {
           showError(field, "contact.form.err-email-invalid");
           valid = false;
@@ -454,4 +467,201 @@ import Button from "../components/Button.astro";
     const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
     if (form) revalidateVisibleErrors(form);
   });
+</script>
+
+<style is:global>
+  .country-list {
+    position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 6px);
+    max-height: 16rem; overflow-y: auto; overscroll-behavior: contain; margin: 0; padding: 6px; list-style: none;
+    background: #fff; border: 1px solid var(--color-field, #8b93a7); border-radius: 12px;
+    box-shadow: 0 12px 32px -8px rgb(15 23 42 / 0.22);
+    transform-origin: top; opacity: 0; transform: translateY(-6px) scale(0.98);
+    transition: opacity 160ms ease, transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .country-list[data-open="true"] { opacity: 1; transform: none; }
+  .country-list li {
+    display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px;
+    cursor: pointer; transition: background-color 120ms ease, transform 120ms ease;
+  }
+  .country-list li[aria-selected="true"] { background: rgb(37 99 235 / 0.1); transform: translateX(2px); }
+  .country-list li .flag { font-size: 1.25rem; line-height: 1; }
+  .country-list li mark { background: none; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .country-list .empty { cursor: default; color: #64748b; }
+  .country-chevron { transition: transform 200ms ease; }
+  .country-combo[data-open="true"] .country-chevron { transform: translateY(-50%) rotate(180deg); }
+  .country-flag { transition: opacity 150ms ease, transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1); opacity: 0; transform: translateY(-50%) scale(0.6); }
+  .country-flag.on { opacity: 1; transform: translateY(-50%) scale(1); }
+  .country-combo[data-flag="true"] input { padding-left: 3rem; }
+  .country-combo input { transition: padding-left 200ms ease, border-color 150ms ease; }
+  @media (prefers-reduced-motion: reduce) {
+    .country-list, .country-list li, .country-chevron, .country-flag, .country-combo input { transition: none; }
+  }
+</style>
+
+<script>
+  type C = { name: string; flag: string };
+  const KEY = "countries.v1";
+  const API = "https://countries.dev/countries"; // apicountries.com 301s here
+  let cache: Promise<C[]> | null = null;
+
+  function load(): Promise<C[]> {
+    cache ??= (async () => {
+      try {
+        const s = sessionStorage.getItem(KEY);
+        if (s) return JSON.parse(s) as C[];
+      } catch {}
+      const r = await fetch(API);
+      if (!r.ok) throw new Error(String(r.status));
+      const list: C[] = (await r.json()).map((c: C) => ({ name: c.name, flag: c.flag }))
+        .sort((a: C, b: C) => a.name.localeCompare(b.name));
+      try { sessionStorage.setItem(KEY, JSON.stringify(list)); } catch {}
+      return list;
+    })().catch(() => { cache = null; return []; }); // empty => plain text input fallback
+    return cache;
+  }
+
+  const esc = (s: string) => s.replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]!));
+
+  function init() {
+    const root = document.querySelector<HTMLElement>("[data-country-combo]");
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "1";
+    const input = root.querySelector<HTMLInputElement>("input")!;
+    const list = root.querySelector<HTMLUListElement>("[data-country-list]")!;
+    const flagEl = root.querySelector<HTMLElement>("[data-country-flag]")!;
+    let items: C[] = [], active = -1, closeTimer = 0;
+
+    const setFlag = () => {
+      load().then((all) => {
+        const hit = all.find((c) => c.name.toLowerCase() === input.value.trim().toLowerCase());
+        flagEl.textContent = hit?.flag ?? "";
+        flagEl.classList.toggle("on", !!hit);
+        root.dataset.flag = hit ? "true" : "false";
+        // list-only when the API loaded; empty list => free-text fallback
+        input.dataset.noMatch = all.length && input.value.trim() && !hit ? "1" : "";
+      });
+    };
+    const setActive = (i: number) => {
+      active = i;
+      list.querySelectorAll("li[role=option]").forEach((li, n) => {
+        li.setAttribute("aria-selected", String(n === i));
+        if (n === i) { input.setAttribute("aria-activedescendant", li.id); li.scrollIntoView({ block: "nearest" }); }
+      });
+    };
+    const open = () => {
+      clearTimeout(closeTimer);
+      list.hidden = false;
+      requestAnimationFrame(() => (list.dataset.open = "true"));
+      root.dataset.open = "true";
+      input.setAttribute("aria-expanded", "true");
+    };
+    const close = () => {
+      list.dataset.open = "false"; root.dataset.open = "false";
+      input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant");
+      closeTimer = window.setTimeout(() => (list.hidden = true), 170);
+    };
+    const choose = (c: C) => {
+      input.value = c.name;
+      input.dispatchEvent(new Event("input", { bubbles: true })); // clears validation errors
+      setFlag(); close();
+    };
+    const render = async () => {
+      const all = await load();
+      const q = input.value.trim().toLowerCase();
+      items = (q ? all.filter((c) => c.name.toLowerCase().includes(q)) : all).slice(0, 60);
+      list.innerHTML = items.length
+        ? items.map((c, i) => {
+            const n = c.name, k = q ? n.toLowerCase().indexOf(q) : -1;
+            const label = k >= 0 ? `${esc(n.slice(0, k))}<mark>${esc(n.slice(k, k + q.length))}</mark>${esc(n.slice(k + q.length))}` : esc(n);
+            return `<li role="option" id="region-opt-${i}" data-i="${i}" aria-selected="false"><span class="flag" aria-hidden="true">${c.flag}</span><span>${label}</span></li>`;
+          }).join("")
+        : `<li class="empty" role="presentation">No country found</li>`;
+      setActive(items.length && q ? 0 : -1);
+    };
+
+    input.addEventListener("focus", () => { render().then(open); });
+    input.addEventListener("input", () => { render().then(open); setFlag(); });
+    input.addEventListener("blur", () => { setTimeout(close, 100); setFlag(); });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        if (list.hidden) render().then(open);
+        const d = e.key === "ArrowDown" ? 1 : -1;
+        setActive((active + d + items.length) % (items.length || 1));
+      } else if (e.key === "Enter" && !list.hidden && active >= 0) {
+        e.preventDefault(); choose(items[active]);
+      } else if (e.key === "Escape") close();
+    });
+    list.addEventListener("mousedown", (e) => {
+      e.preventDefault(); // keep input focus
+      const li = (e.target as HTMLElement).closest<HTMLElement>("li[data-i]");
+      if (li) choose(items[+li.dataset.i!]);
+    });
+    list.addEventListener("mousemove", (e) => {
+      const li = (e.target as HTMLElement).closest<HTMLElement>("li[data-i]");
+      if (li && +li.dataset.i! !== active) setActive(+li.dataset.i!);
+    });
+    load(); // warm cache so first open is instant
+  }
+  document.addEventListener("astro:page-load", init);
+  init();
+
+  // Locations: 1-9 or "More than 10" (reuses .country-list styles)
+  function initSelect() {
+    const root = document.querySelector<HTMLElement>("[data-select-combo]");
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "1";
+    const input = root.querySelector<HTMLInputElement>("input")!;
+    const list = root.querySelector<HTMLUListElement>("[data-select-list]")!;
+    const opts = [..."123456789"].concat("More than 10");
+    list.innerHTML = opts.map((o, i) => `<li role="option" id="loc-opt-${i}" data-i="${i}" aria-selected="false"><span>${o}</span></li>`).join("");
+    let active = -1, t = 0;
+    const setActive = (i: number) => {
+      active = i;
+      list.querySelectorAll("li").forEach((li, n) => {
+        li.setAttribute("aria-selected", String(n === i));
+        if (n === i) { input.setAttribute("aria-activedescendant", li.id); li.scrollIntoView({ block: "nearest" }); }
+      });
+    };
+    const open = () => {
+      clearTimeout(t); list.hidden = false;
+      requestAnimationFrame(() => (list.dataset.open = "true"));
+      root.dataset.open = "true"; input.setAttribute("aria-expanded", "true");
+      setActive(Math.max(0, opts.indexOf(input.value)));
+    };
+    const close = () => {
+      list.dataset.open = "false"; root.dataset.open = "false";
+      input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant");
+      t = window.setTimeout(() => (list.hidden = true), 170);
+    };
+    const choose = (i: number) => {
+      input.value = opts[i];
+      input.dispatchEvent(new Event("input", { bubbles: true })); // clears validation error
+      close();
+    };
+    input.addEventListener("click", () => (list.hidden || list.dataset.open === "false" ? open() : close()));
+    input.addEventListener("blur", () => setTimeout(close, 100));
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        if (list.hidden) return open();
+        setActive((active + (e.key === "ArrowDown" ? 1 : -1) + opts.length) % opts.length);
+      } else if ((e.key === "Enter" || e.key === " ") && !list.hidden && active >= 0) {
+        e.preventDefault(); choose(active);
+      } else if ((e.key === "Enter" || e.key === " ") && list.hidden) {
+        e.preventDefault(); open();
+      } else if (e.key === "Escape") close();
+    });
+    list.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      const li = (e.target as HTMLElement).closest<HTMLElement>("li[data-i]");
+      if (li) choose(+li.dataset.i!);
+    });
+    list.addEventListener("mousemove", (e) => {
+      const li = (e.target as HTMLElement).closest<HTMLElement>("li[data-i]");
+      if (li && +li.dataset.i! !== active) setActive(+li.dataset.i!);
+    });
+  }
+  document.addEventListener("astro:page-load", initSelect);
+  initSelect();
 </script>

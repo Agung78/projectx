@@ -453,6 +453,10 @@ export const STRINGS: Record<string, Entry> = {
     "Please enter your country or region",
     "Isi negara atau wilayah Anda",
   ),
+  "contact.form.err-region-invalid": e(
+    "Please choose a country from the list",
+    "Pilih negara dari daftar",
+  ),
   "contact.form.err-required": e(
     "This field is required",
     "Kolom ini wajib diisi",

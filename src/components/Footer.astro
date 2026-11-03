@@ -1,77 +1,24 @@
 ---
-const links = [
-  { href: "/", label: "Home", key: "nav.home" },
-  { href: "/how-we-work", label: "How we work", key: "nav.how-we-work" },
-  { href: "/about", label: "About", key: "nav.about" },
-  { href: "/contact", label: "Contact", key: "nav.contact" },
-];
 ---
 
 <footer class="relative overflow-hidden border-t border-white/10 bg-navy text-white">
-  <div class="mx-auto max-w-[1200px] px-4 md:px-6 pt-16 pb-8">
-    <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
-      <div class="max-w-measure">
-        <a href="/" class="inline-flex items-center gap-2.5 text-h3 tracking-tight text-white" aria-label="Kyron Engineering, home">
-          <svg class="h-7 w-7 shrink-0" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <path d="M9.13 6.2 L30.87 6.2 L30.87 66.41 L0 97.5 L9.13 81.2Z M30.65 84.24 L30.65 97.5 L19.78 97.5Z M30.43 43.8 L64.35 6.2 L90.87 6.2 L30.43 66.85Z M73.48 33.59 L62.17 53.8 L95 97.5 L68.04 97.5 L44.78 66.41Z" fill="#FFFFFF"/>
-            <polygon points="100,2.28 19.78,97.72 4.57,97.72" fill="#00C49F"/>
-          </svg>
-          <span class="font-semibold">Kyron <span class="font-normal text-white/80">Engineering</span></span>
-        </a>
-        <p class="mt-4 text-body uppercase text-white/70" data-i18n="footer.tagline">
-          BUILT RIGHT. DOCUMENTED FULLY. YOURS TO KEEP.
-        </p>
-        <a
-          href="/contact"
-          class="mt-8 inline-block rounded-md bg-white px-5 py-3 font-semibold text-navy hover:bg-mist"
-          data-i18n="footer.cta"
-        >
-          Start a conversation
-        </a>
-      </div>
-
-      <nav aria-label="Footer">
-        <p class="text-sm font-semibold uppercase tracking-wider text-white/50" data-i18n="footer.company">Company</p>
-        <ul class="mt-4 flex flex-col gap-3">
-          {
-            links.map((link) => (
-              <li>
-                <a href={link.href} class="text-body text-white/80 hover:text-white" data-i18n={link.key}>
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-wider text-white/50" data-i18n="footer.connect">Connect</p>
-        <ul class="mt-4 flex flex-col gap-3">
-          <li>
-            <a
-              href="https://www.linkedin.com/company/kyron-engineering/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-body text-white/80 hover:text-white"
-            >
-              LinkedIn
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <address class="not-italic">
-        <p class="text-sm font-semibold uppercase tracking-wider text-white/50" data-i18n="footer.office-label">Registered office</p>
-        <p class="mt-4 text-sm text-white/70">Bali, Indonesia</p>
-      </address>
-    </div>
-    <div class="mt-16 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-white/60 sm:flex-row sm:justify-between">
+  <div class="mx-auto max-w-[1200px] px-4 md:px-6 pt-12 pb-6">
+    <div class="flex flex-col gap-3 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; {new Date().getFullYear()} Kyron Engineering. <span data-i18n="footer.rights">All rights reserved.</span></p>
-      <a href="/privacy" class="hover:text-white" data-i18n="footer.privacy">Privacy</a>
+      <div class="flex items-center gap-6">
+        <a
+          href="https://www.linkedin.com/company/kyron-engineering/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-white transition-colors"
+        >
+          LinkedIn
+        </a>
+        <a href="/privacy" class="hover:text-white transition-colors" data-i18n="footer.privacy">Privacy</a>
+      </div>
     </div>
   </div>
-  <div id="footer-torch" class="pointer-events-none relative mx-auto max-w-[1200px] px-4 md:px-6 pb-4 select-none" aria-hidden="true">
+  <div id="footer-torch" class="pointer-events-none relative mx-auto max-w-[960px] px-4 md:px-6 pb-6 select-none" aria-hidden="true">
     <svg width="0" height="0" class="absolute">
       <symbol id="kyron-watermark" viewBox="0 0 314 80">
         <g transform="translate(0, 5) scale(0.7)">
@@ -81,8 +28,10 @@ const links = [
         <text x="82" y="50" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="28" font-weight="600" fill="#FFFFFF" letter-spacing="-0.02em">Kyron <tspan font-weight="400">Engineering</tspan></text>
       </symbol>
     </svg>
-    <svg class="block w-full opacity-[0.07]" viewBox="0 0 314 80"><use href="#kyron-watermark" /></svg>
-    <svg class="torch absolute inset-x-0 top-0 mx-auto block w-full max-w-[1200px] px-4 md:px-6 opacity-0 transition-opacity duration-300" viewBox="0 0 314 80"><use href="#kyron-watermark" /></svg>
+    <div class="relative w-full">
+      <svg class="block w-full opacity-[0.07]" viewBox="0 0 314 80"><use href="#kyron-watermark" /></svg>
+      <svg class="torch absolute inset-0 block w-full h-full opacity-0 transition-opacity duration-300" viewBox="0 0 314 80"><use href="#kyron-watermark" /></svg>
+    </div>
   </div>
 </footer>
 

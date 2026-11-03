@@ -10,52 +10,52 @@ function e(en: string, id: string): Entry {
 
 export const STRINGS: Record<string, Entry> = {
   "about.commitments.contact-desc": e(
-    "A named contact and agreed response times.",
-    "Narahubung khusus yang jelas dengan jaminan waktu respons yang telah disepakati.",
+    "One point of contact and agreed response times.",
+    "Satu narahubung dengan waktu respons yang telah disepakati.",
   ),
   "about.commitments.contact-title": e(
-    "A real person to talk to.",
-    "Bicara langsung dengan orang sungguhan",
+    "Dedicated contact.",
+    "Narahubung khusus.",
   ),
   "about.commitments.honest-desc": e(
-    "We recommend what's right for the business, not what costs the most.",
+    "We recommend what’s right for the business, not what costs the most.",
     "Kami merekomendasikan solusi yang paling tepat untuk bisnis Anda, bukan yang biayanya paling mahal.",
   ),
   "about.commitments.honest-title": e(
-    "Honest advice.",
-    "Saran yang jujur",
+    "Independent advice.",
+    "Saran independen.",
   ),
   "about.commitments.plain-desc": e(
-    "No jargon, no surprises.",
-    "Tanpa istilah rumit (jargon), tanpa kejutan tak terduga.",
+    "Regular updates in plain language.",
+    "Pembaruan rutin dalam bahasa yang lugas.",
   ),
   "about.commitments.plain-title": e(
-    "Plain-language updates.",
-    "Pembaruan dalam bahasa yang lugas",
+    "Clear communication.",
+    "Komunikasi yang jelas.",
   ),
   "about.commitments.pricing-desc": e(
-    "Agreed upfront, before work begins.",
-    "Disepakati di awal, sebelum pekerjaan dimulai.",
+    "Costs agreed before work begins.",
+    "Biaya disepakati sebelum pekerjaan dimulai.",
   ),
   "about.commitments.pricing-title": e(
-    "Clear pricing.",
-    "Biaya yang transparan",
+    "Transparent pricing.",
+    "Biaya yang transparan.",
   ),
   "about.commitments.title": e(
-    "What every client can count on.",
+    "Our commitments to every client.",
     "Komitmen kami untuk setiap klien.",
   ),
   "about.commitments.work-p1": e(
-    "We work directly alongside your existing engineers, technical leads, and founders. Rather than operating in an isolated agency silo, our engineers join your sprints, review pull requests with your team, and establish shared coding standards from day one.",
-    "Kami bekerja langsung berdampingan dengan para engineer, tech lead, dan founder Anda. Alih-alih bekerja terisolasi secara terpisah layaknya agensi pada umumnya, tim kami ikut bergabung dalam sprint, meninjau pull request bersama tim Anda, serta menyelaraskan standar coding sejak hari pertama.",
+    "We work directly with your leadership and any technical staff you have, rather than operating at a distance. Our engineers share progress at every stage, agree on clear standards from day one, and review the work openly with your team.",
+    "Kami bekerja langsung dengan jajaran pimpinan dan staf teknis Anda, alih-alih beroperasi dari kejauhan. Tim engineer kami membagikan progres di setiap tahap, menyepakati standar yang jelas sejak hari pertama, dan meninjau pekerjaan secara terbuka bersama tim Anda.",
   ),
   "about.commitments.work-p2": e(
-    "Every architecture decision, infrastructure deployment, and operational runbook is documented directly in your repositories. When our engagement concludes, your business holds complete, autonomous ownership of the code, systems, and deployment pipelines.",
-    "Setiap keputusan arsitektur, penerapan infrastruktur, hingga panduan operasional (runbook) didokumentasikan langsung di repositori milik Anda. Begitu masa kerja sama tuntas, bisnis Anda memegang kepemilikan mandiri secara penuh atas seluruh kode, sistem, serta jalur penerapan (deployment pipelines).",
+    "Every architecture decision, infrastructure change and operating procedure is documented as we go. When the engagement ends, your business holds full ownership of its code, systems and deployment processes, along with the knowledge to run them.",
+    "Setiap keputusan arsitektur, perubahan infrastruktur, dan prosedur operasional didokumentasikan seiring berjalannya proyek. Saat kerja sama berakhir, bisnis Anda memegang kepemilikan penuh atas kode, sistem, dan proses deployment, beserta pemahaman untuk menjalankannya secara mandiri.",
   ),
   "about.commitments.work-title": e(
-    "How we work with your leadership",
-    "Cara kami berkolaborasi dengan jajaran pimpinan Anda",
+    "How we work with your team",
+    "Cara kami berkolaborasi dengan tim Anda",
   ),
   "about.cta.body": e(
     "We'll look at your systems, constraints and goals, then give you an honest recommendation on the best way forward.",
@@ -66,8 +66,8 @@ export const STRINGS: Record<string, Entry> = {
     "Hubungi kami",
   ),
   "about.cta.title": e(
-    "If this is how you want to work, tell us where things stand.",
-    "Jika ini cara kerja yang Anda cari, ceritakan kondisi Anda saat ini.",
+    "Tell us where your technology stands today.",
+    "Ceritakan kondisi teknologi Anda saat ini.",
   ),
   "about.hero.eyebrow": e(
     "// LEADERSHIP & COMMITMENTS",
@@ -82,8 +82,8 @@ export const STRINGS: Record<string, Entry> = {
     "Dibangun atas dasar kepercayaan, dihadirkan dengan sepenuh hati.",
   ),
   "about.overview.body": e(
-    "See how Kyron Engineering works, what we deliver, and how ownership transfers to your business.",
-    "Pelajari cara kerja Kyron Engineering, apa yang kami hadirkan, dan bagaimana kepemilikan dialihkan ke bisnis Anda.",
+    "See how we work, what we deliver and how ownership transfers to you.",
+    "Pelajari cara kerja kami, apa yang kami hadirkan, dan bagaimana kepemilikan dialihkan kepada Anda.",
   ),
   "about.overview.title": e(
     "Want a quick overview?",
@@ -94,64 +94,64 @@ export const STRINGS: Record<string, Entry> = {
     "// FILOSOFI KAMI",
   ),
   "about.philosophy.heading": e(
-    "Engineering principles that outlast our engagement.",
-    "Prinsip rekayasa yang bertahan melampaui kerja sama kami.",
+    "Engineering principles that outlast every engagement.",
+    "Prinsip rekayasa yang bertahan melampaui setiap kerja sama.",
   ),
   "about.philosophy.lede": e(
-    "We believe technology should serve business growth without creating perpetual vendor dependence. These four commitments govern how we architect and build.",
-    "Kami meyakini teknologi harus mendorong pertumbuhan bisnis tanpa menciptakan ketergantungan abadi pada vendor. Empat komitmen ini menjadi landasan arsitektur dan pembangunan kami.",
+    "We believe technology should support business growth without creating long-term dependence on any vendor. These four principles guide how we architect and build.",
+    "Kami meyakini bahwa teknologi harus mendukung pertumbuhan bisnis tanpa menciptakan ketergantungan jangka panjang pada vendor mana pun. Empat prinsip ini memandu bagaimana kami merancang arsitektur dan membangun sistem.",
   ),
   "about.philosophy.p1-title": e(
     "Zero lock-in architecture",
     "Arsitektur Tanpa Keterikatan (Zero Lock-In)",
   ),
   "about.philosophy.p1-body": e(
-    "Every architectural decision prioritizes open standards, clean API boundaries, and mainstream cloud primitives. Your team can run, modify, or migrate your systems anywhere without proprietary hurdles.",
-    "Setiap keputusan arsitektur memprioritaskan standar terbuka, batasan API yang bersih, dan primitif cloud standar. Tim Anda dapat menjalankan, memodifikasi, atau memigrasikan sistem ke mana saja tanpa hambatan.",
+    "Every architectural decision prioritises open standards, clean APIs and widely used cloud services, so your systems can be run, modified or migrated without proprietary barriers.",
+    "Setiap keputusan arsitektur memprioritaskan standar terbuka, API yang bersih, dan layanan cloud yang umum digunakan, sehingga sistem Anda dapat dijalankan, dimodifikasi, atau dimigrasikan tanpa hambatan proprietary.",
   ),
   "about.philosophy.p2-title": e(
     "Continuous documentation",
     "Dokumentasi Berkelanjutan",
   ),
   "about.philosophy.p2-body": e(
-    "Architecture decision records, deployment runbooks, and schema maps live directly in version control alongside application source code, ensuring knowledge is never lost to employee turnover.",
-    "Catatan keputusan arsitektur (ADR), panduan operasional (runbooks), dan peta skema tersimpan langsung di kontrol versi bersama kode sumber, memastikan pengetahuan tidak hilang saat terjadi pergantian staf.",
+    "Architecture decisions, deployment guides and data structures are recorded alongside the source code, so knowledge is never lost when people move on.",
+    "Keputusan arsitektur, panduan deployment, dan struktur data dicatat bersama kode sumber, sehingga pengetahuan tidak pernah hilang saat terjadi pergantian tim.",
   ),
   "about.philosophy.p3-title": e(
-    "Shared code ownership",
-    "Kepemilikan Kode Bersama",
+    "Maintainable code",
+    "Kode yang Mudah Dipelihara",
   ),
   "about.philosophy.p3-body": e(
-    "We write software for the engineers who will maintain it years down the road. Strict typing, automated linters, and end-to-end integration tests prevent regressions and maintain velocity.",
-    "Kami menulis perangkat lunak untuk para engineer yang akan memeliharanya di masa mendatang. Pengetikan ketat, linter otomatis, dan pengujian integrasi menyeluruh mencegah regresi dan menjaga kecepatan pengembangan.",
+    "We write software for the engineers who will maintain it years from now. Strict coding standards and automated testing keep it reliable as it grows.",
+    "Kami menulis perangkat lunak untuk engineer yang akan memeliharanya bertahun-tahun dari sekarang. Standar penulisan kode yang ketat dan pengujian otomatis menjaganya tetap andal seiring perkembangannya.",
   ),
   "about.philosophy.p4-title": e(
     "Pragmatic innovation",
     "Inovasi Pragmatis",
   ),
   "about.philosophy.p4-body": e(
-    "New tools and frameworks are evaluated against maintenance burden and measurable business return before adoption. We recommend boring, reliable solutions whenever they deliver equal or superior value.",
-    "Teknologi dan kerangka kerja baru dievaluasi berdasarkan beban pemeliharaan dan dampak bisnis nyata sebelum diadopsi. Kami menyarankan solusi yang terbukti andal bilamana memberikan nilai yang setara atau lebih baik.",
+    "New tools are assessed on their long-term maintenance cost and measurable business return. We recommend proven, reliable solutions whenever they offer equal or better value.",
+    "Teknologi baru dinilai berdasarkan biaya pemeliharaan jangka panjang dan dampak bisnis nyata. Kami merekomendasikan solusi yang terbukti andal bilamana memberikan nilai yang setara atau lebih baik.",
   ),
   "about.team.alt-ceo": e(
-    "Vanezza, Chief Executive Officer",
-    "Vanezza, Chief Executive Officer",
+    "Vanezza Angelica A, Chief Executive Officer",
+    "Vanezza Angelica A, Chief Executive Officer",
   ),
   "about.team.alt-cto": e(
     "Agung Denisa, Chief Technology Officer",
     "Agung Denisa, Chief Technology Officer",
   ),
   "about.team.bio-ceo": e(
-    "Vanezza leads client strategy and operations. She translates business goals into clear technical scope and ensures every engagement delivers measurable value.",
-    "Vanezza memimpin strategi dan operasi klien. Dia menerjemahkan tujuan bisnis ke ruang lingkup teknis yang jelas dan memastikan setiap kerja sama menghasilkan nilai yang terukur.",
+    "With experience across telecommunications, cybersecurity and AI, Vanezza leads Kyron Engineering’s strategy, client partnerships and operations. She works closely with clients to turn business objectives into clear technical direction.",
+    "Dengan pengalaman di bidang telekomunikasi, keamanan siber, dan AI, Vanezza memimpin strategi, kemitraan klien, dan operasional Kyron Engineering. Dia bekerja erat dengan klien untuk menerjemahkan tujuan bisnis menjadi arah teknis yang jelas.",
   ),
   "about.team.bio-cto": e(
     "Agung architects the systems Kyron Engineering builds and owns the technical standards. He reviews every proposal for feasibility, maintainability, and security.",
     "Agung merancang sistem yang Kyron Engineering bangun dan memiliki standar teknis. Dia meninjau setiap proposal untuk kelayakan, maintainability, dan keamanan.",
   ),
   "about.team.lede": e(
-    "Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.",
-    "Setiap proposal ditinjau langsung oleh kedua pendiri—satu dari sisi bisnis dan satu dari sisi teknis—sehingga apa yang kami janjikan selalu dapat kami wujudkan.",
+    "We started Kyron Engineering to give growing businesses a technology partner they can rely on, combining commercial understanding with strong engineering.",
+    "Kami mendirikan Kyron Engineering untuk menghadirkan mitra teknologi yang dapat diandalkan bagi bisnis yang sedang berkembang, memadukan pemahaman komersial dengan rekayasa yang andal.",
   ),
   "about.team.role-ceo": e(
     "Chief Executive Officer",
@@ -162,8 +162,8 @@ export const STRINGS: Record<string, Entry> = {
     "Chief Technology Officer",
   ),
   "about.team.title": e(
-    "The team behind Kyron Engineering.",
-    "Tim di balik Kyron Engineering.",
+    "Meet the founders.",
+    "Kenali para pendiri.",
   ),
   "capabilitycurve.caption": e(
     "Handover is a success metric, not a hidden failure condition.",
@@ -402,8 +402,8 @@ export const STRINGS: Record<string, Entry> = {
     "Perusahaan",
   ),
   "contact.form.console": e(
-    "// INTAKE CONSOLE",
-    "// KONSOL PENGISIAN",
+    "// GET IN TOUCH",
+    "// HUBUNGI KAMI",
   ),
   "contact.form.decision-label": e(
     "Who's the main decision-maker?",
@@ -1402,8 +1402,8 @@ export const STRINGS: Record<string, Entry> = {
     "Beranda",
   ),
   "nav.how-we-work": e(
-    "How we work",
-    "Cara kami bekerja",
+    "Approach",
+    "Pendekatan",
   ),
   "overview.href": e(
     "/downloads/kyron-engineering-company-overview-en.pdf",

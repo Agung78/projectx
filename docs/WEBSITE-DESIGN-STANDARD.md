@@ -46,7 +46,10 @@ A disciplined technical identity built on cool paper surfaces, navy and slate in
 
 - **Backgrounds:** Clean white (`#FFFFFF`) with cool slate-tinted mist (`#F4F6FA`) for section pacing and technical panels.
 - **Ink:** Deep navy (`#0F2A4A`) for display and headings; slate (`#1F2933`) for long-form body readability; neutral grey (`#5B6878`) for secondary captions and indices.
-- **Signal:** Single cobalt blue (`#1D5FD1`) reserved strictly for action triggers, active milestones, and client ownership indicators.
+- **Signal Hierarchy (Anti-Slop):**
+  - **Primary:** Sapphire Blue (`#0042AC`) reserved strictly for action triggers, active milestones, and primary CTAs.
+  - **Secondary:** Ocean Blue (`#00D3FB`) for luminous dark-section highlights, active tabs, and subtle border accents.
+  - **Third:** Neon Jade (`#83FD80`) for the client capability ownership curve and status metrics.
 - **Architectural Utility Markers:**
   - `.mono`: Bracketed uppercase monospace markers (`// INDEPENDENT SYSTEM ENGINEERING`, `// FIG. 01`, `// STEP 01`) indicating technical structure.
   - `.corners`: Hairline L-bracket corner marks (`::before` / `::after`) framing key diagrams and callouts.
@@ -103,8 +106,10 @@ Defined as design tokens in `@theme` within `src/styles/global.css`:
 | `--color-navy` | `#0F2A4A` | Display headings, dark section background, borders |
 | `--color-slate` | `#1F2933` | Primary body text and readable copy |
 | `--color-grey` | `#5B6878` | Secondary labels, captions, metadata markers |
-| `--color-blue` | `#1D5FD1` | Primary action button, active phase, client ownership line |
-| `--color-blue-dark` | `#1548A6` | Button hover and high-contrast interaction state |
+| `--color-primary` / `--color-blue` | `#0042AC` | Sapphire Blue — primary action button, active phase, primary signal |
+| `--color-primary-dark` / `--color-blue-dark` | `#003080` | Sapphire Blue hover and high-contrast interaction state |
+| `--color-secondary` / `--color-ocean` | `#00D3FB` | Ocean Blue — luminous dark-section indicators, interactive tabs, highlight accents |
+| `--color-third` / `--color-tertiary` / `--color-green` | `#83FD80` | Neon Jade — client ownership transfer curve, capability metrics, status validation |
 | `--color-line` | `#E2E8F0` | Structural borders, hairline rules, card frames |
 | `--color-field` | `#8795A8` | Form field borders and input frames |
 | `--color-green` | `#0E9F6E` | Positive status and validation success |
@@ -151,7 +156,7 @@ Defined as design tokens in `@theme` within `src/styles/global.css`:
 - Stuck-state transition: transparent border transitions to `border-line` via intersection observer (`data-site-header` / `data-[stuck=true]`).
 - Brand wordmark: "NewCo" (`text-h3 font-semibold text-navy`).
 - Desktop navigation links:
-  - `How we work` (`/how-we-work`)
+  - `Approach` (`/approach`)
   - `About` (`/about`)
   - `Contact` (`/contact`)
 - Active link indicator: 1px underline sliding from left (`nav-link[aria-current="page"]`).
@@ -196,9 +201,7 @@ Standalone 8-capability transfer scorecard component measuring 4 milestones:
 4. Handover
 Capabilities measured: Architecture, Delivery, Operations, Recovery, Data, Security, Decision-making, Planning. Supports both `light` and `dark` themes.
 
-### Technology Marquee (`how-we-work.astro`)
-
-- Dual-row opposing CSS marquee (`marquee-track-left`, `marquee-track-right`) displaying 30 vetted technologies.
+### Technology Marquee (`approach.astro`)
 - Badges with 1px border (`border-line/90`), subtle shadow (`shadow-xs`), and brand SVG/PNG icons.
 - Auto-pauses on hover (`animation-play-state: paused`).
 - Reduced motion fallback: static flex wrap without infinite translation.
@@ -226,12 +229,11 @@ The website consists of 5 focused static routes with automatic redirects for his
 | Route | Title | Key Function |
 |---|---|---|
 | `/` | Technology built for independence · NewCo | Full narrative: problem, outcomes, 4-stage curve, discovery deep dive, principles, optional AI adoption, DORA metrics, video modal |
-| `/how-we-work` | How We Work · 4-Stage Engineering Transfer | Methodology breakdown, ownership curve, 8-item Handover Checklist table, 30-item dual-row technology stack marquee |
+| `/approach` | Approach · 4-Stage Engineering Transfer | Methodology breakdown, ownership curve, 8-item Handover Checklist table, 30-item dual-row technology stack marquee |
 | `/about` | About NewCo · Engineering Leadership & Governance | Leadership (Vanezza, CEO & Agung Denisa, CTO), 4 client commitments, leadership collaboration principles |
 | `/contact` | Contact NewCo · Discuss Systems & Engineering Handover | Direct founder review (24h response SLA), qualification intake console |
 | `/privacy` | Privacy Policy · How NewCo Protects Client Data | Client architecture confidentiality, strict AI data privacy governance, data retention |
-| `/approach` | *(Redirect 301)* | Redirects to `/how-we-work` |
-| `/diagnostic` | *(Redirect 301)* | Redirects to `/how-we-work` |
+| `/diagnostic` | *(Redirect 301)* | Redirects to `/approach/` |
 
 ---
 
@@ -281,7 +283,7 @@ Motion is implemented in `src/scripts/motion.ts` using GSAP, ScrollTrigger, Cust
 - [x] Production build passes cleanly (`astro build`).
 - [x] Static typecheck and template diagnostics report 0 errors (`astro check`).
 - [x] All 30 technology icons exist in `public/images/tech/` and load correctly.
-- [x] Historical redirects (`/approach`, `/diagnostic`) return 301 to `/how-we-work`.
+- [x] Historical redirects (`/diagnostic`) return 301 to `/approach/`.
 - [x] Video modal is fully accessible, trapped, dismissible, and accompanied by VTT captions.
 - [x] Form submission provides accessible validation alerts and direct founder contact SLA.
 - [x] Legal entity details, SCBD Jakarta office address, and NIB registration are consistent.

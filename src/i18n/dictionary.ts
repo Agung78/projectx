@@ -1413,7 +1413,7 @@ export const STRINGS: Record<string, Entry> = {
     "Home",
     "Beranda",
   ),
-  "nav.how-we-work": e(
+  "nav.approach": e(
     "Approach",
     "Pendekatan",
   ),

@@ -177,7 +177,7 @@ const btn = "md:whitespace-nowrap";
           <p class="mt-6 text-sm text-grey" data-i18n="index.howwework.note">
             Day-to-day control shifts to the business, stage by stage. Ongoing support is a choice, never a requirement.
           </p>
-          <a href="/how-we-work" class="mt-8 inline-block font-semibold text-blue underline underline-offset-4 hover:text-blue-dark" data-i18n="index.howwework.link">See how it works →</a>
+          <a href="/approach" class="mt-8 inline-block font-semibold text-blue underline underline-offset-4 hover:text-blue-dark" data-i18n="index.howwework.link">See how it works →</a>
         </div>
 
         <div class="lg:col-span-8">

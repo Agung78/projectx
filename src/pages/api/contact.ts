@@ -169,7 +169,7 @@ function contactEmailHtml(fields: {
     );
 
   const detailRows = [
-    ["Email", fields.email ? `<a href="mailto:${esc(fields.email)}" style="color: #1D5FD1; text-decoration: none;">${esc(fields.email)}</a>` : undefined],
+    ["Email", fields.email ? `<a href="mailto:${esc(fields.email)}" style="color: #0042AC; text-decoration: none;">${esc(fields.email)}</a>` : undefined],
     ["Company", fields.company ? esc(fields.company) : undefined],
     ["Role", fields.role ? esc(fields.role) : undefined],
     ["Country or Region", fields.region ? esc(fields.region) : undefined],
@@ -196,7 +196,7 @@ function contactEmailHtml(fields: {
 
   const helpBlock = fields.help
     ? `
-      <div style="margin: 20px 0; padding: 14px 16px; background-color: #F8FAFC; border-left: 3px solid #1D5FD1; border-radius: 4px;">
+      <div style="margin: 20px 0; padding: 14px 16px; background-color: #F8FAFC; border-left: 3px solid #0042AC; border-radius: 4px;">
         <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #5B6878; margin-bottom: 6px;">
           Enquiry &amp; Scope Needs
         </div>
@@ -216,7 +216,7 @@ function contactEmailHtml(fields: {
   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 580px; margin: 0 auto; background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(15, 42, 74, 0.04);">
     <!-- Header -->
     <tr>
-      <td style="padding: 24px 28px 20px; background-color: #0F2A4A; border-bottom: 2px solid #1D5FD1;">
+      <td style="padding: 24px 28px 20px; background-color: #0F2A4A; border-bottom: 2px solid #0042AC;">
         <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8795A8; margin-bottom: 6px;">
           // INTAKE CONSOLE &middot; KYRON ENGINEERING
         </div>
@@ -243,7 +243,7 @@ function contactEmailHtml(fields: {
         ${fields.email ? `
         <div style="margin-top: 24px; text-align: left;">
           <a href="mailto:${esc(fields.email)}?subject=Re:%20Kyron%20Engineering%20Enquiry"
-             style="display: inline-block; background-color: #1D5FD1; color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 6px; text-decoration: none;">
+             style="display: inline-block; background-color: #0042AC; color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 6px; text-decoration: none;">
             Reply to ${esc(fields.name || fields.email)} &rarr;
           </a>
         </div>` : ""}

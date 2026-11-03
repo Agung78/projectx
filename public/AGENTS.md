@@ -18,7 +18,7 @@ Kyron Engineering is an engineering partner that builds with your team, operates
 ## Site Structure
 
 - [Home](https://www.kyronengineering.com/): Technology built for engineering independence.
-- [How We Work](https://www.kyronengineering.com/how-we-work): Four clear stages, from Discovery to full ownership transfer.
+- [Approach](https://www.kyronengineering.com/approach/): Four clear stages, from Discovery to full ownership transfer.
 - [About](https://www.kyronengineering.com/about): Founders, governance model, and client commitments.
 - [Contact](https://www.kyronengineering.com/contact): Direct founder review with a guaranteed 24-hour response SLA.
 - [Privacy Policy](https://www.kyronengineering.com/privacy): How Kyron Engineering protects client data and system confidentiality.
@@ -30,5 +30,4 @@ Kyron Engineering is an engineering partner that builds with your team, operates
 
 ## Notes for Agents
 
-- Legacy paths `/approach` and `/diagnostic` redirect to `/how-we-work`.
-- To engage Kyron Engineering, use the Contact page; do not infer pricing or availability not stated on the site.
+- Legacy paths `/diagnostic` redirects to `/approach/`.

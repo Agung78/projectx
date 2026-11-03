@@ -9,20 +9,40 @@
 @theme {
   /* Colour system — Section 4 */
   /*
-   * Operations-log palette: cool paper, slate ink, one cobalt signal that
-   * always means "client ownership". Warm cream + terracotta was dropped as
-   * a templated default (frontend-design review, 2026-09).
+   * Three-tier brand hierarchy (anti-slop system):
+   * - Primary: Sapphire Blue (#0042AC) — action triggers, focus states, CTAs
+   * - Secondary: Ocean Blue (#00D3FB) — high-contrast dark accents, active tabs, subtle highlights
+   * - Third: Neon Jade (#83FD80) — logo mark swoosh, client ownership curve, success indicators
    */
   --color-white: #FFFFFF;
   --color-mist: #F4F6FA;
   --color-navy: #0F2A4A;
   --color-slate: #1F2933;
   --color-grey: #5B6878;
-  --color-blue: #1D5FD1;
-  --color-blue-dark: #1548A6;
-  --color-green: #0E9F6E;
-  --color-red: #C2410C;
 
+  /* Primary — Sapphire Blue */
+  --color-primary: #0042AC;
+  --color-primary-dark: #003080;
+  --color-primary-light: #EBF2FF;
+  --color-blue: #0042AC;
+  --color-blue-dark: #003080;
+
+  /* Secondary — Ocean Blue */
+  --color-secondary: #00D3FB;
+  --color-secondary-dark: #00AFD0;
+  --color-secondary-light: #E6FAFE;
+  --color-ocean: #00D3FB;
+
+  /* Third — Neon Jade */
+  --color-third: #83FD80;
+  --color-third-dark: #5FE05C;
+  --color-third-light: #F0FDF0;
+  --color-tertiary: #83FD80;
+  --color-jade: #83FD80;
+  --color-green: #83FD80;
+  --color-green-dark: #0E9F6E;
+
+  --color-red: #C2410C;
   --color-line: #E2E8F0;
   --color-field: #8795A8;
 
@@ -132,12 +152,12 @@
   }
 
   ::selection {
-    background-color: var(--color-blue);
+    background-color: var(--color-primary);
     color: var(--color-white);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-blue);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
     border-radius: 2px;
   }

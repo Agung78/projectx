@@ -252,11 +252,13 @@ The production site is a tightly focused 5-page static site with automated 301 r
 --color-navy: #0F2A4A;       /* Display text & dark accents */
 --color-slate: #1F2933;      /* Body typography */
 --color-grey: #5B6878;       /* Metadata, captions, NewCo line */
---color-blue: #1D5FD1;       /* Client ownership line & primary CTA */
---color-blue-dark: #1548A6;  /* CTA hover */
+--color-primary: #0042AC;    /* Primary: Sapphire Blue CTA & primary signal */
+--color-primary-dark: #003080; /* CTA hover */
+--color-secondary: #00D3FB;  /* Secondary: Ocean Blue highlights & dark accents */
+--color-third: #83FD80;      /* Third: Neon Jade client ownership curve */
 --color-line: #E2E8F0;       /* Hairline borders & rules */
 --color-field: #8795A8;      /* Form input borders */
---color-green: #0E9F6E;      /* Success status */
+--color-green: #83FD80;      /* Status indicator */
 --color-red: #C2410C;        /* Error alert */
 
 /* Architectural Utility Classes */

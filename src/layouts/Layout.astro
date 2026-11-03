@@ -11,9 +11,10 @@ interface Props {
   titleKey?: string;
   descKey?: string;
   lcpImage?: string;
+  noindex?: boolean;
 }
 
-const { titleKey, descKey, lcpImage } = Astro.props;
+const { titleKey, descKey, lcpImage, noindex } = Astro.props;
 const isId = /^\/id(\/|$)/.test(Astro.url.pathname);
 const lang = isId ? "id" : "en";
 let { title = "", description = "" } = Astro.props;
@@ -24,12 +25,13 @@ if (titleKey || descKey) {
 }
 
 const pageTitle = title.includes("Kyron Engineering") ? title : `${title} | Kyron Engineering`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL("/og-image.png", Astro.site);
-const enPath = Astro.url.pathname.replace(/^\/id(?=\/|$)/, "") || "/";
+const rawPath = Astro.url.pathname.replace(/\/?$/, "/");
+const enPath = rawPath.replace(/^\/id(?=\/|$)/, "") || "/";
 const idPath = `/id${enPath === "/" ? "/" : enPath}`;
+const canonicalURL = new URL(isId ? idPath : enPath, Astro.site);
+const ogImageURL = new URL("/og-image.png", Astro.site);
 const alternates = [["en", enPath], ["id", idPath], ["x-default", enPath]];
-const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const isHome = enPath === "/";
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -39,8 +41,8 @@ const structuredData = {
       name: "Kyron Engineering",
       url: new URL("/", Astro.site).href,
       logo: new URL("/logo.svg", Astro.site).href,
-      description:
-        "Kyron Engineering builds with your team, operates systems together, and measures progress toward your engineering independence.",
+      description,
+      sameAs: ["https://www.linkedin.com/company/kyron-engineering/"],
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
@@ -93,8 +95,9 @@ const structuredData = {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/jakarta-latin.woff2" crossorigin />
     {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
-    <link rel="canonical" href={canonicalURL} />
-    {alternates.map(([hreflang, path]) => <link rel="alternate" hreflang={hreflang} href={new URL(path, Astro.site)} />)}
+    {noindex && <meta name="robots" content="noindex" />}
+    {!noindex && <link rel="canonical" href={canonicalURL} />}
+    {!noindex && alternates.map(([hreflang, path]) => <link rel="alternate" hreflang={hreflang} href={new URL(path, Astro.site)} />)}
     <link rel="llms" href="/llms.txt" />
     <title data-title-key={titleKey}>{pageTitle}</title>
     <meta name="description" content={description} data-desc-key={descKey} />

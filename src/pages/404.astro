@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const destinations = [
+  { href: "/", label: "Home", note: "Technology built for independence." },
+  { href: "/approach", label: "Approach", note: "Four stages, from Discovery to full ownership transfer." },
+  { href: "/about", label: "About", note: "The founders, our governance model and client commitments." },
+  { href: "/contact", label: "Contact", note: "Direct founder review, with a 24-hour response." },
+];
+---
+
+<Layout
+  title="Page not found"
+  description="The page you are looking for does not exist or has moved. Return to the Kyron Engineering home page."
+  noindex
+>
+  <section class="mx-auto max-w-[1200px] px-4 md:px-6 py-14 md:py-24">
+    <div class="grid gap-12 md:grid-cols-12 md:gap-10">
+      <div class="md:col-span-5">
+        <h1 class="text-h1 uppercase text-navy text-balance tracking-tight text-reveal">This page isn't here.</h1>
+        <p class="mt-6 max-w-[40ch] text-body-lg text-slate leading-relaxed" data-hero-item>
+          Error 404. The address may have changed or never existed. These pages are live.
+        </p>
+      </div>
+
+      <nav class="md:col-span-7" aria-label="Site pages" data-hero-item>
+        <ul class="divide-y divide-line border-y border-line">
+          {
+            destinations.map((d) => (
+              <li>
+                <a href={d.href} class="group flex items-center justify-between gap-6 py-6 transition-colors">
+                  <span>
+                    <span class="block text-h3 font-semibold text-navy tracking-tight group-hover:text-primary transition-colors">{d.label}</span>
+                    <span class="mt-1 block text-body text-grey">{d.note}</span>
+                  </span>
+                  <span aria-hidden="true" class="text-h3 text-navy transition-transform duration-[var(--duration-press)] ease-[var(--ease-out)] group-hover:translate-x-1 group-hover:text-primary">→</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-8 text-body text-slate">
+          Followed a link from us that should work? <a href="/contact" class="text-navy font-semibold underline underline-offset-4 hover:text-blue transition-colors">Tell us</a>.
+        </p>
+      </nav>
+    </div>
+  </section>
+</Layout>

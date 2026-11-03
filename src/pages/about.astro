@@ -5,26 +5,53 @@ import { Icon } from "astro-icon/components";
 import { pad, shell } from "../lib/ui";
 
 const founders = [
-  { name: "Vanezza", role: "Chief Executive Officer", roleKey: "about.team.role-ceo", alt: "Vanezza, Chief Executive Officer", altKey: "about.team.alt-ceo", image: "/images/ceo.webp", bio: "Vanezza leads client strategy and operations. She translates business goals into clear technical scope and ensures every engagement delivers measurable value.", bioKey: "about.team.bio-ceo" },
+  { name: "Vanezza Angelica A", role: "Chief Executive Officer", roleKey: "about.team.role-ceo", alt: "Vanezza Angelica A, Chief Executive Officer", altKey: "about.team.alt-ceo", image: "/images/ceo.webp", bio: "With experience across telecommunications, cybersecurity and AI, Vanezza leads Kyron Engineering’s strategy, client partnerships and operations. She works closely with clients to turn business objectives into clear technical direction.", bioKey: "about.team.bio-ceo" },
   { name: "Agung Denisa", role: "Chief Technology Officer", roleKey: "about.team.role-cto", alt: "Agung Denisa, Chief Technology Officer", altKey: "about.team.alt-cto", image: "/images/cto.webp", bio: "Agung architects the systems Kyron Engineering builds and owns the technical standards. He reviews every proposal for feasibility, maintainability, and security.", bioKey: "about.team.bio-cto", linkedin: "https://www.linkedin.com/in/agung78/" },
 ];
 
 const commitments = [
-  { icon: "solar:chat-round-dots-linear", title: "Plain-language updates.", titleKey: "about.commitments.plain-title", description: "No jargon, no surprises.", descKey: "about.commitments.plain-desc" },
-  { icon: "solar:tag-price-linear", title: "Clear pricing.", titleKey: "about.commitments.pricing-title", description: "Agreed upfront, before work begins.", descKey: "about.commitments.pricing-desc" },
+  { icon: "solar:chat-round-dots-linear", title: "Clear communication.", titleKey: "about.commitments.plain-title", description: "Regular updates in plain language.", descKey: "about.commitments.plain-desc" },
+  { icon: "solar:tag-price-linear", title: "Transparent pricing.", titleKey: "about.commitments.pricing-title", description: "Costs agreed before work begins.", descKey: "about.commitments.pricing-desc" },
   {
     icon: "solar:user-speak-linear",
-    title: "A real person to talk to.",
+    title: "Dedicated contact.",
     titleKey: "about.commitments.contact-title",
-    description: "A named contact and agreed response times.",
+    description: "One point of contact and agreed response times.",
     descKey: "about.commitments.contact-desc",
   },
   {
     icon: "solar:shield-check-linear",
-    title: "Honest advice.",
+    title: "Independent advice.",
     titleKey: "about.commitments.honest-title",
-    description: "We recommend what's right for the business, not what costs the most.",
+    description: "We recommend what’s right for the business, not what costs the most.",
     descKey: "about.commitments.honest-desc",
+  },
+];
+
+const principles = [
+  {
+    title: "Zero lock-in architecture",
+    titleKey: "about.philosophy.p1-title",
+    body: "Every architectural decision prioritises open standards, clean APIs and widely used cloud services, so your systems can be run, modified or migrated without proprietary barriers.",
+    bodyKey: "about.philosophy.p1-body",
+  },
+  {
+    title: "Continuous documentation",
+    titleKey: "about.philosophy.p2-title",
+    body: "Architecture decisions, deployment guides and data structures are recorded alongside the source code, so knowledge is never lost when people move on.",
+    bodyKey: "about.philosophy.p2-body",
+  },
+  {
+    title: "Maintainable code",
+    titleKey: "about.philosophy.p3-title",
+    body: "We write software for the engineers who will maintain it years from now. Strict coding standards and automated testing keep it reliable as it grows.",
+    bodyKey: "about.philosophy.p3-body",
+  },
+  {
+    title: "Pragmatic innovation",
+    titleKey: "about.philosophy.p4-title",
+    body: "New tools are assessed on their long-term maintenance cost and measurable business return. We recommend proven, reliable solutions whenever they offer equal or better value.",
+    bodyKey: "about.philosophy.p4-body",
   },
 ];
 ---
@@ -45,47 +72,47 @@ const commitments = [
   <section class="border-t border-line bg-mist py-16 md:py-24">
     <div class={shell}>
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12">
-        <h2 class="text-h2 text-navy text-balance lg:col-span-5 text-reveal" data-i18n="about.team.title">The team behind Kyron Engineering.</h2>
+        <h2 class="text-h2 text-navy text-balance lg:col-span-5 text-reveal" data-i18n="about.team.title">Meet the founders.</h2>
         <p class="text-body-lg text-slate lg:col-span-7" data-i18n="about.team.lede">
-          Every proposal is checked by both founders, one for the business side and one for the technical side, so what we promise is always what we can deliver.
+          We started Kyron Engineering to give growing businesses a technology partner they can rely on, combining commercial understanding with strong engineering.
         </p>
       </div>
       <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2" data-reveal-group>
         {
           founders.map((f, i) => (
-            <figure itemscope itemtype="https://schema.org/Person" class="group flex flex-col rounded-2xl border border-line bg-white p-5 shadow-xs card-hover md:p-6" data-reveal-item>
-              <div class="image-animation rounded-xl">
-                <img
-                src={f.image}
-                alt={f.alt}
-                data-i18n-attr={"alt:" + f.altKey}
-                width="400"
-                height="500"
-                loading="eager"
-                fetchpriority={i === 0 ? "high" : "auto"}
-                decoding="async"
-                class="aspect-[4/5] w-full max-w-full h-auto rounded-xl border border-line/60 object-cover object-top overflow-hidden bg-mist"
-                itemprop="image"
-                />
-              </div>
-              <figcaption class="mt-6 flex flex-1 flex-col justify-between border-t border-line pt-5">
-                <div>
-                  <div class="flex items-center justify-between">
-                    <h3 class="text-h3 font-semibold text-navy tracking-tight" itemprop="name">{f.name}</h3>
-                    <span class="mono text-xs font-semibold text-blue">{pad(i)}</span>
+            <figure itemscope itemtype="https://schema.org/Person" class="group flex flex-col justify-between rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
+              <div>
+                <div class="flex items-start justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <img
+                      src={f.image}
+                      alt={f.alt}
+                      data-i18n-attr={"alt:" + f.altKey}
+                      width="80"
+                      height="80"
+                      loading="eager"
+                      fetchpriority={i === 0 ? "high" : "auto"}
+                      decoding="async"
+                      class="h-16 w-16 md:h-20 md:w-20 rounded-full border border-line/80 object-cover object-top shrink-0 bg-mist shadow-xs"
+                      itemprop="image"
+                    />
+                    <div>
+                      <h3 class="text-h3 font-semibold text-navy tracking-tight" itemprop="name">{f.name}</h3>
+                      <p class="text-sm font-semibold text-blue mt-0.5" data-i18n={f.roleKey} itemprop="jobTitle">{f.role}</p>
+                    </div>
                   </div>
-                  <p class="text-sm font-semibold text-blue mt-1" data-i18n={f.roleKey} itemprop="jobTitle">{f.role}</p>
-                  <p class="text-body text-slate mt-3 leading-relaxed" data-i18n={f.bioKey} itemprop="description">{f.bio}</p>
+                  <span class="mono text-xs font-semibold text-blue shrink-0">{pad(i)}</span>
                 </div>
-                {f.linkedin && (
-                  <div class="mt-4 pt-3 border-t border-line/50">
-                    <a href={f.linkedin} class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue underline decoration-blue/50 underline-offset-4 hover:text-blue-dark hover:decoration-blue" target="_blank" rel="noopener" itemprop="sameAs" aria-label={`${f.name} on LinkedIn`}>
-                      <span>LinkedIn</span>
-                      <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg>
-                    </a>
-                  </div>
-                )}
-              </figcaption>
+                <p class="text-body text-slate mt-5 leading-relaxed" data-i18n={f.bioKey} itemprop="description">{f.bio}</p>
+              </div>
+              {f.linkedin && (
+                <div class="mt-6 pt-4 border-t border-line/50">
+                  <a href={f.linkedin} class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue underline decoration-blue/50 underline-offset-4 hover:text-blue-dark hover:decoration-blue" target="_blank" rel="noopener" itemprop="sameAs" aria-label={`${f.name} on LinkedIn`}>
+                    <span>LinkedIn</span>
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg>
+                  </a>
+                </div>
+              )}
             </figure>
           ))
         }
@@ -95,7 +122,7 @@ const commitments = [
 
   <section class="bg-white py-16 md:py-24">
     <div class={shell}>
-      <h2 class="text-h2 text-navy text-balance text-reveal" data-i18n="about.commitments.title">What every client can count on.</h2>
+      <h2 class="text-h2 text-navy text-balance text-reveal" data-i18n="about.commitments.title">Our commitments to every client.</h2>
       <ul class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" data-reveal-group>
         {
           commitments.map((item, i) => (
@@ -113,17 +140,17 @@ const commitments = [
         }
       </ul>
       <div class="mt-16 border-t border-line pt-12">
-        <h3 class="text-h3 font-semibold text-navy" data-i18n="about.commitments.work-title">How we work with your leadership</h3>
+        <h3 class="text-h3 font-semibold text-navy" data-i18n="about.commitments.work-title">How we work with your team</h3>
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 text-body text-slate">
-          <p data-i18n="about.commitments.work-p1">We work directly alongside your existing engineers, technical leads, and founders. Rather than operating in an isolated agency silo, our engineers join your sprints, review pull requests with your team, and establish shared coding standards from day one.</p>
-          <p data-i18n="about.commitments.work-p2">Every architecture decision, infrastructure deployment, and operational runbook is documented directly in your repositories. When our engagement concludes, your business holds complete, autonomous ownership of the code, systems, and deployment pipelines.</p>
+          <p data-i18n="about.commitments.work-p1">We work directly with your leadership and any technical staff you have, rather than operating at a distance. Our engineers share progress at every stage, agree on clear standards from day one, and review the work openly with your team.</p>
+          <p data-i18n="about.commitments.work-p2">Every architecture decision, infrastructure change and operating procedure is documented as we go. When the engagement ends, your business holds full ownership of its code, systems and deployment processes, along with the knowledge to run them.</p>
         </div>
       </div>
       <div class="mt-12 flex flex-col justify-between gap-6 rounded-xl border border-line bg-mist p-6 md:flex-row md:items-center md:p-8">
         <div>
           <h3 class="text-h3 font-semibold text-navy" data-i18n="about.overview.title">Want a quick overview?</h3>
           <p class="mt-2 max-w-[54ch] text-body text-slate" data-i18n="about.overview.body">
-            See how Kyron Engineering works, what we deliver, and how ownership transfers to your business.
+            See how we work, what we deliver and how ownership transfers to you.
           </p>
         </div>
         <Button
@@ -140,40 +167,39 @@ const commitments = [
     </div>
   </section>
 
-  <section class="border-t border-line bg-white py-16 md:py-24">
-    <div class={shell}>
-      <div class="max-w-[72ch]">
-        <span class="mono text-blue" data-i18n="about.philosophy.eyebrow">// OUR PHILOSOPHY</span>
-        <h2 class="mt-4 text-h2 text-navy text-balance text-reveal" data-i18n="about.philosophy.heading">Engineering principles that outlast our engagement.</h2>
-        <p class="mt-4 text-body-lg text-slate" data-i18n="about.philosophy.lede">
-          We believe technology should serve business growth without creating perpetual vendor dependence. These four commitments govern how we architect and build.
-        </p>
-      </div>
+  <section id="philosophy" class="scroll-mt-24 border-t border-line bg-white" aria-labelledby="philosophy-title">
+    <div class:list={[shell, "py-16 md:py-24"]}>
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+        <div class="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
+          <span class="mono text-grey" data-i18n="about.philosophy.eyebrow">// OUR PHILOSOPHY</span>
+          <h2 id="philosophy-title" class="mt-4 text-h2 text-navy text-balance text-reveal" data-i18n="about.philosophy.heading">Engineering principles that outlast every engagement.</h2>
+          <p class="text-body-lg text-slate max-w-[68ch] mt-4" data-i18n="about.philosophy.lede">
+            We believe technology should support business growth without creating long-term dependence on any vendor. These four principles guide how we architect and build.
+          </p>
+        </div>
 
-      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" data-reveal-group>
-        <div class="rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
-          <h3 class="text-h3 font-semibold text-navy tracking-tight" data-i18n="about.philosophy.p1-title">Zero lock-in architecture</h3>
-          <p class="mt-3 text-body text-slate leading-relaxed" data-i18n="about.philosophy.p1-body">
-            Every architectural decision prioritizes open standards, clean API boundaries, and mainstream cloud primitives. Your team can run, modify, or migrate your systems anywhere without proprietary hurdles.
-          </p>
-        </div>
-        <div class="rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
-          <h3 class="text-h3 font-semibold text-navy tracking-tight" data-i18n="about.philosophy.p2-title">Continuous documentation</h3>
-          <p class="mt-3 text-body text-slate leading-relaxed" data-i18n="about.philosophy.p2-body">
-            Architecture decision records, deployment runbooks, and schema maps live directly in version control alongside application source code, ensuring knowledge is never lost to employee turnover.
-          </p>
-        </div>
-        <div class="rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
-          <h3 class="text-h3 font-semibold text-navy tracking-tight" data-i18n="about.philosophy.p3-title">Shared code ownership</h3>
-          <p class="mt-3 text-body text-slate leading-relaxed" data-i18n="about.philosophy.p3-body">
-            We write software for the engineers who will maintain it years down the road. Strict typing, automated linters, and end-to-end integration tests prevent regressions and maintain velocity.
-          </p>
-        </div>
-        <div class="rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
-          <h3 class="text-h3 font-semibold text-navy tracking-tight" data-i18n="about.philosophy.p4-title">Pragmatic innovation</h3>
-          <p class="mt-3 text-body text-slate leading-relaxed" data-i18n="about.philosophy.p4-body">
-            New tools and frameworks are evaluated against maintenance burden and measurable business return before adoption. We recommend boring, reliable solutions whenever they deliver equal or superior value.
-          </p>
+        <div class="corners overflow-hidden rounded-xl border border-line bg-white shadow-xs lg:col-span-7">
+          <table class="w-full text-left border-collapse tabular-nums">
+            <caption class="sr-only" data-i18n="about.philosophy.heading">Engineering principles that outlast every engagement.</caption>
+            <thead>
+              <tr class="border-b border-line bg-mist/80">
+                <th scope="col" class="mono w-2/5 px-4 py-4 text-xs font-semibold tracking-wider uppercase text-navy md:w-5/12 md:px-6" data-i18n="about.philosophy.col-principle">Principle</th>
+                <th scope="col" class="mono px-4 py-4 text-xs font-semibold tracking-wider uppercase text-navy md:px-6" data-i18n="about.philosophy.col-how">How we apply it</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line" data-reveal-group>
+              {
+                principles.map((row, i) => (
+                  <tr class="transition-colors hover:bg-mist/40" data-reveal-item>
+                    <th scope="row" class="px-4 py-4.5 align-top text-left font-semibold text-navy md:px-6">
+                      <span class="mono mr-2 text-xs text-blue">{pad(i)}</span><span data-i18n={row.titleKey}>{row.title}</span>
+                    </th>
+                    <td class="px-4 py-4.5 text-slate leading-relaxed md:px-6" data-i18n={row.bodyKey}>{row.body}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -184,8 +210,8 @@ const commitments = [
       <div class="corners rounded-xl border border-line bg-white p-8 md:p-16" data-tagline-reveal>
         <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-12 lg:gap-12">
           <div class="lg:col-span-8">
-            <h2 class="max-w-[22ch] text-h2 text-navy text-balance text-reveal" data-i18n="about.cta.title">
-              If this is how you want to work, tell us where things stand.
+            <h2 class="max-w-[24ch] text-h2 text-navy text-balance text-reveal" data-i18n="about.cta.title">
+              Tell us where your technology stands today.
             </h2>
             <p class="mt-6 max-w-[68ch] text-body text-slate text-pretty" data-i18n="about.cta.body">
               We'll look at your systems, constraints and goals, then give you an honest recommendation on the best way forward.

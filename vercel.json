@@ -2,7 +2,7 @@
   "trailingSlash": true,
   "headers": [
     {
-      "source": "/(images|videos|downloads)/(.*)",
+      "source": "/(images|videos|downloads|fonts)/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }]
     },
     {
@@ -19,8 +19,9 @@
     }
   ],
   "redirects": [
-    { "source": "/approach", "destination": "/how-we-work/", "statusCode": 301 },
-    { "source": "/diagnostic", "destination": "/how-we-work/", "statusCode": 301 },
+    { "source": "/diagnostic", "destination": "/approach/", "statusCode": 301 },
+    { "source": "/how-we-work", "destination": "/approach/", "statusCode": 301 },
+    { "source": "/id/how-we-work", "destination": "/id/approach/", "statusCode": 301 },
     { "source": "/id/downloads/(.*)", "destination": "/downloads/$1", "statusCode": 301 }
   ]
 }

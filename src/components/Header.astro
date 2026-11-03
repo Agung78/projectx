@@ -1,11 +1,11 @@
 ---
 const navLinks = [
-  { href: "/how-we-work", label: "Approach", key: "nav.how-we-work" },
-  { href: "/about", label: "About", key: "nav.about" },
-  { href: "/contact", label: "Contact", key: "nav.contact" },
+  { href: "/how-we-work/", label: "Approach", key: "nav.how-we-work" },
+  { href: "/about/", label: "About", key: "nav.about" },
+  { href: "/contact/", label: "Contact", key: "nav.contact" },
 ];
 
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/?$/, "/");
 const enPath = currentPath.replace(/^\/id(?=\/|$)/, "") || "/";
 // Absolute hrefs: middleware only rewrites root-relative ones, so these stay put.
 const langHref = {

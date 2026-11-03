@@ -97,10 +97,12 @@ const links = [
 </style>
 
 <script>
-  const wm = document.getElementById("footer-torch");
-  const torch = wm?.querySelector<SVGElement>(".torch");
-  const footer = wm?.closest("footer");
-  if (torch && footer) {
+  document.addEventListener("astro:page-load", () => {
+    const wm = document.getElementById("footer-torch");
+    const torch = wm?.querySelector<SVGElement>(".torch");
+    const footer = wm?.closest("footer");
+    if (!torch || !footer) return;
+
     let tx = 0, ty = 0, x = 0, y = 0, raf = 0, ready = false;
     const tick = () => {
       x += (tx - x) * 0.08; // ponytail: 0.08 = lag; lower = lazier
@@ -117,5 +119,5 @@ const links = [
       if (!raf) raf = requestAnimationFrame(tick);
     });
     footer.addEventListener("pointerleave", () => { ready = false; });
-  }
+  });
 </script>

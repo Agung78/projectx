@@ -11,9 +11,10 @@ interface Props {
   titleKey?: string;
   descKey?: string;
   lcpImage?: string;
+  noindex?: boolean;
 }
 
-const { titleKey, descKey, lcpImage } = Astro.props;
+const { titleKey, descKey, lcpImage, noindex } = Astro.props;
 const isId = /^\/id(\/|$)/.test(Astro.url.pathname);
 const lang = isId ? "id" : "en";
 let { title = "", description = "" } = Astro.props;
@@ -94,8 +95,9 @@ const structuredData = {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/jakarta-latin.woff2" crossorigin />
     {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
-    <link rel="canonical" href={canonicalURL} />
-    {alternates.map(([hreflang, path]) => <link rel="alternate" hreflang={hreflang} href={new URL(path, Astro.site)} />)}
+    {noindex && <meta name="robots" content="noindex" />}
+    {!noindex && <link rel="canonical" href={canonicalURL} />}
+    {!noindex && alternates.map(([hreflang, path]) => <link rel="alternate" hreflang={hreflang} href={new URL(path, Astro.site)} />)}
     <link rel="llms" href="/llms.txt" />
     <title data-title-key={titleKey}>{pageTitle}</title>
     <meta name="description" content={description} data-desc-key={descKey} />

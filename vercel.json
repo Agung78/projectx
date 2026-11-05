@@ -8,7 +8,7 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://countries.dev; frame-ancestors 'self'; base-uri 'self'; object-src 'none';" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://countries.dev https://us.i.posthog.com https://us-assets.i.posthog.com; worker-src 'self' blob:; child-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; object-src 'none';" },
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
@@ -23,5 +23,9 @@
     { "source": "/how-we-work", "destination": "/approach/", "statusCode": 301 },
     { "source": "/id/how-we-work", "destination": "/id/approach/", "statusCode": 301 },
     { "source": "/id/downloads/(.*)", "destination": "/downloads/$1", "statusCode": 301 }
+  ],
+  "rewrites": [
+    { "source": "/ingest/static/:path*", "destination": "https://us-assets.i.posthog.com/static/:path*" },
+    { "source": "/ingest/:path*", "destination": "https://us.i.posthog.com/:path*" }
   ]
 }

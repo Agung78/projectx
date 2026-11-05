@@ -146,6 +146,31 @@ export async function POST({ request }: APIContext) {
     );
   }
 
+  const phKey = process.env.POSTHOG_API_KEY ?? process.env.PUBLIC_POSTHOG_KEY ?? import.meta.env.PUBLIC_POSTHOG_KEY;
+  if (phKey) {
+    const phHost = process.env.POSTHOG_HOST ?? "https://us.i.posthog.com";
+    fetch(`${phHost}/capture/`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        api_key: phKey,
+        event: "lead_captured",
+        distinct_id: email,
+        properties: {
+          $set: {
+            email,
+            name: name || undefined,
+            company: company || undefined,
+          },
+          role: rest.role || undefined,
+          region: rest.region || undefined,
+          created,
+          emailSent,
+        },
+      }),
+    }).catch(() => {});
+  }
+
   return Response.json({ ok: true, created, emailSent });
 
 }

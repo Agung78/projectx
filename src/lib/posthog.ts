@@ -31,9 +31,7 @@ export function initPostHog(): void {
 export function trackEvent(name: string, props?: Record<string, unknown>): void {
   if (typeof window === "undefined") return;
   initPostHog();
-  if (posthog.__loaded) {
-    posthog.capture(name, props);
-  }
+  posthog.capture(name, props);
 }
 
 export { posthog };

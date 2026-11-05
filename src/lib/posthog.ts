@@ -19,6 +19,7 @@ export function initPostHog(): void {
     capture_pageleave: true,
     capture_performance: true,
     autocapture: true,
+    toast: false, // Disable "Complete installation" banner when key is missing
     session_recording: {
       maskAllInputs: true,
       maskTextSelector: "[data-ph-mask]",

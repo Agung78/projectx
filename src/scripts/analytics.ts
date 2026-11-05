@@ -2,12 +2,14 @@ import { initPostHog, trackEvent, posthog } from "../lib/posthog";
 
 function trackPageview(): void {
   initPostHog();
-  if (posthog.__loaded) {
-    posthog.capture("$pageview", {
-      $current_url: window.location.href,
-      locale: document.documentElement.lang || "en",
-    });
-  }
+  posthog.capture("$pageview", {
+    $current_url: window.location.href,
+    locale: document.documentElement.lang || "en",
+  });
+}
+
+if (typeof window !== "undefined") {
+  Object.assign(window, { posthog });
 }
 
 function initVideoTracking(): void {

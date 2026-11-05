@@ -149,17 +149,21 @@ export const STRINGS: Record<string, Entry> = {
     "Agung Denisa, Chief Technology Officer",
     "Agung Denisa, Chief Technology Officer",
   ),
-"about.team.bio-ceo": e(
-    "Vanezza leads strategy, client partnerships and operations, backed by a technical background in networking, cybersecurity and AI. A founder with experience in telecommunications and AI startups, she works closely with clients to turn business objectives into clear technical direction.",
-    "Dengan pengalaman di bidang telekomunikasi, keamanan siber, dan AI, Vanezza memimpin strategi, kemitraan klien, dan operasional Kyron Engineering. Dia bekerja erat dengan klien untuk menerjemahkan tujuan bisnis menjadi arah teknis yang jelas.",
+  "about.team.bio-ceo": e(
+    "Vanezza leads strategy, client partnerships and operations. With a background in networking, cybersecurity and AI, she turns business objectives into clear technical direction.",
+    "Vanezza memimpin strategi, kemitraan klien, dan operasional. Dengan latar belakang dalam jaringan, keamanan siber, dan AI, dia menerjemahkan tujuan bisnis menjadi arah teknis yang jelas.",
   ),
   "about.team.bio-cto": e(
-    "Agung architects the systems Kyron Engineering builds and owns its technical standards, backed by a background in platform engineering, data pipelines and application security. He has run distributed systems on GCP and led penetration-tested releases of an enterprise payment platform.",
-    "Agung merancang sistem yang dibangun Kyron Engineering dan mengelola standar teknisnya, didukung oleh latar belakang dalam platform engineering, data pipelines, dan keamanan aplikasi. Dia telah menjalankan sistem terdistribusi di GCP dan memimpin rilis yang diuji penetrasi dari platform pembayaran enterprise.",
+    "Agung architects the systems Kyron Engineering builds and owns its technical standards. His background spans platform engineering, data pipelines and application security.",
+    "Agung merancang sistem yang dibangun Kyron Engineering dan memegang standar teknisnya. Latar belakangnya mencakup platform engineering, data pipelines, dan keamanan aplikasi.",
   ),
   "about.team.lede": e(
     "We started Kyron Engineering to give growing businesses a technology partner they can rely on, combining commercial understanding with strong engineering.",
     "Kami mendirikan Kyron Engineering untuk menghadirkan mitra teknologi yang dapat diandalkan bagi bisnis yang sedang berkembang, memadukan pemahaman komersial dengan rekayasa yang andal.",
+  ),
+  "about.team.lede-2": e(
+    "Our experience spans AI startups, telecommunications and cybersecurity, so we understand both what a business needs and what it takes to build it well. You work directly with us, from the first conversation through to delivery.",
+    "Pengalaman kami mencakup startup AI, telekomunikasi, dan keamanan siber, sehingga kami memahami apa yang dibutuhkan sebuah bisnis dan apa yang diperlukan untuk membangunnya dengan baik. Anda bekerja langsung dengan kami, dari percakapan pertama hingga pengiriman.",
   ),
   "about.team.role-ceo": e(
     "Chief Executive Officer",

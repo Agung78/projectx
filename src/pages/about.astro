@@ -5,8 +5,8 @@ import { Icon } from "astro-icon/components";
 import { pad, shell } from "../lib/ui";
 
 const founders = [
-  { name: "Vanezza Angelica A", role: "Chief Executive Officer", roleKey: "about.team.role-ceo", alt: "Vanezza Angelica A, Chief Executive Officer", altKey: "about.team.alt-ceo", image: "/images/ceo.webp", bio: "Vanezza leads strategy, client partnerships and operations, backed by a technical background in networking, cybersecurity and AI. A founder with experience in telecommunications and AI startups, she works closely with clients to turn business objectives into clear technical direction.", bioKey: "about.team.bio-ceo" },
-  { name: "Agung Denisa", role: "Chief Technology Officer", roleKey: "about.team.role-cto", alt: "Agung Denisa, Chief Technology Officer", altKey: "about.team.alt-cto", image: "/images/cto.webp", bio: "Agung architects the systems Kyron Engineering builds and owns its technical standards, backed by a background in platform engineering, data pipelines and application security. He has run distributed systems on GCP and led penetration-tested releases of an enterprise payment platform.", bioKey: "about.team.bio-cto", linkedin: "https://www.linkedin.com/in/agung78/" },
+  { name: "Vanezza Angelica A", role: "Chief Executive Officer", roleKey: "about.team.role-ceo", alt: "Vanezza Angelica A, Chief Executive Officer", altKey: "about.team.alt-ceo", image: "/images/ceo.webp", bio: "Vanezza leads strategy, client partnerships and operations. With a background in networking, cybersecurity and AI, she turns business objectives into clear technical direction.", bioKey: "about.team.bio-ceo" },
+  { name: "Agung Denisa", role: "Chief Technology Officer", roleKey: "about.team.role-cto", alt: "Agung Denisa, Chief Technology Officer", altKey: "about.team.alt-cto", image: "/images/cto.webp", bio: "Agung architects the systems Kyron Engineering builds and owns its technical standards. His background spans platform engineering, data pipelines and application security.", bioKey: "about.team.bio-cto", linkedin: "https://www.linkedin.com/in/agung78/" },
 ];
 
 const commitments = [
@@ -72,26 +72,29 @@ const principles = [
   <section class="border-t border-line bg-mist py-16 md:py-24">
     <div class={shell}>
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 items-start">
-        <div class="lg:sticky lg:top-28 lg:col-span-5">
+        <div class="lg:sticky lg:top-28 lg:col-span-4">
           <h2 class="text-h2 text-navy text-balance text-reveal" data-i18n="about.team.title">Meet the founders.</h2>
           <p class="text-body-lg text-slate mt-4 leading-relaxed" data-i18n="about.team.lede">
             We started Kyron Engineering to give growing businesses a technology partner they can rely on, combining commercial understanding with strong engineering.
           </p>
+          <p class="text-body-lg text-slate mt-4 leading-relaxed" data-i18n="about.team.lede-2">
+            Our experience spans AI startups, telecommunications and cybersecurity, so we understand both what a business needs and what it takes to build it well. You work directly with us, from the first conversation through to delivery.
+          </p>
         </div>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-7" data-reveal-group>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-8" data-reveal-group>
           {
             founders.map((f, i) => (
               <figure itemscope itemtype="https://schema.org/Person" class="group flex flex-col justify-between rounded-2xl border border-line bg-white p-5 shadow-xs card-hover md:p-6" data-reveal-item>
                 <div>
-                  <div class="image-animation mx-auto w-full max-w-[200px] sm:max-w-none overflow-hidden rounded-xl border border-line/60 bg-mist">
+                  <div class="image-animation mx-auto w-1/2 overflow-hidden rounded-xl border border-line/60 bg-mist">
                     <img
                       src={f.image}
                       srcset={`${f.image.replace(/\.webp$/, '-400.webp')} 400w, ${f.image} 960w`}
-                      sizes="(max-width: 640px) 200px, 400px"
+                      sizes="(max-width: 640px) 160px, 200px"
                       alt={f.alt}
                       data-i18n-attr={"alt:" + f.altKey}
-                      width="400"
-                      height="500"
+                      width="200"
+                      height="250"
                       loading="eager"
                       fetchpriority={i === 0 ? "high" : "auto"}
                       decoding="async"

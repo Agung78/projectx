@@ -6,6 +6,15 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
+// Vercel Analytics assigns a script URL directly. The production CSP requires
+// Trusted Types, so provide the browser's default policy before it loads.
+if (window.trustedTypes && !window.trustedTypes.defaultPolicy) {
+  window.trustedTypes.createPolicy("default", {
+    createScript: (value) => value,
+    createScriptURL: (value) => value,
+  });
+}
+
 // iOS Safari and Brave-on-iOS resize the visual viewport as the toolbar shows
 // and hides mid-scroll; a refresh per resize restarts in-flight reveals and
 // snaps the drag. Ignore pure-height resizes on touch devices, keep
@@ -163,12 +172,17 @@ function initTextReveal() {
     el.dataset.revealed = "true";
 
     const words = raw.split(/\s+/);
-    el.innerHTML = words
-      .map(
-        (word, idx) =>
-          `<span class="word"><span class="word-inner" style="--word-i: ${idx}">${word}</span></span>`,
-      )
-      .join(" ");
+    el.replaceChildren(...words.flatMap((word, idx) => {
+      const outer = document.createElement("span");
+      outer.className = "word";
+      const inner = document.createElement("span");
+      inner.className = "word-inner";
+      inner.style.setProperty("--word-i", String(idx));
+      inner.textContent = word;
+      outer.append(inner);
+      return [outer, document.createTextNode(" ")];
+    }));
+    if (el.lastChild) el.lastChild.remove();
 
     ScrollTrigger.create({
       trigger: el,
@@ -207,20 +221,40 @@ function initTextRoll() {
 
     let charIndex = 0;
     const words = text.split(" ");
-    const wordsHtml = words
-      .map((word) => {
-        const charsHtml = Array.from(word)
-          .map((char) => {
-            const idx = charIndex++;
-            return `<span class="text-roll" style="--char-i: ${idx}"><span class="text-roll-line">${char}</span><span class="text-roll-line" aria-hidden="true">${char}</span></span>`;
-          })
-          .join("");
-        charIndex++;
-        return `<span class="text-roll-word">${charsHtml}</span>`;
-      })
-      .join('<span class="text-roll-space">&nbsp;</span>');
-
-    a.innerHTML = `<span class="sr-only">${text}</span><span aria-hidden="true" class="text-roll-wrapper">${wordsHtml}</span>`;
+    const wrapper = document.createElement("span");
+    wrapper.setAttribute("aria-hidden", "true");
+    wrapper.className = "text-roll-wrapper";
+    words.forEach((word, wordIndex) => {
+      if (wordIndex) {
+        const space = document.createElement("span");
+        space.className = "text-roll-space";
+        space.textContent = "\u00a0";
+        wrapper.append(space);
+      }
+      const wordEl = document.createElement("span");
+      wordEl.className = "text-roll-word";
+      Array.from(word).forEach((char) => {
+        const idx = charIndex++;
+        const charEl = document.createElement("span");
+        charEl.className = "text-roll";
+        charEl.style.setProperty("--char-i", String(idx));
+        const visible = document.createElement("span");
+        visible.className = "text-roll-line";
+        visible.textContent = char;
+        const hidden = document.createElement("span");
+        hidden.className = "text-roll-line";
+        hidden.setAttribute("aria-hidden", "true");
+        hidden.textContent = char;
+        charEl.append(visible, hidden);
+        wordEl.append(charEl);
+      });
+      charIndex++;
+      wrapper.append(wordEl);
+    });
+    const srOnly = document.createElement("span");
+    srOnly.className = "sr-only";
+    srOnly.textContent = text;
+    a.replaceChildren(srOnly, wrapper);
   });
 }
 

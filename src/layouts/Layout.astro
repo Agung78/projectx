@@ -42,7 +42,11 @@ const structuredData = {
       url: new URL("/", Astro.site).href,
       logo: new URL("/logo.svg", Astro.site).href,
       description,
-      sameAs: ["https://www.linkedin.com/company/kyron-engineering/"],
+      sameAs: [
+        "https://www.linkedin.com/company/kyron-engineering/",
+        "https://github.com/kyron-engineering",
+        "https://x.com/kyroneng",
+      ],
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
@@ -59,6 +63,14 @@ const structuredData = {
       url: new URL("/", Astro.site).href,
       name: "Kyron Engineering",
       publisher: { "@id": new URL("/#organization", Astro.site).href },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: new URL("/search?q={search_term_string}", Astro.site).href,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
     ...(isHome
       ? []
@@ -101,6 +113,7 @@ const structuredData = {
     <link rel="llms" href="/llms.txt" />
     <title data-title-key={titleKey}>{pageTitle}</title>
     <meta name="description" content={description} data-desc-key={descKey} />
+    <meta name="author" content="Kyron Engineering" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />

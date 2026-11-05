@@ -25,7 +25,7 @@ import Button from "../components/Button.astro";
             </ul>
           </div>
 
-          <p class="mt-6 border-t border-line/60 pt-4 text-xs text-grey"><span data-i18n="contact.intro.privacy-prefix">We respect your privacy. See our</span> <a href="/privacy" class="underline hover:text-navy" data-i18n="contact.intro.privacy-link">Privacy Policy</a><span data-i18n="contact.intro.privacy-suffix">.</span></p>
+          <p class="mt-6 border-t border-line/60 pt-4 text-xs text-grey"><span data-i18n="contact.intro.privacy-prefix">We respect your privacy. See our</span> <a href="/privacy/" class="underline hover:text-navy" data-i18n="contact.intro.privacy-link">Privacy Policy</a><span data-i18n="contact.intro.privacy-suffix">.</span></p>
         </div>
       </div>
 
@@ -42,7 +42,7 @@ import Button from "../components/Button.astro";
             data-contact-form
           >
           <div class="absolute -left-[9999px] opacity-0 pointer-events-none" aria-hidden="true" tabindex="-1">
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-label="Leave this field empty" />
             <input type="hidden" name="_ts" value="" />
           </div>
             <div class="grid gap-6 md:grid-cols-2">
@@ -83,7 +83,7 @@ import Button from "../components/Button.astro";
                     class="w-full rounded-[8px] border border-field bg-white py-3 pl-4 pr-11 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                     aria-describedby="region-error" />
                   <svg class="country-chevron pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
-                  <ul id="region-list" role="listbox" class="country-list" data-country-list data-lenis-prevent hidden></ul>
+                  <ul id="region-list" role="listbox" class="country-list" data-country-list data-lenis-prevent hidden><li role="option" class="hidden" aria-hidden="true"></li></ul>
                 </div>
                 <p id="region-error" class="hidden text-body text-red" role="alert"></p>
               </div>
@@ -94,7 +94,7 @@ import Button from "../components/Button.astro";
                     aria-expanded="false" aria-controls="locations-list" aria-describedby="locations-error"
                     class="w-full cursor-pointer rounded-[8px] border border-field bg-white py-3 pl-4 pr-11 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
                   <svg class="country-chevron pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
-                  <ul id="locations-list" role="listbox" class="country-list" data-select-list data-lenis-prevent hidden></ul>
+                  <ul id="locations-list" role="listbox" class="country-list" data-select-list data-lenis-prevent hidden><li role="option" class="hidden" aria-hidden="true"></li></ul>
                 </div>
                 <p id="locations-error" class="hidden text-body text-red" role="alert"></p>
               </div>
@@ -499,8 +499,8 @@ import Button from "../components/Button.astro";
 </style>
 
 <script>
-  type C = { name: string; flag: string };
-  const KEY = "countries.v1";
+  type C = { name: string; flag: string; code: string };
+  const KEY = "countries.v2";
   const API = "https://countries.dev/countries"; // apicountries.com 301s here
   let cache: Promise<C[]> | null = null;
 
@@ -512,15 +512,13 @@ import Button from "../components/Button.astro";
       } catch {}
       const r = await fetch(API);
       if (!r.ok) throw new Error(String(r.status));
-      const list: C[] = (await r.json()).map((c: C) => ({ name: c.name, flag: c.flag }))
+      const list: C[] = (await r.json()).map((c: C & { alpha2Code: string }) => ({ name: c.name, flag: c.flag, code: c.alpha2Code }))
         .sort((a: C, b: C) => a.name.localeCompare(b.name));
       try { sessionStorage.setItem(KEY, JSON.stringify(list)); } catch {}
       return list;
     })().catch(() => { cache = null; return []; }); // empty => plain text input fallback
     return cache;
   }
-
-  const esc = (s: string) => s.replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]!));
 
   function init() {
     const root = document.querySelector<HTMLElement>("[data-country-combo]");
@@ -533,7 +531,8 @@ import Button from "../components/Button.astro";
 
     const setFlag = () => {
       load().then((all) => {
-        const hit = all.find((c) => c.name.toLowerCase() === input.value.trim().toLowerCase());
+        const value = input.value.trim().toLowerCase();
+        const hit = all.find((c) => c.name.toLowerCase() === value || c.code.toLowerCase() === value);
         flagEl.textContent = hit?.flag ?? "";
         flagEl.classList.toggle("on", !!hit);
         root.dataset.flag = hit ? "true" : "false";
@@ -568,14 +567,41 @@ import Button from "../components/Button.astro";
     const render = async () => {
       const all = await load();
       const q = input.value.trim().toLowerCase();
-      items = (q ? all.filter((c) => c.name.toLowerCase().includes(q)) : all).slice(0, 60);
-      list.innerHTML = items.length
-        ? items.map((c, i) => {
-            const n = c.name, k = q ? n.toLowerCase().indexOf(q) : -1;
-            const label = k >= 0 ? `${esc(n.slice(0, k))}<mark>${esc(n.slice(k, k + q.length))}</mark>${esc(n.slice(k + q.length))}` : esc(n);
-            return `<li role="option" id="region-opt-${i}" data-i="${i}" aria-selected="false"><span class="flag" aria-hidden="true">${c.flag}</span><span>${label}</span></li>`;
-          }).join("")
-        : `<li class="empty" role="presentation">No country found</li>`;
+      items = (q ? all.filter((c) => c.name.toLowerCase().includes(q) || c.code.toLowerCase() === q) : all).slice(0, 60);
+      if (!items.length) {
+        const empty = document.createElement("li");
+        empty.className = "empty";
+        empty.setAttribute("role", "presentation");
+        empty.textContent = "No country found";
+        list.replaceChildren(empty);
+      } else {
+        list.replaceChildren(...items.map((c, i) => {
+          const li = document.createElement("li");
+          li.setAttribute("role", "option");
+          li.id = `region-opt-${i}`;
+          li.dataset.i = String(i);
+          li.setAttribute("aria-selected", "false");
+
+          const flag = document.createElement("span");
+          flag.className = "flag";
+          flag.setAttribute("aria-hidden", "true");
+          flag.textContent = c.flag;
+
+          const label = document.createElement("span");
+          const n = c.name, k = q ? n.toLowerCase().indexOf(q) : -1;
+          if (k >= 0) {
+            label.append(n.slice(0, k));
+            const match = document.createElement("mark");
+            match.textContent = n.slice(k, k + q.length);
+            label.append(match, n.slice(k + q.length));
+          } else {
+            label.textContent = n;
+          }
+
+          li.append(flag, label);
+          return li;
+        }));
+      }
       setActive(items.length && q ? 0 : -1);
     };
 
@@ -614,7 +640,17 @@ import Button from "../components/Button.astro";
     const input = root.querySelector<HTMLInputElement>("input")!;
     const list = root.querySelector<HTMLUListElement>("[data-select-list]")!;
     const opts = [..."123456789"].concat("More than 10");
-    list.innerHTML = opts.map((o, i) => `<li role="option" id="loc-opt-${i}" data-i="${i}" aria-selected="false"><span>${o}</span></li>`).join("");
+    list.replaceChildren(...opts.map((o, i) => {
+      const li = document.createElement("li");
+      li.setAttribute("role", "option");
+      li.id = `loc-opt-${i}`;
+      li.dataset.i = String(i);
+      li.setAttribute("aria-selected", "false");
+      const label = document.createElement("span");
+      label.textContent = o;
+      li.append(label);
+      return li;
+    }));
     let active = -1, t = 0;
     const setActive = (i: number) => {
       active = i;

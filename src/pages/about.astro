@@ -86,6 +86,8 @@ const principles = [
                   <div class="image-animation mx-auto w-full max-w-[200px] sm:max-w-none overflow-hidden rounded-xl border border-line/60 bg-mist">
                     <img
                       src={f.image}
+                      srcset={`${f.image.replace(/\.webp$/, '-400.webp')} 400w, ${f.image} 960w`}
+                      sizes="(max-width: 640px) 200px, 400px"
                       alt={f.alt}
                       data-i18n-attr={"alt:" + f.altKey}
                       width="400"
@@ -97,6 +99,7 @@ const principles = [
                       itemprop="image"
                     />
                   </div>
+                  <figcaption class="text-xs text-grey mt-2 text-center">{f.name}</figcaption>
                   <div class="mt-5">
                     <h3 class="text-xl font-semibold text-navy tracking-tight" itemprop="name">{f.name}</h3>
                     <p class="text-sm font-semibold text-blue mt-0.5" data-i18n={f.roleKey} itemprop="jobTitle">{f.role}</p>

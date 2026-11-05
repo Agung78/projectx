@@ -55,9 +55,13 @@ const stepX = (width - padX * 2) / (phases.length - 1);
 
 // Phase hit-areas are centred on each node; clamp so the outer ones stay inside the viewBox.
 function bandFor(i: number) {
-  const x0 = Math.max(0, padX + stepX * i - stepX / 2);
-  const x1 = Math.min(width, padX + stepX * i + stepX / 2);
+  const x0 = Math.round(Math.max(0, padX + stepX * i - stepX / 2));
+  const x1 = Math.round(Math.min(width, padX + stepX * i + stepX / 2));
   return { x: x0, width: x1 - x0 };
+}
+
+function posX(i: number) {
+  return Math.round((padX + stepX * i) * 10) / 10;
 }
 
 // Edge labels anchor inward so long text is never clipped by the viewBox.
@@ -68,12 +72,12 @@ function anchorFor(i: number) {
 }
 
 function toY(value: number) {
-  return padTop + plotHeight * (1 - value / 100);
+  return Math.round((padTop + plotHeight * (1 - value / 100)) * 10) / 10;
 }
 
 function pathFor(key: "newco" | "client") {
   return phases
-    .map((phase, i) => `${i === 0 ? "M" : "L"} ${padX + stepX * i} ${toY(phase[key])}`)
+    .map((phase, i) => `${i === 0 ? "M" : "L"} ${posX(i)} ${toY(phase[key])}`)
     .join(" ");
 }
 
@@ -103,15 +107,15 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
                 fill="var(--color-secondary)"
                 fill-opacity="0.12"
               />
-              <circle cx={padX + stepX * i} cy={toY(phase.newco)} r="9" fill="none" stroke="var(--color-primary)" stroke-width="1.5" />
-              <circle cx={padX + stepX * i} cy={toY(phase.client)} r="9" fill="none" stroke="var(--color-third)" stroke-width="1.5" />
+              <circle cx={posX(i)} cy={toY(phase.newco)} r="9" fill="none" stroke="var(--color-primary)" stroke-width="1.5" />
+              <circle cx={posX(i)} cy={toY(phase.client)} r="9" fill="none" stroke="var(--color-third)" stroke-width="1.5" />
             </g>
           ))}
           {phases.map((_phase, i) => (
             <line
-              x1={padX + stepX * i}
+              x1={posX(i)}
               y1={padTop}
-              x2={padX + stepX * i}
+              x2={posX(i)}
               y2={padTop + plotHeight}
               stroke="var(--color-line)"
               stroke-width="1"
@@ -123,10 +127,10 @@ const descText = `A line chart across ${phases.length} phases (${phases.map((p) 
 
           {phases.map((phase, i) => (
             <>
-              <circle cx={padX + stepX * i} cy={toY(phase.newco)} r="4" fill="var(--color-primary)" data-curve-node />
-              <circle cx={padX + stepX * i} cy={toY(phase.client)} r="4" fill="var(--color-third)" stroke="var(--color-navy)" stroke-width="1" data-curve-node />
+              <circle cx={posX(i)} cy={toY(phase.newco)} r="4" fill="var(--color-primary)" data-curve-node />
+              <circle cx={posX(i)} cy={toY(phase.client)} r="4" fill="var(--color-third)" stroke="var(--color-navy)" stroke-width="1" data-curve-node />
               <text
-                x={padX + stepX * i}
+                x={posX(i)}
                 y={height - 20}
                 text-anchor={anchorFor(i)}
                 class="fill-navy"

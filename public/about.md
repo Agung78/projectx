@@ -5,10 +5,10 @@ Kyron Engineering is an engineering consultancy focused on sustainable software 
 ## Founders
 
 ### Vanezza — Chief Executive Officer
-Leads client partnerships, project scoping, and delivery governance. Ensures every engagement achieves measurable business milestones.
+Vanezza leads strategy, client partnerships and operations, backed by a technical background in networking, cybersecurity and AI. A founder with experience in telecommunications and AI startups, she works closely with clients to turn business objectives into clear technical direction.
 
 ### Agung Denisa — Chief Technology Officer
-Directs systems architecture, reliability engineering, and technical standards. Personally reviews every project proposal and system blueprint.
+Agung architects the systems Kyron Engineering builds and owns its technical standards, backed by a background in platform engineering, data pipelines and application security. He has run distributed systems on GCP and led penetration-tested releases of an enterprise payment platform.
 
 ## What Clients Can Count On
 - Plain-language updates without technical jargon.

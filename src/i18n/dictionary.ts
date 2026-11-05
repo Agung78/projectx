@@ -149,13 +149,13 @@ export const STRINGS: Record<string, Entry> = {
     "Agung Denisa, Chief Technology Officer",
     "Agung Denisa, Chief Technology Officer",
   ),
-  "about.team.bio-ceo": e(
-    "With experience across telecommunications, cybersecurity and AI, Vanezza leads Kyron Engineering’s strategy, client partnerships and operations. She works closely with clients to turn business objectives into clear technical direction.",
+"about.team.bio-ceo": e(
+    "Vanezza leads strategy, client partnerships and operations, backed by a technical background in networking, cybersecurity and AI. A founder with experience in telecommunications and AI startups, she works closely with clients to turn business objectives into clear technical direction.",
     "Dengan pengalaman di bidang telekomunikasi, keamanan siber, dan AI, Vanezza memimpin strategi, kemitraan klien, dan operasional Kyron Engineering. Dia bekerja erat dengan klien untuk menerjemahkan tujuan bisnis menjadi arah teknis yang jelas.",
   ),
   "about.team.bio-cto": e(
-    "Agung architects the systems Kyron Engineering builds and owns the technical standards. He reviews every proposal for feasibility, maintainability, and security.",
-    "Agung merancang sistem yang Kyron Engineering bangun dan memiliki standar teknis. Dia meninjau setiap proposal untuk kelayakan, maintainability, dan keamanan.",
+    "Agung architects the systems Kyron Engineering builds and owns its technical standards, backed by a background in platform engineering, data pipelines and application security. He has run distributed systems on GCP and led penetration-tested releases of an enterprise payment platform.",
+    "Agung merancang sistem yang dibangun Kyron Engineering dan mengelola standar teknisnya, didukung oleh latar belakang dalam platform engineering, data pipelines, dan keamanan aplikasi. Dia telah menjalankan sistem terdistribusi di GCP dan memimpin rilis yang diuji penetrasi dari platform pembayaran enterprise.",
   ),
   "about.team.lede": e(
     "We started Kyron Engineering to give growing businesses a technology partner they can rely on, combining commercial understanding with strong engineering.",

@@ -1,0 +1,3338 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 8,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "4 tl.fromTo() calls target \"#wipe2\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": "#wipe2",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/product-launch/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 5.4s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "4 tl.fromTo() calls target \"#wipe\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": "#wipe",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/product-launch/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 5.5s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 0 has 5 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/product-launch/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s1\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s1",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/product-launch/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s2\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s2",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/product-launch/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s3\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s3",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/product-launch/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s4\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s4",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/product-launch/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<section id=\"s5\"> is a timeline element that contains nested <div>. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#s5",
+        "dataAttributes": {},
+        "sourceFile": "/Users/heyrcg/Documents/Works/projectx/videos/product-launch/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <section id=\"s5\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": false,
+    "errorCount": 3,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "http_error",
+        "severity": "error",
+        "message": "404 loading gsap.min.js",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-hf-id": "hf-root",
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1920",
+          "data-height": "1080"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:52561/gsap.min.js"
+      },
+      {
+        "code": "request_failed",
+        "severity": "error",
+        "message": "Failed to load gsap.min.js: net::ERR_ABORTED",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-hf-id": "hf-root",
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1920",
+          "data-height": "1080"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "time": 0,
+        "url": "http://127.0.0.1:52561/gsap.min.js"
+      },
+      {
+        "code": "page_error",
+        "severity": "error",
+        "message": "Cannot read properties of undefined (reading 'timeline')",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-hf-id": "hf-root",
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "30",
+          "data-width": "1920",
+          "data-height": "1080"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "time": 0
+      }
+    ]
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 45,
+    "warningCount": 0,
+    "infoCount": 5,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 1.667,
+        "selector": "#s1 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 64,
+          "right": 425.33,
+          "bottom": 87,
+          "width": 265.33,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "Kyron Engineering",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f1a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.33,
+          "height": 23
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 5,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.667,
+          5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 1.667,
+        "selector": "#s1 > div:nth-of-type(1) > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1575.11,
+          "top": 64,
+          "right": 1760,
+          "bottom": 87,
+          "width": 184.89,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "01 / The hook",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f1b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1575.11,
+          "y": 64,
+          "width": 184.89,
+          "height": 23
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 5,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.667,
+          5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 1.667,
+        "selector": "#s1 > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 120,
+          "right": 709.25,
+          "bottom": 148,
+          "width": 549.25,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "Getting software built is easy.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s1eb"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 120,
+          "width": 549.25,
+          "height": 28
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 5,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.667,
+          5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 1.667,
+        "selector": "#s1-h",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 169,
+          "right": 1246.2,
+          "bottom": 263,
+          "width": 1086.2,
+          "height": 94
+        },
+        "containerSelector": "#wipe",
+        "text": "Keeping it running is the hard part.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s1h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 169,
+          "width": 1086.2,
+          "height": 94
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 5,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.667,
+          5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 1.667,
+        "selector": "#s1-sub",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 286.59,
+          "right": 1305.72,
+          "bottom": 372.59,
+          "width": 1145.72,
+          "height": 86
+        },
+        "containerSelector": "#wipe",
+        "text": "Many agencies deliver a system and leave. The business is left with code nobody in-house can fix when something breaks.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s1sub"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 286.59,
+          "width": 1145.72,
+          "height": 86
+        },
+        "firstSeen": 1.667,
+        "lastSeen": 5,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          1.667,
+          5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 64,
+          "right": 425.33,
+          "bottom": 87,
+          "width": 265.33,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "Kyron Engineering",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f2a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.33,
+          "height": 23
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2 > div:nth-of-type(1) > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1191.61,
+          "top": 64,
+          "right": 1760,
+          "bottom": 87,
+          "width": 568.39,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "02 / Technology built for independence",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f2b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1191.61,
+          "y": 64,
+          "width": 568.39,
+          "height": 23
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2 > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 120,
+          "right": 761.19,
+          "bottom": 148,
+          "width": 601.19,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "// INDEPENDENT SYSTEM ENGINEERING",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s2eb"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 120,
+          "width": 601.19,
+          "height": 28
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2-h",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 195,
+          "right": 1623.72,
+          "bottom": 318,
+          "width": 1463.72,
+          "height": 123
+        },
+        "containerSelector": "#wipe",
+        "text": "Technology built for independence.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s2h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 195,
+          "width": 1463.72,
+          "height": 123
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2-tag > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 185,
+          "top": 349.08,
+          "right": 279.03,
+          "bottom": 377.08,
+          "width": 94.03,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "We build",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-t1"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 185,
+          "y": 349.08,
+          "width": 94.03,
+          "height": 28
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2-tag > span:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 287.03,
+          "top": 349.08,
+          "right": 293.11,
+          "bottom": 377.08,
+          "width": 6.08,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "·",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-t2"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 287.03,
+          "y": 349.08,
+          "width": 6.08,
+          "height": 28
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2-tag > span:nth-of-type(3)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 301.11,
+          "top": 349.08,
+          "right": 402.73,
+          "bottom": 377.08,
+          "width": 101.63,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "We teach",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-t3"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 301.11,
+          "y": 349.08,
+          "width": 101.63,
+          "height": 28
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2-tag > span:nth-of-type(4)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 410.73,
+          "top": 349.08,
+          "right": 416.81,
+          "bottom": 377.08,
+          "width": 6.08,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "·",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-t4"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 410.73,
+          "y": 349.08,
+          "width": 6.08,
+          "height": 28
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2-tag > span:nth-of-type(5)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 424.81,
+          "top": 349.08,
+          "right": 522.83,
+          "bottom": 377.08,
+          "width": 98.02,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "You own.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-t5"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 424.81,
+          "y": 349.08,
+          "width": 98.02,
+          "height": 28
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.333,
+        "selector": "#s2-body",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 461.08,
+          "right": 1090.28,
+          "bottom": 595.08,
+          "width": 930.28,
+          "height": 134
+        },
+        "containerSelector": "#wipe",
+        "text": "We engineer systems to a high standard, then transfer full ownership to the business: the code, the documentation and the know-how. No vendor lock-in. No hidden dependencies.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s2body"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 461.08,
+          "width": 930.28,
+          "height": 134
+        },
+        "firstSeen": 8.333,
+        "lastSeen": 11.667,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          8.333,
+          11.667
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 64,
+          "right": 425.33,
+          "bottom": 87,
+          "width": 265.33,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "Kyron Engineering",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f3a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.33,
+          "height": 23
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3 > div:nth-of-type(1) > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1403.53,
+          "top": 64,
+          "right": 1760,
+          "bottom": 87,
+          "width": 356.47,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "03 / The capability curve",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f3b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1403.53,
+          "y": 64,
+          "width": 356.47,
+          "height": 23
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3 > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 120,
+          "right": 337.14,
+          "bottom": 148,
+          "width": 177.14,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "// PROCESS",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s3eb"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 120,
+          "width": 177.14,
+          "height": 28
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-h",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 170,
+          "right": 951,
+          "bottom": 246,
+          "width": 791,
+          "height": 76
+        },
+        "containerSelector": "#wipe",
+        "text": "How a project comes together.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s3h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 170,
+          "width": 791,
+          "height": 76
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-sub",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 270.27,
+          "right": 1344.78,
+          "bottom": 356.27,
+          "width": 1184.78,
+          "height": 86
+        },
+        "containerSelector": "#wipe",
+        "text": "Four clear stages take each project from the first conversation to a system the business fully owns.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s3sub"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 270.27,
+          "width": 1184.78,
+          "height": 86
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-lg > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 214,
+          "top": 370,
+          "right": 624.27,
+          "bottom": 398,
+          "width": 410.27,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "Kyron Engineering Partner Involvement",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-l1"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 214,
+          "y": 370,
+          "width": 410.27,
+          "height": 28
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-lg > div:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 734.27,
+          "top": 370,
+          "right": 993.59,
+          "bottom": 398,
+          "width": 259.33,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "Client Internal Capability",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-l2"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 734.27,
+          "y": 370,
+          "width": 259.33,
+          "height": 28
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 256.78,
+          "top": 859,
+          "right": 383.22,
+          "bottom": 894,
+          "width": 126.44,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "Diagnose",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 256.78,
+          "y": 859,
+          "width": 126.44,
+          "height": 35
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(1) > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 306.75,
+          "top": 830,
+          "right": 333.23,
+          "bottom": 851,
+          "width": 26.48,
+          "height": 21
+        },
+        "containerSelector": "#wipe",
+        "text": "01",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 306.75,
+          "y": 830,
+          "width": 26.48,
+          "height": 21
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 571.78,
+          "top": 859,
+          "right": 708.2,
+          "bottom": 894,
+          "width": 136.42,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "Build With",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 571.78,
+          "y": 859,
+          "width": 136.42,
+          "height": 35
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(2) > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 625.56,
+          "top": 830,
+          "right": 654.44,
+          "bottom": 851,
+          "width": 28.88,
+          "height": 21
+        },
+        "containerSelector": "#wipe",
+        "text": "02",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 625.56,
+          "y": 830,
+          "width": 28.88,
+          "height": 21
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(3)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 899.11,
+          "top": 859,
+          "right": 1020.88,
+          "bottom": 894,
+          "width": 121.77,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "Run With",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 899.11,
+          "y": 859,
+          "width": 121.77,
+          "height": 35
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(3) > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 945.38,
+          "top": 830,
+          "right": 974.63,
+          "bottom": 851,
+          "width": 29.25,
+          "height": 21
+        },
+        "containerSelector": "#wipe",
+        "text": "03",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 945.38,
+          "y": 830,
+          "width": 29.25,
+          "height": 21
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(4)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1208.97,
+          "top": 859,
+          "right": 1351.03,
+          "bottom": 894,
+          "width": 142.06,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "Hand Over",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1208.97,
+          "y": 859,
+          "width": 142.06,
+          "height": 35
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(4) > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1265.17,
+          "top": 830,
+          "right": 1294.83,
+          "bottom": 851,
+          "width": 29.66,
+          "height": 21
+        },
+        "containerSelector": "#wipe",
+        "text": "04",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1265.17,
+          "y": 830,
+          "width": 29.66,
+          "height": 21
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(5)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1554.42,
+          "top": 859,
+          "right": 1645.58,
+          "bottom": 894,
+          "width": 91.16,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "Advise",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1554.42,
+          "y": 859,
+          "width": 91.16,
+          "height": 35
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-ph > div:nth-of-type(5) > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1585.39,
+          "top": 830,
+          "right": 1614.61,
+          "bottom": 851,
+          "width": 29.22,
+          "height": 21
+        },
+        "containerSelector": "#wipe",
+        "text": "05",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1585.39,
+          "y": 830,
+          "width": 29.22,
+          "height": 21
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 15,
+        "selector": "#s3-cap",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 190,
+          "top": 920,
+          "right": 1087.41,
+          "bottom": 960,
+          "width": 897.41,
+          "height": 40
+        },
+        "containerSelector": "#wipe",
+        "text": "Handover is a success metric — not a hidden failure condition.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s3cap"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 190,
+          "y": 920,
+          "width": 897.41,
+          "height": 40
+        },
+        "firstSeen": 15,
+        "lastSeen": 18.333,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          15,
+          18.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 64,
+          "right": 425.33,
+          "bottom": 87,
+          "width": 265.33,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "Kyron Engineering",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f4a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.33,
+          "height": 23
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4 > div:nth-of-type(1) > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1364.23,
+          "top": 64,
+          "right": 1760,
+          "bottom": 87,
+          "width": 395.77,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "04 / What the business gets",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f4b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1364.23,
+          "y": 64,
+          "width": 395.77,
+          "height": 23
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4 > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 120,
+          "right": 569.28,
+          "bottom": 148,
+          "width": 409.28,
+          "height": 28
+        },
+        "containerSelector": "#wipe",
+        "text": "Instead of the default.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s4eb"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 120,
+          "width": 409.28,
+          "height": 28
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-h",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 170,
+          "right": 1275.94,
+          "bottom": 246,
+          "width": 1115.94,
+          "height": 76
+        },
+        "containerSelector": "#wipe",
+        "text": "Own the technology your business runs on.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s4h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 170,
+          "width": 1115.94,
+          "height": 76
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-grid > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 174.44,
+          "top": 353.27,
+          "right": 556.25,
+          "bottom": 388.27,
+          "width": 381.81,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "We stay until it runs smoothly",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-c1"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 174.44,
+          "y": 353.27,
+          "width": 381.81,
+          "height": 35
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-grid > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 353.27,
+          "right": 174.44,
+          "bottom": 388.27,
+          "width": 14.44,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 353.27,
+          "width": 14.44,
+          "height": 35
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-grid > div:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1010.13,
+          "top": 353.27,
+          "right": 1524.31,
+          "bottom": 388.27,
+          "width": 514.19,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "Knowledge that stays with the business",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-c2"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1010.13,
+          "y": 353.27,
+          "width": 514.19,
+          "height": 35
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-grid > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 992,
+          "top": 353.27,
+          "right": 1010.13,
+          "bottom": 388.27,
+          "width": 18.13,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "2",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 992,
+          "y": 353.27,
+          "width": 18.13,
+          "height": 35
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-grid > div:nth-of-type(3)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 178.92,
+          "top": 472.27,
+          "right": 630.53,
+          "bottom": 507.27,
+          "width": 451.61,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "The right tools, not the trendy ones",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-c3"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 178.92,
+          "y": 472.27,
+          "width": 451.61,
+          "height": 35
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-grid > div:nth-of-type(3) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 472.27,
+          "right": 178.92,
+          "bottom": 507.27,
+          "width": 18.92,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "3",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 472.27,
+          "width": 18.92,
+          "height": 35
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-grid > div:nth-of-type(4)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1011.41,
+          "top": 472.27,
+          "right": 1389.25,
+          "bottom": 507.27,
+          "width": 377.84,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "A transfer that actually works",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-c4"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1011.41,
+          "y": 472.27,
+          "width": 377.84,
+          "height": 35
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 21.667,
+        "selector": "#s4-grid > div:nth-of-type(4) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 992,
+          "top": 472.27,
+          "right": 1011.41,
+          "bottom": 507.27,
+          "width": 19.41,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "4",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 992,
+          "y": 472.27,
+          "width": 19.41,
+          "height": 35
+        },
+        "firstSeen": 21.667,
+        "lastSeen": 25,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          21.667,
+          25
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 28.333,
+        "selector": "#s5 > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 64,
+          "right": 425.33,
+          "bottom": 87,
+          "width": 265.33,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "Kyron Engineering",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f5a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.33,
+          "height": 23
+        },
+        "firstSeen": 28.333,
+        "lastSeen": 28.333,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 28.333,
+        "selector": "#s5 > div:nth-of-type(1) > b:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1548.55,
+          "top": 64,
+          "right": 1760,
+          "bottom": 87,
+          "width": 211.45,
+          "height": 23
+        },
+        "containerSelector": "#wipe",
+        "text": "05 / Start here",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-f5b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1548.55,
+          "y": 64,
+          "width": 211.45,
+          "height": 23
+        },
+        "firstSeen": 28.333,
+        "lastSeen": 28.333,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 28.333,
+        "selector": "#s5-h",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 156,
+          "right": 847.73,
+          "bottom": 356.8,
+          "width": 687.73,
+          "height": 200.8
+        },
+        "containerSelector": "#wipe",
+        "text": "Own the next stageof your technology.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s5h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 156,
+          "width": 687.73,
+          "height": 200.8
+        },
+        "firstSeen": 28.333,
+        "lastSeen": 28.333,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 28.333,
+        "selector": "#s5-btn",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 216,
+          "top": 685,
+          "right": 363.61,
+          "bottom": 728,
+          "width": 147.61,
+          "height": 43
+        },
+        "containerSelector": "#wipe",
+        "text": "Talk to us",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s5btn"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 216,
+          "y": 685,
+          "width": 147.61,
+          "height": 43
+        },
+        "firstSeen": 28.333,
+        "lastSeen": 28.333,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 28.333,
+        "selector": "#s5-fine",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 160,
+          "top": 815,
+          "right": 715.58,
+          "bottom": 850,
+          "width": 555.58,
+          "height": 35
+        },
+        "containerSelector": "#wipe",
+        "text": "No speculative estimate. No vendor lock-in.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-s5fine"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 815,
+          "width": 555.58,
+          "height": 35
+        },
+        "firstSeen": 28.333,
+        "lastSeen": 28.333,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          28.333
+        ]
+      }
+    ],
+    "duration": 30,
+    "samples": [
+      1.667,
+      5,
+      8.333,
+      11.667,
+      15,
+      18.333,
+      21.667,
+      25,
+      28.333
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 50,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 47,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 4.5:1.",
+        "text": "Kyron Engineering",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(180,186,193)",
+        "large": false,
+        "selector": "div > section:nth-of-type(1) > div:nth-of-type(1) > span",
+        "dataAttributes": {
+          "data-hf-id": "hf-f1a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.328125,
+          "height": 28
+        },
+        "time": 1.667,
+        "times": [
+          1.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "01 / The hook",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(1) > div:nth-of-type(1) > b",
+        "dataAttributes": {
+          "data-hf-id": "hf-f1b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1575.109375,
+          "y": 64,
+          "width": 184.890625,
+          "height": 28
+        },
+        "time": 1.667,
+        "times": [
+          1.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "Getting software built is easy.",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(1) > div:nth-of-type(2) > div",
+        "dataAttributes": {
+          "data-hf-id": "hf-s1eb"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 120,
+          "width": 1600,
+          "height": 28
+        },
+        "time": 1.667,
+        "times": [
+          1.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "Keeping it running is the hard part.",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "#s1-h",
+        "dataAttributes": {
+          "data-hf-id": "hf-s1h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 176,
+          "width": 1500,
+          "height": 81.59375
+        },
+        "time": 1.667,
+        "times": [
+          1.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 3:1.",
+        "text": "Many agencies deliver a system and leave. The busi",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(143,152,163)",
+        "large": true,
+        "selector": "#s1-sub",
+        "dataAttributes": {
+          "data-hf-id": "hf-s1sub"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 281.59375,
+          "width": 1200,
+          "height": 96
+        },
+        "time": 1.667,
+        "times": [
+          1.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 4.5:1.",
+        "text": "Kyron Engineering",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(180,186,193)",
+        "large": false,
+        "selector": "div > section:nth-of-type(2) > div:nth-of-type(1) > span",
+        "dataAttributes": {
+          "data-hf-id": "hf-f2a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.328125,
+          "height": 28
+        },
+        "time": 8.333,
+        "times": [
+          8.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "02 / Technology built for independence",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(2) > div:nth-of-type(1) > b",
+        "dataAttributes": {
+          "data-hf-id": "hf-f2b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1191.609375,
+          "y": 64,
+          "width": 568.390625,
+          "height": 28
+        },
+        "time": 8.333,
+        "times": [
+          8.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "// INDEPENDENT SYSTEM ENGINEERING",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {
+          "data-hf-id": "hf-s2eb"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 120,
+          "width": 1600,
+          "height": 28
+        },
+        "time": 8.333,
+        "times": [
+          8.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "Technology built for independence.",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "#s2-h",
+        "dataAttributes": {
+          "data-hf-id": "hf-s2h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 204,
+          "width": 1500,
+          "height": 106.078125
+        },
+        "time": 8.333,
+        "times": [
+          8.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "We build",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "dataAttributes": {
+          "data-hf-id": "hf-t1"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 185,
+          "y": 349.078125,
+          "width": 94.03125,
+          "height": 28
+        },
+        "time": 8.333,
+        "times": [
+          8.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "We teach",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(3)",
+        "dataAttributes": {
+          "data-hf-id": "hf-t3"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 301.109375,
+          "y": 349.078125,
+          "width": 101.625,
+          "height": 28
+        },
+        "time": 8.333,
+        "times": [
+          8.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "You own.",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(5)",
+        "dataAttributes": {
+          "data-hf-id": "hf-t5"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 424.8125,
+          "y": 349.078125,
+          "width": 98.015625,
+          "height": 28
+        },
+        "time": 8.333,
+        "times": [
+          8.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.67:1; WCAG AA requires 3:1.",
+        "text": "We engineer systems to a high standard, then trans",
+        "fg": "rgb(31,41,51)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.67,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(146,151,156)",
+        "large": true,
+        "selector": "#s2-body",
+        "dataAttributes": {
+          "data-hf-id": "hf-s2body"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 456.078125,
+          "width": 960,
+          "height": 144
+        },
+        "time": 8.333,
+        "times": [
+          8.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 4.5:1.",
+        "text": "Kyron Engineering",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(180,186,193)",
+        "large": false,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(1) > span",
+        "dataAttributes": {
+          "data-hf-id": "hf-f3a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.328125,
+          "height": 28
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "03 / The capability curve",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(1) > b",
+        "dataAttributes": {
+          "data-hf-id": "hf-f3b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1403.53125,
+          "y": 64,
+          "width": 356.46875,
+          "height": 28
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "// PROCESS",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {
+          "data-hf-id": "hf-s3eb"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 120,
+          "width": 1600,
+          "height": 28
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "How a project comes together.",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "#s3-h",
+        "dataAttributes": {
+          "data-hf-id": "hf-s3h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 176,
+          "width": 1500,
+          "height": 65.265625
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 3:1.",
+        "text": "Four clear stages take each project from the first",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(143,152,163)",
+        "large": true,
+        "selector": "#s3-sub",
+        "dataAttributes": {
+          "data-hf-id": "hf-s3sub"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 265.265625,
+          "width": 1200,
+          "height": 96
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 3:1.",
+        "text": "Kyron Engineering Partner Involvement",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(143,152,163)",
+        "large": true,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {
+          "data-hf-id": "hf-l1"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 370,
+          "width": 464.265625,
+          "height": 28
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 3:1.",
+        "text": "Client Internal Capability",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(143,152,163)",
+        "large": true,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "dataAttributes": {
+          "data-hf-id": "hf-l2"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 680.265625,
+          "y": 370,
+          "width": 313.328125,
+          "height": 28
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "01Diagnose",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 830,
+          "width": 320,
+          "height": 64
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "01",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(1) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 830,
+          "width": 320,
+          "height": 21
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "02Build With",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 480,
+          "y": 830,
+          "width": 320,
+          "height": 64
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "02",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(2) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 480,
+          "y": 830,
+          "width": 320,
+          "height": 21
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "03Run With",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 800,
+          "y": 830,
+          "width": 320,
+          "height": 64
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "03",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 800,
+          "y": 830,
+          "width": 320,
+          "height": 21
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "04Hand Over",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(4)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1120,
+          "y": 830,
+          "width": 320,
+          "height": 64
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "04",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(4) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1120,
+          "y": 830,
+          "width": 320,
+          "height": 21
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "05Advise",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(5)",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1440,
+          "y": 830,
+          "width": 320,
+          "height": 64
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "05",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(5) > small",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1440,
+          "y": 830,
+          "width": 320,
+          "height": 21
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "Handover is a success metric — not a hidden failur",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "#s3-cap",
+        "dataAttributes": {
+          "data-hf-id": "hf-s3cap"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 920,
+          "width": 927.40625,
+          "height": 40
+        },
+        "time": 15,
+        "times": [
+          15
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 4.5:1.",
+        "text": "Kyron Engineering",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(180,186,193)",
+        "large": false,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(1) > span",
+        "dataAttributes": {
+          "data-hf-id": "hf-f4a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.328125,
+          "height": 28
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "04 / What the business gets",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(1) > b",
+        "dataAttributes": {
+          "data-hf-id": "hf-f4b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1364.234375,
+          "y": 64,
+          "width": 395.765625,
+          "height": 28
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "Instead of the default.",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {
+          "data-hf-id": "hf-s4eb"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 120,
+          "width": 1600,
+          "height": 28
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "Own the technology your business runs on.",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "#s4-h",
+        "dataAttributes": {
+          "data-hf-id": "hf-s4h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 176,
+          "width": 1500,
+          "height": 65.265625
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.67:1; WCAG AA requires 3:1.",
+        "text": "1 We stay until it runs smoothly",
+        "fg": "rgb(31,41,51)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.67,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(146,151,156)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {
+          "data-hf-id": "hf-c1"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 321.265625,
+          "width": 768,
+          "height": 71
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "1",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > span",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 353.265625,
+          "width": 14.4375,
+          "height": 35
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.67:1; WCAG AA requires 3:1.",
+        "text": "2 Knowledge that stays with the business",
+        "fg": "rgb(31,41,51)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.67,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(146,151,156)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
+        "dataAttributes": {
+          "data-hf-id": "hf-c2"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 992,
+          "y": 321.265625,
+          "width": 768,
+          "height": 71
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "2",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > span",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 992,
+          "y": 353.265625,
+          "width": 18.125,
+          "height": 35
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.67:1; WCAG AA requires 3:1.",
+        "text": "3 The right tools, not the trendy ones",
+        "fg": "rgb(31,41,51)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.67,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(146,151,156)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3)",
+        "dataAttributes": {
+          "data-hf-id": "hf-c3"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 440.265625,
+          "width": 768,
+          "height": 71
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "3",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3) > span",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 472.265625,
+          "width": 18.921875,
+          "height": 35
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.67:1; WCAG AA requires 3:1.",
+        "text": "4 A transfer that actually works",
+        "fg": "rgb(31,41,51)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.67,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(146,151,156)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(4)",
+        "dataAttributes": {
+          "data-hf-id": "hf-c4"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 992,
+          "y": 440.265625,
+          "width": 768,
+          "height": 71
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 3:1.",
+        "text": "4",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(116,152,210)",
+        "large": true,
+        "selector": "div > section:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(4) > span",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 992,
+          "y": 472.265625,
+          "width": 19.40625,
+          "height": 35
+        },
+        "time": 21.667,
+        "times": [
+          21.667
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 4.5:1.",
+        "text": "Kyron Engineering",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(180,186,193)",
+        "large": false,
+        "selector": "div > section:nth-of-type(5) > div:nth-of-type(1) > span",
+        "dataAttributes": {
+          "data-hf-id": "hf-f5a"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 64,
+          "width": 265.328125,
+          "height": 28
+        },
+        "time": 28.333,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1:1; WCAG AA requires 4.5:1.",
+        "text": "05 / Start here",
+        "fg": "rgb(0,66,172)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(163,187,225)",
+        "large": false,
+        "selector": "div > section:nth-of-type(5) > div:nth-of-type(1) > b",
+        "dataAttributes": {
+          "data-hf-id": "hf-f5b"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1548.546875,
+          "y": 64,
+          "width": 211.453125,
+          "height": 28
+        },
+        "time": 28.333,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.64:1; WCAG AA requires 3:1.",
+        "text": "Own the next stageof your technology.",
+        "fg": "rgb(15,42,74)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.64,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,152,168)",
+        "large": true,
+        "selector": "#s5-h",
+        "dataAttributes": {
+          "data-hf-id": "hf-s5h"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 160,
+          "width": 960,
+          "height": 193.59375
+        },
+        "time": 28.333,
+        "times": [
+          28.333
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.56:1; WCAG AA requires 3:1.",
+        "text": "No speculative estimate. No vendor lock-in.",
+        "fg": "rgb(91,104,120)",
+        "bg": "rgb(0,66,172)",
+        "ratio": 1.56,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(143,152,163)",
+        "large": true,
+        "selector": "#s5-fine",
+        "dataAttributes": {
+          "data-hf-id": "hf-s5fine"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 160,
+          "y": 815,
+          "width": 555.578125,
+          "height": 35
+        },
+        "time": 28.333,
+        "times": [
+          28.333
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      1.667,
+      8.333,
+      15,
+      21.667,
+      28.333
+    ],
+    "checked": 48,
+    "passed": 1
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

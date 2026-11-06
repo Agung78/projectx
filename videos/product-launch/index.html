@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #FFFFFF;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #FFFFFF;
+        color: #0F2A4A;
+        font-family: system-ui, -apple-system, sans-serif;
+        overflow: hidden;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        padding: 120px 160px;
+      }
+      .scene-inner {
+        position: absolute;
+        inset: 120px 160px;
+        display: flex;
+        flex-direction: column;
+      }
+      .rule {
+        width: 100%;
+        height: 1px;
+        background: #E2E8F0;
+      }
+      .folio {
+        position: absolute;
+        left: 160px;
+        right: 160px;
+        top: 64px;
+        height: 28px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #5B6878;
+        font-weight: 600;
+      }
+      .folio b {
+        color: #0042AC;
+        font-weight: 600;
+      }
+      .eyebrow {
+        font-size: 24px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #0042AC;
+        font-weight: 600;
+      }
+      h1,
+      h2 {
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.02;
+        color: #0F2A4A;
+      }
+      .mono {
+        font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .corners {
+        position: relative;
+      }
+      .corners::before,
+      .corners::after {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        content: "";
+      }
+      .corners::before {
+        top: -4px;
+        left: -4px;
+        border-top: 2px solid #0F2A4A;
+        border-left: 2px solid #0F2A4A;
+      }
+      .corners::after {
+        bottom: -4px;
+        right: -4px;
+        border-bottom: 2px solid #0F2A4A;
+        border-right: 2px solid #0F2A4A;
+      }
+      #root {
+        background-image:
+          linear-gradient(#EEF2F8 1px, transparent 1px),
+          linear-gradient(90deg, #EEF2F8 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+      .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+      .w > i { display: inline-block; font-style: normal; will-change: transform; }
+      #wipe {
+        position: absolute; inset: 0; z-index: 50;
+        background: #0042AC;
+      }
+      #wipe2 {
+        position: absolute; inset: 0; z-index: 49;
+        background: #0F2A4A;
+      }
+
+      /* Scene 1 — Hook (0 – 6) */
+      #s1 h2 {
+        font-size: 80px;
+        width: 1500px;
+        margin-top: 28px;
+      }
+      #s1 .sub {
+        margin-top: 24px;
+        width: 1200px;
+        font-size: 32px;
+        line-height: 1.5;
+        color: #5B6878;
+      }
+
+      /* Scene 2 — Product reveal (6 – 13) */
+      #s2 h1 {
+        font-size: 104px;
+        width: 1500px;
+        margin-top: 56px;
+      }
+      #s2 .tagline {
+        margin-top: 24px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 12px 8px;
+        align-items: center;
+        border: 1px solid #E2E8F0;
+        background: #F4F6FA;
+        color: #0F2A4A;
+        padding: 14px 24px;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      #s2 .tagline span {
+        color: #0042AC;
+      }
+      #s2 .body {
+        margin-top: 64px;
+        font-size: 32px;
+        line-height: 1.5;
+        color: #1F2933;
+        max-width: 960px;
+      }
+
+      /* Scene 3 — Before/after ownership curve (13 – 21) */
+      #s3 h2 {
+        font-size: 64px;
+        width: 1500px;
+        margin-top: 28px;
+      }
+      #s3 .sub {
+        margin-top: 24px;
+        width: 1200px;
+        font-size: 32px;
+        line-height: 1.5;
+        color: #5B6878;
+      }
+      #s3 .legend {
+        position: absolute;
+        left: 0;
+        top: 250px;
+        display: flex;
+        gap: 56px;
+        font-size: 24px;
+        color: #5B6878;
+        font-weight: 500;
+      }
+      .legend .it {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .legend .sw {
+        width: 40px;
+        height: 6px;
+      }
+      #s3 .chart {
+        position: absolute;
+        left: 0;
+        top: 310px;
+        width: 1600px;
+        height: 380px;
+      }
+      #s3 svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1600px;
+        height: 380px;
+        overflow: visible;
+      }
+      #s3 .phases {
+        position: absolute;
+        left: 0;
+        top: 710px;
+        width: 1600px;
+        height: 70px;
+      }
+      .phase {
+        position: absolute;
+        top: 0;
+        width: 320px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .phase small {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+        letter-spacing: 0.18em;
+        color: #0042AC;
+      }
+      #s3 .caption {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        font-size: 34px;
+        letter-spacing: -0.01em;
+        font-weight: 500;
+        color: #0F2A4A;
+        padding-left: 24px;
+        border-left: 6px solid #0042AC;
+      }
+
+      /* Scene 4 — What the business gets (21 – 26) */
+      #s4 h2 {
+        font-size: 64px;
+        width: 1500px;
+        margin-top: 28px;
+      }
+      #s4 .grid {
+        margin-top: 80px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px 64px;
+      }
+      #s4 .card {
+        border-top: 1px solid #E2E8F0;
+        padding-top: 28px;
+        font-size: 30px;
+        line-height: 1.4;
+        color: #1F2933;
+      }
+      #s4 .card .n {
+        color: #0042AC;
+        font-weight: 600;
+      }
+
+      /* Scene 5 — Endcard (26 – 30) */
+      #s5 h1 {
+        font-size: 88px;
+        line-height: 1.1;
+        max-width: 960px;
+        width: 960px;
+        margin-top: 40px;
+      }
+      #s5 .btn {
+        background: #0042AC;
+        color: #FFFFFF;
+        font-size: 36px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        padding: 32px 56px;
+        position: absolute;
+        left: 0;
+        bottom: 200px;
+      }
+      #s5 .fine {
+        font-size: 30px;
+        color: #5B6878;
+        position: absolute;
+        left: 0;
+        bottom: 110px;
+      }
+
+      #cap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 26px;
+        height: 72px;
+        z-index: 40;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+      }
+      .cue {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        padding: 10px 28px;
+        background: rgba(15, 42, 74, 0.92);
+        border-radius: 6px;
+        font-size: 36px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+        color: #9FB6D8;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-root"
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="30"
+      data-width="1920"
+      data-height="1080"
+    >
+
+      <!-- Scene 1 — Hook (0 – 6) -->
+      <section data-hf-id="hf-s1" id="s1" class="scene clip" data-start="0" data-duration="6" data-track-index="0">
+        <div data-hf-id="hf-f1" class="folio"><span data-hf-id="hf-f1a">Kyron Engineering</span><b data-hf-id="hf-f1b">01 / The hook</b></div>
+        <div data-hf-id="hf-s1i" class="scene-inner">
+          <div data-hf-id="hf-s1eb" class="eyebrow">Getting software built is easy.</div>
+          <h2 data-hf-id="hf-s1h" id="s1-h">Keeping it running is the hard part.</h2>
+          <p data-hf-id="hf-s1sub" class="sub" id="s1-sub">Many agencies deliver a system and leave. The business is left with code nobody in-house can fix when something breaks.</p>
+        </div>
+      </section>
+
+      <!-- Scene 2 — Product reveal (6 – 13) -->
+      <section data-hf-id="hf-s2" id="s2" class="scene clip" data-start="6" data-duration="7" data-track-index="0">
+        <div data-hf-id="hf-f2" class="folio"><span data-hf-id="hf-f2a">Kyron Engineering</span><b data-hf-id="hf-f2b">02 / Technology built for independence</b></div>
+        <div data-hf-id="hf-s2i" class="scene-inner">
+          <div data-hf-id="hf-s2eb" class="eyebrow">// INDEPENDENT SYSTEM ENGINEERING</div>
+          <h1 data-hf-id="hf-s2h" id="s2-h">Technology built for independence.</h1>
+          <div data-hf-id="hf-s2tag" class="tagline corners" id="s2-tag">
+            <span data-hf-id="hf-t1">We build</span><span data-hf-id="hf-t2" aria-hidden="true">·</span><span data-hf-id="hf-t3">We teach</span><span data-hf-id="hf-t4" aria-hidden="true">·</span><span data-hf-id="hf-t5">You own.</span>
+          </div>
+          <div data-hf-id="hf-s2body" class="body" id="s2-body">
+            We engineer systems to a high standard, then transfer full ownership to the business: the code, the documentation and the know-how. No vendor lock-in. No hidden dependencies.
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 3 — Before/after ownership curve (13 – 21) -->
+      <section data-hf-id="hf-s3" id="s3" class="scene clip" data-start="13" data-duration="8" data-track-index="0">
+        <div data-hf-id="hf-f3" class="folio"><span data-hf-id="hf-f3a">Kyron Engineering</span><b data-hf-id="hf-f3b">03 / The capability curve</b></div>
+        <div data-hf-id="hf-s3i" class="scene-inner">
+          <div data-hf-id="hf-s3eb" class="eyebrow">// PROCESS</div>
+          <h2 data-hf-id="hf-s3h" id="s3-h">How a project comes together.</h2>
+          <p data-hf-id="hf-s3sub" class="sub" id="s3-sub">Four clear stages take each project from the first conversation to a system the business fully owns.</p>
+          <div data-hf-id="hf-s3lg" class="legend" id="s3-lg">
+            <div data-hf-id="hf-l1" class="it"><span data-hf-id="hf-l1s" class="sw" style="background:#5B6878"></span>Kyron Engineering Partner Involvement</div>
+            <div data-hf-id="hf-l2" class="it"><span data-hf-id="hf-l2s" class="sw" style="background:#0042AC"></span>Client Internal Capability</div>
+          </div>
+          <div data-hf-id="hf-s3chart" class="chart">
+            <svg data-hf-id="hf-s3svg" viewBox="0 0 1600 380" xmlns="http://www.w3.org/2000/svg">
+              <g data-hf-id="hf-grid" stroke="#E2E8F0" stroke-width="1">
+                <line x1="0" y1="20" x2="1600" y2="20" />
+                <line x1="0" y1="190" x2="1600" y2="190" />
+                <line x1="0" y1="360" x2="1600" y2="360" />
+              </g>
+              <g data-hf-id="hf-ticks" stroke="#E2E8F0" stroke-width="1">
+                <line x1="160" y1="20" x2="160" y2="360" />
+                <line x1="480" y1="20" x2="480" y2="360" />
+                <line x1="800" y1="20" x2="800" y2="360" />
+                <line x1="1120" y1="20" x2="1120" y2="360" />
+                <line x1="1440" y1="20" x2="1440" y2="360" />
+              </g>
+              <path id="s3-p1" d="M 160 50 C 300 55, 360 90, 480 110 C 600 130, 680 175, 800 195 C 920 215, 1000 270, 1120 290 C 1240 310, 1320 325, 1440 325" fill="none" stroke="#5B6878" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="s3-p2" d="M 160 330 C 300 325, 360 290, 480 270 C 600 250, 680 205, 800 185 C 920 165, 1000 110, 1120 90 C 1240 70, 1320 55, 1440 55" fill="none" stroke="#0042AC" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <circle id="s3-pulse" class="pulse" cx="800" cy="190" r="14" />
+              <g data-hf-id="hf-dots1" fill="#FFFFFF" stroke="#5B6878" stroke-width="5">
+                <circle class="d1" cx="160" cy="50" r="11" />
+                <circle class="d1" cx="480" cy="110" r="11" />
+                <circle class="d1" cx="800" cy="195" r="11" />
+                <circle class="d1" cx="1120" cy="290" r="11" />
+                <circle class="d1" cx="1440" cy="325" r="11" />
+              </g>
+              <g data-hf-id="hf-dots2" fill="#FFFFFF" stroke="#0042AC" stroke-width="5">
+                <circle class="d2" cx="160" cy="330" r="11" />
+                <circle class="d2" cx="480" cy="270" r="11" />
+                <circle class="d2" cx="800" cy="185" r="11" />
+                <circle class="d2" cx="1120" cy="90" r="11" />
+                <circle class="d2" cx="1440" cy="55" r="11" />
+              </g>
+            </svg>
+          </div>
+          <div data-hf-id="hf-s3ph" class="phases" id="s3-ph">
+            <div class="phase" style="left: 0"><small>01</small>Diagnose</div>
+            <div class="phase" style="left: 320px"><small>02</small>Build With</div>
+            <div class="phase" style="left: 640px"><small>03</small>Run With</div>
+            <div class="phase" style="left: 960px"><small>04</small>Hand Over</div>
+            <div class="phase" style="left: 1280px"><small>05</small>Advise</div>
+          </div>
+          <div data-hf-id="hf-s3cap" class="caption" id="s3-cap">Handover is a success metric — not a hidden failure condition.</div>
+        </div>
+      </section>
+
+      <!-- Scene 4 — What the business gets (21 – 26) -->
+      <section data-hf-id="hf-s4" id="s4" class="scene clip" data-start="21" data-duration="5" data-track-index="0">
+        <div data-hf-id="hf-f4" class="folio"><span data-hf-id="hf-f4a">Kyron Engineering</span><b data-hf-id="hf-f4b">04 / What the business gets</b></div>
+        <div data-hf-id="hf-s4i" class="scene-inner">
+          <div data-hf-id="hf-s4eb" class="eyebrow">Instead of the default.</div>
+          <h2 data-hf-id="hf-s4h" id="s4-h">Own the technology your business runs on.</h2>
+          <div data-hf-id="hf-s4grid" class="grid" id="s4-grid">
+            <div data-hf-id="hf-c1" class="card"><span class="n">1</span> We stay until it runs smoothly</div>
+            <div data-hf-id="hf-c2" class="card"><span class="n">2</span> Knowledge that stays with the business</div>
+            <div data-hf-id="hf-c3" class="card"><span class="n">3</span> The right tools, not the trendy ones</div>
+            <div data-hf-id="hf-c4" class="card"><span class="n">4</span> A transfer that actually works</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 5 — Endcard (26 – 30) -->
+      <section data-hf-id="hf-s5" id="s5" class="scene clip" data-start="26" data-duration="4" data-track-index="0">
+        <div data-hf-id="hf-f5" class="folio"><span data-hf-id="hf-f5a">Kyron Engineering</span><b data-hf-id="hf-f5b">05 / Start here</b></div>
+        <div data-hf-id="hf-s5i" class="scene-inner">
+          <h1 data-hf-id="hf-s5h" id="s5-h">Own the next stage<br />of your technology.</h1>
+          <div data-hf-id="hf-s5btn" class="btn" id="s5-btn">Talk to us</div>
+          <div data-hf-id="hf-s5fine" class="fine" id="s5-fine">No speculative estimate. No vendor lock-in.</div>
+        </div>
+      </section>
+
+      <div id="cap">
+        <div class="cue" id="c0"><span>Getting</span> <span>software</span> <span>built</span> <span>is</span> <span>easy,</span></div>
+        <div class="cue" id="c1"><span>keeping</span> <span>it</span> <span>running</span> <span>is</span> <span>hard.</span></div>
+        <div class="cue" id="c2"><span>Technology</span> <span>built</span> <span>for</span> <span>independence.</span></div>
+        <div class="cue" id="c3"><span>We</span> <span>build,</span> <span>we</span> <span>teach,</span></div>
+        <div class="cue" id="c4"><span>you</span> <span>own.</span></div>
+        <div class="cue" id="c5"><span>Handover</span> <span>is</span> <span>a</span> <span>success</span> <span>metric.</span></div>
+        <div class="cue" id="c6"><span>Own</span> <span>the</span> <span>technology</span> <span>your</span> <span>business</span> <span>runs</span> <span>on.</span></div>
+      </div>
+      <div id="wipe2"></div>
+      <div id="wipe"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const rise = (sel, t, y = 36, d = 0.8) =>
+        tl.fromTo(sel, { opacity: 0, y }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+
+      // Split headline text nodes into masked words (keeps <br>)
+      const split = (sel) => {
+        const el = document.querySelector(sel);
+        [...el.childNodes].forEach((n) => {
+          if (n.nodeType !== 3) return;
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((p) => {
+            if (!p) return;
+            if (/^\s+$/.test(p)) return frag.append(" ");
+            const w = document.createElement("span");
+            w.className = "w";
+            w.innerHTML = "<i></i>";
+            w.firstChild.textContent = p;
+            frag.append(w);
+          });
+          n.replaceWith(frag);
+        });
+        return el.querySelectorAll(".w > i");
+      };
+      const words = (sel, t, stagger = 0.08) =>
+        tl.fromTo(split(sel), { yPercent: 115, rotate: 4 },
+          { yPercent: 0, rotate: 0, duration: 0.9, stagger, ease: "expo.out" }, t);
+
+      // Two-layer wipe that covers the cut at time t
+      let firstWipe = true;
+      const wipe = (t) => {
+        const ir = firstWipe; firstWipe = false;
+        tl.fromTo("#wipe2", { xPercent: -101 }, { xPercent: 101, duration: 1.1, ease: "expo.inOut", immediateRender: ir }, t - 0.6);
+        tl.fromTo("#wipe", { xPercent: -101 }, { xPercent: 101, duration: 1.1, ease: "expo.inOut", immediateRender: ir }, t - 0.5);
+      };
+      const drift = (sel, t, d) =>
+        tl.fromTo(sel, { scale: 1, transformOrigin: "30% 40%" }, { scale: 1.035, duration: d, ease: "none" }, t);
+
+      tl.fromTo("#root", { backgroundPosition: "0px 0px" }, { backgroundPosition: "-200px -100px", duration: 30, ease: "none" }, 0);
+
+      // Scene 1 (0 – 6)
+      drift("#s1 .scene-inner", 0, 6);
+      rise("#s1 .folio", 0.1, 0);
+      tl.fromTo("#s1-eb", { opacity: 0, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "power3.inOut" }, 0.1);
+      words("#s1-h", 0.3, 0.1);
+      rise("#s1-sub", 2.4, 30, 1);
+      wipe(6);
+
+      // Scene 2 (6 – 13)
+      drift("#s2 .scene-inner", 6, 7);
+      rise("#s2 .folio", 6.1, 0);
+      rise("#s2-eb", 6.2, 20);
+      words("#s2-h", 6.4, 0.09);
+      tl.fromTo("#s2-tag", { opacity: 0, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 0.6, ease: "power3.out" }, 8.2);
+      const tagIn = { opacity: 1, y: 0, duration: 0.45, ease: "back.out(2)" };
+      tl.fromTo("#s2-tag span:nth-child(1)", { opacity: 0, y: 14 }, tagIn, 8.6);
+      tl.fromTo("#s2-tag span:nth-child(2), #s2-tag span:nth-child(3)", { opacity: 0, y: 14 }, tagIn, 9.5);
+      tl.fromTo("#s2-tag span:nth-child(4), #s2-tag span:nth-child(5)", { opacity: 0, y: 14 }, tagIn, 10.4);
+      rise("#s2-body", 11.3, 30, 1);
+      wipe(13);
+
+      // Scene 3 (13 – 21)
+      drift("#s3 .scene-inner", 13, 8);
+      rise("#s3 .folio", 13.1, 0);
+      rise("#s3-eb", 13.2, 20);
+      words("#s3-h", 13.4, 0.08);
+      rise("#s3-sub", 14.2, 30, 1);
+      rise("#s3-lg", 14.9, 20);
+      tl.fromTo("#s3-ticks line", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.8, stagger: 0.1, ease: "expo.out" }, 14.9);
+      tl.fromTo("#s3-ph .phase", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: "back.out(1.6)" }, 15.3);
+      const p1 = document.getElementById("s3-p1");
+      const p2 = document.getElementById("s3-p2");
+      const len1 = Math.ceil(p1.getTotalLength()) + 10;
+      const len2 = Math.ceil(p2.getTotalLength()) + 10;
+      p1.style.strokeDasharray = `${len1} ${len1}`;
+      p2.style.strokeDasharray = `${len2} ${len2}`;
+      tl.fromTo(p1, { strokeDashoffset: len1 }, { strokeDashoffset: 0, duration: 4.48, ease: "none" }, 15.7);
+      tl.fromTo(p2, { strokeDashoffset: len2 }, { strokeDashoffset: 0, duration: 4.48, ease: "none" }, 15.7);
+      [16.4, 17.1, 17.8, 18.5, 19.2].forEach((t, i) => {
+        tl.fromTo(`#s3-dots1 .d1:nth-child(${i + 1}), #s3-dots2 .d2:nth-child(${i + 1})`,
+          { opacity: 0, scale: 0, transformOrigin: "50% 50%" },
+          { opacity: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(3)" }, t);
+      });
+      tl.fromTo("#s3-pulse", { opacity: 0.9, scale: 1, transformOrigin: "50% 50%" }, { opacity: 0, scale: 5, duration: 1.1, ease: "expo.out" }, 17.8);
+      tl.fromTo("#s3-cap", { opacity: 0, x: -40, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "expo.out" }, 19.0);
+      wipe(21);
+
+      // Scene 4 (21 – 26)
+      drift("#s4 .scene-inner", 21, 5);
+      rise("#s4 .folio", 21.1, 0);
+      rise("#s4-eb", 21.2, 20);
+      words("#s4-h", 21.4, 0.1);
+      [21.9, 22.9, 23.9, 24.9].forEach((t, i) => {
+        tl.fromTo(`#s4-grid .card:nth-child(${i + 1})`, { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t);
+      });
+      wipe(26);
+
+      // Scene 5 (26 – 30)
+      drift("#s5 .scene-inner", 26, 4);
+      rise("#s5 .folio", 26.1, 0);
+      words("#s5-h", 26.3, 0.1);
+      tl.fromTo("#s5-btn", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(2)" }, 27.5);
+      rise("#s5-fine", 28.2, 20, 0.8);
+
+      // Captions
+      tl.fromTo("#c0",{opacity:0,y:10},{opacity:1,y:0,duration:0.18,ease:"power2.out"},0.4);tl.set("#c0",{opacity:0},2.6);
+      tl.fromTo("#c1",{opacity:0,y:10},{opacity:1,y:0,duration:0.18,ease:"power2.out"},2.6);tl.set("#c1",{opacity:0},4.5);
+      tl.fromTo("#c2",{opacity:0,y:10},{opacity:1,y:0,duration:0.18,ease:"power2.out"},6.4);tl.set("#c2",{opacity:0},8.6);
+      tl.fromTo("#c3",{opacity:0,y:10},{opacity:1,y:0,duration:0.18,ease:"power2.out"},8.6);tl.set("#c3",{opacity:0},10.4);
+      tl.fromTo("#c4",{opacity:0,y:10},{opacity:1,y:0,duration:0.18,ease:"power2.out"},10.4);tl.set("#c4",{opacity:0},12.2);
+      tl.fromTo("#c5",{opacity:0,y:10},{opacity:1,y:0,duration:0.18,ease:"power2.out"},19.0);tl.set("#c5",{opacity:0},20.8);
+      tl.fromTo("#c6",{opacity:0,y:10},{opacity:1,y:0,duration:0.18,ease:"power2.out"},26.3);tl.set("#c6",{opacity:0},28.8);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -5,33 +5,25 @@
   <div class="mx-auto max-w-[1200px] px-4 md:px-6 pt-12 pb-6">
     <div class="flex flex-col gap-3 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; {new Date().getFullYear()} Kyron Engineering. <span data-i18n="footer.rights">All rights reserved.</span></p>
-      <div class="flex items-center gap-6">
-        <a href="/contact/" class="hover:text-white transition-colors" data-i18n="footer.contact">Get in touch</a>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <a href="/contact/" class="hover:text-white transition-colors max-md:inline-flex max-md:min-h-11 max-md:items-center" data-i18n="footer.contact">Get in touch</a>
         <a
           href="https://www.linkedin.com/company/kyron-engineering/"
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:text-white transition-colors"
+          class="hover:text-white transition-colors max-md:inline-flex max-md:min-h-11 max-md:items-center"
         >
-          LinkedIn
+          <img
+            src="/images/linkedin.svg"
+            alt="LinkedIn"
+            class="h-3.5 w-auto"
+            width="58"
+            height="14"
+            loading="lazy"
+            decoding="async"
+          />
         </a>
-        <a
-          href="https://github.com/kyron-engineering"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-white transition-colors"
-        >
-          GitHub
-        </a>
-        <a
-          href="https://x.com/kyroneng"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-white transition-colors"
-        >
-          X
-        </a>
-        <a href="/privacy/" class="hover:text-white transition-colors" data-i18n="footer.privacy">Privacy</a>
+        <a href="/privacy/" class="hover:text-white transition-colors max-md:inline-flex max-md:min-h-11 max-md:items-center" data-i18n="footer.privacy">Privacy</a>
       </div>
     </div>
   </div>

@@ -94,15 +94,15 @@ const btn = "md:whitespace-nowrap";
         <span class="text-sm font-semibold tracking-wide text-grey" data-i18n="index.hero.kicker">Engineering partner for growing businesses</span>
       </div>
 
-      <div class="mt-12 grid grid-cols-1 items-start gap-12 md:mt-16 lg:grid-cols-12 lg:gap-10">
-        <div class="lg:col-span-7">
-          <h1 class="text-h1 uppercase text-navy text-balance tracking-tight lg:max-w-[16ch] lg:text-[clamp(3rem,4.6vw,4.5rem)] text-reveal" data-i18n="index.hero.title">Technology built for independence.</h1>
-          <p class="corners mono mt-8 inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-md border border-line bg-mist px-4 py-2.5 text-sm text-navy shadow-xs" data-hero-item>
+      <div class="mt-8 grid grid-cols-1 items-start gap-8 md:mt-16 lg:grid-cols-12 lg:gap-10">
+        <div class="max-lg:contents lg:col-span-7">
+          <h1 class="max-lg:order-1 text-h1 uppercase text-navy text-balance tracking-tight lg:max-w-[16ch] lg:text-[clamp(3rem,4.6vw,4.5rem)] text-reveal" data-i18n="index.hero.title">Technology built for independence.</h1>
+          <p class="corners max-lg:order-3 max-lg:mt-0 mono mt-8 inline-flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-md border border-line bg-mist px-4 py-2.5 text-sm text-navy shadow-xs" data-hero-item>
             <span data-i18n="index.hero.tag1">We build</span><span aria-hidden="true" class="text-blue">·</span><span data-i18n="index.hero.tag2">We teach</span><span aria-hidden="true" class="text-blue">·</span><span data-i18n="index.hero.tag3">You own.</span>
           </p>
         </div>
 
-        <div class="flex flex-col lg:col-span-5 lg:border-l lg:border-line lg:pl-10">
+        <div class="max-lg:order-2 flex flex-col lg:col-span-5 lg:border-l lg:border-line lg:pl-10">
           <p class="text-[18px] leading-[1.65] text-slate text-pretty" data-hero-item data-i18n="index.hero.lede">
             We engineer systems to a high standard, then transfer full ownership to the business: the code,
             the documentation and the know-how. No vendor lock-in. No hidden dependencies.
@@ -154,13 +154,13 @@ const btn = "md:whitespace-nowrap";
       <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" data-reveal-group>
         {
           businessGets.map((card, i) => (
-            <div class="group flex flex-col justify-between rounded-xl border border-line bg-mist/60 p-7 shadow-xs card-hover md:p-8" data-reveal-item>
+            <div class="group flex flex-col justify-between border-t border-line pt-6" data-reveal-item>
               <div>
                 <span class="mono text-xs text-grey">{`// ${pad(i)}`}</span>
                 <h3 class="mt-3 text-h3 text-navy tracking-tight" data-i18n={`index.gets.${card.key}.title`}>{card.title}</h3>
                 <p class="mt-3 text-body text-slate leading-relaxed" data-i18n={`index.gets.${card.key}.body`}>{card.body}</p>
               </div>
-              <p class="mt-6 w-fit rounded-md border border-blue/20 bg-blue/5 px-3.5 py-2 text-sm font-medium text-navy transition-colors group-hover:border-blue/40 group-hover:bg-blue/10" data-i18n={`index.gets.${card.key}.proof`}>{card.proof}</p>
+              <p class="mt-6 text-sm font-medium text-navy" data-i18n={`index.gets.${card.key}.proof`}>{card.proof}</p>
             </div>
           ))
         }
@@ -312,7 +312,7 @@ const btn = "md:whitespace-nowrap";
         </div>
 
         <div class="corners overflow-hidden rounded-xl border border-line bg-white shadow-xs lg:col-span-7">
-          <table class="w-full text-left border-collapse tabular-nums">
+          <table class="w-full text-left border-collapse tabular-nums max-md:[overflow-wrap:anywhere]">
             <caption class="sr-only">Eight numbers that prove progress.</caption>
             <thead>
               <tr class="border-b border-line bg-mist/80">

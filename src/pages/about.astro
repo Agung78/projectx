@@ -148,7 +148,7 @@ const principles = [
       <ul class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" data-reveal-group>
         {
           commitments.map((item, i) => (
-            <li class="group flex gap-5 rounded-xl border border-line bg-white p-7 shadow-xs card-hover md:p-8" data-reveal-item>
+            <li class="group flex gap-5 border-t border-line pt-6" data-reveal-item>
               <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue/5 text-blue transition-colors group-hover:bg-blue/10">
                 <Icon name={item.icon} class="h-6 w-6" aria-hidden="true" />
               </div>
@@ -201,7 +201,7 @@ const principles = [
         </div>
 
         <div class="corners overflow-hidden rounded-xl border border-line bg-white shadow-xs lg:col-span-7">
-          <table class="w-full text-left border-collapse tabular-nums">
+          <table class="w-full text-left border-collapse tabular-nums max-md:[overflow-wrap:anywhere]">
             <caption class="sr-only" data-i18n="about.philosophy.heading">Engineering principles that outlast every engagement.</caption>
             <thead>
               <tr class="border-b border-line bg-mist/80">

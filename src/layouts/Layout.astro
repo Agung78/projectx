@@ -40,7 +40,12 @@ const structuredData = {
       "@id": new URL("/#organization", Astro.site).href,
       name: "Kyron Engineering",
       url: new URL("/", Astro.site).href,
-      logo: new URL("/logo.svg", Astro.site).href,
+      logo: {
+        "@type": "ImageObject",
+        url: new URL("/logo-512.png", Astro.site).href,
+        width: 512,
+        height: 512,
+      },
       description,
       sameAs: [
         "https://www.linkedin.com/company/kyron-engineering/",
@@ -102,6 +107,8 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/jakarta-latin.woff2" crossorigin />
     {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}

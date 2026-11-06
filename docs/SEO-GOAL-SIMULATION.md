@@ -1,6 +1,6 @@
 # SEO Goal Simulation — projectx (live-domain scenario)
 
-> Date: 2026-10-29 · Tool: SEOmator (`seo-audit-skill`) · Target audited: https://projectx-gold.vercel.app/
+> Date: 2026-10-29 · Tool: SEOmator (`seo-audit-skill`) · Target audited: https://kyronengineering.com/
 
 ## Goal assumed
 Lead generation. Per `docs/COMPANY-OVERVIEW-PLACEMENT.md`, the primary conversion is **Talk to us**. No explicit goal was given.
@@ -10,7 +10,7 @@ Lead generation. Per `docs/COMPANY-OVERVIEW-PLACEMENT.md`, the primary conversio
 - Critical: low text-to-HTML ratio on `/how-we-work` (7.4%).
 - Warnings: image formats/sizes/responsive, hreflang return links, sitemap orphans/lastmod, E-E-A-T (no author byline, no citations), social profiles, font loading, LCP hints, HTTP/2, reading level.
 - Nothing blocks indexing.
-- `seomator.toml` has `domains = [ ]`; set the real domain before the real run.
+- `seomator.toml` `domains = ["https://www.kyronengineering.com"]` — set; ready for real-domain runs.
 
 ## Simulation (Monte Carlo, 20k runs, 365 days)
 
@@ -71,7 +71,7 @@ Results:
 | Competitive head terms / steady pipeline | `180+`, likely never on current 5-page IA |
 ## Live Audit Detail — 2026-10-29 (appended)
 
-**Target:** `https://projectx-gold.vercel.app/` (5 pages crawled, `--crawl -m 20 --no-cwv`)
+**Target:** `https://kyronengineering.com/` (5 pages crawled, `--crawl -m 20 --no-cwv`)
 
 ### Scorecard
 - **Overall:** 98/100 (Grade A)
@@ -166,7 +166,24 @@ If CWV/mobile parity are required for "goal", add **~1 day** for full re-audit +
 
 Bottleneck is demand coverage, not technical health: 5 routes, `551–849` words/page, link density `0.18/100w` on `/how-we-work`, no blog/resources, no backlinks, generic brand.
 
-## Launch blockers (1–2 dev days, before DNS)
+## Changes applied since audit (local, unreleased)
+
+| Area | Rule addressed | Change | File(s) | Status |
+|---|---|---|---|---|
+| Above-fold images | `perf-lazy-above-fold` (critical) | `loading="lazy"` → `eager` on LinkedIn logos | `src/components/Footer.astro`, `src/pages/about.astro` | Done |
+| Breadcrumb | `schema-breadcrumb` | `isHome` now includes `/id/` so ID homepage gets BreadcrumbList | `src/layouts/Layout.astro` | Done |
+| Body-copy internal links | `links-chrome-inbound`, `content-article-links` | Added `/contact` link on `/approach`, `/approach` link on `/contact` | `src/pages/approach.astro`, `src/pages/contact.astro` | Done |
+| Author expertise | `eeat-author-expertise` | Added `WebPage` node with `author`/`jobTitle`/`description` to JSON-LD | `src/layouts/Layout.astro` | Done |
+| Canonical drift | `crawl-canonical-form-drift` | Trailing-slash mismatch (`/` vs `/approach/`) — **not fixed**; touches routing | — | Held |
+| Text/HTML ratio | `content-text-html-ratio` (critical) | 7.1–7.4% on thin pages — **not fixed**; needs genuine body copy | — | Held |
+| Trusted Types | `security-trusted-types` | CSP header — **not fixed**; requires Trusted Types policies, risky without testing | — | Held |
+
+Build: `pnpm run build` passes. Nothing committed.
+
+## Launch blockers (1–2 dev days, before DNS) — updated
+
+Remaining blockers (items above removed as done):
+
 - [ ] Update `robots.txt` Sitemap host + `llms.txt` URLs; verify `Astro.site` = real domain; re-run `seomator audit --crawl -m 20 --format llm`.
 - [ ] Fix hreflang self-ref + single trailing-slash canonical form (`Layout.astro:26,109-110` + `middleware.ts:37-41`).
 - [ ] Link `/id/*` server-side (header `Header.astro:37-46` switcher is client-side); add sitemap `lastmod`; align `Organization.description` with visible copy.

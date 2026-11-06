@@ -31,7 +31,7 @@ const idPath = `/id${enPath === "/" ? "/" : enPath}`;
 const canonicalURL = new URL(isId ? idPath : enPath, Astro.site);
 const ogImageURL = new URL("/og-image.png", Astro.site);
 const alternates = [["en", enPath], ["id", idPath], ["x-default", enPath]];
-const isHome = enPath === "/";
+const isHome = enPath === "/" || rawPath === "/id/";
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -74,6 +74,21 @@ const structuredData = {
         },
         "query-input": "required name=search_term_string",
       },
+    },
+    {
+      "@type": "WebPage",
+      "@id": new URL("#webpage", Astro.site).href,
+      url: canonicalURL.href,
+      name: pageTitle,
+      author: {
+        "@type": "Organization",
+        "@id": new URL("/#organization", Astro.site).href,
+        name: "Kyron Engineering",
+        jobTitle: "Engineering consultancy",
+        description: "Software engineering consultancy helping teams build, own, and hand over their technology end to end — from discovery through production handover.",
+      },
+      inLanguage: lang,
+      isPartOf: { "@id": new URL("/#website", Astro.site).href },
     },
     ...(isHome
       ? []

@@ -417,10 +417,6 @@ export const STRINGS: Record<string, Entry> = {
     "// GET IN TOUCH",
     "// HUBUNGI KAMI",
   ),
-  "contact.form.decision-label": e(
-    "Who's the main decision-maker?",
-    "Siapa pengambil keputusan utama?",
-  ),
   "contact.form.email-label": e(
     "Email",
     "Email",
@@ -436,10 +432,6 @@ export const STRINGS: Record<string, Entry> = {
   "contact.form.err-email-invalid": e(
     "Please enter a valid email address",
     "Isi alamat email yang valid",
-  ),
-  "contact.form.err-followup": e(
-    "Please choose how we should follow up",
-    "Pilih cara kami menghubungi Anda",
   ),
   "contact.form.err-help": e(
     "Please tell us what you would like help with",
@@ -469,61 +461,17 @@ export const STRINGS: Record<string, Entry> = {
     "Please enter your role",
     "Isi peran Anda",
   ),
-  "contact.form.followup-email": e(
-    "Email",
-    "Email",
-  ),
-  "contact.form.followup-label": e(
-    "How should we follow up?",
-    "Mau kami hubungi lewat apa?",
-  ),
-  "contact.form.followup-phone": e(
-    "Phone",
-    "Telepon",
-  ),
-  "contact.form.followup-videocall": e(
-    "Video call",
-    "Panggilan video",
-  ),
   "contact.form.help-label": e(
     "What would you like help with?",
     "Bantuan apa yang Anda butuhkan?",
-  ),
-  "contact.form.it-label": e(
-    "Is there an IT contact or provider we should speak with?",
-    "Ada kontak IT atau vendor yang perlu kami ajak bicara?",
   ),
   "contact.form.locations-label": e(
     "How many locations or branches?",
     "Ada berapa lokasi atau cabang?",
   ),
-  "contact.form.more-title": e(
-    "A bit more (optional)",
-    "Sedikit lagi (boleh dilewati)",
-  ),
   "contact.form.name-label": e(
     "Your name",
     "Nama Anda",
-  ),
-  "contact.form.project-improve": e(
-    "Improve an existing system",
-    "Menyempurnakan sistem yang ada",
-  ),
-  "contact.form.project-label": e(
-    "What best describes the project?",
-    "Proyeknya seperti apa?",
-  ),
-  "contact.form.project-new": e(
-    "New system",
-    "Sistem baru",
-  ),
-  "contact.form.project-placeholder": e(
-    "Select one",
-    "Pilih satu",
-  ),
-  "contact.form.project-unsure": e(
-    "Not sure yet",
-    "Belum tahu",
   ),
   "contact.form.region-label": e(
     "Country or region",
@@ -1510,8 +1458,8 @@ export const STRINGS: Record<string, Entry> = {
     "Perubahan kebijakan ini",
   ),
   "privacy.sections.contact-form.body-1": e(
-    "When you write to us, we collect the details you choose to provide: your name, company, role, email address, country or region, how many locations or branches, what you would like help with, and how you prefer us to follow up. Optional fields, such as project type, IT contact or main decision-maker, are collected only if you complete them.",
-    "Saat Anda menulis ke kami, kami mengumpulkan detail yang Anda isi sendiri: nama, perusahaan, peran, alamat email, negara atau wilayah, jumlah lokasi atau cabang, bantuan yang dibutuhkan, dan cara follow-up yang Anda mau. Kolom opsional — seperti jenis proyek, kontak IT, atau pengambil keputusan utama — hanya kami simpan kalau Anda mengisinya.",
+    "When you write to us, we collect the details you choose to provide: your name, company, role, email address, country or region, how many locations or branches, and what you would like help with.",
+    "Saat Anda menulis ke kami, kami mengumpulkan detail yang Anda isi sendiri: nama, perusahaan, peran, alamat email, negara atau wilayah, jumlah lokasi atau cabang, dan bantuan yang dibutuhkan.",
   ),
   "privacy.sections.contact-form.body-2": e(
     "We use this information for one purpose: to assess your enquiry against our fit criteria and reply with a recommended next step. We do not use it for unrelated marketing, and we do not sell, rent or trade it.",

@@ -108,46 +108,6 @@ import Button from "../components/Button.astro";
           <p id="help-error" class="hidden text-body text-red" role="alert"></p>
         </div>
 
-        <fieldset class="flex flex-col gap-2.5" aria-describedby="follow_up-error">
-          <legend class="text-sm font-semibold text-slate"><span data-i18n="contact.form.followup-label">How should we follow up?</span><span aria-hidden="true"> *</span></legend>
-          <div class="flex flex-col gap-2.5 md:flex-row md:gap-4">
-            {
-              ["Email", "Phone", "Video call"].map((option, idx) => (
-                <label class="flex flex-1 cursor-pointer items-center gap-2.5 rounded-lg border border-field/50 bg-white px-4 py-2.5 text-body text-navy transition-all hover:border-field has-[:checked]:border-blue has-[:checked]:bg-blue/5 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-blue">
-                  <input type="radio" name="follow_up" value={option} required class="accent-blue" />
-                  <span class="text-sm font-semibold" data-i18n={["contact.form.followup-email", "contact.form.followup-phone", "contact.form.followup-videocall"][idx]}>{option}</span>
-                </label>
-              ))
-            }
-          </div>
-          <p id="follow_up-error" class="hidden text-body text-red" role="alert"></p>
-        </fieldset>
-
-        <details class="rounded-xl border border-line bg-mist/60 p-4 transition-colors hover:bg-mist" data-accordion>
-          <summary class="cursor-pointer py-3 -my-3 text-sm font-semibold text-navy select-none" data-i18n="contact.form.more-title">A bit more (optional)</summary>
-          <div class="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2" data-accordion-content>
-              <div class="flex flex-col gap-2">
-                <label for="project_type" class="text-sm font-semibold text-slate" data-i18n="contact.form.project-label">What best describes the project?</label>
-                <select id="project_type" name="project_type" class="w-full min-w-0 rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
-                  <option value="" data-i18n="contact.form.project-placeholder">Select one</option>
-                  <option value="New system" data-i18n="contact.form.project-new">New system</option>
-                  <option value="Improve an existing system" data-i18n="contact.form.project-improve">Improve an existing system</option>
-                  <option value="Not sure yet" data-i18n="contact.form.project-unsure">Not sure yet</option>
-                </select>
-              </div>
-              <div class="flex flex-col gap-2">
-              <label for="decision_maker" class="text-sm font-semibold text-slate" data-i18n="contact.form.decision-label">Who's the main decision-maker?</label>
-              <input id="decision_maker" name="decision_maker" type="text"
-                class="w-full min-w-0 rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
-              </div>
-              <div class="flex flex-col gap-2">
-              <label for="it_contact" class="text-sm font-semibold text-slate" data-i18n="contact.form.it-label">Is there an IT contact or provider we should speak with?</label>
-              <input id="it_contact" name="it_contact" type="text"
-                class="w-full min-w-0 rounded-[8px] border border-field bg-white px-4 py-3 text-body text-navy focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" />
-              </div>
-          </div>
-        </details>
-
         <Button type="submit" variant="primary" class="mt-2 w-full md:w-fit justify-center md:whitespace-nowrap" data-submit-button>
           <span data-button-label data-i18n="contact.form.submit">Send</span>
         </Button>
@@ -250,10 +210,6 @@ import Button from "../components/Button.astro";
       const key = errorEl.dataset.i18n;
       if (key) errorEl.textContent = t(key);
     });
-    const radioError = document.getElementById("follow_up-error");
-    if (radioError && !radioError.classList.contains("hidden") && radioError.dataset.i18n) {
-      radioError.textContent = t(radioError.dataset.i18n);
-    }
     const status = document.querySelector<HTMLElement>("[data-form-status]");
     if (status && !status.classList.contains("hidden") && status.dataset.i18n) {
       status.textContent = t(status.dataset.i18n);
@@ -308,20 +264,6 @@ import Button from "../components/Button.astro";
       field.removeAttribute("aria-invalid");
     }
 
-    function validateRadioGroup(): boolean {
-      const checked = form?.querySelector<HTMLInputElement>('input[name="follow_up"]:checked');
-      const errorEl = document.getElementById("follow_up-error");
-      if (!checked && errorEl) {
-        errorEl.dataset.i18n = "contact.form.err-followup";
-        errorEl.textContent = t("contact.form.err-followup");
-        errorEl.classList.remove("hidden");
-        return false;
-      }
-      if (errorEl) delete errorEl.dataset.i18n;
-      errorEl?.classList.add("hidden");
-      return true;
-    }
-
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       let valid = true;
@@ -341,8 +283,6 @@ import Button from "../components/Button.astro";
           clearError(field);
         }
       });
-
-      if (!validateRadioGroup()) valid = false;
 
       if (!valid) {
         form.querySelector<HTMLElement>('[aria-invalid="true"], input:invalid')?.focus();
@@ -376,7 +316,7 @@ import Button from "../components/Button.astro";
             status.classList.remove("hidden");
             status.dataset.i18n = "contact.form.success";
             status.textContent = t("contact.form.success");
-            status.classList.add("text-green", "text-body-lg", "font-semibold");
+            status.classList.add("text-navy", "text-body-lg", "font-semibold");
             requestAnimationFrame(() => {
               status.dataset.visible = "true";
               status.focus();
@@ -410,81 +350,7 @@ import Button from "../components/Button.astro";
   }
   }
 
-  function initAccordions() {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const DURATION = 260;
-    const EASING = "cubic-bezier(0.23, 1, 0.32, 1)";
-
-    document.querySelectorAll<HTMLDetailsElement>("details[data-accordion]").forEach((details) => {
-      if (details.dataset.bound === "true") return;
-      details.dataset.bound = "true";
-
-      const summary = details.querySelector("summary");
-      const content = details.querySelector<HTMLElement>("[data-accordion-content]");
-      if (!summary || !content) return;
-      let animation: Animation | null = null;
-
-      const snapshot = () => {
-        const style = getComputedStyle(content);
-        return { height: style.height, opacity: style.opacity, marginTop: style.marginTop };
-      };
-
-      const run = (opening: boolean) => {
-        // Capture the live values so a mid-animation toggle reverses from where it is.
-        const from = animation
-          ? snapshot()
-          : opening
-            ? { height: "0px", opacity: "0", marginTop: "0px" }
-            : null;
-        animation?.cancel();
-
-        if (opening) {
-          details.open = true;
-          delete details.dataset.closing;
-        } else {
-          details.dataset.closing = "true";
-        }
-
-        const natural = snapshot();
-        const collapsed = { height: "0px", opacity: "0", marginTop: "0px" };
-        const start = from ?? natural;
-        const end = opening ? natural : collapsed;
-
-        content.style.overflow = "hidden";
-        const current = content.animate([start, end], {
-          duration: DURATION,
-          easing: EASING,
-          fill: "forwards",
-        });
-        animation = current;
-
-        current.onfinish = () => {
-          if (animation !== current) return;
-          animation = null;
-          if (!opening) {
-            details.open = false;
-            delete details.dataset.closing;
-          }
-          current.cancel();
-          content.style.overflow = "";
-        };
-        // A cancelled animation was superseded by a newer toggle, which owns cleanup.
-      };
-
-      summary.addEventListener("click", (event) => {
-        if (reducedMotion.matches) {
-          delete details.dataset.closing;
-          return;
-        }
-        event.preventDefault();
-        const isOpen = details.open && !details.dataset.closing;
-        run(!isOpen);
-      });
-    });
-  }
-
   document.addEventListener("astro:page-load", initContactForm);
-  document.addEventListener("astro:page-load", initAccordions);
   document.addEventListener("kyron:lang-change", () => {
     const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
     if (form) revalidateVisibleErrors(form);

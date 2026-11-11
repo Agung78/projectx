@@ -122,10 +122,6 @@ export async function POST({ request }: APIContext) {
             region: rest.region,
             locations: rest.locations,
             help: rest.help,
-            followUp: rest.follow_up,
-            projectType: rest.project_type,
-            decisionMaker: rest.decision_maker,
-            itContact: rest.it_contact,
           }),
         }),
       });
@@ -183,10 +179,6 @@ function contactEmailHtml(fields: {
   region?: string;
   locations?: string;
   help?: string;
-  followUp?: string;
-  projectType?: string;
-  decisionMaker?: string;
-  itContact?: string;
 }) {
   const esc = (s?: string) =>
     String(s ?? "").replace(/[&<>"']/g, (c) =>
@@ -199,10 +191,6 @@ function contactEmailHtml(fields: {
     ["Role", fields.role ? esc(fields.role) : undefined],
     ["Country or Region", fields.region ? esc(fields.region) : undefined],
     ["Locations / Branches", fields.locations ? esc(fields.locations) : undefined],
-    ["Preferred Follow-up", fields.followUp ? esc(fields.followUp) : undefined],
-    ["Project Type", fields.projectType ? esc(fields.projectType) : undefined],
-    ["Decision Maker", fields.decisionMaker ? esc(fields.decisionMaker) : undefined],
-    ["IT Contact", fields.itContact ? esc(fields.itContact) : undefined],
   ].filter(([, val]) => Boolean(val));
 
   const tableRowsHtml = detailRows
